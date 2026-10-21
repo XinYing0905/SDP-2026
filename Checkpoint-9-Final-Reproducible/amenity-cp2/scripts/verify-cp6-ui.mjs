@@ -1,0 +1,28 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import vm from 'node:vm';
+import { webcrypto } from 'node:crypto';
+import assert from 'node:assert/strict';
+const out=path.resolve(import.meta.dirname,'../../checkpoint-6-review');
+const html=await fs.readFile(path.join(out,'Checkpoint-6-Interactive-Preview.html'),'utf8');
+const scripts=[...html.matchAll(/<script(?: type="module")?>([\s\S]*?)<\/script>/g)].map(m=>m[1]);assert.equal(scripts.length,2);
+const listeners={},nodes=new Map();let currentHash='',answer='PF-NOT-REALLY';
+const get=id=>{if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:'',className:'',disabled:false});return nodes.get(id);};
+const window={addEventListener(name,fn){listeners[name]=fn;}};
+const location={get hash(){return currentHash;},set hash(value){currentHash=value.startsWith('#')?value:'#'+value;setImmediate(()=>listeners.hashchange?.());}};
+const context={window,location,document:{getElementById:get,addEventListener(name,fn){listeners[name]=fn;}},crypto:webcrypto,TextEncoder,Uint8Array,Uint32Array,DataView,structuredClone,console,Date,FormData:class{get(){return answer;}}};
+vm.runInNewContext(scripts[0],context);vm.runInNewContext(scripts[1],context);
+const tick=()=>new Promise(resolve=>setImmediate(resolve));async function settle(){for(let i=0;i<12;i++)await tick();assert(!get('feedback').innerHTML,get('feedback').innerHTML);}
+const click=dataset=>listeners.click({target:{closest:()=>({dataset})}});
+await settle();assert(get('app').innerHTML.includes('From a question to a better-informed decision.'));
+click({open:'resolving'});await settle();assert(get('app').innerHTML.includes('OPERATOR PLAN'));
+listeners.change({target:{name:'answer'}});assert.equal(get('submit-response').disabled,false);
+listeners.submit({target:{id:'resident-form'},preventDefault(){}});await settle();
+assert(get('phone-view').innerHTML.includes('Your response has been received.'));
+const api=window.__cp6Offline.api;let c=api('/api/cp6/collections')[0];assert.equal(c.responses.length,1);
+click({action:'simulate'});await settle();c=api('/api/cp6/collections')[0];assert.equal(c.responses.length,9);
+click({action:'close'});await settle();assert(get('app').innerHTML.includes('NEW RESIDENT EVIDENCE'));
+click({action:'reassess'});await settle();c=api('/api/cp6/collections')[0];assert.equal(c.reassessment.after.evidenceSufficiency.explanationSufficiency.state,'Sufficient Evidence');assert(get('app').innerHTML.includes('AFTER REASSESSMENT'));
+click({action:'history'});await settle();assert(get('history').innerHTML.includes('Immutable events and saved revisions'));
+await fs.writeFile(path.join(out,'UI-Behaviour-Verification.json'),JSON.stringify({method:'Exact artifact runtime and UI executed with a DOM stand-in; not pixel/browser layout QA',home:true,explicitOpen:true,selectableRadio:true,submit:true,confirmation:true,fillUnansweredWithoutDuplicate:true,close:true,aggregation:true,reassessment:true,history:true,externalResources:false,canonicalActualState:c.reassessment.after.evidenceSufficiency.explanationSufficiency.state},null,2));
+console.log('UI behaviour passed: home → explicit collection → selected answer → submit → confirmation → fill remaining → close → aggregation → same-engine reassessment → saved history.');

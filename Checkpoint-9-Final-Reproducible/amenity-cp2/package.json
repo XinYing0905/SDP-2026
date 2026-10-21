@@ -1,0 +1,19 @@
+{
+  "name": "amenity-change-evidence-cp2",
+  "private": true,
+  "version": "0.5.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prestart": "node scripts/build.mjs",
+    "start": "node server.mjs",
+    "pretest": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "report": "node scripts/report.mjs",
+    "diagnosis-report": "node scripts/diagnosis-report.mjs",
+    "next-evidence-report": "node scripts/next-evidence-report.mjs",
+    "verify-cp4": "node scripts/verify-cp4.mjs",
+    "verify-cp5": "node scripts/verify-cp5.mjs",
+    "resident-plan-report": "node scripts/resident-plan-report.mjs"
+  }
+}

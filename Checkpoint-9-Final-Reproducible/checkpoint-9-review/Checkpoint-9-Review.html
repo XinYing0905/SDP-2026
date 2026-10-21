@@ -1,0 +1,363 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkpoint 9 Implementation Review</title><style>body{font:15px/1.65 system-ui,sans-serif;color:#173d32;background:#f4f6f0;margin:0}main{max-width:1080px;margin:auto;padding:42px 24px}h1{font-size:34px;line-height:1.2}h2{font-size:22px;margin-top:0}section{background:white;border:1px solid #dce3d7;padding:25px;border-radius:10px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;border-bottom:1px solid #dce3d7;padding:10px;vertical-align:top}th{background:#eef3e6}.table{overflow:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:520px;overflow:auto;background:#f3f5ef;padding:14px;font-size:11px}.callout{padding:15px;background:#e7eedb;border-left:4px solid #7b9d63}nav{display:flex;gap:8px;flex-wrap:wrap}a{color:#306344}small{color:#64715f}code{overflow-wrap:anywhere}summary{cursor:pointer;font-weight:650}@media(max-width:650px){main{padding:20px 12px}section{padding:17px}h1{font-size:27px}}</style><main><aside style="padding:18px;background:#e5efda;border:1px solid #9ab37c"><h2>Clean-room reproducibility correction</h2><p>This review was regenerated from the freshly extracted package at C:\Users\User\AppData\Local\Packages\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\AC\Temp\CP9-rehearsal-r7\extracted. Old generated outputs and the derived CP9 store were removed first. Public dependency installation, two clean deterministic builds, zero missing imports,409 existing tests,50 CP9 tests and459 combined tests were rerun here. The139-file preservation reference is an integrity check only; complete delivery uses an independent full project manifest.</p><p>All 13 CP9 product-source/test files are byte-identical to the previously delivered CP9 ZIP. Only packaging, verification and documentation changed.</p><p>This file is generated in this extracted copy. Package-included logs come from an earlier extracted-copy rehearsal; the final frozen ZIP is tested again without repackaging. The final external attestation binds its SHA-256 to that acceptance run.</p></aside><small>Amenity Decision Intelligence · Final product-logic checkpoint</small><h1>Checkpoint 9<br>Implementation Review Package</h1><p>AI Intervention Learning → Similar-Case Intervention Suitability</p><p class="callout"><strong>459 PASS ·0 FAIL ·139/139 approved files byte-identical</strong><br>Actual semantic inference and source-linked historical evidence; no success predictor or autonomous action.</p><nav><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a><a href="#s10">10</a><a href="#s11">11</a><a href="#s12">12</a><a href="#s13">13</a><a href="#s14">14</a><a href="#s15">15</a><a href="#s16">16</a><a href="#s17">17</a><a href="#s18">18</a><a href="#s19">19</a><a href="#s20">20</a><a href="#s21">21</a><a href="#s22">22</a><a href="#s23">23</a></nav><section id="s1"><h2>1. Implementation summary</h2><p>CP9 adds structured comparability constraints, a frozen pretrained semantic encoder and governed case-based historical retrieval. Existing CP1–CP8 logic is preserved. Historical Support for Suitability is secondary operator evidence; it cannot authorise action.</p><p class="callout">The system uses learned semantic representations to retrieve comparable historical intervention cases, then shows the outcomes and protection trade-offs observed in those cases.</p><p>Implemented: immutable point-in-time cases, outcome-aware admission without outcome-based similarity, complete comparable-case descriptors, explicit protection concern, abstention, source inspection, read-only upstream adapters, a separate CP9 SQLite audit store, GET-only service boundaries, A–O scenarios and a portable operator preview.</p></section><section id="s2"><h2>2. Historical case admission</h2><div class="table"><table><thead><tr><th>Class</th><th>Behaviour</th></tr></thead><tbody><tr><td>Comparable, evaluable history</td><td>Established conforming execution, evaluable Goal finding, observed Protection finding and intact provenance; contributes to the directional denominator when structurally comparable.</td></tr><tr><td>Limited historical case</td><td>Unestablished/unexecuted/deviated intervention, insufficient outcomes or unresolved conflict; inspectable with limitations, never a clean label.</td></tr><tr><td>Rejected from corpus</td><td>Invalid source envelope, tampered digest, disallowed feature fields or unverifiable version/provenance.</td></tr></tbody></table></div><p>A substantiated Protection breach is adverse evaluable evidence, not an excuse to exclude a case. Admission is separate from query comparability. A valid historical case can still be unsuitable for comparison because critical context is missing or different.</p><p>Cases are read from actual saved CP7 decisions and CP8 reviews. The adapters open both source databases read-only. No synthetic “eligible” fixture substitutes for approval.</p></section><section id="s3"><h2>3. Point-in-time feature representation</h2><p><code>featuresFromPlan(plan)</code> accepts only the immutable saved decision-time plan. It does not accept outcome observations or reviews. It explicitly extracts amenity type/tier, pathway/purpose, predeclared contract semantics, scope/function, horizon, protection context, aggregate cohort familiarity/context, change pattern, operations, programme evidence, temporal and resident-mix evidence, and the two sufficiency dimensions.</p><p>The historical record separately preserves all original competing-diagnosis assessments, Raw Evidence Support, Relative Evidence Support, coverage, missing evidence and sufficiency. Those fields remain pre-decision records and are not reinterpreted by CP9.</p><p>Every evidence source must have been available by the original decision timestamp. The semantic text is the approved scope description, with its approval and scope digest; it uses NFKC normalisation, whitespace collapse and trimming. Resident names, contact data, ownership priorities, outcome summaries and future corrections are not allowed features. Nested field allowlists prevent hidden outcome fields inside otherwise valid objects.</p></section><section id="s4"><h2>4. Multidimensional outcome representation</h2><div class="table"><table><thead><tr><th>Dimension</th><th>Retained semantics</th></tr></thead><tbody><tr><td>Execution</td><td>Exact CP8 Execution Finding and referenced execution records.</td></tr><tr><td>Goal</td><td>Exact Goal Finding plus criterion results and intervention-benefit finding.</td></tr><tr><td>Protection</td><td>Exact Protection Finding, criterion evidence and protected function.</td></tr><tr><td>Evidence generation</td><td>Separate CP8 evidencePurpose finding where declared.</td></tr><tr><td>Diagnosis</td><td>Bounded CP8 finding and conversion/mapping status; no additional CP3 projection.</td></tr><tr><td>Quality</td><td>Observation windows, qualification, coverage, missingness, context, corrections and conflict limitations.</td></tr></tbody></table></div><p>Repair may meet restoration criteria with unchanged usage. Preserve may maintain meaningful access while total use remains low. A pilot can miss its benefit objective while answering its evidence question. Shared-use benefit does not compensate for a breach. There is no universal binary success label.</p></section><section id="s5"><h2>5. Semantic model, version and dependencies</h2><div class="table"><table><thead><tr><th>Item</th><th>Pinned value</th></tr></thead><tbody><tr><td>Transformers.js</td><td>@huggingface/transformers 4.3.1</td></tr><tr><td>Encoder</td><td>Xenova/all-MiniLM-L6-v2; quantised ONNX model_quantized.onnx</td></tr><tr><td>Model and tokenizer revision</td><td>751bff37182d3f1213fa05d7196b954e230abad9</td></tr><tr><td>ONNX runtime</td><td>1.30.0</td></tr><tr><td>Execution runtime</td><td>v24.15.0 / win32 / x64 / CPU</td></tr><tr><td>Pooling</td><td>Mean</td></tr><tr><td>Vector normalisation</td><td>L2 normalised; cosine dot product used only as retrieval diagnostic</td></tr><tr><td>Tokenizer limit</td><td>512, defined in the pinned tokenizer configuration; no multilingual validation claim</td></tr><tr><td>Runtime downloads</td><td>Disabled during model loading; missing/hash-invalid files report unavailable</td></tr></tbody></table></div><p>The actual encoder ran locally and produced real vectors. No intervention-success predictor was trained. Model artifacts are bundled and individually SHA-256 checked; exact dependency resolution is retained in the CP9 package lock. Node modules are excluded from the delivery ZIP and installed with <code>npm ci --ignore-scripts</code>. The tested CPU runtime works on Windows x64; other platforms require their own runtime verification.</p><details><summary>Model artifact hashes and full runtime manifest</summary><pre>{
+  &quot;model&quot;: &quot;Xenova/all-MiniLM-L6-v2&quot;,
+  &quot;revision&quot;: &quot;751bff37182d3f1213fa05d7196b954e230abad9&quot;,
+  &quot;tokenizerRevision&quot;: &quot;751bff37182d3f1213fa05d7196b954e230abad9&quot;,
+  &quot;transformers&quot;: &quot;4.3.1&quot;,
+  &quot;pooling&quot;: &quot;mean&quot;,
+  &quot;normalise&quot;: true,
+  &quot;dtype&quot;: &quot;q8&quot;,
+  &quot;preprocessing&quot;: &quot;NFKC; collapse whitespace; trim; approved pre-decision description only; English-first&quot;,
+  &quot;artifacts&quot;: [
+    {
+      &quot;file&quot;: &quot;config.json&quot;,
+      &quot;sha256&quot;: &quot;7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7&quot;,
+      &quot;bytes&quot;: 650
+    },
+    {
+      &quot;file&quot;: &quot;tokenizer.json&quot;,
+      &quot;sha256&quot;: &quot;da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0&quot;,
+      &quot;bytes&quot;: 711661
+    },
+    {
+      &quot;file&quot;: &quot;tokenizer_config.json&quot;,
+      &quot;sha256&quot;: &quot;9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3&quot;,
+      &quot;bytes&quot;: 366
+    },
+    {
+      &quot;file&quot;: &quot;special_tokens_map.json&quot;,
+      &quot;sha256&quot;: &quot;b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3&quot;,
+      &quot;bytes&quot;: 125
+    },
+    {
+      &quot;file&quot;: &quot;vocab.txt&quot;,
+      &quot;sha256&quot;: &quot;07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3&quot;,
+      &quot;bytes&quot;: 231508
+    },
+    {
+      &quot;file&quot;: &quot;onnx/model_quantized.onnx&quot;,
+      &quot;sha256&quot;: &quot;afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1&quot;,
+      &quot;bytes&quot;: 22972370
+    },
+    {
+      &quot;file&quot;: &quot;README.md&quot;,
+      &quot;sha256&quot;: &quot;63ea99bf681a2e9eda4f6a537d5ed8fda95d1677111656da37e9cfd080c3af02&quot;,
+      &quot;bytes&quot;: 1767
+    }
+  ],
+  &quot;runtime&quot;: &quot;v24.15.0&quot;,
+  &quot;platform&quot;: &quot;win32&quot;,
+  &quot;arch&quot;: &quot;x64&quot;,
+  &quot;onnxruntime&quot;: &quot;1.30.0&quot;,
+  &quot;digest&quot;: &quot;c1a7fc3bb72908ae444126abaa2173c3d3a5479550a62a1d8947cf2748f307f9&quot;
+}</pre></details></section><section id="s6"><h2>6. Structured comparability</h2><p>Comparison occurs before semantic ranking. The conservative first version requires exact, known agreement on amenity type, observability tier, pathway, purpose and purpose ID, contract criteria, affected function and extent, protected access, retained function, observation horizon, decision horizon, dependency/substitute/accessibility context, cohort and reversibility profile.</p><p>Temporal, operational and resident-mix comparison records must be available; programme/pilot comparisons also require programme history. Unknown compatibility produces no suitability inference. Cross-type equivalence is not inferred by embeddings. Material dependency or accessibility differences appear as related but non-comparable history.</p><p>Change magnitude and other noncritical structured differences remain visible. Exact matching intentionally abstains more often than a future reviewed semantic-compatibility policy might.</p></section><section id="s7"><h2>7. Hybrid retrieval</h2><p>For each current CP7 candidate: bind the current query → verify corpus/index digests and as-of validity → retain active non-duplicate records → exclude query amenity/episode/intervention lineage and evaluation family → apply structured comparability → fix membership and feature-only ranking inputs → rank by encoder cosine → attach multidimensional CP8 outcomes → calculate the descriptor using all qualifying evaluable cases.</p><p>The structured baseline uses identical hard filters, then orders by noncritical structured differences and stable case ID for exact ties. The hybrid uses semantic ranking within that same admissible set. Neither method changes the historical descriptor denominator.</p><p>All qualifying cases contribute even if only three cards are visible per page. The adverse-case summary remains visible across pages.</p></section><section id="s8"><h2>8. Historical suitability descriptor logic</h2><div class="table"><table><thead><tr><th>Descriptor</th><th>Exact implementation</th></tr></thead><tbody><tr><td>Insufficient comparable historical evidence</td><td>Fewer than3 qualifying episodes or fewer than3 distinct amenities. Individual cases and any protection concern still display.</td></tr><tr><td>Not comparable enough to infer suitability</td><td>No qualifying set because critical comparison fields are unknown or materially different; related cases retain reasons.</td></tr><tr><td>Historically supportive pattern</td><td>Floor passes; Goal Met &gt; all qualifying evaluable cases /2; no substantiated comparable protection breach.</td></tr><tr><td>Historical concern</td><td>With sufficient history: any comparable substantiated protection breach, or Goal Not met &gt; denominator /2. Breach concern also remains prominent below the floor.</td></tr><tr><td>Mixed historical evidence</td><td>Floor passes and neither supportive nor concerning direction is established. Mixed Goal findings remain in the denominator.</td></tr></tbody></table></div><p>The configurable provisional parameters live in <code>cp9/src/core.mjs → POLICY</code>: minimumEpisodes=3, minimumAmenities=3, strict-majority direction and any-breach protection rule. They are prototype descriptive policy, not statistical adequacy, independence proof, representativeness, calibrated sample size or significance.</p></section><section id="s9"><h2>9. Protection-aware behaviour</h2><p>Protection outcomes remain first-class, unweighted findings. Any substantiated comparable breach prevents a supportive descriptor and appears in an always-visible adverse summary. It cannot be discounted by cosine similarity, page position, owner status, cohort size or aggregate benefit.</p><p>Case cards show Goal and Protection separately, protected function, accessibility context and reviewed substitute context. Historical concern never mutates current CP7 readiness automatically.</p></section><section id="s10"><h2>10. CP7 boundary</h2><p>CP7 candidate eligibility, safeguard gates, both sufficiency assessments, reversibility preference and approval/rationale requirements remain authoritative. Product retrieval is withheld for a candidate that is not Ready. Technical QA can inspect it while retaining its original blocked state.</p><p>Stale/conflicting inputs withhold interpretation. The live service re-reads the query after asynchronous embedding and rejects a changed input before persisting a result.</p><p class="callout">Historical evidence is more supportive for this alternative. CP7 still identifies another adequately supported option as the preferred lower-impact pathway.</p><p>Scenario N establishes that tension using an unchanged CP7 comparison with evidenced reversibility profiles, not a CP9 numerical ranking. CP9 has no approval, execution, upstream reassessment, CP4 reranking or CP5 reselection operations.</p></section><section id="s11"><h2>11. Explainability</h2><p>Each case exposes matched structured comparison dimensions, the approved historical and query excerpts, important differences, source and approval versions, original diagnosis/sufficiency assessments, CP8 findings, observation qualification and inference limits. The current candidate’s CP7 gates remain inspectable.</p><p>Explanations are deterministic records/templates. No generated explanation invents facts. Raw cosine is available only within Technical Details/QA and is labelled retrieval diagnostics, never suitability confidence.</p></section><section id="s12"><h2>12. Abstention</h2><p>CP9 explicitly abstains for too little history, no history, material context differences, missing critical comparison fields, unseen combinations, stale/conflicting current inputs and unavailable qualified outcomes. It never chooses an unrelated nearest case or relaxes protection constraints.</p><p>If the semantic model is absent or invalid, vectors are not fabricated. A distinct index/audit record identifies <strong>Structured comparison only — semantic retrieval unavailable</strong>. A model-version mismatch is rejected rather than mixing incompatible vectors. There is no generative fallback.</p></section><section id="s13"><h2>13. Leakage, versions and duplicates</h2><p>Similarity features are immutable pre-decision snapshots. Outcomes are separate records. Every result binds query digest, as-of timestamp, corpus release/digest, feature policy/digest, encoder/runtime manifest and index digest.</p><p>Only one current review version per intervention episode contributes. Repeated reviews, duplicate records, original corrected findings and superseded reviews remain inspectable without double counting. Contradictory same-version episode payloads reject release creation. A later CP8 review with unresolved independent conflict is limited; a previously favourable review is not substituted for it.</p><p>The demo includes a real CP8 same-source authoritative correction: repair-1 changes from Goal Met to Mixed while its original finding remains in history. Case M also includes a repeated review and duplicate version. Query amenity, episode, intervention lineage and held-out generation families are excluded as appropriate.</p><p>Corpus release publication is explicit and governed; a new outcome does not trigger automatic retraining or rewrite a previous release.</p></section><section id="s14"><h2>14. Simulated corpus</h2><p>The final corpus has <strong>41 intervention episodes from 41 simulated amenities, represented by 43 review versions</strong>. It covers all seven pathways. Every record visibly retains <strong>Simulated historical case</strong>.</p><p>Actual saved synthetic CP7 approvals and CP8 reviews reside in isolated <code>cp9/demo-storage-final/</code>. The existing services approve eligible plans and evaluate predeclared contracts. Synthetic observations set measured values; findings are produced by the existing engines, not hand-labelled to force a favourable story.</p><p>Coverage includes Met/Not met/Mixed, maintained/breached protection, insufficient/conflicting outcomes, unexecuted and deviated plans, a benefit/evidence-divergent pilot, repair without usage recovery, Preserve with low use, semantic families, protection-context differences, corrected and duplicate versions.</p><p>The primary Product Demo uses the complete governed corpus release <code>simulated-corpus-full-2</code>. Its current Reprogramme comparison is <strong>Historical concern</strong>: 12 qualifying episodes; 10 Met, 2 Not met, 0 Mixed; 1 breach. Adverse cases were not filtered out for presentation.</p></section><section id="s15"><h2>15. A–O actual outputs</h2><div class="table"><table><thead><tr><th>Case</th><th>Scenario</th><th>Actual output</th><th>Qualifying count / goal findings</th></tr></thead><tbody><tr><td>A</td><td>Supportive Reprogramme history</td><td>Historically supportive pattern</td><td>4 episodes; {&quot;Met&quot;:3,&quot;Not met&quot;:1,&quot;Mixed&quot;:0}</td></tr><tr><td>B</td><td>Mixed Reprogramme history</td><td>Mixed historical evidence</td><td>4 episodes; {&quot;Met&quot;:2,&quot;Not met&quot;:2,&quot;Mixed&quot;:0}</td></tr><tr><td>C</td><td>Protection concern despite benefit</td><td>Historical concern</td><td>4 episodes; {&quot;Met&quot;:4,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>D</td><td>CP7 block remains authoritative</td><td>CP7 candidate not Ready — historical interpretation withheld</td><td>Withheld / rejected</td></tr><tr><td>E</td><td>Too little comparable history</td><td>Insufficient comparable historical evidence</td><td>2 episodes; {&quot;Met&quot;:2,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>F</td><td>Material protection-context difference</td><td>Not comparable enough to infer suitability</td><td>0 episodes; {&quot;Met&quot;:0,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>G</td><td>Repair without usage recovery</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:2,&quot;Not met&quot;:0,&quot;Mixed&quot;:1}</td></tr><tr><td>H</td><td>Preserve with low utilisation</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:3,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>I</td><td>Pilot benefit and evidence value differ</td><td>Mixed historical evidence</td><td>3 episodes; {&quot;Met&quot;:0,&quot;Not met&quot;:0,&quot;Mixed&quot;:3}</td></tr><tr><td>J</td><td>Materially deviated historical intervention</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:3,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>K</td><td>Missing and conflicting outcome evidence</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:2,&quot;Not met&quot;:0,&quot;Mixed&quot;:1}</td></tr><tr><td>L</td><td>Outcome-feature leakage rejected</td><td>FORBIDDEN_FEATURE</td><td>Withheld / rejected</td></tr><tr><td>M</td><td>Repeated reviews, correction and duplicate</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:2,&quot;Not met&quot;:0,&quot;Mixed&quot;:1}</td></tr><tr><td>N</td><td>Stronger alternative history; lower-impact preference retained</td><td>Historically supportive pattern</td><td>3 episodes; {&quot;Met&quot;:3,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr><tr><td>O</td><td>No comparable history</td><td>Insufficient comparable historical evidence</td><td>0 episodes; {&quot;Met&quot;:0,&quot;Not met&quot;:0,&quot;Mixed&quot;:0}</td></tr></tbody></table></div><p>A–O are predeclared closed scenario worlds for acceptance validation, visibly separated from Product Demo. They are not an operator filter for selecting favourable history.</p><p>G/M retain 2 Met and 1 Mixed after the authoritative repair correction. I retains 3 Mixed pilot goals with benefit Not met and evidence purpose Met. K keeps three limited histories out of the denominator. N keeps Reprogramme as CP7’s preferred lower-impact option despite stronger pilot history.</p><details><summary>Complete actual summary including protection, limited cases and tension</summary><pre>[
+  {
+    &quot;case&quot;: &quot;A&quot;,
+    &quot;title&quot;: &quot;Supportive Reprogramme history&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 4,
+    &quot;amenities&quot;: 4,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 3,
+      &quot;Not met&quot;: 1,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 4,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;B&quot;,
+    &quot;title&quot;: &quot;Mixed Reprogramme history&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Mixed historical evidence&quot;,
+    &quot;episodes&quot;: 4,
+    &quot;amenities&quot;: 4,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 2,
+      &quot;Not met&quot;: 2,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 4,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;C&quot;,
+    &quot;title&quot;: &quot;Protection concern despite benefit&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historical concern&quot;,
+    &quot;episodes&quot;: 4,
+    &quot;amenities&quot;: 4,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 4,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 1
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;D&quot;,
+    &quot;title&quot;: &quot;CP7 block remains authoritative&quot;,
+    &quot;state&quot;: &quot;CP7 candidate not Ready — historical interpretation withheld&quot;,
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0
+  },
+  {
+    &quot;case&quot;: &quot;E&quot;,
+    &quot;title&quot;: &quot;Too little comparable history&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Insufficient comparable historical evidence&quot;,
+    &quot;episodes&quot;: 2,
+    &quot;amenities&quot;: 2,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 2,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 2,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;F&quot;,
+    &quot;title&quot;: &quot;Material protection-context difference&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Not comparable enough to infer suitability&quot;,
+    &quot;episodes&quot;: 0,
+    &quot;amenities&quot;: 0,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 0,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 0,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 1,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;G&quot;,
+    &quot;title&quot;: &quot;Repair without usage recovery&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 2,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 1
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;H&quot;,
+    &quot;title&quot;: &quot;Preserve with low utilisation&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 3,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;I&quot;,
+    &quot;title&quot;: &quot;Pilot benefit and evidence value differ&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Mixed historical evidence&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 0,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 3
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;J&quot;,
+    &quot;title&quot;: &quot;Materially deviated historical intervention&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 3,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 1,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;K&quot;,
+    &quot;title&quot;: &quot;Missing and conflicting outcome evidence&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 2,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 1
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 3,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;L&quot;,
+    &quot;title&quot;: &quot;Outcome-feature leakage rejected&quot;,
+    &quot;error&quot;: &quot;FORBIDDEN_FEATURE&quot;
+  },
+  {
+    &quot;case&quot;: &quot;M&quot;,
+    &quot;title&quot;: &quot;Repeated reviews, correction and duplicate&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 2,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 1
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  },
+  {
+    &quot;case&quot;: &quot;N&quot;,
+    &quot;title&quot;: &quot;Stronger alternative history; lower-impact preference retained&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Historically supportive pattern&quot;,
+    &quot;episodes&quot;: 3,
+    &quot;amenities&quot;: 3,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 3,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 3,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 3,
+    &quot;tension&quot;: &quot;Historical evidence is more supportive for this alternative. CP7 still identifies another adequately supported option as the preferred lower-impact pathway.&quot;
+  },
+  {
+    &quot;case&quot;: &quot;O&quot;,
+    &quot;title&quot;: &quot;No comparable history&quot;,
+    &quot;state&quot;: &quot;Historical evidence available&quot;,
+    &quot;descriptor&quot;: &quot;Insufficient comparable historical evidence&quot;,
+    &quot;episodes&quot;: 0,
+    &quot;amenities&quot;: 0,
+    &quot;goalCounts&quot;: {
+      &quot;Met&quot;: 0,
+      &quot;Not met&quot;: 0,
+      &quot;Mixed&quot;: 0
+    },
+    &quot;protectionCounts&quot;: {
+      &quot;Maintained&quot;: 0,
+      &quot;Protection breach&quot;: 0
+    },
+    &quot;limited&quot;: 0,
+    &quot;related&quot;: 0,
+    &quot;tension&quot;: null
+  }
+]</pre></details></section><section id="s16"><h2>16. Structured versus hybrid validation</h2><p><strong>Prototype validation on simulated cases.</strong> Six held-out English paraphrase queries use predeclared topic-relevance judgements over nine independently identified historical programme examples. No outcome-based fitting or model selection took place.</p><div class="table"><table><thead><tr><th>Method</th><th>Mean Precision@3</th><th>Mean reciprocal rank</th></tr></thead><tbody><tr><td>Structured-only baseline</td><td>0.333333</td><td>0.464286</td></tr><tr><td>Structured constraints + semantic retrieval</td><td>0.944444</td><td>1.000000</td></tr></tbody></table></div><div class="table"><table><thead><tr><th>Held-out query</th><th>Baseline P@3</th><th>Hybrid P@3</th></tr></thead><tbody><tr><td>heldout-food-1</td><td>0.000</td><td>1.000</td></tr><tr><td>heldout-food-2</td><td>0.000</td><td>1.000</td></tr><tr><td>heldout-music-1</td><td>0.000</td><td>1.000</td></tr><tr><td>heldout-music-2</td><td>0.000</td><td>1.000</td></tr><tr><td>heldout-exercise-1</td><td>1.000</td><td>1.000</td></tr><tr><td>heldout-exercise-2</td><td>1.000</td><td>0.667</td></tr></tbody></table></div><p>Semantic ranking improved the aggregate result, but not every query: exercise-2 decreased from1.000 to0.667. The structured baseline has no narrative representation and deterministic ties, so this is evidence of bounded prototype value against that explicit baseline, not proof that AI is always necessary or superior to every possible retrieval method.</p><p>All six queries retained identical qualifying membership and historical descriptors between methods. Metrics assess retrieval relevance, not effectiveness, calibrated success, causality or production accuracy. English wording variation was tested; Malay/Chinese semantic retrieval was not validated.</p></section><section id="s17"><h2>17. New CP9 tests</h2><p><strong>50 PASS, 0 FAIL, 0 skipped.</strong> Dedicated tests cover A–O, all seven pathways, multidimensional outcomes, the distinct-amenity floor, Mixed denominators, below-floor breach visibility, authoritative corrections, provenance tampering, nested/post-outcome fields, future sources/releases, unknown critical fields, ownership exclusion, model unavailability, invariant denominators, adverse pagination, query lineage/family exclusion, explanation traceability, model/index reproducibility, stale inputs, Technical QA blocks, SQLite immutability, asynchronous input invalidation, read-only upstream bytes, held-out relevance, pinned manifests, conflicting episode versions, real CP7 query adapters and HTTP boundaries.</p><p>Test file: <code>cp9/tests/cp9.test.mjs</code>. Actual TAP outputs are included.</p></section><section id="s18"><h2>18. Full regression and preservation results</h2><div class="table"><table><thead><tr><th>Check</th><th>Actual result</th></tr></thead><tbody><tr><td>Original CP1–CP8 suite</td><td>409 PASS / 0 FAIL</td></tr><tr><td>Dedicated CP9 suite</td><td>50 PASS / 0 FAIL</td></tr><tr><td>Combined full regression</td><td>459 PASS / 0 FAIL; 0 skipped</td></tr><tr><td>Approved source preservation</td><td>139/139 byte-identical</td></tr><tr><td>Portable preview</td><td>All15 scenario routes, Product, validation and adverse pagination checks passed</td></tr></tbody></table></div><p>No old test expectation or approved source file was modified. Preservation manifests include SHA-256 per original source file. CP9 lives below a new folder; its dependency package and SQLite storage are separate.</p></section><section id="s19"><h2>19. Files created / modified</h2><p>Existing CP1–CP8 source files modified: <strong>0</strong>. New CP9 source/configuration/test/documentation files:</p><pre>[
+  &quot;delivery-source/legacy-dist/app.mjs.txt&quot;,
+  &quot;delivery-source/legacy-dist/config.mjs.txt&quot;,
+  &quot;delivery-source/legacy-dist/detector.mjs.txt&quot;,
+  &quot;delivery-source/legacy-dist/fixtures.mjs.txt&quot;,
+  &quot;delivery-source/legacy-dist/styles.css.txt&quot;,
+  &quot;operator.html&quot;,
+  &quot;package-lock.json&quot;,
+  &quot;package.json&quot;,
+  &quot;README.md&quot;,
+  &quot;scripts/build-preview.mjs&quot;,
+  &quot;scripts/build-report.mjs&quot;,
+  &quot;scripts/build-review-data.mjs&quot;,
+  &quot;scripts/capture-baseline.mjs&quot;,
+  &quot;scripts/check-build.mjs&quot;,
+  &quot;scripts/check-imports.mjs&quot;,
+  &quot;scripts/check-preservation.mjs&quot;,
+  &quot;scripts/clean-room-verify.mjs&quot;,
+  &quot;scripts/evaluate-semantic.mjs&quot;,
+  &quot;scripts/fetch-model.mjs&quot;,
+  &quot;scripts/package.mjs&quot;,
+  &quot;scripts/refresh-history.mjs&quot;,
+  &quot;scripts/verify-cp9.mjs&quot;,
+  &quot;scripts/verify-preview.mjs&quot;,
+  &quot;server.mjs&quot;,
+  &quot;src/core.mjs&quot;,
+  &quot;src/current-provider.mjs&quot;,
+  &quot;src/demo-corpus.mjs&quot;,
+  &quot;src/features.mjs&quot;,
+  &quot;src/history.mjs&quot;,
+  &quot;src/http.mjs&quot;,
+  &quot;src/relevance-fixtures.mjs&quot;,
+  &quot;src/repository.mjs&quot;,
+  &quot;src/retrieval.mjs&quot;,
+  &quot;src/scenarios.mjs&quot;,
+  &quot;src/semantic.mjs&quot;,
+  &quot;src/service.mjs&quot;,
+  &quot;tests/cp9.test.mjs&quot;
+]</pre><p>Additional deliverables: CP9 model artifacts and manifest; isolated simulated CP7/CP8/CP9 SQLite stores; historical case records; corpus/index snapshots; A–O actual outputs; relevance judgements; semantic validation; test TAP; preservation and preview verification; this review; the self-contained preview and delivery ZIP. Node modules and the superseded development-only demo store are excluded from the ZIP.</p></section><section id="s20"><h2>20. Operator UI</h2><p>The additive operator screen keeps <strong>Current decision readiness</strong> above and separate from <strong>Historical Support for Suitability</strong>. It presents the current CP7 scope and safeguards, exact counts, descriptive history, separate Goal/Protection findings, persistent adverse warnings, protected-function context, source inspection and limitations.</p><p>Semantic scores remain behind Technical Details. There is no AI Approve, auto-selection, success probability or combined suitability score. CP7 hierarchy and operator approval/rationale rules remain intact.</p></section><section id="s21"><h2>21. Self-contained interactive preview</h2><p>Deliverable: <strong>Checkpoint-9-Interactive-Preview.html</strong>. Open directly with no server, external scripts, sibling HTML, model download or response write. Product Demo is the default; Technical QA retains A–O; retrieval validation exposes the real measured comparison.</p><p>The HTML displays captured outputs generated by the real implementation and encoder; it does not falsely simulate live model inference. The optional Node server provides the separate live read-only retrieval boundary.</p><p>The exact inline script was exercised in a Node VM with a minimal DOM adapter: default screen, all15 scenario routes, navigation handler, validation route and adverse summary on page2. An attempted headless browser capture produced no screenshot. No pixel-level browser visual-QA pass is claimed.</p></section><section id="s22"><h2>22. Known limitations and permitted AI claims</h2><ul><li>Small simulated corpus; no real-world effectiveness, production calibration or causal generalisation claims.</li><li>Frozen encoder provides learned language representation; CP9 does not train a success predictor.</li><li>Six query fixtures are a narrow relevance check. One hybrid query underperformed the structured baseline.</li><li>Exact known-field compatibility can abstain on cases a human could review as equivalent. Missing critical context remains unknown.</li><li>English-first; multilingual validation is absent.</li><li>Live model inference is verified on Windows x64/Node24.15.0. Offline HTML is a captured review.</li><li>Local SQLite and loopback HTTP remain hackathon persistence/runtime. Production authentication, data governance and deployment are outside this checkpoint.</li><li>Current-case freshness is bound to the saved CP7 snapshot and rechecked. Synchronising future external source systems belongs to later functional integration, not a CP9 inference shortcut.</li><li>CP8’s original-period-operations-only automatic diagnosis mapping is unchanged. CP9 adds no outcome-to-diagnosis feature.</li><li>No autonomous recommendation, approval, execution, work order, scheduling, permanent repurposing, RL, resident profiling or automatic retraining.</li></ul><p>Allowed: “The system uses learned semantic representations to retrieve comparable historical intervention cases, then shows the outcomes and protection trade-offs observed in those cases.”</p></section><section id="s23"><h2>23. PRD Compliance Statement</h2><div class="table"><table><thead><tr><th>Item</th><th>Statement</th></tr></thead><tbody><tr><td>Existing product logic changed</td><td>No; CP1–CP8 logic and all139 captured source files preserved.</td></tr><tr><td>Approved CP9 scope implemented</td><td>Yes; governed similar-case evidence and operator review.</td></tr><tr><td>CP7 readiness, safeguards or reversibility overridden</td><td>No.</td></tr><tr><td>Both sufficiency dimensions preserved</td><td>Yes; separate original assessments retained.</td></tr><tr><td>CP3/CP4/CP5/CP6/CP8 mutation or new feedback mapping</td><td>No.</td></tr><tr><td>Autonomous intervention selection/approval/execution</td><td>No.</td></tr><tr><td>Intervention-success predictor trained</td><td>No.</td></tr><tr><td>AI/ML implemented</td><td>Yes: frozen pretrained semantic representation and retrieval.</td></tr><tr><td>Causal effect, success probability or production accuracy claimed</td><td>No.</td></tr><tr><td>Provisional parameters</td><td>At least3 distinct episodes and3 amenities; strict-majority descriptive direction; any substantiated breach blocks supportive history.</td></tr><tr><td>Synthetic components</td><td>Clearly labelled historical cases, observations and held-out relevance fixtures.</td></tr><tr><td>Regression</td><td>409 existing +50 CP9 =459 PASS;0 FAIL.</td></tr><tr><td>Known limitations</td><td>Simulated small data; exact compatibility; English-only validation; captured offline preview; local runtime/persistence; no browser pixel QA.</td></tr><tr><td>Additional product-logic work begun</td><td>No.</td></tr><tr><td>Final product-logic checkpoint</td><td>CP9.</td></tr></tbody></table></div><p><strong>STOP: CP9 Implementation Review Package complete. Await explicit review approval. Final UI redesign, deployment and additional product-logic work have not begun.</strong></p></section></main></html>

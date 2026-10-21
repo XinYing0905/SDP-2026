@@ -1,0 +1,207 @@
+{
+  "64deb138-7502-4261-ba11-342a74a5a057": {
+    "episodeId": "episode:repair-0",
+    "family": "reference:repair:0",
+    "label": "repair — township 1"
+  },
+  "81a16319-c598-4c8c-b5d7-08dfe73244a7": {
+    "episodeId": "episode:repair-1",
+    "family": "reference:repair:1",
+    "label": "repair — township 2"
+  },
+  "99e6851c-2045-4e64-af0f-082cbd50a664": {
+    "episodeId": "episode:repair-2",
+    "family": "reference:repair:2",
+    "label": "repair — township 3"
+  },
+  "d64942a7-3101-4ab8-bbf4-6288af012bd3": {
+    "episodeId": "episode:reprogramme-0",
+    "family": "reference:reprogramme:0",
+    "label": "Community Hall — township 1"
+  },
+  "1d5ce4b1-0a6c-46cd-a342-f7fb71c53525": {
+    "episodeId": "episode:reprogramme-1",
+    "family": "reference:reprogramme:1",
+    "label": "Community Hall — township 2"
+  },
+  "a1a8f4eb-109e-4af9-96a7-11904eed8bf1": {
+    "episodeId": "episode:reprogramme-2",
+    "family": "reference:reprogramme:2",
+    "label": "Community Hall — township 3"
+  },
+  "9d9730c9-e12b-49ee-a04d-e78c62f2e6ef": {
+    "episodeId": "episode:monitor-0",
+    "family": "reference:monitor:0",
+    "label": "monitor — township 1"
+  },
+  "dd22bbe9-c241-4a80-851e-bd11160b8d87": {
+    "episodeId": "episode:monitor-1",
+    "family": "reference:monitor:1",
+    "label": "monitor — township 2"
+  },
+  "55e190ce-9697-42f8-85f7-1c96b1954ed7": {
+    "episodeId": "episode:monitor-2",
+    "family": "reference:monitor:2",
+    "label": "monitor — township 3"
+  },
+  "f3705787-03c9-4f41-86dd-c7e69a1d55d9": {
+    "episodeId": "episode:validate-0",
+    "family": "reference:validate:0",
+    "label": "validate — township 1"
+  },
+  "91a9bb27-704b-4c55-aef3-2af5f8c40725": {
+    "episodeId": "episode:validate-1",
+    "family": "reference:validate:1",
+    "label": "validate — township 2"
+  },
+  "c9127dcd-9f0e-4c22-b1ad-1b10817683b1": {
+    "episodeId": "episode:validate-2",
+    "family": "reference:validate:2",
+    "label": "validate — township 3"
+  },
+  "07041b82-bd0a-41ed-89f9-c04994b52a9f": {
+    "episodeId": "episode:pilot-0",
+    "family": "reference:pilot:0",
+    "label": "pilot — township 1"
+  },
+  "2f4a5154-2dda-4198-8535-3ef773b3750e": {
+    "episodeId": "episode:pilot-1",
+    "family": "reference:pilot:1",
+    "label": "pilot — township 2"
+  },
+  "35105115-10f1-432d-b5ca-40c2aeca423e": {
+    "episodeId": "episode:pilot-2",
+    "family": "reference:pilot:2",
+    "label": "pilot — township 3"
+  },
+  "4def29b8-081c-49cb-8bac-3beafe4a6e3e": {
+    "episodeId": "episode:shared-0",
+    "family": "reference:shared:0",
+    "label": "shared — township 1"
+  },
+  "ce142994-b7d5-48dc-ba86-672b31f6f831": {
+    "episodeId": "episode:shared-1",
+    "family": "reference:shared:1",
+    "label": "shared — township 2"
+  },
+  "193b641d-b142-4837-8d7e-9b7c255fee07": {
+    "episodeId": "episode:shared-2",
+    "family": "reference:shared:2",
+    "label": "shared — township 3"
+  },
+  "f601cb77-4908-4a27-b70b-65ecaad3116f": {
+    "episodeId": "episode:preserve-0",
+    "family": "reference:preserve:0",
+    "label": "preserve — township 1"
+  },
+  "62216d10-368c-4ce9-829b-39582faa89ae": {
+    "episodeId": "episode:preserve-1",
+    "family": "reference:preserve:1",
+    "label": "preserve — township 2"
+  },
+  "40e0a1bb-a8fb-400b-ac46-fbd06c153e25": {
+    "episodeId": "episode:preserve-2",
+    "family": "reference:preserve:2",
+    "label": "preserve — township 3"
+  },
+  "3c7b410b-87c5-49cf-b557-a4080c637cfc": {
+    "episodeId": "episode:music-0",
+    "family": "reference:music:0",
+    "label": "Community Hall — music township 1"
+  },
+  "961e9bf3-062b-4a2c-bf55-91acfe3a9b36": {
+    "episodeId": "episode:music-1",
+    "family": "reference:music:1",
+    "label": "Community Hall — music township 2"
+  },
+  "89b90178-8521-4eed-8c54-107741e33df5": {
+    "episodeId": "episode:music-2",
+    "family": "reference:music:2",
+    "label": "Community Hall — music township 3"
+  },
+  "395aa225-9871-429f-a86b-ffb223d83467": {
+    "episodeId": "episode:exercise-0",
+    "family": "reference:exercise:0",
+    "label": "Community Hall — exercise township 1"
+  },
+  "21228826-5264-46b7-9aec-b59a6adf31a3": {
+    "episodeId": "episode:exercise-1",
+    "family": "reference:exercise:1",
+    "label": "Community Hall — exercise township 2"
+  },
+  "228acaf4-881a-4ed1-864a-db2b28703689": {
+    "episodeId": "episode:exercise-2",
+    "family": "reference:exercise:2",
+    "label": "Community Hall — exercise township 3"
+  },
+  "ed65b434-0853-45e7-bd6b-3169aed17e8f": {
+    "episodeId": "episode:programme-not-1",
+    "family": "reference:not-1",
+    "label": "Community Hall — unmet programme objective"
+  },
+  "68e78f0c-c261-4d12-8435-06135e14891d": {
+    "episodeId": "episode:programme-not-2",
+    "family": "reference:not-2",
+    "label": "Community Hall — second unmet objective"
+  },
+  "7ca26fcb-38cb-49bc-ba4c-1f33ce4c9faf": {
+    "episodeId": "episode:programme-breach",
+    "family": "reference:breach",
+    "label": "Community Hall — access breach"
+  },
+  "ce21fcf9-ef85-4a3d-a4cb-f666c30d6a1a": {
+    "episodeId": "episode:programme-different-protection",
+    "family": "reference:different",
+    "label": "Community Hall — limited substitute capacity"
+  },
+  "0dc2a737-d94e-4559-b819-2f69ca241feb": {
+    "episodeId": "episode:missing",
+    "family": "reference:missing",
+    "label": "Limited history — missing"
+  },
+  "2def405c-e813-46bf-85d2-0ac1e7522b99": {
+    "episodeId": "episode:unexecuted",
+    "family": "reference:unexecuted",
+    "label": "Limited history — unexecuted"
+  },
+  "613f3be1-7c3b-4320-8f4f-df944517d0f5": {
+    "episodeId": "episode:deviated",
+    "family": "reference:deviated",
+    "label": "Limited history — deviated"
+  },
+  "95b4fd7a-c451-48fc-9ce9-2500575af675": {
+    "episodeId": "episode:conflict",
+    "family": "reference:conflict",
+    "label": "Limited history — conflict"
+  },
+  "e5782fc3-0295-40ca-8333-f8ce73c8509f": {
+    "episodeId": "episode:comparison-reprogramme-0",
+    "family": "reference:comparison:reprogramme:0",
+    "label": "Same-purpose comparison — reprogramme 1"
+  },
+  "fd4eb54a-97af-42ca-b945-00885b0e3668": {
+    "episodeId": "episode:comparison-reprogramme-1",
+    "family": "reference:comparison:reprogramme:1",
+    "label": "Same-purpose comparison — reprogramme 2"
+  },
+  "b2fa2e66-afe2-465c-a041-a60c02a4806e": {
+    "episodeId": "episode:comparison-reprogramme-2",
+    "family": "reference:comparison:reprogramme:2",
+    "label": "Same-purpose comparison — reprogramme 3"
+  },
+  "9a914420-86a6-4897-b93f-021826c50d97": {
+    "episodeId": "episode:comparison-pilot-0",
+    "family": "reference:comparison:pilot:0",
+    "label": "Same-purpose comparison — pilot 1"
+  },
+  "22103d87-e9cc-4f4e-a56e-2dd399194d53": {
+    "episodeId": "episode:comparison-pilot-1",
+    "family": "reference:comparison:pilot:1",
+    "label": "Same-purpose comparison — pilot 2"
+  },
+  "62073370-3d4a-455f-a1a7-c2fba3167df7": {
+    "episodeId": "episode:comparison-pilot-2",
+    "family": "reference:comparison:pilot:2",
+    "label": "Same-purpose comparison — pilot 3"
+  }
+}

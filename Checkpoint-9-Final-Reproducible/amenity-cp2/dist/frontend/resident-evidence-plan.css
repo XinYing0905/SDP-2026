@@ -1,0 +1,8 @@
+/* Additive readability rules; approved CP2/CP4 styles remain unchanged. */
+#resident-evidence-plan{margin-top:32px;border-top:1px solid #dfe6eb;padding-top:16px}
+#resident-evidence-plan p,#resident-evidence-plan li{font-size:12px;line-height:1.7}
+#resident-evidence-plan td,#resident-evidence-plan th{white-space:normal;vertical-align:top;min-width:130px}
+.resident-preview{width:min(680px,100%);margin:40px auto;padding:24px;float:none}
+.resident-preview h2{line-height:1.6}
+.preview-options{list-style:none;padding:0}.preview-options li{border:1px solid #dfe6eb;border-radius:5px;padding:14px;margin:10px 0;font-size:14px}
+.preview-options.unscored{margin-top:24px;color:#607580}

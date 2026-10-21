@@ -1,0 +1,6 @@
+{
+  "exitCode": 0,
+  "finishedAt": "2026-10-21T03:41:16.6281581Z",
+  "cwd": "C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted\\amenity-cp2\\cp9",
+  "command": "npm ci --ignore-scripts --registry=https://registry.npmjs.org --cache ../../../public-npm-cache"
+}

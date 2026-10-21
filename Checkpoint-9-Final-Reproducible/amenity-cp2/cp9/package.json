@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@huggingface/transformers": "4.3.1"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "start": "node server.mjs",
+    "verify:delivery": "node scripts/clean-room-verify.mjs"
+  }
+}

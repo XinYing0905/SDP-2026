@@ -1,0 +1,310 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-10-21T03:41:19.590Z",
+  "finishedAt": "2026-10-21T03:45:17.056Z",
+  "workspace": "C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "arch": "x64",
+  "dependencyInstall": {
+    "packageFile": "C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted\\amenity-cp2\\cp9\\node_modules\\@huggingface\\transformers\\package.json",
+    "version": "4.3.1",
+    "localDependencyTree": true,
+    "receipt": {
+      "exitCode": 0,
+      "finishedAt": "2026-10-21T03:41:16.6281581Z",
+      "cwd": "C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted\\amenity-cp2\\cp9",
+      "command": "npm ci --ignore-scripts --registry=https://registry.npmjs.org --cache ../../../public-npm-cache"
+    },
+    "note": "Only a receipt matching this extraction path is treated as current; installed package location/version are verified independently."
+  },
+  "inputSourceManifestEntriesVerified": 307,
+  "originalGeneratedOutputsRemoved": [
+    "CP1-CP8-Tests.tap",
+    "CP9-Tests.tap",
+    "Full-Regression.tap",
+    "Test-Summary.json",
+    "CP1-CP8-Preservation.json",
+    "Historical-Cases.json",
+    "A-O-Actual-Outputs.json",
+    "A-O-Summary.json",
+    "Product-Data.json",
+    "Predeclared-Relevance-Judgements.json",
+    "Semantic-Validation.json",
+    "Semantic-Index.json",
+    "Preview-Verification.json",
+    "Checkpoint-9-Interactive-Preview.html",
+    "Checkpoint-9-Review.html",
+    "Import-Closure-Verification.json",
+    "Build-Verification.json"
+  ],
+  "oldCP9DerivedStoreRemoved": true,
+  "existing": {
+    "tests": 409,
+    "pass": 409,
+    "fail": 0,
+    "skipped": 0
+  },
+  "cp9": {
+    "tests": 50,
+    "pass": 50,
+    "fail": 0,
+    "skipped": 0
+  },
+  "full": {
+    "tests": 459,
+    "pass": 459,
+    "fail": 0,
+    "skipped": 0
+  },
+  "preservation": {
+    "files": 139,
+    "allUnchanged": true
+  },
+  "cp9ProductLogic": {
+    "files": 13,
+    "allUnchanged": true,
+    "rows": [
+      {
+        "file": "cp9/src/core.mjs",
+        "sha256": "254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960",
+        "actual": "254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/current-provider.mjs",
+        "sha256": "f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09",
+        "actual": "f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/demo-corpus.mjs",
+        "sha256": "0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c",
+        "actual": "0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/features.mjs",
+        "sha256": "156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9",
+        "actual": "156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/history.mjs",
+        "sha256": "48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3",
+        "actual": "48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/http.mjs",
+        "sha256": "f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d",
+        "actual": "f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/relevance-fixtures.mjs",
+        "sha256": "2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4",
+        "actual": "2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/repository.mjs",
+        "sha256": "eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0",
+        "actual": "eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/retrieval.mjs",
+        "sha256": "33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c",
+        "actual": "33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/scenarios.mjs",
+        "sha256": "8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d",
+        "actual": "8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/semantic.mjs",
+        "sha256": "ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a",
+        "actual": "ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/src/service.mjs",
+        "sha256": "cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731",
+        "actual": "cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731",
+        "unchanged": true
+      },
+      {
+        "file": "cp9/tests/cp9.test.mjs",
+        "sha256": "e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0",
+        "actual": "e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0",
+        "unchanged": true
+      }
+    ]
+  },
+  "sourceFiles": 303,
+  "imports": {
+    "checkedFiles": 237,
+    "relativeImportEdges": 504,
+    "missingCount": 0,
+    "missing": [],
+    "method": "Literal relative static imports/exports and literal dynamic imports. Nonliteral filesystem paths are additionally exercised by clean-room builds, tests and validation."
+  },
+  "build": {
+    "buildCommand": "node cp9/scripts/check-build.mjs",
+    "approvedBuildCommand": "node scripts/build.mjs",
+    "cleanBuilds": 2,
+    "builds": 2,
+    "deterministic": true,
+    "staleDistUsed": false,
+    "generatedFiles": 104,
+    "compatibilityFiles": [
+      {
+        "file": "app.mjs",
+        "sha256": "845ba55036bcda35b8bb8d751c09a97b1402ca226adbaf3b91a77be816655766"
+      },
+      {
+        "file": "config.mjs",
+        "sha256": "74a9fde0e319facb3dcce2a7919a8d90bdb66f57b68c92a46038cedc3e378f52"
+      },
+      {
+        "file": "detector.mjs",
+        "sha256": "daadd2e0b7f5667edacd394a446cc2c2fe9c9cdcf52397383c952ee529c2171f"
+      },
+      {
+        "file": "fixtures.mjs",
+        "sha256": "85445560e9600b67a89d03dd6e6d1b0a11b91adb8de4e774b0aba8dc2ca1d3e2"
+      },
+      {
+        "file": "styles.css",
+        "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+      }
+    ],
+    "missingOrDifferent": [],
+    "notes": "Each build removes the entire dist directory, restores unchanged authored compatibility files and stylesheet from included delivery-source, and runs the unchanged approved build. No stale dist required."
+  },
+  "sourceDatabases": {
+    "allUnchanged": true,
+    "rows": [
+      {
+        "file": "cp9-approved-plans.sqlite",
+        "sha256": "eebe6869bbc4b80291e57d411859c27e5290b3331559bf85e051036882c66892"
+      },
+      {
+        "file": "cp9-outcome-history.sqlite",
+        "sha256": "0e3553ee2c1604a36b01a064b3294ff82d2eae5406720627fd44337c45cace35"
+      }
+    ]
+  },
+  "evidenceChronology": "This file is generated in this extracted copy. Package-included logs come from an earlier extracted-copy rehearsal; the final frozen ZIP is tested again without repackaging. The final external attestation binds its SHA-256 to that acceptance run.",
+  "semantic": {
+    "label": "Prototype validation on simulated cases",
+    "available": true,
+    "baseline": {
+      "precisionAt3": 0.3333333333333333,
+      "mrr": 0.46428571428571425
+    },
+    "hybrid": {
+      "precisionAt3": 0.9444444444444445,
+      "mrr": 1
+    },
+    "improvementDemonstrated": true,
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9"
+  },
+  "preview": {
+    "allPassed": true,
+    "scenarioRoutes": 15,
+    "selfContained": true,
+    "method": "Exact delivered inline script evaluated in Node VM with a minimal DOM adapter; route rendering and click handler checked. This is not pixel/browser visual QA."
+  },
+  "steps": [
+    {
+      "label": "Build twice and verify deterministic artifacts",
+      "command": "node cp9/scripts/check-build.mjs",
+      "startedAt": "2026-10-21T03:41:19.984Z",
+      "finishedAt": "2026-10-21T03:41:22.581Z",
+      "exitCode": 0
+    },
+    {
+      "label": "Relative runtime/test import closure",
+      "command": "node cp9/scripts/check-imports.mjs",
+      "startedAt": "2026-10-21T03:41:22.584Z",
+      "finishedAt": "2026-10-21T03:41:23.200Z",
+      "exitCode": 0
+    },
+    {
+      "label": "CP1-CP8 regression",
+      "command": "node --test --test-reporter=tap tests/*.test.mjs",
+      "startedAt": "2026-10-21T03:41:23.201Z",
+      "finishedAt": "2026-10-21T03:43:02.614Z",
+      "exitCode": 0
+    },
+    {
+      "label": "refresh-history",
+      "command": "node cp9/scripts/refresh-history.mjs",
+      "startedAt": "2026-10-21T03:43:02.615Z",
+      "finishedAt": "2026-10-21T03:43:08.285Z",
+      "exitCode": 0
+    },
+    {
+      "label": "evaluate-semantic",
+      "command": "node cp9/scripts/evaluate-semantic.mjs",
+      "startedAt": "2026-10-21T03:43:08.285Z",
+      "finishedAt": "2026-10-21T03:43:10.015Z",
+      "exitCode": 0
+    },
+    {
+      "label": "build-review-data",
+      "command": "node cp9/scripts/build-review-data.mjs",
+      "startedAt": "2026-10-21T03:43:10.016Z",
+      "finishedAt": "2026-10-21T03:43:12.142Z",
+      "exitCode": 0
+    },
+    {
+      "label": "build-preview",
+      "command": "node cp9/scripts/build-preview.mjs",
+      "startedAt": "2026-10-21T03:43:12.142Z",
+      "finishedAt": "2026-10-21T03:43:12.436Z",
+      "exitCode": 0
+    },
+    {
+      "label": "verify-preview",
+      "command": "node cp9/scripts/verify-preview.mjs",
+      "startedAt": "2026-10-21T03:43:12.436Z",
+      "finishedAt": "2026-10-21T03:43:12.837Z",
+      "exitCode": 0
+    },
+    {
+      "label": "check-preservation",
+      "command": "node cp9/scripts/check-preservation.mjs",
+      "startedAt": "2026-10-21T03:43:12.838Z",
+      "finishedAt": "2026-10-21T03:43:13.131Z",
+      "exitCode": 0
+    },
+    {
+      "label": "CP9 dedicated tests",
+      "command": "node --test --test-reporter=tap cp9/tests/*.test.mjs",
+      "startedAt": "2026-10-21T03:43:13.132Z",
+      "finishedAt": "2026-10-21T03:43:31.261Z",
+      "exitCode": 0
+    },
+    {
+      "label": "Combined full regression",
+      "command": "node --test --test-reporter=tap tests/*.test.mjs cp9/tests/*.test.mjs",
+      "startedAt": "2026-10-21T03:43:31.262Z",
+      "finishedAt": "2026-10-21T03:45:15.800Z",
+      "exitCode": 0
+    },
+    {
+      "label": "Regenerate Checkpoint-9-Review.html",
+      "command": "node cp9/scripts/build-report.mjs",
+      "startedAt": "2026-10-21T03:45:16.738Z",
+      "finishedAt": "2026-10-21T03:45:17.055Z",
+      "exitCode": 0
+    }
+  ]
+}

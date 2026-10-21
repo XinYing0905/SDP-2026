@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { createDemoChangeClient } from '../src/composition/demo-client.mjs';
+import { diagnosisCases } from '../src/data/synthetic/diagnosis-cases.mjs';
+import { nextEvidenceCases } from '../src/data/synthetic/next-evidence-cases.mjs';
+const root = path.resolve(import.meta.dirname, '..');
+const paths = (await fs.readdir(path.join(root, 'src'), { recursive: true })).filter(p => /\.(mjs|ts)$/.test(p)).map(p => 'src/' + p.replaceAll('\\', '/'));
+paths.push(...(await fs.readdir(path.join(root, 'tests'))).filter(p => p.endsWith('.test.mjs')).map(p => 'tests/' + p));
+const hashes = {};
+for (const p of paths) hashes[p] = crypto.createHash('sha256').update(await fs.readFile(path.join(root, p))).digest('hex');
+const client = createDemoChangeClient(), cases = [];
+for (const c of [...diagnosisCases, ...nextEvidenceCases]) cases.push({ id: c.amenity.id, diagnosis: await client.getCompetingDiagnosis(c.amenity.id), nextEvidence: await client.getNextBestEvidence(c.amenity.id) });
+await fs.writeFile(path.join(root, 'tests/baseline/approved-cp4.json'), JSON.stringify({ hashes, overview: await client.getOverview(), cases }, null, 2));
+console.log('Captured approved CP4 source/test hashes and full service outputs.');

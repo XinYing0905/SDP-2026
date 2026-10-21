@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';const root=path.resolve(import.meta.dirname,'..'),out=path.resolve(root,'../../checkpoint-9-review');
+const read=f=>JSON.parse(fs.readFileSync(path.join(out,f),'utf8')),product=read('Product-Data.json');const data={product:{query:product.query,result:product.result},scenarios:read('A-O-Actual-Outputs.json'),validation:read('Semantic-Validation.json')};
+const html=fs.readFileSync(path.join(root,'operator.html'),'utf8').replace('__REVIEW_DATA__',JSON.stringify(data).replaceAll('<','\\u003c'));fs.writeFileSync(path.join(out,'Checkpoint-9-Interactive-Preview.html'),html);console.log('Self-contained preview bytes',Buffer.byteLength(html));

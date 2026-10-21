@@ -1,0 +1,274 @@
+[
+  {
+    "case": "A",
+    "title": "Supportive Reprogramme history",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 4,
+    "amenities": 4,
+    "goalCounts": {
+      "Met": 3,
+      "Not met": 1,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 4,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "B",
+    "title": "Mixed Reprogramme history",
+    "state": "Historical evidence available",
+    "descriptor": "Mixed historical evidence",
+    "episodes": 4,
+    "amenities": 4,
+    "goalCounts": {
+      "Met": 2,
+      "Not met": 2,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 4,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "C",
+    "title": "Protection concern despite benefit",
+    "state": "Historical evidence available",
+    "descriptor": "Historical concern",
+    "episodes": 4,
+    "amenities": 4,
+    "goalCounts": {
+      "Met": 4,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 1
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "D",
+    "title": "CP7 block remains authoritative",
+    "state": "CP7 candidate not Ready — historical interpretation withheld",
+    "limited": 0,
+    "related": 0
+  },
+  {
+    "case": "E",
+    "title": "Too little comparable history",
+    "state": "Historical evidence available",
+    "descriptor": "Insufficient comparable historical evidence",
+    "episodes": 2,
+    "amenities": 2,
+    "goalCounts": {
+      "Met": 2,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 2,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "F",
+    "title": "Material protection-context difference",
+    "state": "Historical evidence available",
+    "descriptor": "Not comparable enough to infer suitability",
+    "episodes": 0,
+    "amenities": 0,
+    "goalCounts": {
+      "Met": 0,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 0,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 1,
+    "tension": null
+  },
+  {
+    "case": "G",
+    "title": "Repair without usage recovery",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 2,
+      "Not met": 0,
+      "Mixed": 1
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "H",
+    "title": "Preserve with low utilisation",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 3,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "I",
+    "title": "Pilot benefit and evidence value differ",
+    "state": "Historical evidence available",
+    "descriptor": "Mixed historical evidence",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 0,
+      "Not met": 0,
+      "Mixed": 3
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "J",
+    "title": "Materially deviated historical intervention",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 3,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 1,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "K",
+    "title": "Missing and conflicting outcome evidence",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 2,
+      "Not met": 0,
+      "Mixed": 1
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 3,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "L",
+    "title": "Outcome-feature leakage rejected",
+    "error": "FORBIDDEN_FEATURE"
+  },
+  {
+    "case": "M",
+    "title": "Repeated reviews, correction and duplicate",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 2,
+      "Not met": 0,
+      "Mixed": 1
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  },
+  {
+    "case": "N",
+    "title": "Stronger alternative history; lower-impact preference retained",
+    "state": "Historical evidence available",
+    "descriptor": "Historically supportive pattern",
+    "episodes": 3,
+    "amenities": 3,
+    "goalCounts": {
+      "Met": 3,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 3,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 3,
+    "tension": "Historical evidence is more supportive for this alternative. CP7 still identifies another adequately supported option as the preferred lower-impact pathway."
+  },
+  {
+    "case": "O",
+    "title": "No comparable history",
+    "state": "Historical evidence available",
+    "descriptor": "Insufficient comparable historical evidence",
+    "episodes": 0,
+    "amenities": 0,
+    "goalCounts": {
+      "Met": 0,
+      "Not met": 0,
+      "Mixed": 0
+    },
+    "protectionCounts": {
+      "Maintained": 0,
+      "Protection breach": 0
+    },
+    "limited": 0,
+    "related": 0,
+    "tension": null
+  }
+]

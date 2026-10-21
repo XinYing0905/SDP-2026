@@ -1,0 +1,2236 @@
+{
+  "weights": {
+    "Operational Problem": {
+      "operationalIssue": [
+        4,
+        -4
+      ],
+      "downtimeElevated": [
+        2,
+        -1
+      ],
+      "operationalComplaints": [
+        2,
+        -1
+      ],
+      "timeSpecificDeterioration": [
+        1,
+        0
+      ],
+      "operationalHealthy": [
+        -3,
+        0
+      ]
+    },
+    "Temporary / Resident-Mix Shift": {
+      "recentConcentration": [
+        4,
+        -2
+      ],
+      "turnoverHigh": [
+        3,
+        -1
+      ],
+      "longCohortsStable": [
+        3,
+        -2
+      ],
+      "temporaryPattern": [
+        2,
+        -1
+      ],
+      "exceptionalContext": [
+        1,
+        0
+      ]
+    },
+    "Persistent Programme / Configuration Mismatch": {
+      "persistentPattern": [
+        2,
+        -3
+      ],
+      "operationalHealthy": [
+        2,
+        -3
+      ],
+      "stableCohortDecline": [
+        3,
+        -2
+      ],
+      "mixControlled": [
+        2,
+        -2
+      ],
+      "programmeDecline": [
+        2,
+        -1
+      ],
+      "programmeMismatchFeedback": [
+        3,
+        -2
+      ]
+    },
+    "Low Utilisation, High Dependency": {
+      "lowUtilisation": [
+        1,
+        -1
+      ],
+      "stableRepeatCohort": [
+        3,
+        -2
+      ],
+      "documentedDependency": [
+        4,
+        -3
+      ],
+      "limitedSubstitutes": [
+        3,
+        -2
+      ],
+      "disproportionateImpact": [
+        2,
+        -2
+      ]
+    }
+  },
+  "fixtureHash": "daeee41aa3b837aed08e9174ca351d12f394f2164a22c4ca7f7fcdcf8d113bb5",
+  "cases": [
+    {
+      "case": "A",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": 9,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-A:operations"
+              ],
+              "points": 4,
+              "finding": "Confirmed unresolved operational issue: observed present."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-A:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded downtime is elevated: observed present."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-A:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded operational complaints: observed present."
+            },
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-A:temporal"
+              ],
+              "points": 1,
+              "finding": "Observed time-specific sustained decline: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-A:operations"
+              ],
+              "points": 0,
+              "finding": "Reviewed operational condition appears healthy: observed absent."
+            }
+          ],
+          "positivePoints": 9,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 12,
+          "totalWeight": 12,
+          "supportingDomains": [
+            "operations",
+            "temporal"
+          ]
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -6,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-A:residentMix"
+              ],
+              "points": -2,
+              "finding": "Decline concentrated among recent residents: observed absent."
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-A:residentMix"
+              ],
+              "points": -1,
+              "finding": "Resident turnover is materially elevated: observed absent."
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-A:residentMix"
+              ],
+              "points": -2,
+              "finding": "Retained long-term cohorts show stable usage rates: observed absent."
+            },
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-A:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-A:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 0,
+          "contradictionPoints": 6,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": 4,
+          "supportLabel": "Some Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-A:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-A:residentMix"
+              ],
+              "points": 3,
+              "finding": "Multiple retained long-term cohorts decline: observed present."
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-A:residentMix"
+              ],
+              "points": 2,
+              "finding": "Cross-cohort decline persists with low recorded turnover: observed present."
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-A:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed absent."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": null,
+              "domain": "programme",
+              "sourceRefs": [],
+              "reason": "Programme participation declines materially: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": null,
+              "domain": "feedback",
+              "sourceRefs": [],
+              "reason": "Relevant existing feedback supports programme mismatch: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 7,
+          "contradictionPoints": 3,
+          "coverage": 0.6875,
+          "observedWeight": 11,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "residentMix"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": -10,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": false,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-A:usage"
+              ],
+              "points": -1,
+              "finding": "Overall utilisation is low: observed absent."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-A:dependency"
+              ],
+              "points": -2,
+              "finding": "Stable cohort uses the function repeatedly: observed absent."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-A:dependency"
+              ],
+              "points": -3,
+              "finding": "Dependency needs explicitly documented: observed absent."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": false,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-A:dependency"
+              ],
+              "points": -2,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed absent."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-A:dependency"
+              ],
+              "points": -2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 10,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        }
+      ]
+    },
+    {
+      "case": "B",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": -9,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-B:operations"
+              ],
+              "points": -4,
+              "finding": "Confirmed unresolved operational issue: observed absent."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-B:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded downtime is elevated: observed absent."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-B:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded operational complaints: observed absent."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-B:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": null,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-B:temporal"
+              ],
+              "reason": "Observed time-specific sustained decline: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 9,
+          "coverage": 0.9166666666666666,
+          "observedWeight": 11,
+          "totalWeight": 12,
+          "supportingDomains": []
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": 12,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-B:residentMix"
+              ],
+              "points": 4,
+              "finding": "Decline concentrated among recent residents: observed present."
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-B:residentMix"
+              ],
+              "points": 3,
+              "finding": "Resident turnover is materially elevated: observed present."
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-B:residentMix"
+              ],
+              "points": 3,
+              "finding": "Retained long-term cohorts show stable usage rates: observed present."
+            },
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-B:temporal"
+              ],
+              "points": 2,
+              "finding": "Pattern is temporary/not established as persistent: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-B:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 12,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": [
+            "residentMix",
+            "temporal"
+          ]
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": -8,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-B:operations"
+              ],
+              "points": 2,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-B:temporal"
+              ],
+              "points": -3,
+              "finding": "Independent diagnosis history supports persistent decline: observed absent."
+            },
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-B:residentMix"
+              ],
+              "points": -2,
+              "finding": "Multiple retained long-term cohorts decline: observed absent."
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-B:residentMix"
+              ],
+              "points": -2,
+              "finding": "Cross-cohort decline persists with low recorded turnover: observed absent."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": false,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-B:programme"
+              ],
+              "points": -1,
+              "finding": "Programme participation declines materially: observed absent."
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": false,
+              "domain": "feedback",
+              "sourceRefs": [
+                "DX-B:feedback"
+              ],
+              "points": -2,
+              "finding": "Relevant existing feedback supports programme mismatch: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 2,
+          "contradictionPoints": 10,
+          "coverage": 1,
+          "observedWeight": 16,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "operations"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": -10,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": false,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-B:usage"
+              ],
+              "points": -1,
+              "finding": "Overall utilisation is low: observed absent."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-B:dependency"
+              ],
+              "points": -2,
+              "finding": "Stable cohort uses the function repeatedly: observed absent."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-B:dependency"
+              ],
+              "points": -3,
+              "finding": "Dependency needs explicitly documented: observed absent."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": false,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-B:dependency"
+              ],
+              "points": -2,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed absent."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-B:dependency"
+              ],
+              "points": -2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 10,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        }
+      ]
+    },
+    {
+      "case": "C",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": -9,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-C:operations"
+              ],
+              "points": -4,
+              "finding": "Confirmed unresolved operational issue: observed absent."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-C:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded downtime is elevated: observed absent."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-C:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded operational complaints: observed absent."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-C:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": null,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-C:temporal"
+              ],
+              "reason": "Observed time-specific sustained decline: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 9,
+          "coverage": 0.9166666666666666,
+          "observedWeight": 11,
+          "totalWeight": 12,
+          "supportingDomains": []
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -6,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-C:residentMix"
+              ],
+              "points": -2,
+              "finding": "Decline concentrated among recent residents: observed absent."
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-C:residentMix"
+              ],
+              "points": -1,
+              "finding": "Resident turnover is materially elevated: observed absent."
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-C:residentMix"
+              ],
+              "points": -2,
+              "finding": "Retained long-term cohorts show stable usage rates: observed absent."
+            },
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-C:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-C:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 0,
+          "contradictionPoints": 6,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": 14,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-C:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-C:operations"
+              ],
+              "points": 2,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            },
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-C:residentMix"
+              ],
+              "points": 3,
+              "finding": "Multiple retained long-term cohorts decline: observed present."
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-C:residentMix"
+              ],
+              "points": 2,
+              "finding": "Cross-cohort decline persists with low recorded turnover: observed present."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": true,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-C:programme"
+              ],
+              "points": 2,
+              "finding": "Programme participation declines materially: observed present."
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": true,
+              "domain": "feedback",
+              "sourceRefs": [
+                "DX-C:feedback"
+              ],
+              "points": 3,
+              "finding": "Relevant existing feedback supports programme mismatch: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 14,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 16,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "operations",
+            "residentMix",
+            "programme",
+            "feedback"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": -10,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": false,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-C:usage"
+              ],
+              "points": -1,
+              "finding": "Overall utilisation is low: observed absent."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-C:dependency"
+              ],
+              "points": -2,
+              "finding": "Stable cohort uses the function repeatedly: observed absent."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-C:dependency"
+              ],
+              "points": -3,
+              "finding": "Dependency needs explicitly documented: observed absent."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": false,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-C:dependency"
+              ],
+              "points": -2,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed absent."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-C:dependency"
+              ],
+              "points": -2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 10,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        }
+      ]
+    },
+    {
+      "case": "D",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": -9,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-D:operations"
+              ],
+              "points": -4,
+              "finding": "Confirmed unresolved operational issue: observed absent."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-D:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded downtime is elevated: observed absent."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-D:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded operational complaints: observed absent."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-D:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": null,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-D:temporal"
+              ],
+              "reason": "Observed time-specific sustained decline: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 9,
+          "coverage": 0.9166666666666666,
+          "observedWeight": 11,
+          "totalWeight": 12,
+          "supportingDomains": []
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -1,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-D:residentMix"
+              ],
+              "points": 3,
+              "finding": "Retained long-term cohorts show stable usage rates: observed present."
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-D:residentMix"
+              ],
+              "points": -2,
+              "finding": "Decline concentrated among recent residents: observed absent."
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-D:residentMix"
+              ],
+              "points": -1,
+              "finding": "Resident turnover is materially elevated: observed absent."
+            },
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-D:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-D:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 3,
+          "contradictionPoints": 4,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": [
+            "residentMix"
+          ]
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": -3,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-D:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-D:operations"
+              ],
+              "points": 2,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-D:residentMix"
+              ],
+              "points": -2,
+              "finding": "Multiple retained long-term cohorts decline: observed absent."
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-D:residentMix"
+              ],
+              "points": -2,
+              "finding": "Cross-cohort decline persists with low recorded turnover: observed absent."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": false,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-D:programme"
+              ],
+              "points": -1,
+              "finding": "Programme participation declines materially: observed absent."
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": false,
+              "domain": "feedback",
+              "sourceRefs": [
+                "DX-D:feedback"
+              ],
+              "points": -2,
+              "finding": "Relevant existing feedback supports programme mismatch: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 4,
+          "contradictionPoints": 7,
+          "coverage": 1,
+          "observedWeight": 16,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "operations"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": 13,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": true,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-D:usage"
+              ],
+              "points": 1,
+              "finding": "Overall utilisation is low: observed present."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-D:dependency"
+              ],
+              "points": 3,
+              "finding": "Stable cohort uses the function repeatedly: observed present."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-D:dependency"
+              ],
+              "points": 4,
+              "finding": "Dependency needs explicitly documented: observed present."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": true,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-D:dependency"
+              ],
+              "points": 3,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed present."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-D:dependency"
+              ],
+              "points": 2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 13,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": [
+            "usage",
+            "dependency",
+            "alternatives"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "E",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": 4,
+          "supportLabel": "Some Support",
+          "supportingEvidence": [
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-E:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded downtime is elevated: observed present."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-E:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded operational complaints: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": null,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-E:operations"
+              ],
+              "reason": "Confirmed unresolved operational issue: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": null,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-E:temporal"
+              ],
+              "reason": "Observed time-specific sustained decline: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": null,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-E:operations"
+              ],
+              "reason": "Reviewed operational condition appears healthy: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 4,
+          "contradictionPoints": 0,
+          "coverage": 0.3333333333333333,
+          "observedWeight": 4,
+          "totalWeight": 12,
+          "supportingDomains": [
+            "operations"
+          ]
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -1,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-E:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Decline concentrated among recent residents: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Resident turnover is materially elevated: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Retained long-term cohorts show stable usage rates: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-E:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 0,
+          "contradictionPoints": 1,
+          "coverage": 0.23076923076923078,
+          "observedWeight": 3,
+          "totalWeight": 13,
+          "supportingDomains": []
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": 4,
+          "supportLabel": "Some Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-E:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": true,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-E:programme"
+              ],
+              "points": 2,
+              "finding": "Programme participation declines materially: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": null,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-E:operations"
+              ],
+              "reason": "Reviewed operational condition appears healthy: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Multiple retained long-term cohorts decline: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Cross-cohort decline persists with low recorded turnover: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": null,
+              "domain": "feedback",
+              "sourceRefs": [],
+              "reason": "Relevant existing feedback supports programme mismatch: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 4,
+          "contradictionPoints": 0,
+          "coverage": 0.3125,
+          "observedWeight": 5,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "programme"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": -1,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": false,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-E:usage"
+              ],
+              "points": -1,
+              "finding": "Overall utilisation is low: observed absent."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": null,
+              "domain": "dependency",
+              "sourceRefs": [],
+              "reason": "Stable cohort uses the function repeatedly: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": null,
+              "domain": "dependency",
+              "sourceRefs": [],
+              "reason": "Dependency needs explicitly documented: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": null,
+              "domain": "alternatives",
+              "sourceRefs": [],
+              "reason": "No realistic accessible substitute in reviewed alternatives: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": null,
+              "domain": "dependency",
+              "sourceRefs": [],
+              "reason": "Loss of function disproportionately affects dependent cohort: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 1,
+          "coverage": 0.07692307692307693,
+          "observedWeight": 1,
+          "totalWeight": 13,
+          "supportingDomains": []
+        }
+      ]
+    },
+    {
+      "case": "F",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": -9,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-F:operations"
+              ],
+              "points": -4,
+              "finding": "Confirmed unresolved operational issue: observed absent."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-F:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded downtime is elevated: observed absent."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-F:operations"
+              ],
+              "points": -1,
+              "finding": "Recorded operational complaints: observed absent."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-F:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": null,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-F:temporal"
+              ],
+              "reason": "Observed time-specific sustained decline: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 9,
+          "coverage": 0.9166666666666666,
+          "observedWeight": 11,
+          "totalWeight": 12,
+          "supportingDomains": []
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -1,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-F:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Decline concentrated among recent residents: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Resident turnover is materially elevated: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Retained long-term cohorts show stable usage rates: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-F:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 0,
+          "contradictionPoints": 1,
+          "coverage": 0.23076923076923078,
+          "observedWeight": 3,
+          "totalWeight": 13,
+          "supportingDomains": []
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": 9,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-F:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-F:operations"
+              ],
+              "points": 2,
+              "finding": "Reviewed operational condition appears healthy: observed present."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": true,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-F:programme"
+              ],
+              "points": 2,
+              "finding": "Programme participation declines materially: observed present."
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": true,
+              "domain": "feedback",
+              "sourceRefs": [
+                "DX-F:feedback"
+              ],
+              "points": 3,
+              "finding": "Relevant existing feedback supports programme mismatch: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Multiple retained long-term cohorts decline: unavailable or insufficiently observed.",
+              "points": null
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": null,
+              "domain": "residentMix",
+              "sourceRefs": [],
+              "reason": "Cross-cohort decline persists with low recorded turnover: unavailable or insufficiently observed.",
+              "points": null
+            }
+          ],
+          "neutralEvidence": [],
+          "positivePoints": 9,
+          "contradictionPoints": 0,
+          "coverage": 0.6875,
+          "observedWeight": 11,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "operations",
+            "programme",
+            "feedback"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": -10,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": false,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-F:usage"
+              ],
+              "points": -1,
+              "finding": "Overall utilisation is low: observed absent."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-F:dependency"
+              ],
+              "points": -2,
+              "finding": "Stable cohort uses the function repeatedly: observed absent."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-F:dependency"
+              ],
+              "points": -3,
+              "finding": "Dependency needs explicitly documented: observed absent."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": false,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-F:dependency"
+              ],
+              "points": -2,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed absent."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": false,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-F:dependency"
+              ],
+              "points": -2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 0,
+          "contradictionPoints": 10,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        }
+      ]
+    },
+    {
+      "case": "G",
+      "diagnoses": [
+        {
+          "name": "Operational Problem",
+          "rawEvidenceSupport": 9,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "operationalIssue",
+              "label": "Confirmed unresolved operational issue",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-G:operations"
+              ],
+              "points": 4,
+              "finding": "Confirmed unresolved operational issue: observed present."
+            },
+            {
+              "key": "downtimeElevated",
+              "label": "Recorded downtime is elevated",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-G:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded downtime is elevated: observed present."
+            },
+            {
+              "key": "operationalComplaints",
+              "label": "Recorded operational complaints",
+              "value": true,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-G:operations"
+              ],
+              "points": 2,
+              "finding": "Recorded operational complaints: observed present."
+            },
+            {
+              "key": "timeSpecificDeterioration",
+              "label": "Observed time-specific sustained decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-G:temporal"
+              ],
+              "points": 1,
+              "finding": "Observed time-specific sustained decline: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-G:operations"
+              ],
+              "points": 0,
+              "finding": "Reviewed operational condition appears healthy: observed absent."
+            }
+          ],
+          "positivePoints": 9,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 12,
+          "totalWeight": 12,
+          "supportingDomains": [
+            "operations",
+            "temporal"
+          ]
+        },
+        {
+          "name": "Temporary / Resident-Mix Shift",
+          "rawEvidenceSupport": -6,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "key": "recentConcentration",
+              "label": "Decline concentrated among recent residents",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-G:residentMix"
+              ],
+              "points": -2,
+              "finding": "Decline concentrated among recent residents: observed absent."
+            },
+            {
+              "key": "turnoverHigh",
+              "label": "Resident turnover is materially elevated",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-G:residentMix"
+              ],
+              "points": -1,
+              "finding": "Resident turnover is materially elevated: observed absent."
+            },
+            {
+              "key": "longCohortsStable",
+              "label": "Retained long-term cohorts show stable usage rates",
+              "value": false,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-G:residentMix"
+              ],
+              "points": -2,
+              "finding": "Retained long-term cohorts show stable usage rates: observed absent."
+            },
+            {
+              "key": "temporaryPattern",
+              "label": "Pattern is temporary/not established as persistent",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-G:temporal"
+              ],
+              "points": -1,
+              "finding": "Pattern is temporary/not established as persistent: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [
+            {
+              "key": "exceptionalContext",
+              "label": "Known exceptional context affects pattern",
+              "value": false,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-G:temporal"
+              ],
+              "points": 0,
+              "finding": "Known exceptional context affects pattern: observed absent."
+            }
+          ],
+          "positivePoints": 0,
+          "contradictionPoints": 6,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": []
+        },
+        {
+          "name": "Persistent Programme / Configuration Mismatch",
+          "rawEvidenceSupport": 1,
+          "supportLabel": "Limited / Contradicted Support",
+          "supportingEvidence": [
+            {
+              "key": "persistentPattern",
+              "label": "Independent diagnosis history supports persistent decline",
+              "value": true,
+              "domain": "temporal",
+              "sourceRefs": [
+                "DX-G:temporal"
+              ],
+              "points": 2,
+              "finding": "Independent diagnosis history supports persistent decline: observed present."
+            },
+            {
+              "key": "stableCohortDecline",
+              "label": "Multiple retained long-term cohorts decline",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-G:residentMix"
+              ],
+              "points": 3,
+              "finding": "Multiple retained long-term cohorts decline: observed present."
+            },
+            {
+              "key": "mixControlled",
+              "label": "Cross-cohort decline persists with low recorded turnover",
+              "value": true,
+              "domain": "residentMix",
+              "sourceRefs": [
+                "DX-G:residentMix"
+              ],
+              "points": 2,
+              "finding": "Cross-cohort decline persists with low recorded turnover: observed present."
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "key": "operationalHealthy",
+              "label": "Reviewed operational condition appears healthy",
+              "value": false,
+              "domain": "operations",
+              "sourceRefs": [
+                "DX-G:operations"
+              ],
+              "points": -3,
+              "finding": "Reviewed operational condition appears healthy: observed absent."
+            },
+            {
+              "key": "programmeDecline",
+              "label": "Programme participation declines materially",
+              "value": false,
+              "domain": "programme",
+              "sourceRefs": [
+                "DX-G:programme"
+              ],
+              "points": -1,
+              "finding": "Programme participation declines materially: observed absent."
+            },
+            {
+              "key": "programmeMismatchFeedback",
+              "label": "Relevant existing feedback supports programme mismatch",
+              "value": false,
+              "domain": "feedback",
+              "sourceRefs": [
+                "DX-G:feedback"
+              ],
+              "points": -2,
+              "finding": "Relevant existing feedback supports programme mismatch: observed absent."
+            }
+          ],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 7,
+          "contradictionPoints": 6,
+          "coverage": 1,
+          "observedWeight": 16,
+          "totalWeight": 16,
+          "supportingDomains": [
+            "temporal",
+            "residentMix"
+          ]
+        },
+        {
+          "name": "Low Utilisation, High Dependency",
+          "rawEvidenceSupport": 13,
+          "supportLabel": "Strong Support",
+          "supportingEvidence": [
+            {
+              "key": "lowUtilisation",
+              "label": "Overall utilisation is low",
+              "value": true,
+              "domain": "usage",
+              "sourceRefs": [
+                "DX-G:usage"
+              ],
+              "points": 1,
+              "finding": "Overall utilisation is low: observed present."
+            },
+            {
+              "key": "stableRepeatCohort",
+              "label": "Stable cohort uses the function repeatedly",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-G:dependency"
+              ],
+              "points": 3,
+              "finding": "Stable cohort uses the function repeatedly: observed present."
+            },
+            {
+              "key": "documentedDependency",
+              "label": "Dependency needs explicitly documented",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-G:dependency"
+              ],
+              "points": 4,
+              "finding": "Dependency needs explicitly documented: observed present."
+            },
+            {
+              "key": "limitedSubstitutes",
+              "label": "No realistic accessible substitute in reviewed alternatives",
+              "value": true,
+              "domain": "alternatives",
+              "sourceRefs": [
+                "DX-G:dependency"
+              ],
+              "points": 3,
+              "finding": "No realistic accessible substitute in reviewed alternatives: observed present."
+            },
+            {
+              "key": "disproportionateImpact",
+              "label": "Loss of function disproportionately affects dependent cohort",
+              "value": true,
+              "domain": "dependency",
+              "sourceRefs": [
+                "DX-G:dependency"
+              ],
+              "points": 2,
+              "finding": "Loss of function disproportionately affects dependent cohort: observed present."
+            }
+          ],
+          "contradictingEvidence": [],
+          "missingEvidence": [],
+          "neutralEvidence": [],
+          "positivePoints": 13,
+          "contradictionPoints": 0,
+          "coverage": 1,
+          "observedWeight": 13,
+          "totalWeight": 13,
+          "supportingDomains": [
+            "usage",
+            "dependency",
+            "alternatives"
+          ]
+        }
+      ]
+    }
+  ]
+}

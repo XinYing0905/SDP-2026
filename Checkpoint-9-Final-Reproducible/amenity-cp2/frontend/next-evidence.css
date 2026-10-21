@@ -1,0 +1,7 @@
+/* Additive presentation only; approved CP2 stylesheet remains unchanged. */
+#next-evidence{margin-top:32px;border-top:1px solid #dfe6eb;padding-top:12px}
+#next-evidence p,#next-evidence li{font-size:12px;line-height:1.7}
+#next-evidence td,#next-evidence th{white-space:normal;vertical-align:top;min-width:115px}
+#next-evidence td:first-child{min-width:170px}
+#next-evidence pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}
+#next-evidence summary{white-space:normal;line-height:1.7}

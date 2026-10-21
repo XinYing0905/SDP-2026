@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "tests": 409,
+    "pass": 409,
+    "fail": 0,
+    "skipped": 0
+  },
+  "cp9": {
+    "tests": 50,
+    "pass": 50,
+    "fail": 0,
+    "skipped": 0
+  },
+  "full": {
+    "tests": 459,
+    "pass": 459,
+    "fail": 0,
+    "skipped": 0
+  },
+  "preservation": {
+    "files": 139,
+    "allUnchanged": true
+  },
+  "corpusEpisodes": 41,
+  "caseVersions": 43,
+  "semanticValidation": {
+    "baseline": {
+      "precisionAt3": 0.3333333333333333,
+      "mrr": 0.46428571428571425
+    },
+    "hybrid": {
+      "precisionAt3": 0.9444444444444445,
+      "mrr": 1
+    },
+    "label": "Prototype validation on simulated cases"
+  },
+  "createdFiles": [
+    "delivery-source/legacy-dist/app.mjs.txt",
+    "delivery-source/legacy-dist/config.mjs.txt",
+    "delivery-source/legacy-dist/detector.mjs.txt",
+    "delivery-source/legacy-dist/fixtures.mjs.txt",
+    "delivery-source/legacy-dist/styles.css.txt",
+    "operator.html",
+    "package-lock.json",
+    "package.json",
+    "README.md",
+    "scripts/build-preview.mjs",
+    "scripts/build-report.mjs",
+    "scripts/build-review-data.mjs",
+    "scripts/capture-baseline.mjs",
+    "scripts/check-build.mjs",
+    "scripts/check-imports.mjs",
+    "scripts/check-preservation.mjs",
+    "scripts/clean-room-verify.mjs",
+    "scripts/evaluate-semantic.mjs",
+    "scripts/fetch-model.mjs",
+    "scripts/package.mjs",
+    "scripts/refresh-history.mjs",
+    "scripts/verify-cp9.mjs",
+    "scripts/verify-preview.mjs",
+    "server.mjs",
+    "src/core.mjs",
+    "src/current-provider.mjs",
+    "src/demo-corpus.mjs",
+    "src/features.mjs",
+    "src/history.mjs",
+    "src/http.mjs",
+    "src/relevance-fixtures.mjs",
+    "src/repository.mjs",
+    "src/retrieval.mjs",
+    "src/scenarios.mjs",
+    "src/semantic.mjs",
+    "src/service.mjs",
+    "tests/cp9.test.mjs"
+  ],
+  "sections": 23
+}

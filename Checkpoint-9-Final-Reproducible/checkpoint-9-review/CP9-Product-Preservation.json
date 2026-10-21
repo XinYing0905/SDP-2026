@@ -1,0 +1,84 @@
+{
+  "files": 13,
+  "allUnchanged": true,
+  "rows": [
+    {
+      "file": "cp9/src/core.mjs",
+      "sha256": "254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960",
+      "actual": "254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/current-provider.mjs",
+      "sha256": "f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09",
+      "actual": "f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/demo-corpus.mjs",
+      "sha256": "0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c",
+      "actual": "0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/features.mjs",
+      "sha256": "156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9",
+      "actual": "156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/history.mjs",
+      "sha256": "48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3",
+      "actual": "48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/http.mjs",
+      "sha256": "f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d",
+      "actual": "f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/relevance-fixtures.mjs",
+      "sha256": "2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4",
+      "actual": "2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/repository.mjs",
+      "sha256": "eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0",
+      "actual": "eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/retrieval.mjs",
+      "sha256": "33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c",
+      "actual": "33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/scenarios.mjs",
+      "sha256": "8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d",
+      "actual": "8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/semantic.mjs",
+      "sha256": "ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a",
+      "actual": "ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/src/service.mjs",
+      "sha256": "cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731",
+      "actual": "cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731",
+      "unchanged": true
+    },
+    {
+      "file": "cp9/tests/cp9.test.mjs",
+      "sha256": "e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0",
+      "actual": "e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0",
+      "unchanged": true
+    }
+  ]
+}

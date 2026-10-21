@@ -1,0 +1,3275 @@
+[
+  {
+    "id": "A",
+    "result": {
+      "amenityId": "A",
+      "amenityName": "Function Room",
+      "tier": "A",
+      "status": "Stable",
+      "explanation": "No current sustained multi-signal change meets the configured requirements. Earlier current-window excursions returned near baseline; a temporary dip alone does not trigger Needs Attention. Stable describes these observations, not amenity condition or community value.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 85,
+          "magnitude": -15,
+          "percentageChange": -15,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 40,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 101,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 99,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 68,
+          "magnitude": -12,
+          "percentageChange": -15,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 32,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 32,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 81,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 79,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 34,
+          "magnitude": -6,
+          "percentageChange": -15,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 16,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 16,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [
+        {
+          "signal": "bookings",
+          "direction": "returned-or-unknown",
+          "sustained": false,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 40,
+              "direction": "deterioration"
+            }
+          ]
+        },
+        {
+          "signal": "uniqueUsers",
+          "direction": "returned-or-unknown",
+          "sustained": false,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 32,
+              "direction": "deterioration"
+            }
+          ]
+        },
+        {
+          "signal": "repeatUsers",
+          "direction": "returned-or-unknown",
+          "sustained": false,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 16,
+              "direction": "deterioration"
+            }
+          ]
+        }
+      ],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change not established",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 0,
+        "direction": null,
+        "signals": [],
+        "assessableSignals": 3,
+        "meetsRequirement": false
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "B",
+    "result": {
+      "amenityId": "B",
+      "amenityName": "Community Hall",
+      "tier": "A",
+      "status": "Needs Attention",
+      "explanation": "3 signals show material deterioration sustained through at least 3 consecutive eligible periods ending in the latest period. Both relative/absolute deviation and minimum consistency requirements pass. Investigation-worthy change only; no cause is inferred.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 67,
+          "magnitude": -33,
+          "percentageChange": -33,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 72,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 68,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 65,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 63,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 72,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 68,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 65,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 63,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 53.5,
+          "magnitude": -26.5,
+          "percentageChange": -33.125,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 58,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 54,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 52,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 50,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 58,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 54,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 52,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 50,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 26.75,
+          "magnitude": -13.25,
+          "percentageChange": -33.125,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 29,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 27,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 26,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 25,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 29,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 27,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 26,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 25,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [
+        {
+          "signal": "bookings",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 72,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 68,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 65,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 63,
+              "direction": "deterioration"
+            }
+          ]
+        },
+        {
+          "signal": "uniqueUsers",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 58,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 54,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 52,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 50,
+              "direction": "deterioration"
+            }
+          ]
+        },
+        {
+          "signal": "repeatUsers",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 29,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 27,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 26,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 25,
+              "direction": "deterioration"
+            }
+          ]
+        }
+      ],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 3,
+        "direction": "deterioration",
+        "signals": [
+          "bookings",
+          "uniqueUsers",
+          "repeatUsers"
+        ],
+        "assessableSignals": 3,
+        "meetsRequirement": true
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "C",
+    "result": {
+      "amenityId": "C",
+      "amenityName": "Badminton Court",
+      "tier": "A",
+      "status": "Monitoring",
+      "explanation": "Needs Attention criteria are not met: 1/2 signals meet shared-direction persistence. A current deviation requires more consistent sustained evidence. This status does not recommend an action.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 58.5,
+          "magnitude": -41.5,
+          "percentageChange": -41.5,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 60,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 58,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 59,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 57,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 60,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 58,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 59,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 57,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 80,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 40,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [
+        {
+          "signal": "bookings",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 60,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 58,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 59,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 57,
+              "direction": "deterioration"
+            }
+          ]
+        }
+      ],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change not established",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 1,
+        "direction": "deterioration",
+        "signals": [
+          "bookings"
+        ],
+        "assessableSignals": 3,
+        "meetsRequirement": false
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "D",
+    "result": {
+      "amenityId": "D",
+      "amenityName": "Multipurpose Room",
+      "tier": "A",
+      "status": "Monitoring",
+      "explanation": "Needs Attention criteria are not met: 0/2 signals meet shared-direction persistence. Known exceptional periods affect interpretation. Missing or ineligible data leave uncertainty. Too few assessable signals for the configured consistency requirement. This status does not recommend an action.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 100,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.25,
+            "validBaseline": 8,
+            "validCurrent": 1,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": false,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 5,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 5,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 5,
+              "eligible": false,
+              "context": "closure"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 80,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.25,
+            "validBaseline": 8,
+            "validCurrent": 1,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": false,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 4,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 4,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 4,
+              "eligible": false,
+              "context": "closure"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 40,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.25,
+            "validBaseline": 8,
+            "validCurrent": 1,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": false,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 2,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 2,
+              "eligible": false,
+              "context": "closure"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 2,
+              "eligible": false,
+              "context": "closure"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change not established",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 0,
+        "direction": null,
+        "signals": [],
+        "assessableSignals": 0,
+        "meetsRequirement": false
+      },
+      "contextualCaveats": [
+        {
+          "periodStart": "2026-07-06",
+          "type": "closure",
+          "note": "Known exceptional closure; recorded values do not represent ordinary availability.",
+          "interpretation": "Excluded from behavioral baseline/current means; breaks persistence. Not evidence of ordinary demand decline."
+        },
+        {
+          "periodStart": "2026-07-06",
+          "type": "maintenance-context",
+          "note": "Recorded downtime: 70 hours; tickets: 1. Operational context only; no explanation is inferred.",
+          "interpretation": "Visible contextual signal; not a diagnosis and not automatically excluded without a known exceptional period."
+        },
+        {
+          "periodStart": "2026-07-13",
+          "type": "closure",
+          "note": "Known exceptional closure; recorded values do not represent ordinary availability.",
+          "interpretation": "Excluded from behavioral baseline/current means; breaks persistence. Not evidence of ordinary demand decline."
+        },
+        {
+          "periodStart": "2026-07-13",
+          "type": "maintenance-context",
+          "note": "Recorded downtime: 70 hours; tickets: 1. Operational context only; no explanation is inferred.",
+          "interpretation": "Visible contextual signal; not a diagnosis and not automatically excluded without a known exceptional period."
+        },
+        {
+          "periodStart": "2026-07-20",
+          "type": "closure",
+          "note": "Known exceptional closure; recorded values do not represent ordinary availability.",
+          "interpretation": "Excluded from behavioral baseline/current means; breaks persistence. Not evidence of ordinary demand decline."
+        },
+        {
+          "periodStart": "2026-07-20",
+          "type": "maintenance-context",
+          "note": "Recorded downtime: 70 hours; tickets: 1. Operational context only; no explanation is inferred.",
+          "interpretation": "Visible contextual signal; not a diagnosis and not automatically excluded without a known exceptional period."
+        }
+      ],
+      "missingDataWarnings": [
+        "Bookings: insufficient eligible coverage (8/8 baseline; 1/4 current). No change conclusion for this signal.",
+        "Unique users: insufficient eligible coverage (8/8 baseline; 1/4 current). No change conclusion for this signal.",
+        "Repeat users: insufficient eligible coverage (8/8 baseline; 1/4 current). No change conclusion for this signal."
+      ],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "E",
+    "result": {
+      "amenityId": "E",
+      "amenityName": "Meeting Room",
+      "tier": "A",
+      "status": "Monitoring",
+      "explanation": "Needs Attention criteria are not met: 0/2 signals meet shared-direction persistence. Missing or ineligible data leave uncertainty. This status does not recommend an action.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 100,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.75,
+            "validBaseline": 8,
+            "validCurrent": 3,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": null,
+              "eligible": false,
+              "context": "missing-period"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 80,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.5,
+            "validBaseline": 8,
+            "validCurrent": 2,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": false,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": null,
+              "eligible": false,
+              "context": "missing-period"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": null,
+              "eligible": false,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 40,
+          "magnitude": 0,
+          "percentageChange": 0,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 0.75,
+            "validBaseline": 8,
+            "validCurrent": 3,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": null,
+              "eligible": false,
+              "context": "missing-period"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change not established",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 0,
+        "direction": null,
+        "signals": [],
+        "assessableSignals": 2,
+        "meetsRequirement": false
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [
+        "Missing observation periods: 2026-07-13. Values remain unknown.",
+        "2026-07-20: maintenance/downtime context unavailable; condition is unknown.",
+        "Bookings: unknown current observations at 2026-07-13; not zero-filled.",
+        "Unique users: unknown current observations at 2026-07-13, 2026-07-20; not zero-filled.",
+        "Unique users: insufficient eligible coverage (8/8 baseline; 2/4 current). No change conclusion for this signal.",
+        "Repeat users: unknown current observations at 2026-07-13; not zero-filled."
+      ],
+      "missingPeriods": [
+        "2026-07-13"
+      ],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "F",
+    "result": {
+      "amenityId": "F",
+      "amenityName": "Clubhouse Gym",
+      "tier": "B",
+      "status": "Needs Attention",
+      "explanation": "2 signals show material deterioration sustained through at least 3 consecutive eligible periods ending in the latest period. Both relative/absolute deviation and minimum consistency requirements pass. Investigation-worthy change only; no cause is inferred.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "accessCount",
+          "label": "Access count",
+          "unit": "count",
+          "baselineValue": 400,
+          "currentValue": 264,
+          "magnitude": -136,
+          "percentageChange": -34,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 280,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 268,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 260,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 248,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 400,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 280,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 268,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 260,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 248,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 66,
+          "magnitude": -34,
+          "percentageChange": -34,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": "deterioration",
+          "latestDirection": "deterioration",
+          "persistence": {
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 70,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 67,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 65,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 62,
+              "direction": "deterioration"
+            }
+          ],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 70,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 67,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 65,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 62,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [
+        {
+          "signal": "accessCount",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 280,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 268,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 260,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 248,
+              "direction": "deterioration"
+            }
+          ]
+        },
+        {
+          "signal": "uniqueUsers",
+          "direction": "deterioration",
+          "sustained": true,
+          "periods": [
+            {
+              "periodStart": "2026-06-29",
+              "value": 70,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "value": 67,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "value": 65,
+              "direction": "deterioration"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "value": 62,
+              "direction": "deterioration"
+            }
+          ]
+        }
+      ],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change",
+        "perSignal": [
+          {
+            "signal": "accessCount",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 4,
+            "requiredPeriods": 3,
+            "sustained": true,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 2,
+        "direction": "deterioration",
+        "signals": [
+          "accessCount",
+          "uniqueUsers"
+        ],
+        "assessableSignals": 2,
+        "meetsRequirement": true
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  },
+  {
+    "id": "S",
+    "result": {
+      "amenityId": "S",
+      "amenityName": "Tennis Court",
+      "tier": "A",
+      "status": "Stable",
+      "explanation": "No current sustained multi-signal change meets the configured requirements. Latest eligible observations remain below material-change thresholds. Stable describes these observations, not amenity condition or community value.",
+      "parameterVersion": "cp2-1.0",
+      "dataProvenance": "Simulated input data",
+      "baselineWindow": {
+        "start": "2026-05-04",
+        "end": "2026-06-28",
+        "periods": 8
+      },
+      "currentWindow": {
+        "start": "2026-06-29",
+        "end": "2026-07-26",
+        "periods": 4
+      },
+      "metrics": [
+        {
+          "key": "bookings",
+          "label": "Bookings",
+          "unit": "count",
+          "baselineValue": 100,
+          "currentValue": 100.5,
+          "magnitude": 0.5,
+          "percentageChange": 0.5,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 101,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 99,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 102,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 100,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "uniqueUsers",
+          "label": "Unique users",
+          "unit": "count",
+          "baselineValue": 80,
+          "currentValue": 80.5,
+          "magnitude": 0.5,
+          "percentageChange": 0.625,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 81,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 79,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 82,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 80,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        },
+        {
+          "key": "repeatUsers",
+          "label": "Repeat users",
+          "unit": "count",
+          "baselineValue": 40,
+          "currentValue": 40.25,
+          "magnitude": 0.25,
+          "percentageChange": 0.625,
+          "percentagePointChange": null,
+          "coverage": {
+            "baseline": 1,
+            "current": 1,
+            "validBaseline": 8,
+            "validCurrent": 4,
+            "expectedBaseline": 8,
+            "expectedCurrent": 4
+          },
+          "assessable": true,
+          "currentDirection": null,
+          "latestDirection": null,
+          "persistence": {
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          "excursions": [],
+          "points": [
+            {
+              "periodStart": "2026-05-04",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-11",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-18",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-05-25",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-01",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-08",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-15",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-22",
+              "window": "baseline",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-06-29",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-06",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-13",
+              "window": "current",
+              "value": 41,
+              "eligible": true,
+              "context": "normal"
+            },
+            {
+              "periodStart": "2026-07-20",
+              "window": "current",
+              "value": 40,
+              "eligible": true,
+              "context": "normal"
+            }
+          ]
+        }
+      ],
+      "detectedChangeSignals": [],
+      "persistence": {
+        "requiredPeriods": 3,
+        "result": "Sustained consistent change not established",
+        "perSignal": [
+          {
+            "signal": "bookings",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "uniqueUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          },
+          {
+            "signal": "repeatUsers",
+            "trailingPeriods": 0,
+            "requiredPeriods": 3,
+            "sustained": false,
+            "missingOrExceptionalBreaksStreak": true
+          }
+        ]
+      },
+      "signalConsistency": {
+        "required": 2,
+        "observed": 0,
+        "direction": null,
+        "signals": [],
+        "assessableSignals": 3,
+        "meetsRequirement": false
+      },
+      "contextualCaveats": [],
+      "missingDataWarnings": [],
+      "missingPeriods": [],
+      "ignoredOutOfWindowPeriods": [],
+      "provisionalParameters": {
+        "label": "Provisional MVP Parameters",
+        "version": "cp2-1.0",
+        "periodDays": 7,
+        "baselinePeriods": 8,
+        "currentPeriods": 4,
+        "minimumBaselineCoverage": 0.75,
+        "minimumCurrentCoverage": 0.75,
+        "minimumPersistence": 3,
+        "relativeDeviationThreshold": 0.2,
+        "minimumConsistentSignals": 2,
+        "contextualInterpretation": "exclude-exceptional-period-and-break-persistence",
+        "absoluteDeviationFloors": {
+          "bookings": 10,
+          "uniqueUsers": 10,
+          "repeatUsers": 5,
+          "utilisationRate": 0.1,
+          "cancellationRate": 0.05,
+          "accessCount": 20
+        }
+      }
+    }
+  }
+]

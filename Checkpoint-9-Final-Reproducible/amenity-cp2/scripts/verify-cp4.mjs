@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+const root = path.resolve(import.meta.dirname, '..');
+const out = path.resolve(root, '../checkpoint-4-review');
+await fs.mkdir(out, { recursive: true });
+const files = (await fs.readdir(path.join(root, 'tests'))).filter(f => f.endsWith('.test.mjs')).map(f => 'tests/' + f);
+const tests = spawnSync(process.execPath, ['--test', '--test-reporter=tap', ...files], { cwd: root, encoding: 'utf8' });
+await fs.writeFile(path.join(out, 'Automated-Test-Results.tap'), tests.stdout + tests.stderr);
+console.log(tests.stdout.split('\n').slice(-12).join('\n'));
+if (tests.status !== 0) process.exitCode = tests.status ?? 1;

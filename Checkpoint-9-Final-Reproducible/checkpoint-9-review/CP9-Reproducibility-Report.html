@@ -1,0 +1,312 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CP9 Clean-room Reproducibility</title><style>body{font:16px/1.6 system-ui;max-width:960px;margin:40px auto;padding:20px;color:#173d32}table{border-collapse:collapse;width:100%}td,th{padding:10px;text-align:left;border-bottom:1px solid #ccd8c6}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5ed;padding:18px}h1{line-height:1.25}</style><h1>CP9 Reproducibility Fix</h1><p>Packaging and reproducibility only. No approved product logic was changed.</p><table><tr><th>Check</th><th>Clean extracted-copy result</th></tr><tr><td>CP1-CP8</td><td>409 PASS /0 FAIL</td></tr><tr><td>CP9</td><td>50 PASS /0 FAIL</td></tr><tr><td>Full regression</td><td>459 PASS /0 FAIL</td></tr><tr><td>Original preservation</td><td>139/139 byte-identical</td></tr><tr><td>CP9 product source and tests</td><td>13/13 byte-identical to original delivery</td></tr><tr><td>Build</td><td>Two deterministic builds; legacy dist compatibility files included</td></tr><tr><td>Relative imports</td><td>No missing relative runtime/test import</td></tr><tr><td>Semantic P@3</td><td>0.333333 structured / 0.944444 hybrid</td></tr><tr><td>Preview</td><td>Self-contained,15 QA routes and navigation checks passed</td></tr></table><p>Semantic metrics are prototype validation on simulated English cases, not intervention-effectiveness accuracy. Model and corpus were unchanged. Browser pixel-level visual QA is not claimed.</p><h2>Exact commands</h2><pre>cd amenity-cp2/cp9
+npm ci --ignore-scripts --registry=https://registry.npmjs.org
+npm run verify:delivery</pre><h2>Recorded clean-room run</h2><pre>{
+  &quot;status&quot;: &quot;PASS&quot;,
+  &quot;startedAt&quot;: &quot;2026-10-21T03:41:19.590Z&quot;,
+  &quot;finishedAt&quot;: &quot;2026-10-21T03:45:17.056Z&quot;,
+  &quot;workspace&quot;: &quot;C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted&quot;,
+  &quot;node&quot;: &quot;v24.15.0&quot;,
+  &quot;platform&quot;: &quot;win32&quot;,
+  &quot;arch&quot;: &quot;x64&quot;,
+  &quot;dependencyInstall&quot;: {
+    &quot;packageFile&quot;: &quot;C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted\\amenity-cp2\\cp9\\node_modules\\@huggingface\\transformers\\package.json&quot;,
+    &quot;version&quot;: &quot;4.3.1&quot;,
+    &quot;localDependencyTree&quot;: true,
+    &quot;receipt&quot;: {
+      &quot;exitCode&quot;: 0,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:41:16.6281581Z&quot;,
+      &quot;cwd&quot;: &quot;C:\\Users\\User\\AppData\\Local\\Packages\\sandbox.{acef1b64-dd11-4de2-92c3-5b84f08884dd}\\AC\\Temp\\CP9-rehearsal-r7\\extracted\\amenity-cp2\\cp9&quot;,
+      &quot;command&quot;: &quot;npm ci --ignore-scripts --registry=https://registry.npmjs.org --cache ../../../public-npm-cache&quot;
+    },
+    &quot;note&quot;: &quot;Only a receipt matching this extraction path is treated as current; installed package location/version are verified independently.&quot;
+  },
+  &quot;inputSourceManifestEntriesVerified&quot;: 307,
+  &quot;originalGeneratedOutputsRemoved&quot;: [
+    &quot;CP1-CP8-Tests.tap&quot;,
+    &quot;CP9-Tests.tap&quot;,
+    &quot;Full-Regression.tap&quot;,
+    &quot;Test-Summary.json&quot;,
+    &quot;CP1-CP8-Preservation.json&quot;,
+    &quot;Historical-Cases.json&quot;,
+    &quot;A-O-Actual-Outputs.json&quot;,
+    &quot;A-O-Summary.json&quot;,
+    &quot;Product-Data.json&quot;,
+    &quot;Predeclared-Relevance-Judgements.json&quot;,
+    &quot;Semantic-Validation.json&quot;,
+    &quot;Semantic-Index.json&quot;,
+    &quot;Preview-Verification.json&quot;,
+    &quot;Checkpoint-9-Interactive-Preview.html&quot;,
+    &quot;Checkpoint-9-Review.html&quot;,
+    &quot;Import-Closure-Verification.json&quot;,
+    &quot;Build-Verification.json&quot;
+  ],
+  &quot;oldCP9DerivedStoreRemoved&quot;: true,
+  &quot;existing&quot;: {
+    &quot;tests&quot;: 409,
+    &quot;pass&quot;: 409,
+    &quot;fail&quot;: 0,
+    &quot;skipped&quot;: 0
+  },
+  &quot;cp9&quot;: {
+    &quot;tests&quot;: 50,
+    &quot;pass&quot;: 50,
+    &quot;fail&quot;: 0,
+    &quot;skipped&quot;: 0
+  },
+  &quot;full&quot;: {
+    &quot;tests&quot;: 459,
+    &quot;pass&quot;: 459,
+    &quot;fail&quot;: 0,
+    &quot;skipped&quot;: 0
+  },
+  &quot;preservation&quot;: {
+    &quot;files&quot;: 139,
+    &quot;allUnchanged&quot;: true
+  },
+  &quot;cp9ProductLogic&quot;: {
+    &quot;files&quot;: 13,
+    &quot;allUnchanged&quot;: true,
+    &quot;rows&quot;: [
+      {
+        &quot;file&quot;: &quot;cp9/src/core.mjs&quot;,
+        &quot;sha256&quot;: &quot;254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960&quot;,
+        &quot;actual&quot;: &quot;254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/current-provider.mjs&quot;,
+        &quot;sha256&quot;: &quot;f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09&quot;,
+        &quot;actual&quot;: &quot;f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/demo-corpus.mjs&quot;,
+        &quot;sha256&quot;: &quot;0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c&quot;,
+        &quot;actual&quot;: &quot;0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/features.mjs&quot;,
+        &quot;sha256&quot;: &quot;156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9&quot;,
+        &quot;actual&quot;: &quot;156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/history.mjs&quot;,
+        &quot;sha256&quot;: &quot;48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3&quot;,
+        &quot;actual&quot;: &quot;48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/http.mjs&quot;,
+        &quot;sha256&quot;: &quot;f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d&quot;,
+        &quot;actual&quot;: &quot;f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/relevance-fixtures.mjs&quot;,
+        &quot;sha256&quot;: &quot;2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4&quot;,
+        &quot;actual&quot;: &quot;2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/repository.mjs&quot;,
+        &quot;sha256&quot;: &quot;eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0&quot;,
+        &quot;actual&quot;: &quot;eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/retrieval.mjs&quot;,
+        &quot;sha256&quot;: &quot;33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c&quot;,
+        &quot;actual&quot;: &quot;33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/scenarios.mjs&quot;,
+        &quot;sha256&quot;: &quot;8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d&quot;,
+        &quot;actual&quot;: &quot;8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/semantic.mjs&quot;,
+        &quot;sha256&quot;: &quot;ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a&quot;,
+        &quot;actual&quot;: &quot;ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/src/service.mjs&quot;,
+        &quot;sha256&quot;: &quot;cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731&quot;,
+        &quot;actual&quot;: &quot;cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731&quot;,
+        &quot;unchanged&quot;: true
+      },
+      {
+        &quot;file&quot;: &quot;cp9/tests/cp9.test.mjs&quot;,
+        &quot;sha256&quot;: &quot;e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0&quot;,
+        &quot;actual&quot;: &quot;e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0&quot;,
+        &quot;unchanged&quot;: true
+      }
+    ]
+  },
+  &quot;sourceFiles&quot;: 303,
+  &quot;imports&quot;: {
+    &quot;checkedFiles&quot;: 237,
+    &quot;relativeImportEdges&quot;: 504,
+    &quot;missingCount&quot;: 0,
+    &quot;missing&quot;: [],
+    &quot;method&quot;: &quot;Literal relative static imports/exports and literal dynamic imports. Nonliteral filesystem paths are additionally exercised by clean-room builds, tests and validation.&quot;
+  },
+  &quot;build&quot;: {
+    &quot;buildCommand&quot;: &quot;node cp9/scripts/check-build.mjs&quot;,
+    &quot;approvedBuildCommand&quot;: &quot;node scripts/build.mjs&quot;,
+    &quot;cleanBuilds&quot;: 2,
+    &quot;builds&quot;: 2,
+    &quot;deterministic&quot;: true,
+    &quot;staleDistUsed&quot;: false,
+    &quot;generatedFiles&quot;: 104,
+    &quot;compatibilityFiles&quot;: [
+      {
+        &quot;file&quot;: &quot;app.mjs&quot;,
+        &quot;sha256&quot;: &quot;845ba55036bcda35b8bb8d751c09a97b1402ca226adbaf3b91a77be816655766&quot;
+      },
+      {
+        &quot;file&quot;: &quot;config.mjs&quot;,
+        &quot;sha256&quot;: &quot;74a9fde0e319facb3dcce2a7919a8d90bdb66f57b68c92a46038cedc3e378f52&quot;
+      },
+      {
+        &quot;file&quot;: &quot;detector.mjs&quot;,
+        &quot;sha256&quot;: &quot;daadd2e0b7f5667edacd394a446cc2c2fe9c9cdcf52397383c952ee529c2171f&quot;
+      },
+      {
+        &quot;file&quot;: &quot;fixtures.mjs&quot;,
+        &quot;sha256&quot;: &quot;85445560e9600b67a89d03dd6e6d1b0a11b91adb8de4e774b0aba8dc2ca1d3e2&quot;
+      },
+      {
+        &quot;file&quot;: &quot;styles.css&quot;,
+        &quot;sha256&quot;: &quot;293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398&quot;
+      }
+    ],
+    &quot;missingOrDifferent&quot;: [],
+    &quot;notes&quot;: &quot;Each build removes the entire dist directory, restores unchanged authored compatibility files and stylesheet from included delivery-source, and runs the unchanged approved build. No stale dist required.&quot;
+  },
+  &quot;sourceDatabases&quot;: {
+    &quot;allUnchanged&quot;: true,
+    &quot;rows&quot;: [
+      {
+        &quot;file&quot;: &quot;cp9-approved-plans.sqlite&quot;,
+        &quot;sha256&quot;: &quot;eebe6869bbc4b80291e57d411859c27e5290b3331559bf85e051036882c66892&quot;
+      },
+      {
+        &quot;file&quot;: &quot;cp9-outcome-history.sqlite&quot;,
+        &quot;sha256&quot;: &quot;0e3553ee2c1604a36b01a064b3294ff82d2eae5406720627fd44337c45cace35&quot;
+      }
+    ]
+  },
+  &quot;evidenceChronology&quot;: &quot;This file is generated in this extracted copy. Package-included logs come from an earlier extracted-copy rehearsal; the final frozen ZIP is tested again without repackaging. The final external attestation binds its SHA-256 to that acceptance run.&quot;,
+  &quot;semantic&quot;: {
+    &quot;label&quot;: &quot;Prototype validation on simulated cases&quot;,
+    &quot;available&quot;: true,
+    &quot;baseline&quot;: {
+      &quot;precisionAt3&quot;: 0.3333333333333333,
+      &quot;mrr&quot;: 0.46428571428571425
+    },
+    &quot;hybrid&quot;: {
+      &quot;precisionAt3&quot;: 0.9444444444444445,
+      &quot;mrr&quot;: 1
+    },
+    &quot;improvementDemonstrated&quot;: true,
+    &quot;model&quot;: &quot;Xenova/all-MiniLM-L6-v2&quot;,
+    &quot;revision&quot;: &quot;751bff37182d3f1213fa05d7196b954e230abad9&quot;
+  },
+  &quot;preview&quot;: {
+    &quot;allPassed&quot;: true,
+    &quot;scenarioRoutes&quot;: 15,
+    &quot;selfContained&quot;: true,
+    &quot;method&quot;: &quot;Exact delivered inline script evaluated in Node VM with a minimal DOM adapter; route rendering and click handler checked. This is not pixel/browser visual QA.&quot;
+  },
+  &quot;steps&quot;: [
+    {
+      &quot;label&quot;: &quot;Build twice and verify deterministic artifacts&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/check-build.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:41:19.984Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:41:22.581Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;Relative runtime/test import closure&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/check-imports.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:41:22.584Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:41:23.200Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;CP1-CP8 regression&quot;,
+      &quot;command&quot;: &quot;node --test --test-reporter=tap tests/*.test.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:41:23.201Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:02.614Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;refresh-history&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/refresh-history.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:02.615Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:08.285Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;evaluate-semantic&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/evaluate-semantic.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:08.285Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:10.015Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;build-review-data&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/build-review-data.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:10.016Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:12.142Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;build-preview&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/build-preview.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:12.142Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:12.436Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;verify-preview&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/verify-preview.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:12.436Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:12.837Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;check-preservation&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/check-preservation.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:12.838Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:13.131Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;CP9 dedicated tests&quot;,
+      &quot;command&quot;: &quot;node --test --test-reporter=tap cp9/tests/*.test.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:13.132Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:43:31.261Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;Combined full regression&quot;,
+      &quot;command&quot;: &quot;node --test --test-reporter=tap tests/*.test.mjs cp9/tests/*.test.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:43:31.262Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:45:15.800Z&quot;,
+      &quot;exitCode&quot;: 0
+    },
+    {
+      &quot;label&quot;: &quot;Regenerate Checkpoint-9-Review.html&quot;,
+      &quot;command&quot;: &quot;node cp9/scripts/build-report.mjs&quot;,
+      &quot;startedAt&quot;: &quot;2026-10-21T03:45:16.738Z&quot;,
+      &quot;finishedAt&quot;: &quot;2026-10-21T03:45:17.055Z&quot;,
+      &quot;exitCode&quot;: 0
+    }
+  ]
+}</pre></html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Mobile Touchpoint — Township Amenity Portal</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React & Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309'
+            },
+            teal: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-900 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-0 sm:p-4 text-slate-800">
+  <div id="root" class="w-full flex justify-center"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function getQueryParam(key) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(key);
+    }
+
+    function ResidentApp() {
+      // Navigation states: 'home' | 'facility' | 'report_form' | 'confirmation' | 'lookup' | 'targeted'
+      const [currentView, setCurrentView] = useState('home');
+      const [facilities, setFacilities] = useState([]);
+      const [selectedFacilityId, setSelectedFacilityId] = useState('court-badminton-1');
+      const [selectedFacility, setSelectedFacility] = useState(null);
+      const [loading, setLoading] = useState(true);
+
+      // Report form state
+      const [category, setCategory] = useState('lighting');
+      const [description, setDescription] = useState('Court 2 overhead high-bay floodlight is flickering severely; back court is too dim for safe play.');
+      const [locationDetail, setLocationDetail] = useState('Court 2 (North End Canopy)');
+      const [contact, setContact] = useState('Resident Li (Unit 4-602)');
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [submittedResult, setSubmittedResult] = useState(null);
+
+      // Lookup state
+      const [lookupId, setLookupId] = useState('');
+      const [lookupResult, setLookupResult] = useState(null);
+      const [lookupError, setLookupError] = useState('');
+
+      // Targeted survey state (preserved CP6 workflow)
+      const [targetedStep, setTargetedStep] = useState(0); // 0: invite, 1: context, 2: question, 3: confirmed
+      const [targetedAnswer, setTargetedAnswer] = useState(null);
+      const [targetedSubmitting, setTargetedSubmitting] = useState(false);
+      const [targetedCollection, setTargetedCollection] = useState(null);
+
+      useEffect(() => {
+        fetch('/api/facilities')
+          .then(res => res.json())
+          .then(data => {
+            const list = data.facilities || [];
+            setFacilities(list);
+
+            const paramFacilityId = getQueryParam('facilityId');
+            const paramMode = getQueryParam('mode');
+
+            if (paramMode === 'targeted') {
+              setCurrentView('targeted');
+              loadTargetedCollection('col-hall-schedule-2026');
+            } else if (paramFacilityId) {
+              const matched = list.find(f => f.facility_id === paramFacilityId) || list[0];
+              if (matched) {
+                setSelectedFacilityId(matched.facility_id);
+                setSelectedFacility(matched);
+                setCurrentView('facility'); // Directly open scanned QR facility page
+              }
+            } else {
+              const defaultFac = list.find(f => f.facility_id === 'court-badminton-1') || list[0];
+              if (defaultFac) {
+                setSelectedFacilityId(defaultFac.facility_id);
+                setSelectedFacility(defaultFac);
+              }
+              setCurrentView('facility');
+            }
+            setLoading(false);
+          })
+          .catch(err => {
+            console.error('Failed to load facilities:', err);
+            setLoading(false);
+          });
+      }, []);
+
+      const loadTargetedCollection = (colId) => {
+        fetch(`/api/targeted/collections/${colId}`)
+          .then(res => res.json())
+          .then(col => setTargetedCollection(col))
+          .catch(e => console.error(e));
+      };
+
+      const selectFacility = (facId) => {
+        setSelectedFacilityId(facId);
+        const fac = facilities.find(f => f.facility_id === facId);
+        setSelectedFacility(fac);
+        setCurrentView('facility');
+      };
+
+      // Submit public resident fault report
+      const handleReportSubmit = (e) => {
+        e.preventDefault();
+        if (!description.trim()) return;
+        setIsSubmitting(true);
+
+        fetch(`/api/facilities/${selectedFacilityId}/reports`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            category,
+            description,
+            locationDetail,
+            contact
+          })
+        })
+          .then(res => res.json())
+          .then(data => {
+            setIsSubmitting(false);
+            setSubmittedResult(data);
+            setCurrentView('confirmation');
+          })
+          .catch(err => {
+            setIsSubmitting(false);
+            alert('Submission failed: ' + err.message);
+          });
+      };
+
+      // Handle Lookup
+      const handleLookup = () => {
+        if (!lookupId.trim()) return;
+        setLookupError('');
+        setLookupResult(null);
+
+        fetch('/api/reports')
+          .then(res => res.json())
+          .then(reports => {
+            const found = reports.find(r => r.report_id.toLowerCase() === lookupId.trim().toLowerCase());
+            if (found) {
+              setLookupResult(found);
+            } else {
+              setLookupError('Reference ID not found. Please verify the code.');
+            }
+          })
+          .catch(() => setLookupError('Network query failed.'));
+      };
+
+      // Submit targeted survey
+      const handleTargetedSubmit = () => {
+        if (!targetedAnswer) return;
+        setTargetedSubmitting(true);
+
+        fetch('/api/targeted/collections/col-hall-schedule-2026/responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            selectedOption: targetedAnswer,
+            cohort: targetedCollection?.target_cohort || 'Long-term residents (3+ years), Building 4'
+          })
+        })
+          .then(res => res.json())
+          .then(() => {
+            setTargetedSubmitting(false);
+            setTargetedStep(3);
+          })
+          .catch(err => {
+            setTargetedSubmitting(false);
+            alert('Failed to submit targeted answer: ' + err.message);
+          });
+      };
+
+      return (
+        <div className="w-full max-w-sm flex flex-col items-center my-2">
+          {/* Top Header & External Links */}
+          <div className="w-full mb-3 px-2 flex items-center justify-between text-xs text-slate-400">
+            <span className="flex items-center gap-1.5 font-medium text-amber-400">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              Resident Mobile Touchpoint
+            </span>
+            <div className="flex items-center gap-3">
+              <a
+                href="operator.html"
+                className="text-teal-400 hover:text-teal-300 underline underline-offset-2 flex items-center gap-1 font-semibold"
+              >
+                Operator View ↗
+              </a>
+            </div>
+          </div>
+
+          {/* Phone Shell */}
+          <div className="w-full h-[760px] max-h-[94vh] bg-white sm:rounded-[2.5rem] sm:border-[6px] sm:border-slate-800 shadow-2xl flex flex-col overflow-hidden relative">
+            {/* Top speaker notch */}
+            <div className="h-6 bg-slate-800 flex justify-center items-center shrink-0">
+              <div className="w-20 h-3 bg-slate-900 rounded-full"></div>
+            </div>
+
+            {/* Bottom Nav Bar */}
+            <div className="order-last h-14 bg-slate-900 border-t border-slate-800 flex items-center justify-around px-2 text-[10px] text-slate-400 shrink-0">
+              <button
+                onClick={() => setCurrentView('home')}
+                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'home' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
+              >
+                <span>🏛️</span>
+                <span>Facilities</span>
+              </button>
+              <button
+                onClick={() => setCurrentView('facility')}
+                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'facility' || currentView === 'report_form' || currentView === 'confirmation' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
+              >
+                <span>📱</span>
+                <span>QR Report</span>
+              </button>
+              <button
+                onClick={() => {
+                  setCurrentView('targeted');
+                  loadTargetedCollection('col-hall-schedule-2026');
+                }}
+                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'targeted' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
+              >
+                <span>🎯</span>
+                <span>Targeted Survey</span>
+              </button>
+              <button
+                onClick={() => setCurrentView('lookup')}
+                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'lookup' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
+              >
+                <span>🔍</span>
+                <span>Track Status</span>
+              </button>
+            </div>
+
+            {/* Content Area */}
+            <div className="flex-1 overflow-y-auto p-5 flex flex-col justify-between">
+              
+              {/* ── VIEW 1: HOME (FACILITY DIRECTORY) ── */}
+              {currentView === 'home' && (
+                <div className="space-y-4">
+                  <div className="bg-amber-500 text-slate-950 p-4 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-950/70 block">Maplewood Township</span>
+                    <h2 className="text-lg font-black mt-0.5">Township Amenity Portal</h2>
+                    <p className="text-xs text-amber-950/90 mt-1">Scan on-site QR codes or tap any facility below to report issues or check operating status.</p>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-slate-700">Monitored Facilities (12)</span>
+                      <span className="text-[10px] text-slate-400">Tap to view details</span>
+                    </div>
+
+                    <div className="space-y-2">
+                      {facilities.map(fac => (
+                        <div
+                          key={fac.facility_id}
+                          onClick={() => selectFacility(fac.facility_id)}
+                          className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                            fac.facility_id === selectedFacilityId
+                              ? 'border-amber-500 bg-amber-50/50'
+                              : 'border-slate-200 hover:border-slate-300 bg-white'
+                          }`}
+                        >
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-slate-800">{fac.name}</span>
+                              {fac.status === 'monitored' && (
+                                <span className="text-[9px] bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded font-semibold">Under Review</span>
+                              )}
+                              {fac.status === 'maintenance' && (
+                                <span className="text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded font-semibold">Maintenance</span>
+                              )}
+                            </div>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{fac.location}</p>
+                          </div>
+                          <span className="text-xs text-amber-600 font-bold">Open →</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── VIEW 2: FACILITY QR SCAN LANDING PAGE ── */}
+              {currentView === 'facility' && selectedFacility && (
+                <div className="space-y-4">
+                  {/* QR Scan Context Banner */}
+                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs text-emerald-800">
+                    <span className="text-base">📍</span>
+                    <div>
+                      <span className="font-bold block">Location Verified via On-Site QR</span>
+                      <span className="text-[10px] text-emerald-700">Directly connected to this facility terminal</span>
+                    </div>
+                  </div>
+
+                  {/* Facility Card */}
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2 text-center">
+                    <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                      {selectedFacility.facility_id.includes('badminton') ? '🏸' : selectedFacility.facility_id.includes('tennis') ? '🎾' : '🏛️'}
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 block">
+                        {selectedFacility.type}
+                      </span>
+                      <h2 className="text-lg font-bold text-slate-900 mt-0.5">
+                        {selectedFacility.name}
+                      </h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-slate-200 text-left">
+                      <div className="bg-white p-2 rounded-lg border border-slate-100">
+                        <span className="text-[9px] text-slate-400 block">Location</span>
+                        <span className="font-semibold text-slate-700">{selectedFacility.location}</span>
+                      </div>
+                      <div className="bg-white p-2 rounded-lg border border-slate-100">
+                        <span className="text-[9px] text-slate-400 block">Hours</span>
+                        <span className="font-semibold text-slate-700">{selectedFacility.operating_hours}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Facility Description */}
+                  <p className="text-xs text-slate-600 leading-relaxed px-1">
+                    {selectedFacility.description}
+                  </p>
+
+                  {/* Action Entry Points */}
+                  <div className="space-y-2 pt-2">
+                    <button
+                      onClick={() => setCurrentView('report_form')}
+                      className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-bold text-sm rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                    >
+                      <span>💡</span>
+                      <span>Report an Issue / Fault →</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentView('home')}
+                      className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-xl"
+                    >
+                      Switch to Another Facility
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── VIEW 3: REPORT FORM ── */}
+              {currentView === 'report_form' && selectedFacility && (
+                <div className="space-y-4">
+                  <div>
+                    <button
+                      onClick={() => setCurrentView('facility')}
+                      className="text-xs text-slate-400 hover:text-slate-600 mb-1 flex items-center gap-1"
+                    >
+                      ← Back to Facility
+                    </button>
+                    <h2 className="text-lg font-bold text-slate-900">Submit Fault Report</h2>
+                    <p className="text-xs text-slate-500">
+                      Facility: {selectedFacility.name} ({selectedFacility.facility_id})
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleReportSubmit} className="space-y-3 text-xs">
+                    {/* Category Selection */}
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1.5">Issue Category</label>
+                      <div className="grid grid-cols-2 gap-2">
+                        {[
+                          { id: 'lighting', icon: '💡', label: 'Lighting Fault' },
+                          { id: 'equipment', icon: '🏸', label: 'Equipment / Net' },
+                          { id: 'cleanliness', icon: '🧹', label: 'Flooring / Hygiene' },
+                          { id: 'hvac', icon: '❄️', label: 'HVAC / Airflow' },
+                          { id: 'safety', icon: '⚠️', label: 'Safety Hazard' },
+                          { id: 'other', icon: '📝', label: 'Other Issue' },
+                        ].map(c => (
+                          <button
+                            type="button"
+                            key={c.id}
+                            onClick={() => {
+                              setCategory(c.id);
+                              if (c.id === 'lighting') {
+                                setDescription('Court 2 overhead high-bay floodlight is flickering severely; back court is too dim for safe play.');
+                              } else if (c.id === 'equipment') {
+                                setDescription('Court 1 center net cable is frayed and sagging below standard competition height.');
+                              }
+                            }}
+                            className={`p-2 rounded-lg border text-left flex items-center gap-1.5 transition-all ${
+                              category === c.id
+                                ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold'
+                                : 'border-slate-200 bg-white text-slate-600'
+                            }`}
+                          >
+                            <span>{c.icon}</span>
+                            <span>{c.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Specific Location Detail */}
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Specific Location / Court Zone (Optional)</label>
+                      <input
+                        type="text"
+                        value={locationDetail}
+                        onChange={e => setLocationDetail(e.target.value)}
+                        placeholder="e.g. Court 2 North End, Baseline side"
+                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+
+                    {/* Description */}
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Description of Issue</label>
+                      <textarea
+                        rows="3"
+                        required
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder="Describe the issue in detail..."
+                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                      ></textarea>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Your Name / Unit (Optional)</label>
+                      <input
+                        type="text"
+                        value={contact}
+                        onChange={e => setContact(e.target.value)}
+                        placeholder="Allows staff to follow up on inspection outcome"
+                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+
+                    <div className="p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg text-[10px] text-amber-900">
+                      <strong>Policy:</strong> Public QR-scanned submissions are filed as <strong>unverified observations</strong>. On-duty facilities staff will inspect the premises before converting to confirmed maintenance orders.
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-md transition-colors"
+                    >
+                      {isSubmitting ? 'Submitting Report...' : 'Confirm & Submit Report →'}
+                    </button>
+                  </form>
+                </div>
+              )}
+
+              {/* ── VIEW 4: CONFIRMATION ── */}
+              {currentView === 'confirmation' && submittedResult && (
+                <div className="space-y-4 text-center my-auto py-4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm animate-bounce">
+                    ✓
+                  </div>
+
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-900">Report Submitted Successfully!</h2>
+                    <p className="text-xs text-slate-500 mt-1">Thank you for helping maintain community amenities</p>
+                  </div>
+
+                  {/* Reference ID card */}
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2 text-left text-xs">
+                    <div className="flex justify-between items-center pb-2 border-b border-slate-200">
+                      <span className="text-slate-400">Tracking Reference ID</span>
+                      <span className="font-mono font-bold text-amber-600 text-sm">{submittedResult.referenceId}</span>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Facility ID</span>
+                      <span className="font-medium text-slate-700">{submittedResult.facilityId}</span>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Initial Status</span>
+                      <span className="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-bold">
+                        Unverified (Awaiting Staff Inspection)
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Submitted At</span>
+                      <span className="text-slate-600">{new Date(submittedResult.submittedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-900 text-left">
+                    <strong>Next Steps:</strong>
+                    <ul className="list-disc pl-4 mt-1 space-y-0.5 text-blue-800">
+                      <li>Transmitted immediately to the Operator Command Center.</li>
+                      <li>On-duty facilities staff will inspect the equipment on site.</li>
+                      <li>Confirmed defects will be scheduled for work orders and decision review.</li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2 pt-2">
+                    <button
+                      onClick={() => {
+                        setLookupId(submittedResult.referenceId);
+                        setCurrentView('lookup');
+                        handleLookup();
+                      }}
+                      className="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs rounded-xl"
+                    >
+                      Track Real-Time Progress
+                    </button>
+                    <button
+                      onClick={() => setCurrentView('facility')}
+                      className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs rounded-xl"
+                    >
+                      Back to Facility Page
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── VIEW 5: LOOKUP REPORT STATUS ── */}
+              {currentView === 'lookup' && (
+                <div className="space-y-4">
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-900">Track Report Progress</h2>
+                    <p className="text-xs text-slate-500">Enter your Reference ID to check inspection and maintenance status</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={lookupId}
+                      onChange={e => setLookupId(e.target.value)}
+                      placeholder="e.g. REP-..."
+                      className="flex-1 p-2.5 border border-slate-200 rounded-lg text-xs font-mono focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                    />
+                    <button
+                      onClick={handleLookup}
+                      className="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
+                    >
+                      Search
+                    </button>
+                  </div>
+
+                  {lookupError && (
+                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
+                      {lookupError}
+                    </div>
+                  )}
+
+                  {lookupResult && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 text-xs">
+                      <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                        <div>
+                          <span className="font-mono font-bold text-slate-800">{lookupResult.report_id}</span>
+                          <p className="text-[10px] text-slate-400 mt-0.5">{lookupResult.facility_name || lookupResult.facility_id}</p>
+                        </div>
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          lookupResult.status === 'verified_fault'
+                            ? 'bg-emerald-100 text-emerald-800'
+                            : lookupResult.status === 'dismissed'
+                            ? 'bg-slate-200 text-slate-600'
+                            : 'bg-amber-100 text-amber-800'
+                        }`}>
+                          {lookupResult.status === 'verified_fault' ? '✓ Verified Physical Fault' : lookupResult.status === 'dismissed' ? 'Dismissed' : 'Awaiting Staff Inspection'}
+                        </span>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] text-slate-400 block">Issue Description</span>
+                        <p className="text-slate-800 font-medium mt-0.5">{lookupResult.description}</p>
+                      </div>
+
+                      {lookupResult.verification_notes && (
+                        <div className="p-2.5 bg-emerald-50/80 border border-emerald-200 rounded-lg text-[11px] text-emerald-900">
+                          <strong>Staff Inspection Findings:</strong>
+                          <p className="mt-0.5">{lookupResult.verification_notes}</p>
+                          <span className="text-[9px] text-emerald-700 block mt-1">Inspected by: {lookupResult.verified_by} ({new Date(lookupResult.verified_at).toLocaleDateString()})</span>
+                        </div>
+                      )}
+
+                      {lookupResult.maintenance_id && (
+                        <div className="p-2.5 bg-blue-50 border border-blue-200 rounded-lg text-[11px] text-blue-900">
+                          <strong>Linked Maintenance Work Order:</strong> {lookupResult.maintenance_id} (In Progress)
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* ── VIEW 6: TARGETED QUESTION FLOW (INVITED SURVEY) ── */}
+              {currentView === 'targeted' && (
+                <div className="flex-1 flex flex-col justify-between">
+                  {/* STEP 0: INVITATION */}
+                  {targetedStep === 0 && (
+                    <div className="space-y-4">
+                      <div className="flex justify-center gap-2 mb-2">
+                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                      </div>
+
+                      <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                        🏛️
+                      </div>
+
+                      <div className="text-center">
+                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
+                          Invited Evidence Inquiry
+                        </span>
+                        <h2 className="text-xl font-bold text-slate-900 mt-1">
+                          Community Hall, Building 4
+                        </h2>
+                      </div>
+
+                      <p className="text-xs text-slate-600 leading-relaxed text-center px-1">
+                        You have been invited to share your experience with the Community Hall in Building 4. Your input serves as critical evidence to evaluate schedule alignment.
+                      </p>
+
+                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                        <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wide block">Cohort Qualification</span>
+                        <p className="text-xs font-semibold text-amber-900 mt-0.5">Long-term residents (3+ years), Building 4</p>
+                      </div>
+
+                      <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-xs text-slate-600">
+                        <div className="font-semibold text-slate-700 text-[11px]">Notice:</div>
+                        <div>• Exactly 1 focused question</div>
+                        <div>• Connects directly to township analytical review</div>
+                      </div>
+
+                      <button
+                        onClick={() => setTargetedStep(1)}
+                        className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-sm"
+                      >
+                        Continue →
+                      </button>
+                    </div>
+                  )}
+
+                  {/* STEP 1: CONTEXT */}
+                  {targetedStep === 1 && (
+                    <div className="space-y-4">
+                      <div className="flex justify-center gap-2 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                      </div>
+
+                      <h3 className="text-base font-bold text-slate-900 text-center">Background & Context</h3>
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed space-y-2">
+                        <p>The Community Hall in Building 4 has experienced a sustained multi-week utilization decline. The system is investigating whether this is caused by physical faults or schedule mismatch.</p>
+                        <p>Direct resident feedback provides the highest-value missing evidence to resolve this diagnostic uncertainty.</p>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setTargetedStep(0)}
+                          className="px-4 py-2.5 text-xs text-slate-500 hover:text-slate-800"
+                        >
+                          ← Back
+                        </button>
+                        <button
+                          onClick={() => setTargetedStep(2)}
+                          className="flex-1 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-sm"
+                        >
+                          Proceed to Question →
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* STEP 2: THE TARGETED QUESTION */}
+                  {targetedStep === 2 && (
+                    <div className="space-y-4">
+                      <div className="flex justify-center gap-2 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wide block">
+                          Targeted Evidence Question
+                        </span>
+                        <h3 className="text-sm font-bold text-slate-900 mt-1">
+                          How often does the current Community Hall schedule fit your needs?
+                        </h3>
+                      </div>
+
+                      <div className="space-y-2">
+                        {[
+                          'Almost always — I can usually book when I need to',
+                          'Sometimes — but I often find the slots I want are unavailable',
+                          "Rarely — the schedule doesn't match when I'm available",
+                          "I haven't tried to use the hall recently"
+                        ].map((opt, i) => (
+                          <div
+                            key={i}
+                            onClick={() => setTargetedAnswer(opt)}
+                            className={`p-3 rounded-xl border text-xs cursor-pointer transition-all ${
+                              targetedAnswer === opt
+                                ? 'border-amber-500 bg-amber-50 font-bold text-amber-950 shadow-sm'
+                                : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+                            }`}
+                          >
+                            {opt}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex gap-2 pt-2">
+                        <button
+                          onClick={() => setTargetedStep(1)}
+                          className="px-4 py-2.5 text-xs text-slate-500"
+                        >
+                          ← Back
+                        </button>
+                        <button
+                          disabled={!targetedAnswer || targetedSubmitting}
+                          onClick={handleTargetedSubmit}
+                          className={`flex-1 py-3 font-bold text-sm rounded-xl shadow-sm ${
+                            targetedAnswer && !targetedSubmitting
+                              ? 'bg-amber-500 hover:bg-amber-600 text-slate-950'
+                              : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                          }`}
+                        >
+                          {targetedSubmitting ? 'Recording Response...' : 'Submit Answer →'}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* STEP 3: TARGETED CONFIRMATION */}
+                  {targetedStep === 3 && (
+                    <div className="space-y-4 text-center my-auto py-6">
+                      <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                        ✓
+                      </div>
+                      <div>
+                        <h2 className="text-xl font-bold text-slate-900">Targeted Evidence Recorded!</h2>
+                        <p className="text-xs text-slate-500 mt-1">Persisted and integrated into the decision review pipeline</p>
+                      </div>
+
+                      <div className="p-4 bg-teal-50 border border-teal-200 rounded-xl text-left text-xs space-y-1">
+                        <span className="text-[10px] font-bold text-teal-800 uppercase block">Recorded Answer:</span>
+                        <p className="font-semibold text-slate-800">"{targetedAnswer}"</p>
+                        <span className="text-[10px] text-teal-700 block">Cohort: Long-term residents (3+ years), Building 4</span>
+                      </div>
+
+                      <a
+                        href="operator.html"
+                        className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-sm"
+                      >
+                        Inspect Operator Decision Impact ↗
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<ResidentApp />);
+  </script>
+</body>
+</html>

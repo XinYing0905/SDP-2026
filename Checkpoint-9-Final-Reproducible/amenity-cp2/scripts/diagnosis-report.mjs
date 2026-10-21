@@ -1,0 +1,25 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { diagnosisCases } from '../src/data/synthetic/diagnosis-cases.mjs';
+import { diagnosisParameters } from '../src/config/diagnosis.mjs';
+import { parameters } from '../src/config/change-detection.mjs';
+import { detectChange } from '../src/statistics/change-detection/detector.mjs';
+import { diagnoseCompeting } from '../src/diagnosis/competing-diagnosis.mjs';
+const directory = path.resolve(import.meta.dirname, '../../checkpoint-3-clarification');
+await fs.mkdir(directory, { recursive: true });
+const results = diagnosisCases.map(input => {
+  const upstream = detectChange(input.amenity, parameters);
+  const output = diagnoseCompeting({ changeResult: upstream, evidence: input.evidence });
+  const expected = { strong: input.expectedStrong, explanationSufficiency: input.canonicalCase === 'D' ? 'Insufficient Evidence' : input.expectedSufficiency, protectionContextSufficiency: input.canonicalCase === 'E' ? 'Insufficient Evidence' : 'Sufficient Evidence' };
+  const pass = output.evidenceSufficiency.explanationSufficiency.state === expected.explanationSufficiency && output.evidenceSufficiency.protectionContextSufficiency.state === expected.protectionContextSufficiency && expected.strong.every(name => output.diagnoses.find(d => d.name === name).supportLabel === 'Strong Support');
+  return { case: input.canonicalCase, input, upstream, output, expected, historicalFixtureMetadata: 'input.expectedSufficiency is the original CP3 combined expectation, superseded by the separated expectations above; evidence data are unchanged.', pass };
+});
+await fs.writeFile(path.join(directory, 'Diagnosis-Cases-A-G.json'), JSON.stringify({ label: 'Simulated diagnosis inputs and computed outputs; no production accuracy claim', parameters: diagnosisParameters, cases: results }, null, 2));
+await fs.writeFile(path.join(directory, 'Diagnosis-Provisional-Parameters.json'), JSON.stringify(diagnosisParameters, null, 2));
+const cohortExample = structuredClone(diagnosisCases.find(input => input.canonicalCase === 'C'));
+cohortExample.evidence.snapshotId = 'intermediate-cohort-example:snapshot';
+cohortExample.evidence.residentMix.sourceId = 'intermediate-cohort-example:residentMix';
+cohortExample.evidence.residentMix.populationAfter += 50;
+cohortExample.evidence.residentMix.cohorts.push({ cohortId: 'intermediate-1', residenceDuration: '6–24 months', occupancyStatus: 'Tenant', populationBefore: 50, populationAfter: 50, usersBefore: 15, usersAfter: 5, observedPeriods: 6, retainedFraction: 0.95 });
+await fs.writeFile(path.join(directory, 'Intermediate-Cohort-Example.json'), JSON.stringify({ label: 'Separate simulated representability example; original canonical cases unchanged', input: cohortExample, output: diagnoseCompeting({ changeResult: detectChange(cohortExample.amenity, parameters), evidence: cohortExample.evidence }) }, null, 2));
+console.log(JSON.stringify(results.map(r => ({ case: r.case, rawPoints: r.output.diagnoses.map(d => d.rawEvidenceSupport), relativeSupport: r.output.diagnoses.map(d => d.relativeEvidenceSupport), explanation: r.output.evidenceSufficiency.explanationSufficiency.state, protection: r.output.evidenceSufficiency.protectionContextSufficiency.state, pass: r.pass })), null, 2));

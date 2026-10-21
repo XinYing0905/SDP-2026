@@ -1,0 +1,82 @@
+{
+  "selfContained": true,
+  "externalScripts": 0,
+  "relativeHtmlDependencies": 0,
+  "scenarioRoutes": 15,
+  "checks": [
+    {
+      "route": "product",
+      "passed": true
+    },
+    {
+      "route": "#qa/A",
+      "passed": true
+    },
+    {
+      "route": "#qa/B",
+      "passed": true
+    },
+    {
+      "route": "#qa/C",
+      "passed": true
+    },
+    {
+      "route": "#qa/D",
+      "passed": true
+    },
+    {
+      "route": "#qa/E",
+      "passed": true
+    },
+    {
+      "route": "#qa/F",
+      "passed": true
+    },
+    {
+      "route": "#qa/G",
+      "passed": true
+    },
+    {
+      "route": "#qa/H",
+      "passed": true
+    },
+    {
+      "route": "#qa/I",
+      "passed": true
+    },
+    {
+      "route": "#qa/J",
+      "passed": true
+    },
+    {
+      "route": "#qa/K",
+      "passed": true
+    },
+    {
+      "route": "#qa/L",
+      "passed": true
+    },
+    {
+      "route": "#qa/M",
+      "passed": true
+    },
+    {
+      "route": "#qa/N",
+      "passed": true
+    },
+    {
+      "route": "#qa/O",
+      "passed": true
+    },
+    {
+      "route": "product/page-2-adverse-summary",
+      "passed": true
+    },
+    {
+      "route": "validation",
+      "passed": true
+    }
+  ],
+  "allPassed": true,
+  "method": "Exact delivered inline script evaluated in Node VM with a minimal DOM adapter; route rendering and click handler checked. This is not pixel/browser visual QA."
+}

@@ -1,0 +1,14 @@
+{
+  "name": "adi-township-system",
+  "version": "1.0.0",
+  "description": "Amenity Decision Intelligence - Unified Resident & Operator Platform",
+  "type": "module",
+  "main": "server/app.mjs",
+  "scripts": {
+    "start": "node server/app.mjs",
+    "dev": "node --watch server/app.mjs"
+  },
+  "keywords": ["amenity", "decision-intelligence", "smart-township"],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amenity Decision Intelligence — Operator Command Center</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React & Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a'
+            },
+            amber: {
+              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309'
+            },
+            danger: {
+              50: '#fef2f2', 100: '#fee2e2', 400: '#f87171', 500: '#ef4444',
+              600: '#dc2626', 700: '#b91c1c'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function SufficiencyBar({ label, level }) {
+      const colors = {
+        Low: 'bg-amber-400',
+        Partial: 'bg-teal-400',
+        Moderate: 'bg-teal-500',
+        High: 'bg-teal-600'
+      };
+      const widths = {
+        Low: 'w-1/4',
+        Partial: 'w-2/4',
+        Moderate: 'w-3/4',
+        High: 'w-full'
+      };
+
+      return (
+        <div className="space-y-1">
+          <div className="flex justify-between text-xs font-medium">
+            <span className="text-slate-600">{label}</span>
+            <span className="font-semibold text-slate-800">{level || 'Low'}</span>
+          </div>
+          <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div className={`h-full ${colors[level] || 'bg-slate-300'} ${widths[level] || 'w-1/4'} transition-all duration-300`}></div>
+          </div>
+        </div>
+      );
+    }
+
+    const INTERVENTION_PATHWAYS = [
+      {
+        type: 'Monitor',
+        description: 'Continue collecting usage data for a further 4–6 weeks without intervention. Appropriate if evidence remains insufficient or signals are ambiguous.',
+        isRecommended: false
+      },
+      {
+        type: 'Repair / Restore',
+        description: 'Address confirmed operational or physical faults (e.g. lighting ballast, flooring defects). Dispatches maintenance team for prompt physical restoration.',
+        isRecommended: true,
+        recommendedFor: 'court-badminton-1'
+      },
+      {
+        type: 'Reprogramme',
+        description: 'Revise booking schedule and session structure to better align with resident availability while retaining current community use.',
+        isRecommended: true,
+        recommendedFor: 'community-hall-4'
+      },
+      {
+        type: 'Validate',
+        description: 'Commission a brief structured physical inspection or extended cohort comparison to close remaining evidence gaps before acting.',
+        isRecommended: false
+      },
+      {
+        type: 'Temporary Alternative-Use Pilot',
+        description: 'Trial a new use format for the facility on a time-limited basis to test demand before committing to permanent change.',
+        isRecommended: false
+      },
+      {
+        type: 'Preserve',
+        description: 'Maintain the space in its current community purpose without changes. Protection context requires preserving township social capacity.',
+        isRecommended: false,
+        isProtectionSupported: true
+      }
+    ];
+
+    const HISTORICAL_CASES = [
+      {
+        id: 'hist-001',
+        name: 'Riverside Community Room',
+        location: 'Riverside Estate, Phase 3',
+        period: '2022–2023',
+        supportLabel: 'Historically supportive pattern',
+        whySimilar: 'Multi-week booking decline in a shared room with no initial maintenance faults. Configuration mismatch diagnosis.',
+        whatHappened: 'Schedule reprogrammed toward evenings and weekends. Usage recovered from 7 to 16 sessions/week over 10 weeks.',
+        goalFinding: 'Utilisation target met at week 10. Sustained for 6 months post-review.',
+        protectionFinding: 'No protection breach. Room remained in shared community use.',
+        hasProtectionBreach: false
+      },
+      {
+        id: 'hist-002',
+        name: 'Northgate Hall',
+        location: 'Northgate Development, Block B',
+        period: '2021–2022',
+        supportLabel: 'Mixed historical evidence',
+        whySimilar: 'Sustained decline over 10 weeks. Initial hypothesis of configuration mismatch.',
+        whatHappened: 'Reprogramme implemented but take-up remained low. Secondary physical ventilation fault discovered at week 8.',
+        goalFinding: 'Target not met initially until secondary physical issue resolved.',
+        protectionFinding: 'No protection breach recorded.',
+        hasProtectionBreach: false
+      },
+      {
+        id: 'hist-003',
+        name: 'Oakwood Court Pavilion',
+        location: 'Oakwood Sector 4',
+        period: '2020–2021',
+        supportLabel: 'Precedent with Breach Warning',
+        whySimilar: 'Court lighting outage caused usage slump; commercial operator restricted resident evening hours without consultation.',
+        whatHappened: 'Court access commercialized, violating township community preservation charter.',
+        goalFinding: 'Revenue met but community satisfaction dropped 40%.',
+        protectionFinding: 'Protection Breach: resident dedicated hours reduced below required baseline.',
+        hasProtectionBreach: true
+      }
+    ];
+
+    function OperatorApp() {
+      // Top Navigation: 'overview' | 'facilities' | 'reports' | 'reviews' | 'outcomes'
+      const [currentNav, setCurrentNav] = useState('overview');
+
+      // Sub-screen for Decision Review deep dive
+      const [reviewScreen, setReviewScreen] = useState('summary'); // 'summary' | 'gaps' | 'interventions' | 'approval'
+      const [selectedFacilityId, setSelectedFacilityId] = useState('court-badminton-1');
+
+      // Data States
+      const [overviewData, setOverviewData] = useState(null);
+      const [reports, setReports] = useState([]);
+      const [maintenanceList, setMaintenanceList] = useState([]);
+      const [facilityDetails, setFacilityDetails] = useState(null);
+      const [loading, setLoading] = useState(true);
+
+      // Staff Verification Modal/Form State
+      const [verifyingReport, setVerifyingReport] = useState(null);
+      const [verificationNotes, setVerificationNotes] = useState('');
+      const [verifierName, setVerifierName] = useState('Chen Wei (Duty Facilities Tech)');
+      const [actionInProgress, setActionInProgress] = useState(false);
+
+      // Selected intervention in review
+      const [selectedIntervention, setSelectedIntervention] = useState(null);
+      const [approvalSuccess, setApprovalSuccess] = useState(false);
+
+      const refreshData = () => {
+        Promise.all([
+          fetch('/api/facilities').then(r => r.json()),
+          fetch('/api/reports').then(r => r.json()),
+          fetch('/api/maintenance').then(r => r.json()),
+          fetch(`/api/facilities/${selectedFacilityId}`).then(r => r.json())
+        ])
+          .then(([facOverview, reportList, maintList, facDetail]) => {
+            setOverviewData(facOverview);
+            setReports(reportList);
+            setMaintenanceList(maintList);
+            setFacilityDetails(facDetail);
+            setLoading(false);
+          })
+          .catch(err => {
+            console.error('Failed to load data:', err);
+            setLoading(false);
+          });
+      };
+
+      useEffect(() => {
+        refreshData();
+        const interval = setInterval(refreshData, 3500);
+        return () => clearInterval(interval);
+      }, [selectedFacilityId]);
+
+      const handleVerifyReport = (report, action = 'verify_fault') => {
+        setActionInProgress(true);
+        fetch(`/api/reports/${report.report_id}/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action,
+            verifiedBy: verifierName,
+            verificationNotes: verificationNotes || (action === 'verify_fault' ? 'On-site physical inspection confirmed: Court 2 high-bay LED luminaire ballast has failed with severe flickering and inadequate illumination. Replacement scheduled.' : 'On-site inspection completed. No operational defects found.')
+          })
+        })
+          .then(res => res.json())
+          .then(res => {
+            setActionInProgress(false);
+            setVerifyingReport(null);
+            setVerificationNotes('');
+            refreshData();
+          })
+          .catch(err => {
+            setActionInProgress(false);
+            alert('Verification failed: ' + err.message);
+          });
+      };
+
+      const handleApprovePlan = () => {
+        fetch(`/api/reviews/${selectedFacilityId}/approve`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            approvedBy: 'Regional Operations Lead',
+            note: 'Formal plan approval recorded. Execution requires separate operator sign-off.'
+          })
+        })
+          .then(res => res.json())
+          .then(() => {
+            setApprovalSuccess(true);
+            refreshData();
+          });
+      };
+
+      const handleResetDemo = () => {
+        if (!confirm('Reset township database to fresh default state?')) return;
+        fetch('/api/reset-demo', { method: 'POST' })
+          .then(r => r.json())
+          .then(() => {
+            setApprovalSuccess(false);
+            setSelectedIntervention(null);
+            refreshData();
+          });
+      };
+
+      const badmintonFacility = overviewData?.facilities?.find(f => f.facility_id === 'court-badminton-1');
+      const hallFacility = overviewData?.facilities?.find(f => f.facility_id === 'community-hall-4');
+      const currentReview = facilityDetails?.review;
+
+      return (
+        <div className="flex h-screen overflow-hidden bg-slate-50 font-sans">
+          {/* SIDEBAR NAVIGATION */}
+          <aside className="w-64 bg-slate-900 flex flex-col shrink-0 border-r border-slate-800">
+            {/* Logo */}
+            <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-teal-500 text-white font-black flex items-center justify-center text-base shadow-md">
+                  A
+                </div>
+                <div>
+                  <h1 className="text-white text-sm font-bold tracking-tight">ADI Township</h1>
+                  <p className="text-[11px] text-teal-400 font-medium">Amenity Decision Intelligence</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Focus Case Switcher */}
+            <div className="px-4 py-3 border-b border-slate-800/80 bg-slate-950/50">
+              <span className="text-[10px] font-semibold tracking-wider uppercase text-slate-400 block mb-1">
+                Active Focus Case
+              </span>
+              <select
+                value={selectedFacilityId}
+                onChange={e => {
+                  setSelectedFacilityId(e.target.value);
+                  setReviewScreen('summary');
+                  setApprovalSuccess(false);
+                }}
+                className="w-full bg-slate-800 border border-slate-700 rounded-lg text-xs text-white px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-teal-500"
+              >
+                <option value="court-badminton-1">🏸 Badminton Court (Milestone 1)</option>
+                <option value="community-hall-4">🏛️ Community Hall (Schedule Case)</option>
+                <option value="tennis-court-west">🎾 Tennis Court (Baseline)</option>
+                <option value="multipurpose-room-d">🛠️ Multipurpose Room D (Maintenance)</option>
+              </select>
+            </div>
+
+            {/* Navigation items */}
+            <nav className="flex-1 p-3 space-y-1 overflow-y-auto text-xs font-medium">
+              {[
+                { id: 'overview', icon: '📊', label: 'Overview' },
+                { id: 'facilities', icon: '🏛️', label: 'Facilities' },
+                { 
+                  id: 'reports', 
+                  icon: '🔔', 
+                  label: 'Reports & Maintenance', 
+                  hasPending: overviewData?.totals?.unverifiedReportsCount > 0
+                },
+                { id: 'reviews', icon: '⚙️', label: 'Decision Reviews' },
+                { id: 'outcomes', icon: '📜', label: 'Outcomes & History' }
+              ].map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentNav(item.id)}
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-left ${
+                    currentNav === item.id
+                      ? 'bg-teal-600 text-white font-bold shadow-sm'
+                      : 'text-slate-400 hover:bg-slate-800/70 hover:text-slate-200'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </span>
+                  {item.hasPending && (
+                    <span
+                      className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-sm"
+                      title={`${overviewData?.totals?.unverifiedReportsCount || 0} pending reports`}
+                    ></span>
+                  )}
+                </button>
+              ))}
+            </nav>
+
+            {/* Bottom Status Panel */}
+            <div className="p-3 border-t border-slate-800 space-y-2 bg-slate-950/40">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-[11px] text-slate-400">Live Sync</span>
+                <span className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-mono">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  SQLite WAL Connected
+                </span>
+              </div>
+
+              <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between">
+                <a
+                  href={`resident.html?facilityId=${selectedFacilityId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-amber-400 hover:text-amber-300 underline underline-offset-2 flex items-center gap-1 font-semibold"
+                >
+                  <span>📱 Resident QR Tab</span> ↗
+                </a>
+                <button
+                  onClick={handleResetDemo}
+                  className="text-[11px] text-slate-400 hover:text-rose-400"
+                  title="Reset SQLite Database"
+                >
+                  Reset DB
+                </button>
+              </div>
+            </div>
+          </aside>
+
+          {/* MAIN CONTENT WORKSPACE */}
+          <main className="flex-1 overflow-y-auto p-8 max-w-6xl mx-auto space-y-6">
+            
+            {/* ══════════════════════════════════════════════════════════════
+                TAB 1: OVERVIEW (DASHBOARD)
+            ══════════════════════════════════════════════════════════════ */}
+            {currentNav === 'overview' && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-black text-slate-900 tracking-tight">Township Amenity Intelligence Center</h2>
+                    <p className="text-xs text-slate-500 mt-1">
+                      Maplewood Township · 12 Monitored Amenities, QR Incident Verification & Evidentiary Decision Pipeline
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setCurrentNav('reports')}
+                      className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5"
+                    >
+                      <span>🔔</span>
+                      <span>Review Pending Reports ({overviewData?.totals?.unverifiedReportsCount || 0})</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 5 Computed KPI Cards */}
+                <div className="grid grid-cols-5 gap-3.5">
+                  <div className="p-4 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Monitored Facilities</span>
+                    <p className="text-2xl font-black text-slate-800 mt-1">
+                      {overviewData?.totals?.totalFacilities || 12}
+                    </p>
+                    <span className="text-[10px] text-slate-400">Enrolled in digital profile</span>
+                  </div>
+
+                  <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 block">Unverified Reports</span>
+                    <p className="text-2xl font-black text-amber-900 mt-1">
+                      {overviewData?.totals?.unverifiedReportsCount || 0}
+                    </p>
+                    <span className="text-[10px] text-amber-700">Resident claims pending check</span>
+                  </div>
+
+                  <div className="p-4 bg-teal-50 border border-teal-200 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700 block">Flagged for Action</span>
+                    <p className="text-2xl font-black text-teal-900 mt-1">
+                      {overviewData?.totals?.flaggedForAction || 0}
+                    </p>
+                    <span className="text-[10px] text-teal-700">Active anomalies or reviews</span>
+                  </div>
+
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">Active Maintenance</span>
+                    <p className="text-2xl font-black text-blue-900 mt-1">
+                      {overviewData?.totals?.activeMaintenanceCount || 0}
+                    </p>
+                    <span className="text-[10px] text-blue-700">Dispatched work orders</span>
+                  </div>
+
+                  <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Approved Safe Plans</span>
+                    <p className="text-2xl font-black text-teal-400 mt-1">
+                      {overviewData?.totals?.activeSafePlans || 0}
+                    </p>
+                    <span className="text-[10px] text-slate-400">Formally audited plans</span>
+                  </div>
+                </div>
+
+                {/* Focus Case 1: Badminton Court (Milestone 1 Highlight) */}
+                <div className="bg-white border-2 border-amber-500 rounded-2xl p-6 shadow-sm">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🏸</span>
+                        <h3 className="text-lg font-bold text-slate-900">
+                          {badmintonFacility?.name}
+                        </h3>
+                        <span className="bg-amber-100 text-amber-900 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                          Milestone 1 Walkthrough Case
+                        </span>
+                        {badmintonFacility?.unverifiedReports > 0 && (
+                          <span className="bg-rose-500 text-white text-xs px-2.5 py-0.5 rounded-full font-bold animate-pulse">
+                            New Report Received ({badmintonFacility.unverifiedReports})
+                          </span>
+                        )}
+                        {badmintonFacility?.verifiedFaults > 0 && (
+                          <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                            Hardware Defect Confirmed
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1">
+                        {badmintonFacility?.location} · {badmintonFacility?.type}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href="resident.html?facilityId=court-badminton-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold rounded-xl shadow-sm flex items-center gap-1"
+                      >
+                        <span>📱 Resident QR View</span> ↗
+                      </a>
+                      <button
+                        onClick={() => {
+                          setSelectedFacilityId('court-badminton-1');
+                          setCurrentNav('reviews');
+                        }}
+                        className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                      >
+                        Deep-Dive Review →
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-3 gap-4 text-xs">
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Resident Reports</span>
+                      <p className="text-slate-800 font-semibold mt-0.5">
+                        {badmintonFacility?.reportsTotal || 0} Total ({badmintonFacility?.unverifiedReports || 0} Pending, {badmintonFacility?.verifiedFaults || 0} Confirmed Faults)
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Diagnostic Status</span>
+                      <p className="text-teal-700 font-bold mt-0.5">
+                        {badmintonFacility?.verifiedFaults > 0 ? 'Confirmed Hardware Defect (High Sufficiency)' : 'Monitoring / Awaiting On-Site Verification'}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Recommended Pathway</span>
+                      <p className="text-slate-700 font-semibold mt-0.5">
+                        Repair / Restore (Luminaire ballast replacement)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Focus Case 2: Community Hall (Schedule Case) */}
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🏛️</span>
+                        <h3 className="text-lg font-bold text-slate-900">
+                          {hallFacility?.name}
+                        </h3>
+                        <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                          CP6-CP8 Schedule Alignment Case
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1">
+                        {hallFacility?.location} · Sustained 8-week booking decline (18 to 8 sessions/week)
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setSelectedFacilityId('community-hall-4');
+                        setCurrentNav('reviews');
+                      }}
+                      className="px-4 py-2 border border-teal-600 text-teal-700 hover:bg-teal-50 text-xs font-bold rounded-xl"
+                    >
+                      Inspect Schedule Review →
+                    </button>
+                  </div>
+                </div>
+
+                {/* Recent Incoming Reports Stream */}
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-bold text-slate-900">Recent Resident Reports Stream</h4>
+                    <button
+                      onClick={() => setCurrentNav('reports')}
+                      className="text-xs text-teal-600 hover:text-teal-700 font-semibold"
+                    >
+                      View All Reports ({reports.length}) →
+                    </button>
+                  </div>
+
+                  {reports.length === 0 ? (
+                    <div className="text-center py-6 text-slate-400 text-xs">
+                      No reports recorded yet. Open Resident Mobile to submit an issue via QR code!
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {reports.slice(0, 3).map(r => (
+                        <div
+                          key={r.report_id}
+                          className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs"
+                        >
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-bold text-slate-800">{r.report_id}</span>
+                              <span className="font-semibold text-slate-700">[{r.facility_name || r.facility_id}]</span>
+                              <span className="text-slate-500">{r.description}</span>
+                            </div>
+                            <span className="text-[10px] text-slate-400 mt-0.5 block">
+                              Submitted: {new Date(r.submitted_at).toLocaleTimeString()} · Zone: {r.location_detail || 'On-site'}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                              r.status === 'verified_fault'
+                                ? 'bg-teal-100 text-teal-800'
+                                : r.status === 'dismissed'
+                                ? 'bg-slate-200 text-slate-600'
+                                : 'bg-amber-100 text-amber-800 animate-pulse'
+                            }`}>
+                              {r.status === 'verified_fault' ? '✓ Verified Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Unverified (Pending)'}
+                            </span>
+                            {r.status === 'unverified' && (
+                              <button
+                                onClick={() => {
+                                  setVerifyingReport(r);
+                                  setCurrentNav('reports');
+                                }}
+                                className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-[11px]"
+                              >
+                                Verify
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ══════════════════════════════════════════════════════════════
+                TAB 2: FACILITIES (12 DIRECTORY)
+            ══════════════════════════════════════════════════════════════ */}
+            {currentNav === 'facilities' && (
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Township Monitored Facilities (12)</h2>
+                  <p className="text-xs text-slate-500 mt-1">Roster of all 12 monitored amenities with real-time operational status</p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
+                  {overviewData?.facilities?.map(fac => (
+                    <div
+                      key={fac.facility_id}
+                      className={`p-5 rounded-2xl border bg-white shadow-sm transition-all space-y-3 ${
+                        fac.facility_id === selectedFacilityId ? 'border-teal-500 ring-2 ring-teal-500/20' : 'border-slate-200 hover:border-slate-300'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <h3 className="font-bold text-slate-900 text-sm">{fac.name}</h3>
+                            <span className="text-[10px] font-mono text-slate-400">({fac.tier})</span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 mt-0.5">{fac.type}</p>
+                        </div>
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          fac.status === 'maintenance'
+                            ? 'bg-rose-100 text-rose-700'
+                            : fac.status === 'monitored'
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-emerald-100 text-emerald-800'
+                        }`}>
+                          {fac.status === 'maintenance' ? 'Maintenance' : fac.status === 'monitored' ? 'Under Review' : 'Open'}
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                        {fac.description}
+                      </p>
+
+                      <div className="pt-2 border-t border-slate-100 text-[11px] grid grid-cols-2 gap-2 text-slate-500">
+                        <div>
+                          <span>Reports: </span>
+                          <strong className="text-slate-800">{fac.reportsTotal}</strong> ({fac.unverifiedReports} unverified)
+                        </div>
+                        <div>
+                          <span>Work Orders: </span>
+                          <strong className="text-slate-800">{fac.activeMaintenance}</strong>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 pt-1">
+                        <button
+                          onClick={() => {
+                            setSelectedFacilityId(fac.facility_id);
+                            setCurrentNav('reviews');
+                          }}
+                          className="flex-1 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold text-xs rounded-lg transition-colors text-center"
+                        >
+                          Review Details →
+                        </button>
+                        <a
+                          href={`resident.html?facilityId=${fac.facility_id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs rounded-lg transition-colors"
+                          title="Open Resident Mobile View"
+                        >
+                          📱 QR
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ══════════════════════════════════════════════════════════════
+                TAB 3: REPORTS & MAINTENANCE
+            ══════════════════════════════════════════════════════════════ */}
+            {currentNav === 'reports' && (
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Resident Reports & Maintenance Flow</h2>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Process resident reports. Policy: Resident submissions are unverified preliminary claims; staff on-site inspection is strictly required before defect confirmation.
+                  </p>
+                </div>
+
+                {/* Staff Verification Action Dialog / Banner */}
+                {verifyingReport && (
+                  <div className="bg-amber-50 border-2 border-amber-500 rounded-2xl p-5 space-y-3 shadow-md animate-fade-in">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">🛠️</span>
+                        <h3 className="font-bold text-amber-950 text-sm">
+                          On-Site Inspection Verification: {verifyingReport.report_id} ({verifyingReport.facility_name})
+                        </h3>
+                      </div>
+                      <button
+                        onClick={() => setVerifyingReport(null)}
+                        className="text-xs text-amber-900 hover:text-amber-950 font-bold"
+                      >
+                        ✕ Cancel
+                      </button>
+                    </div>
+
+                    <div className="p-3 bg-white/80 rounded-xl border border-amber-200 text-xs text-slate-700 space-y-1">
+                      <p><strong>Resident Claim:</strong> {verifyingReport.description}</p>
+                      <p className="text-[11px] text-slate-500">Zone: {verifyingReport.location_detail || 'On-site'} · Contact: {verifyingReport.contact || 'Anonymous'}</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <label className="font-bold text-slate-700 block mb-1">Inspector / Technician Name</label>
+                        <input
+                          type="text"
+                          value={verifierName}
+                          onChange={e => setVerifierName(e.target.value)}
+                          className="w-full p-2 border border-slate-300 rounded-lg"
+                        />
+                      </div>
+                      <div>
+                        <label className="font-bold text-slate-700 block mb-1">On-Site Finding & Technical Notes</label>
+                        <input
+                          type="text"
+                          value={verificationNotes}
+                          onChange={e => setVerificationNotes(e.target.value)}
+                          placeholder="On-site inspection confirmed luminaire ballast failure and severe flickering..."
+                          className="w-full p-2 border border-slate-300 rounded-lg"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end gap-2 pt-1">
+                      <button
+                        disabled={actionInProgress}
+                        onClick={() => handleVerifyReport(verifyingReport, 'dismiss')}
+                        className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs rounded-xl"
+                      >
+                        Dismiss as Non-Defect
+                      </button>
+                      <button
+                        disabled={actionInProgress}
+                        onClick={() => handleVerifyReport(verifyingReport, 'verify_fault')}
+                        className="px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
+                      >
+                        <span>✓</span>
+                        <span>{actionInProgress ? 'Verifying...' : 'Confirm Physical Fault & Dispatch Work Order'}</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Reports Stream */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-slate-800 text-sm">All Incident Reports ({reports.length})</h3>
+                    <span className="text-xs text-slate-400">Persisted in SQLite database</span>
+                  </div>
+
+                  {reports.length === 0 ? (
+                    <div className="p-8 bg-white border border-slate-200 rounded-2xl text-center text-slate-400 text-xs">
+                      No reports found. Please open Resident Mobile to submit an issue.
+                    </div>
+                  ) : (
+                    reports.map(r => (
+                      <div
+                        key={r.report_id}
+                        className={`p-4 bg-white border rounded-2xl transition-all space-y-2 ${
+                          r.status === 'unverified'
+                            ? 'border-amber-400 shadow-sm'
+                            : 'border-slate-200'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-bold text-slate-900 text-xs">{r.report_id}</span>
+                              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                                {r.facility_name} ({r.facility_id})
+                              </span>
+                              <span className="text-[10px] text-slate-400">
+                                {new Date(r.submitted_at).toLocaleString()}
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-800 font-medium mt-1">
+                              {r.description}
+                            </p>
+                            {r.location_detail && (
+                              <p className="text-[11px] text-slate-500">Zone: {r.location_detail} · Contact: {r.contact || 'Not provided'}</p>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
+                              r.status === 'verified_fault'
+                                ? 'bg-teal-100 text-teal-800'
+                                : r.status === 'dismissed'
+                                ? 'bg-slate-200 text-slate-600'
+                                : 'bg-amber-100 text-amber-800 animate-pulse'
+                            }`}>
+                              {r.status === 'verified_fault' ? '✓ Verified Physical Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Unverified (Pending Inspection)'}
+                            </span>
+
+                            {r.status === 'unverified' && (
+                              <button
+                                onClick={() => setVerifyingReport(r)}
+                                className="px-3 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
+                              >
+                                Inspect on Site
+                              </button>
+                            )}
+                          </div>
+                        </div>
+
+                        {r.verification_notes && (
+                          <div className="pt-2 border-t border-slate-100 text-[11px] bg-slate-50 p-2.5 rounded-xl flex items-center justify-between text-slate-600">
+                            <div>
+                              <strong>Staff Findings:</strong> {r.verification_notes}
+                            </div>
+                            <span className="text-slate-400">Inspected by: {r.verified_by} ({r.verified_at?.slice(0, 10)})</span>
+                          </div>
+                        )}
+
+                        {r.maintenance_id && (
+                          <div className="text-[11px] text-blue-700 bg-blue-50/70 px-3 py-1 rounded-lg flex items-center justify-between">
+                            <span>Work Order: <strong>{r.maintenance_id}</strong> (Dispatched)</span>
+                            <button
+                              onClick={() => {
+                                setSelectedFacilityId(r.facility_id);
+                                setCurrentNav('reviews');
+                              }}
+                              className="font-bold underline"
+                            >
+                              Inspect Facility Decision Review ↗
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {/* Maintenance Work Orders Table */}
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
+                  <h3 className="font-bold text-slate-800 text-sm">Active Maintenance Work Orders</h3>
+                  {maintenanceList.length === 0 ? (
+                    <div className="text-center py-4 text-slate-400 text-xs">No active maintenance work orders.</div>
+                  ) : (
+                    <div className="space-y-2">
+                      {maintenanceList.map(m => (
+                        <div key={m.maintenance_id} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono font-bold text-blue-700">{m.maintenance_id}</span>
+                              <span className="font-semibold text-slate-800">{m.title}</span>
+                              <span className="text-slate-500">[{m.facility_name}]</span>
+                            </div>
+                            <span className="text-[10px] text-slate-400 block mt-0.5">
+                              Assignee: {m.assignee} · Projected Downtime: {m.downtime_hours} hrs · {m.notes}
+                            </span>
+                          </div>
+                          <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px]">
+                            {m.status.toUpperCase()}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ══════════════════════════════════════════════════════════════
+                TAB 4: DECISION REVIEWS
+            ══════════════════════════════════════════════════════════════ */}
+            {currentNav === 'reviews' && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-xs text-teal-600 font-bold uppercase tracking-wider">
+                      Decision Intelligence Engine
+                    </span>
+                    <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+                      {facilityDetails?.facility?.name}
+                    </h2>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {facilityDetails?.facility?.location} · Evidence Version: v{currentReview?.evidenceVersion || 1}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-1.5 bg-slate-200/60 p-1 rounded-xl text-xs font-semibold">
+                    {[
+                      { id: 'summary', label: '1. Diagnosis & Sufficiency' },
+                      { id: 'gaps', label: '2. Evidence Gaps' },
+                      { id: 'interventions', label: '3. Safe Pathways' },
+                      { id: 'approval', label: '4. Plan Approval' }
+                    ].map(st => (
+                      <button
+                        key={st.id}
+                        onClick={() => setReviewScreen(st.id)}
+                        className={`px-3 py-1.5 rounded-lg transition-all ${
+                          reviewScreen === st.id
+                            ? 'bg-white text-slate-900 font-bold shadow-sm'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {st.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Sub-screen 1: Summary & Diagnosis */}
+                {reviewScreen === 'summary' && currentReview && (
+                  <div className="space-y-5">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-2 shadow-sm">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Observed Anomaly Signal</span>
+                      <h3 className="text-base font-bold text-slate-900">{currentReview.primarySignal}</h3>
+                      <div className="text-xs text-slate-600 space-y-1 pt-1">
+                        {currentReview.secondarySignals?.map((sig, i) => (
+                          <div key={i} className="flex items-center gap-1.5">
+                            <span className="text-teal-600 font-bold">•</span>
+                            <span>{sig}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-white border-2 border-teal-500 rounded-2xl p-6 space-y-4 shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-2xl">⚙️</span>
+                          <h3 className="text-lg font-bold text-slate-900">{currentReview.diagnosis?.label}</h3>
+                        </div>
+                        <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                          Live Evaluated Diagnosis
+                        </span>
+                      </div>
+
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        {currentReview.diagnosis?.rationale}
+                      </p>
+
+                      <div className="pt-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Key Diagnostic Factors</span>
+                        <ul className="space-y-1.5 text-xs text-slate-700">
+                          {currentReview.diagnosis?.keyFactors?.map((f, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="text-teal-600 font-bold">✓</span>
+                              <span>{f}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Sufficiency Assessment</h4>
+                      <SufficiencyBar label="Explanation Sufficiency" level={currentReview.diagnosis?.explanationSufficiency} />
+                      <SufficiencyBar label="Protection Context Sufficiency" level={currentReview.diagnosis?.protectionSufficiency} />
+                    </div>
+
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => setReviewScreen('gaps')}
+                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                      >
+                        Inspect Evidence Gaps →
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Sub-screen 2: Evidence Gaps */}
+                {reviewScreen === 'gaps' && currentReview && (
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-base font-bold text-slate-900">Ranked Missing Evidence</h3>
+                      <p className="text-xs text-slate-500">Gaps prioritized by analytical value in resolving diagnosis uncertainty.</p>
+                    </div>
+
+                    <div className="space-y-3">
+                      {currentReview.evidenceGaps?.map(gap => (
+                        <div
+                          key={gap.id}
+                          className={`p-5 rounded-2xl border-2 transition-all space-y-2 ${
+                            gap.status === 'collected'
+                              ? 'bg-emerald-50/60 border-emerald-300'
+                              : gap.isHighestValue
+                              ? 'bg-teal-50/70 border-teal-500 shadow-sm'
+                              : 'bg-white border-slate-200'
+                          }`}
+                        >
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <h4 className="text-sm font-bold text-slate-900">{gap.label}</h4>
+                                {gap.status === 'collected' ? (
+                                  <span className="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                    ✓ Collected & Verified
+                                  </span>
+                                ) : gap.isHighestValue ? (
+                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                    Highest-Value Evidence
+                                  </span>
+                                ) : null}
+                              </div>
+                              <p className="text-xs text-slate-600 mt-1">{gap.description}</p>
+                            </div>
+                            <span className="text-xs font-mono text-slate-400">Rank #{gap.rank}</span>
+                          </div>
+
+                          {gap.source === 'resident input' && gap.status !== 'collected' && (
+                            <div className="pt-2 border-t border-teal-200 flex items-center justify-between">
+                              <span className="text-xs text-teal-800">Dispatch targeted inquiry to long-term resident cohort:</span>
+                              <a
+                                href="resident.html?mode=targeted"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg"
+                              >
+                                Open Targeted Survey ↗
+                              </a>
+                            </div>
+                          )}
+
+                          {gap.source === 'physical inspection' && gap.status !== 'collected' && (
+                            <div className="pt-2 border-t border-amber-200 flex items-center justify-between">
+                              <span className="text-xs text-amber-900">Physical on-site inspection required:</span>
+                              <button
+                                onClick={() => setCurrentNav('reports')}
+                                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-lg"
+                              >
+                                Go to Inspection Queue →
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-between pt-2">
+                      <button onClick={() => setReviewScreen('summary')} className="text-xs text-slate-500">← Back to Diagnosis</button>
+                      <button
+                        onClick={() => setReviewScreen('interventions')}
+                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                      >
+                        Select Safe Interventions →
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Sub-screen 3: Interventions */}
+                {reviewScreen === 'interventions' && (
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-base font-bold text-slate-900">7 Safe Intervention Pathways</h3>
+                      <p className="text-xs text-slate-500">Pathways recommended strictly according to verified evidence sufficiency.</p>
+                    </div>
+
+                    <div className="space-y-3">
+                      {INTERVENTION_PATHWAYS.map(p => {
+                        const isRecommended = p.recommendedFor === selectedFacilityId || (!p.recommendedFor && p.isRecommended);
+                        const isSelected = selectedIntervention === p.type || (!selectedIntervention && isRecommended);
+
+                        return (
+                          <div
+                            key={p.type}
+                            onClick={() => setSelectedIntervention(p.type)}
+                            className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                              isSelected
+                                ? 'bg-teal-50 border-teal-600 shadow-sm'
+                                : 'bg-white border-slate-200 hover:border-slate-300'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-bold text-slate-900">{p.type}</span>
+                                {isRecommended && (
+                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                    Evidence Supported
+                                  </span>
+                                )}
+                                {p.isProtectionSupported && (
+                                  <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">
+                                    Protection Supported
+                                  </span>
+                                )}
+                              </div>
+                              <input
+                                type="radio"
+                                name="intervention"
+                                checked={isSelected}
+                                onChange={() => setSelectedIntervention(p.type)}
+                                className="text-teal-600 h-4 w-4"
+                              />
+                            </div>
+                            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{p.description}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="flex justify-between pt-2">
+                      <button onClick={() => setReviewScreen('gaps')} className="text-xs text-slate-500">← Back to Gaps</button>
+                      <button
+                        onClick={() => setReviewScreen('approval')}
+                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                      >
+                        Proceed to Plan Approval →
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Sub-screen 4: Approval */}
+                {reviewScreen === 'approval' && (
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-base font-bold text-slate-900">Operator Plan Approval</h3>
+                      <p className="text-xs text-slate-500">Formal recording of intervention intent. Execution requires separate operator sign-off.</p>
+                    </div>
+
+                    <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-sm">
+                      <div className="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl">
+                        <div>
+                          <span className="text-slate-400 block">Facility</span>
+                          <strong className="text-slate-800 text-sm">{facilityDetails?.facility?.name}</strong>
+                        </div>
+                        <div>
+                          <span className="text-slate-400 block">Selected Intervention</span>
+                          <strong className="text-teal-700 text-sm">{selectedIntervention || 'Repair / Restore'}</strong>
+                        </div>
+                      </div>
+
+                      {approvalSuccess || currentReview?.approvalStatus?.isApproved ? (
+                        <div className="p-6 bg-teal-50 border-2 border-teal-500 rounded-2xl text-center space-y-2">
+                          <div className="text-3xl text-teal-600">✓</div>
+                          <h4 className="text-base font-bold text-teal-950">
+                            Plan approval recorded. Execution has not started.
+                          </h4>
+                          <p className="text-xs text-teal-700">
+                            Audit trail entry committed to SQLite. Physical work requires dedicated maintenance sign-off.
+                          </p>
+                          <span className="text-[10px] text-teal-600 block mt-1">
+                            Approved: {new Date().toLocaleDateString()} · Sign-off: Regional Operations Lead
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="space-y-3 pt-2">
+                          <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                            <strong>Audit Compliance:</strong> Recording approval documents the operating committee's decision without automatically modifying production booking parameters.
+                          </div>
+                          <button
+                            onClick={handleApprovePlan}
+                            className="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm"
+                          >
+                            Record Formal Plan Approval
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex justify-between pt-2">
+                      <button onClick={() => setReviewScreen('interventions')} className="text-xs text-slate-500">← Back to Interventions</button>
+                      <button
+                        onClick={() => setCurrentNav('outcomes')}
+                        className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm"
+                      >
+                        Inspect Outcome Review →
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ══════════════════════════════════════════════════════════════
+                TAB 5: OUTCOMES & HISTORY
+            ══════════════════════════════════════════════════════════════ */}
+            {currentNav === 'outcomes' && (
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Post-Intervention Review & Precedents</h2>
+                  <p className="text-xs text-slate-500 mt-1">
+                    CP8 4 discrete outcome evaluation findings and CP9 historical case precedents
+                  </p>
+                </div>
+
+                {/* 4 Separate Outcome Dimensions */}
+                <div className="space-y-2">
+                  <h3 className="font-bold text-slate-800 text-sm">Discrete Outcome Review Dimensions</h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { type: 'Execution', summary: 'Luminaire Replacement Implemented', detail: 'Replaced 4 high-bay LED floodlight ballast modules on Court 2. Illumination restored to 350 Lux standard.', positive: true },
+                      { type: 'Goal', summary: 'Evening Peak Bookings Recovered', detail: 'Utilization increased from 65% to 94% within 1 week of repair, returning near benchmark baseline.', positive: true },
+                      { type: 'Protection', summary: 'No Community Protection Breach', detail: 'Dedicated community resident hours maintained in full with standard non-commercial pricing.', positive: true },
+                      { type: 'Diagnosis', summary: 'Physical Defect Hypothesis Confirmed', detail: 'Utilization recovery following lighting repair confirms that operational hardware defect was the single causal driver.', positive: true },
+                    ].map(f => (
+                      <div key={f.type} className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5 shadow-sm">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="font-bold text-slate-400 uppercase">{f.type}</span>
+                          <span className="text-teal-600 font-bold">✓ Met</span>
+                        </div>
+                        <h4 className="text-sm font-bold text-slate-800">{f.summary}</h4>
+                        <p className="text-xs text-slate-600">{f.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Historical Cases (CP9) */}
+                <div className="space-y-3 pt-2">
+                  <h3 className="font-bold text-slate-800 text-sm">Historical Precedents (CP9 Hybrid Retrieval)</h3>
+                  <div className="space-y-3">
+                    {HISTORICAL_CASES.map(c => (
+                      <div
+                        key={c.id}
+                        className={`bg-white rounded-2xl border-2 overflow-hidden shadow-sm ${
+                          c.hasProtectionBreach ? 'border-rose-400' : 'border-slate-200'
+                        }`}
+                      >
+                        {c.hasProtectionBreach && (
+                          <div className="bg-rose-600 text-white px-4 py-1.5 text-xs font-bold flex items-center gap-2">
+                            <span>⚠️ Historical Protection Breach Warning: Precedent reduced resident access below baseline</span>
+                          </div>
+                        )}
+                        <div className="p-5 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-bold text-slate-900 text-sm">{c.name}</h4>
+                              <p className="text-xs text-slate-500">{c.location} · {c.period}</p>
+                            </div>
+                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                              c.hasProtectionBreach ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
+                            }`}>
+                              {c.supportLabel}
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-3 text-xs bg-slate-50 p-3 rounded-xl">
+                            <div>
+                              <strong className="text-slate-700 block mb-0.5">Why Similar:</strong>
+                              <p className="text-slate-600">{c.whySimilar}</p>
+                            </div>
+                            <div>
+                              <strong className="text-slate-700 block mb-0.5">Historical Action:</strong>
+                              <p className="text-slate-600">{c.whatHappened}</p>
+                            </div>
+                          </div>
+
+                          <div className="text-xs text-slate-600 flex justify-between pt-1">
+                            <span>Goal Finding: {c.goalFinding}</span>
+                            <span>Protection Finding: {c.protectionFinding}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </main>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<OperatorApp />);
+  </script>
+</body>
+</html>

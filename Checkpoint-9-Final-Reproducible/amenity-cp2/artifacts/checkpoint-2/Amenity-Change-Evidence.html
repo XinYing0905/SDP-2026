@@ -1,0 +1,272 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amenity Decision Intelligence · Checkpoint 2</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap');
+:root{font-family:'DM Sans',Arial,sans-serif;color:#263b49;background:#f6f8fa;font-synthesis:none}*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}button,summary{font:inherit}a:focus-visible,summary:focus-visible{outline:3px solid #3b8f91;outline-offset:4px}.topbar{height:77px;display:flex;justify-content:space-between;align-items:center;padding:0 38px;border-bottom:1px solid #dfe6eb;background:white}.brand{display:flex;gap:13px;align-items:center;font-weight:750;font-family:Manrope,Arial,sans-serif;font-size:17px}.brand-mark{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#173e43;color:white;font-size:30px;position:relative;line-height:1}.brand-mark span{position:absolute;right:4px;bottom:0;color:#7dccc2}.brand-light{font-weight:500}.top-right{display:flex;gap:10px;align-items:center;font-size:12px;color:#70818e}.demo-dot{height:6px;width:6px;border-radius:50%;background:#638d80}.divider{height:18px;border-left:1px solid #d9e0e5;margin:0 10px}.cp-label{letter-spacing:1.5px;font-size:10px;font-weight:700}.shell{display:flex;min-height:calc(100vh - 77px)}aside{width:225px;flex-shrink:0;background:#fff;border-right:1px solid #dfe6eb;padding:35px 19px;position:relative}.aside-label,.small-label{font-size:10px;letter-spacing:1.2px;font-weight:700;color:#738490}.aside-label{padding:0 13px;margin-bottom:17px}.nav-link{display:flex;align-items:center;gap:12px;padding:13px;font-size:12px;border-radius:7px;color:#405b65}.nav-link.active{color:#255e60;background:#edf5f3;font-weight:700}.nav-link span{font-size:19px}.aside-note{border-top:1px solid #e8edf0;margin:36px 12px 0;padding-top:26px}.aside-note strong{display:block;margin-top:10px;font-size:12px}.aside-note p{font-size:11px;line-height:1.8;color:#82919b}.scope-pill{display:inline-block;border:1px solid #dce5e5;border-radius:5px;color:#5e7c7e;padding:5px 8px;font-size:10px}.aside-bottom{position:sticky;top:88vh;margin:220px 12px 0;font-size:11px;line-height:1.8;color:#91a1aa}main{width:calc(100% - 225px);max-width:1500px;padding:35px 46px 20px}.eyebrow{font-size:10px;letter-spacing:1.3px;color:#5b7b80;font-weight:700;display:flex;gap:22px;align-items:center;margin-bottom:12px}.eyebrow>span{color:#91a0aa;font-size:9px}.page-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:25px}h1,h2,h3{font-family:Manrope,Arial,sans-serif;margin:0}h1{font-size:34px;letter-spacing:-1.2px;font-weight:750}h2{font-size:16px;letter-spacing:-.3px}h3{font-size:17px;font-weight:750;letter-spacing:-.5px}.page-heading p{font-size:13px;color:#7a8b97;margin:9px 0 0}.quiet-button{background:white;border:1px solid #dce4e9;padding:10px 14px;border-radius:6px;font-size:11px;color:#516f7d;white-space:nowrap}.scope-banner{border:1px solid #dae8e5;background:#edf5f2;border-radius:8px;display:flex;align-items:center;gap:16px;padding:17px 21px}.scope-icon{font-size:23px;color:#598780}.scope-banner strong{font-size:12px;color:#355d59}.scope-banner p{font-size:11px;color:#718e86;margin:6px 0 0}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:25px 0 31px}.summary-card{border:1px solid #e1e7eb;background:white;border-radius:8px;padding:19px 23px;display:flex;flex-direction:column;gap:9px}.summary-card strong{font-family:Manrope,Arial,sans-serif;font-size:32px;letter-spacing:-1px;font-weight:650}.summary-card>span:last-child{font-size:11px;color:#8a99a4}.section-heading{display:flex;justify-content:space-between;align-items:center;margin:24px 0 16px;gap:10px}.section-heading h2 span{color:#8f9ca6;font-size:12px;margin-left:9px}.section-heading>span{font-size:10px;color:#8b9ba6}.amenity-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.amenity-card{border:1px solid #dee6ec;border-radius:9px;background:white;padding:19px 20px 13px;transition:transform .15s,border-color .15s,box-shadow .15s}.amenity-card:hover{transform:translateY(-3px);border-color:#91b6b4;box-shadow:0 8px 24px #2149500c}.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px;gap:8px}.tier{font-size:9px;color:#8b9ca7;letter-spacing:1.2px;font-weight:600}.badge{display:inline-flex;align-items:center;gap:6px;border-radius:5px;padding:6px 8px;font-size:10px;font-weight:600;white-space:nowrap}.badge i{width:5px;height:5px;border-radius:50%;background:currentColor}.badge.stable{background:#edf5f0;color:#538368}.badge.monitoring{background:#fff5e6;color:#a4772e}.badge.needs-attention{background:#fcefeb;color:#b35f49}.metric-line{display:flex;gap:14px;align-items:center;margin-top:17px}.metric-line strong{font-family:Manrope,Arial,sans-serif;font-size:29px;font-weight:650;letter-spacing:-1px}.metric-line>span{font-size:10px;color:#8a9aa5;line-height:1.6}svg{display:block;width:100%;margin-top:13px}.card-meta{display:flex;justify-content:space-between;border-top:1px solid #edf0f3;padding-top:12px;font-size:9px;color:#8b9aa5;gap:5px}.card-meta>span:last-child{color:#48737c;font-weight:600}.mini-warning{font-size:9px;color:#a1824b;margin-top:9px}.parameters{border:1px solid #dfe6eb;border-radius:8px;background:white;margin-top:25px;padding:0 20px}.parameters summary,.observations summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;padding:17px 0;font-size:12px;font-weight:600;gap:10px}.parameters summary>span:last-child,.observations summary>span{font-size:10px;color:#8a9aa5;font-weight:400}.parameters p{font-size:11px;color:#728591;line-height:1.7}.parameters dl{margin:0 0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px}.parameters dl>div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #edf0f3;gap:16px;font-size:10px}.parameters dt{color:#82939e}.parameters dd{margin:0;text-align:right}.breadcrumb{display:flex;gap:10px;font-size:11px;color:#8b9aa6;margin:0 0 25px}.breadcrumb a{color:#47737b}.status-explanation{background:#fff;border:1px solid #dce6e9;border-left:3px solid #679484;border-radius:7px;padding:18px 22px}.status-explanation.monitoring{border-left-color:#c59a52}.status-explanation.needs-attention{border-left-color:#c87e67}.status-explanation p{font-size:12px;color:#5e737f;line-height:1.8;margin:9px 0 0}.window-bar{display:flex;align-items:center;gap:26px;padding:24px 0;border-bottom:1px solid #e1e7ec}.window-bar>div{display:flex;flex-direction:column;gap:7px;flex:1}.window-bar strong{font-size:12px;font-weight:600}.window-bar div>span:last-child{font-size:10px;color:#8c9ca7}.window-arrow{font-size:20px;color:#9cafba}.check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:24px 0}.check-grid>div{border-right:1px solid #dee6eb;padding-right:18px}.check-grid>div:last-child{border:0}.check-grid strong{display:block;font-family:Manrope,Arial,sans-serif;font-size:19px;margin-top:12px;letter-spacing:-.5px}.check-grid p{font-size:11px;color:#8596a1;line-height:1.7;margin-bottom:0}.notice{background:#fff8ed;border:1px solid #efdfc4;border-radius:7px;padding:16px 20px;margin:18px 0;color:#8b723e;font-size:11px;line-height:1.7}.notice strong{font-size:12px}.notice ul{padding-left:18px;margin-bottom:0}.notice li+li{margin-top:5px}.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.evidence-card{border:1px solid #dfe7ec;background:#fff;border-radius:8px;padding:21px}.evidence-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.evidence-title h3{font-size:15px}.evidence-chip{background:#f1f5f8;color:#758998;padding:5px 7px;border-radius:4px;font-size:9px}.evidence-values{display:flex;gap:28px;margin-top:24px}.evidence-values>div{display:flex;flex-direction:column;gap:7px}.evidence-values span{font-size:10px;color:#91a0aa}.evidence-values strong{font-family:Manrope,Arial,sans-serif;font-weight:650;font-size:23px;letter-spacing:-.8px}.evidence-bottom{border-top:1px solid #edf0f3;display:flex;justify-content:space-between;gap:12px;padding-top:13px;font-size:9px;color:#8a9ba6}.evidence-bottom b{color:#4a6673;font-weight:600;margin-left:3px}.metric-note{font-size:10px;color:#9a855f;line-height:1.6;margin:12px 0 0}.observations{background:white;border:1px solid #dfe6eb;border-radius:7px;padding:0 20px;margin-top:24px}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:18px}td,th{text-align:left;padding:10px 12px;border-bottom:1px solid #edf0f3;white-space:nowrap}th{color:#7d909b;font-weight:500}footer{font-size:10px;color:#92a1ab;line-height:1.7;margin:25px 0 6px}code{font-size:10px;color:#456b76}@media(min-width:1550px){main{padding:43px 60px}.amenity-grid{gap:23px}.amenity-card{padding:23px}.summary-card{padding:24px}}@media(max-width:1150px){aside{width:190px}main{width:calc(100% - 190px);padding:30px 28px}.amenity-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-light{display:none}.evidence-bottom{flex-wrap:wrap}.window-bar{gap:18px}.window-bar>div:last-child{display:none}}@media(max-width:760px){.topbar{height:65px;padding:0 20px}.top-right{font-size:10px}.cp-label,.divider{display:none}.shell{display:block}aside{display:none}main{width:100%;padding:25px 18px}.page-heading{gap:12px}h1{font-size:27px}.eyebrow>span{display:none}.summary-grid{gap:9px}.summary-card{padding:14px 10px}.summary-card>span:last-child{display:none}.summary-card .small-label{font-size:8px;letter-spacing:.6px}.amenity-grid,.evidence-grid{grid-template-columns:1fr}.section-heading>span{display:none}.parameters dl{grid-template-columns:1fr}.window-bar{gap:13px}.window-arrow{display:none}.window-bar strong{font-size:11px}.check-grid{gap:10px}.check-grid strong{font-size:15px}.check-grid .small-label{font-size:8px;letter-spacing:.5px}.check-grid p{font-size:10px}.quiet-button{font-size:10px;padding:9px}.evidence-title h3{font-size:15px}.parameters summary>span:last-child{font-size:9px}.observations summary>span{display:none}.scope-banner{padding:14px}.scope-banner p{line-height:1.6}}
+</style></head><body><div id="app"></div><script type="module">const parameters = Object.freeze({
+  label: 'Provisional MVP Parameters',
+  version: 'cp2-1.0',
+  periodDays: 7,
+  baselinePeriods: 8,
+  currentPeriods: 4,
+  minimumBaselineCoverage: 0.75,
+  minimumCurrentCoverage: 0.75,
+  minimumPersistence: 3,
+  relativeDeviationThreshold: 0.20,
+  minimumConsistentSignals: 2,
+  contextualInterpretation: 'exclude-exceptional-period-and-break-persistence',
+  absoluteDeviationFloors: {
+    bookings: 10, uniqueUsers: 10, repeatUsers: 5,
+    utilisationRate: 0.10, cancellationRate: 0.05, accessCount: 20
+  }
+});
+
+const metricDefinitions = Object.freeze({
+  bookings: { label: 'Bookings', unit: 'count', deteriorationSign: -1 },
+  uniqueUsers: { label: 'Unique users', unit: 'count', deteriorationSign: -1 },
+  repeatUsers: { label: 'Repeat users', unit: 'count', deteriorationSign: -1 },
+  utilisationRate: { label: 'Utilisation rate', unit: 'rate', deteriorationSign: -1 },
+  cancellationRate: { label: 'Cancellation rate', unit: 'rate', deteriorationSign: 1 },
+  accessCount: { label: 'Access count', unit: 'count', deteriorationSign: -1 }
+});
+
+
+const DAY = 86400000;
+const mean = values => values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
+const finite = value => typeof value === 'number' && Number.isFinite(value);
+const date = value => {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) throw new Error('Expected ISO period start');
+  const time = Date.parse(`${value}T00:00:00Z`);
+  if (!Number.isFinite(time) || new Date(time).toISOString().slice(0, 10) !== value) throw new Error('Invalid date');
+  return time;
+};
+const iso = time => new Date(time).toISOString().slice(0, 10);
+
+function validate(p, amenity) {
+  for (const key of ['periodDays', 'baselinePeriods', 'currentPeriods', 'minimumPersistence', 'minimumConsistentSignals']) {
+    if (!Number.isInteger(p[key]) || p[key] < 1) throw new Error(`Invalid parameter: ${key}`);
+  }
+  if (p.minimumPersistence > p.currentPeriods) throw new Error('Persistence exceeds current window');
+  for (const key of ['minimumBaselineCoverage', 'minimumCurrentCoverage', 'relativeDeviationThreshold']) {
+    if (!finite(p[key]) || p[key] <= 0 || p[key] > 1) throw new Error(`Invalid parameter: ${key}`);
+  }
+  if (p.contextualInterpretation !== 'exclude-exceptional-period-and-break-persistence') throw new Error('Unsupported context policy');
+  const keys = amenity.applicableSignals;
+  if (!Array.isArray(keys) || !keys.length || new Set(keys).size !== keys.length) throw new Error('Unique applicable signals required');
+  for (const key of keys) {
+    if (!metricDefinitions[key]) throw new Error(`Unsupported signal: ${key}`);
+    if (!finite(p.absoluteDeviationFloors[key]) || p.absoluteDeviationFloors[key] <= 0) throw new Error(`Invalid floor: ${key}`);
+  }
+}
+
+/** Detection only. No diagnosis, intervention, support or AI fields. */
+function detectChange(amenity, p = parameters) {
+  validate(p, amenity);
+  const end = date(amenity.analysisPeriodStart);
+  const step = p.periodDays * DAY;
+  const starts = Array.from({ length: p.baselinePeriods + p.currentPeriods }, (_, i) => iso(end - (p.baselinePeriods + p.currentPeriods - 1 - i) * step));
+  const expected = new Set(starts);
+  const rows = new Map();
+  const warnings = [];
+  const contextualCaveats = [];
+  for (const row of amenity.observations) {
+    const time = date(row.periodStart);
+    if ((end - time) % step !== 0) throw new Error('Observation is off the configured period grid');
+    if (rows.has(row.periodStart)) throw new Error('Duplicate observation period');
+    if (row.context && !['normal', 'closure', 'holiday', 'exceptional-event', 'unavailable-data'].includes(row.context.type)) throw new Error('Unknown context type');
+    rows.set(row.periodStart, row);
+  }
+  const missingPeriods = starts.filter(start => !rows.has(start));
+  if (missingPeriods.length) warnings.push(`Missing observation periods: ${missingPeriods.join(', ')}. Values remain unknown.`);
+  for (const start of starts) {
+    const row = rows.get(start);
+    if (row && !row.context) warnings.push(`${start}: context metadata unavailable; exceptional-period context is unknown.`);
+    if (row?.context && row.context.type !== 'normal') contextualCaveats.push({ periodStart: start, type: row.context.type, note: row.context.note || '', interpretation: 'Excluded from behavioral baseline/current means; breaks persistence. Not evidence of ordinary demand decline.' });
+    if (row && row.maintenance == null) warnings.push(`${start}: maintenance/downtime context unavailable; condition is unknown.`);
+    if (row?.maintenance) {
+      if (row.maintenance.downtimeHours == null || row.maintenance.ticketCount == null) warnings.push(`${start}: maintenance context incomplete; missing fields remain unknown.`);
+      for (const [key, value] of Object.entries(row.maintenance)) {
+        if (value != null && (!finite(value) || value < 0)) throw new Error('Invalid maintenance observation');
+      }
+      if (row.maintenance.downtimeHours > 0 || row.maintenance.ticketCount > 0) contextualCaveats.push({ periodStart: start, type: 'maintenance-context', note: `Recorded downtime: ${row.maintenance.downtimeHours ?? 'unknown'} hours; tickets: ${row.maintenance.ticketCount ?? 'unknown'}. Operational context only; no explanation is inferred.`, interpretation: 'Visible contextual signal; not a diagnosis and not automatically excluded without a known exceptional period.' });
+    }
+  }
+  const metrics = amenity.applicableSignals.map(key => {
+    const def = metricDefinitions[key];
+    const points = starts.map((start, i) => {
+      const row = rows.get(start);
+      const rawValue = row?.values?.[key];
+      if (rawValue != null && (!finite(rawValue) || rawValue < 0 || (def.unit === 'rate' && rawValue > 1))) throw new Error(`Invalid ${key} at ${start}`);
+      const value = rawValue == null ? null : rawValue;
+      const excluded = Boolean(row?.context && row.context.type !== 'normal');
+      return { periodStart: start, window: i < p.baselinePeriods ? 'baseline' : 'current', value, eligible: value !== null && !excluded, context: row?.context?.type || (row ? 'context-unknown' : 'missing-period') };
+    });
+    const baselinePoints = points.slice(0, p.baselinePeriods);
+    const currentPoints = points.slice(p.baselinePeriods);
+    const baselineValues = baselinePoints.filter(x => x.eligible).map(x => x.value);
+    const currentValues = currentPoints.filter(x => x.eligible).map(x => x.value);
+    const baselineValue = mean(baselineValues);
+    const currentValue = mean(currentValues);
+    const coverage = { baseline: baselineValues.length / p.baselinePeriods, current: currentValues.length / p.currentPeriods, validBaseline: baselineValues.length, validCurrent: currentValues.length, expectedBaseline: p.baselinePeriods, expectedCurrent: p.currentPeriods };
+    const assessable = coverage.baseline >= p.minimumBaselineCoverage && coverage.current >= p.minimumCurrentCoverage;
+    for (const window of ['baseline', 'current']) {
+      const missing = points.filter(x => x.window === window && x.value === null).map(x => x.periodStart);
+      if (missing.length) warnings.push(`${def.label}: unknown ${window} observations at ${missing.join(', ')}; not zero-filled.`);
+    }
+    if (!assessable) warnings.push(`${def.label}: insufficient eligible coverage (${baselineValues.length}/${p.baselinePeriods} baseline; ${currentValues.length}/${p.currentPeriods} current). No change conclusion for this signal.`);
+    const magnitude = baselineValue === null || currentValue === null ? null : currentValue - baselineValue;
+    const percentageChange = baselineValue === null || baselineValue === 0 || currentValue === null ? null : magnitude / baselineValue * 100;
+    const percentagePointChange = def.unit === 'rate' && magnitude !== null ? magnitude * 100 : null;
+    const floor = p.absoluteDeviationFloors[key];
+    function direction(value) {
+      if (!assessable || baselineValue === null || value === null) return null;
+      const delta = value - baselineValue;
+      if (Math.abs(delta) < floor || (baselineValue !== 0 && Math.abs(delta / baselineValue) < p.relativeDeviationThreshold)) return null;
+      return Math.sign(delta) === def.deteriorationSign ? 'deterioration' : 'increase-or-improvement';
+    }
+    const latestPoint = currentPoints.at(-1);
+    const latestDirection = latestPoint.eligible ? direction(latestPoint.value) : null;
+    let trailingPeriods = 0;
+    if (latestDirection) {
+      for (const point of [...currentPoints].reverse()) {
+        if (!point.eligible || direction(point.value) !== latestDirection) break;
+        trailingPeriods++;
+      }
+    }
+    const excursions = currentPoints.filter(x => x.eligible && direction(x.value)).map(x => ({ periodStart: x.periodStart, value: x.value, direction: direction(x.value) }));
+    const currentDirection = direction(currentValue);
+    const persistent = Boolean(assessable && latestDirection && currentDirection === latestDirection && trailingPeriods >= p.minimumPersistence);
+    return { key, label: def.label, unit: def.unit, baselineValue, currentValue, magnitude, percentageChange, percentagePointChange, coverage, assessable, currentDirection, latestDirection, persistence: { trailingPeriods, requiredPeriods: p.minimumPersistence, sustained: persistent, missingOrExceptionalBreaksStreak: true }, excursions, points };
+  });
+  const groups = ['deterioration', 'increase-or-improvement'].map(direction => ({ direction, signals: metrics.filter(m => m.persistence.sustained && m.latestDirection === direction).map(m => m.key) }));
+  const leading = groups.reduce((a, b) => b.signals.length > a.signals.length ? b : a);
+  const assessableSignals = metrics.filter(m => m.assessable).length;
+  const sufficientConsistency = leading.signals.length >= p.minimumConsistentSignals;
+  const currentUnknown = metrics.some(m => !m.points.at(-1).eligible || !m.assessable || m.points.slice(p.baselinePeriods).some(x => x.value === null));
+  const activeExcursion = metrics.some(m => m.latestDirection);
+  const exceptionalCurrent = contextualCaveats.some(c => c.type !== 'maintenance-context' && starts.slice(p.baselinePeriods).includes(c.periodStart));
+  let status;
+  let explanation;
+  if (sufficientConsistency) {
+    status = 'Needs Attention';
+    explanation = `${leading.signals.length} signals show material ${leading.direction} sustained through at least ${p.minimumPersistence} consecutive eligible periods ending in the latest period. Both relative/absolute deviation and minimum consistency requirements pass. Investigation-worthy change only; no cause is inferred.`;
+  } else if (activeExcursion || currentUnknown || exceptionalCurrent || assessableSignals < p.minimumConsistentSignals) {
+    status = 'Monitoring';
+    explanation = `Needs Attention criteria are not met: ${leading.signals.length}/${p.minimumConsistentSignals} signals meet shared-direction persistence. ${exceptionalCurrent ? 'Known exceptional periods affect interpretation. ' : ''}${currentUnknown ? 'Missing or ineligible data leave uncertainty. ' : ''}${activeExcursion ? 'A current deviation requires more consistent sustained evidence. ' : ''}${assessableSignals < p.minimumConsistentSignals ? 'Too few assessable signals for the configured consistency requirement. ' : ''}This status does not recommend an action.`;
+  } else {
+    status = 'Stable';
+    explanation = `No current sustained multi-signal change meets the configured requirements. ${metrics.some(m => m.excursions.length) ? 'Earlier current-window excursions returned near baseline; a temporary dip alone does not trigger Needs Attention.' : 'Latest eligible observations remain below material-change thresholds.'} Stable describes these observations, not amenity condition or community value.`;
+  }
+  return { amenityId: amenity.id, amenityName: amenity.name, tier: amenity.tier, status, explanation, parameterVersion: p.version, dataProvenance: 'Simulated input data', baselineWindow: { start: starts[0], end: iso(end - p.currentPeriods * step + (p.periodDays - 1) * DAY), periods: p.baselinePeriods }, currentWindow: { start: starts[p.baselinePeriods], end: iso(end + (p.periodDays - 1) * DAY), periods: p.currentPeriods }, metrics, detectedChangeSignals: metrics.filter(m => m.excursions.length).map(m => ({ signal: m.key, direction: m.latestDirection ?? 'returned-or-unknown', sustained: m.persistence.sustained, periods: m.excursions })), persistence: { requiredPeriods: p.minimumPersistence, result: sufficientConsistency ? 'Sustained consistent change' : 'Sustained consistent change not established', perSignal: metrics.map(m => ({ signal: m.key, ...m.persistence })) }, signalConsistency: { required: p.minimumConsistentSignals, observed: leading.signals.length, direction: leading.signals.length ? leading.direction : null, signals: leading.signals, assessableSignals, meetsRequirement: sufficientConsistency }, contextualCaveats, missingDataWarnings: [...new Set(warnings)], missingPeriods, ignoredOutOfWindowPeriods: [...rows.keys()].filter(k => !expected.has(k)), provisionalParameters: p };
+}
+
+const base = { bookings: 100, uniqueUsers: 80, repeatUsers: 40 };
+const start = Date.parse('2026-05-04T00:00:00Z');
+const period = i => new Date(start + i * 7 * 86400000).toISOString().slice(0, 10);
+function make(id, name, description, factors, options = {}) {
+  const definitions = options.base ?? base;
+  return {
+    id, name, tier: options.tier ?? 'A', description,
+    expectedStatus: options.expectedStatus,
+    analysisPeriodStart: period(11),
+    applicableSignals: Object.keys(definitions),
+    observations: Array.from({ length: 12 }, (_, i) => ({
+      periodStart: period(i),
+      values: Object.fromEntries(Object.entries(definitions).map(([key, value]) => [key, i < 8 ? value : Math.round(value * (typeof factors[i - 8] === 'number' ? factors[i - 8] : factors[i - 8][key]))])),
+      context: { type: 'normal' },
+      maintenance: { ticketCount: 0, downtimeHours: 0 }
+    }))
+  };
+}
+
+const fixtures = [
+  make('A', 'Function Room', 'Case A · Temporary dip, then return near baseline', [0.40, 1.00, 1.01, 0.99], { expectedStatus: 'Stable' }),
+  make('B', 'Community Hall', 'Case B · Persistent multi-signal decline', [0.72, 0.68, 0.65, 0.63], { expectedStatus: 'Needs Attention' }),
+  make('C', 'Badminton Court', 'Case C · One metric changes; other signals stable', [0.60, 0.58, 0.59, 0.57].map(f => ({ bookings: f, uniqueUsers: 1, repeatUsers: 1 })), { expectedStatus: 'Monitoring' }),
+  make('D', 'Multipurpose Room', 'Case D · Known closure affects observations', [1, 0.05, 0.05, 0.05], { expectedStatus: 'Monitoring' }),
+  make('E', 'Meeting Room', 'Case E · Missing period and signal remain unknown', [1, 1, 1, 1], { expectedStatus: 'Monitoring' }),
+  make('F', 'Clubhouse Gym', 'Case F · Tier B access signals; no booking metrics', [0.70, 0.67, 0.65, 0.62], { tier: 'B', base: { accessCount: 400, uniqueUsers: 100 }, expectedStatus: 'Needs Attention' }),
+  make('S', 'Tennis Court', 'Reference · Stable observations', [1.01, 0.99, 1.02, 1], { expectedStatus: 'Stable' })
+];
+const closure = fixtures.find(x => x.id === 'D');
+closure.observations.slice(9).forEach(row => { row.context = { type: 'closure', note: 'Known exceptional closure; recorded values do not represent ordinary availability.' }; row.maintenance = { ticketCount: 1, downtimeHours: 70 }; });
+const missing = fixtures.find(x => x.id === 'E');
+missing.observations = missing.observations.filter((_, i) => i !== 10);
+missing.observations.at(-1).values.uniqueUsers = null;
+delete missing.observations.at(-1).maintenance;
+
+const simulationNotice = 'All amenities and observations are simulated. Change detection only. No diagnosis or intervention is produced.';
+
+
+const results = fixtures.map(input => ({ input, result: detectChange(input) }));
+const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (value, unit = 'count') => value == null ? 'Unknown' : unit === 'rate' ? `${(value * 100).toFixed(1)}%` : value.toLocaleString('en', { maximumFractionDigits: 1 });
+const signed = value => value == null ? '—' : `${value > 0 ? '+' : ''}${value.toFixed(1)}`;
+const badge = status => `<span class="badge ${status.toLowerCase().replaceAll(' ', '-')}"><i></i>${status}</span>`;
+const shortDate = value => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const range = window => `${shortDate(window.start)} – ${shortDate(window.end)} 2026`;
+
+function chart(metric, compact = false) {
+  const width = 500, height = compact ? 100 : 150, left = 10, top = 12, bottom = height - 22;
+  const values = metric.points.map(p => p.value).filter(v => v !== null);
+  const max = Math.max(...values, metric.baselineValue ?? 0, 1) * 1.13;
+  const x = i => left + i * (width - 2 * left) / (metric.points.length - 1);
+  const y = v => bottom - (v / max) * (bottom - top);
+  const baselineY = metric.baselineValue == null ? null : y(metric.baselineValue);
+  let segments = [], current = [];
+  metric.points.forEach((p, i) => { if (p.value === null) { if (current.length) segments.push(current); current = []; } else current.push(`${x(i)},${y(p.value)}`); });
+  if (current.length) segments.push(current);
+  const split = x(parameters.baselinePeriods) - (x(1) - x(0)) / 2;
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escape(metric.label)} baseline and current observations; gaps mean unknown">
+    <rect x="${split}" y="0" width="${width - split}" height="${bottom + 4}" rx="6" fill="#eef3f8"/>
+    ${baselineY === null ? '' : `<line x1="${left}" x2="${width - left}" y1="${baselineY}" y2="${baselineY}" stroke="#b5c2cf" stroke-dasharray="5 5"/>`}
+    ${segments.map(s => `<polyline points="${s.join(' ')}" fill="none" stroke="#527b9a" stroke-width="2.5"/>`).join('')}
+    ${metric.points.map((p, i) => p.value === null ? `<text x="${x(i)}" y="${bottom - 4}" text-anchor="middle" font-size="15" fill="#ad7923">?</text>` : `<circle cx="${x(i)}" cy="${y(p.value)}" r="${p.eligible ? 3.5 : 5}" fill="${p.eligible ? '#527b9a' : '#ffffff'}" stroke="${p.eligible ? '#527b9a' : '#ad7923'}" stroke-width="2"/>`).join('')}
+    <text x="10" y="${height - 3}" font-size="10" fill="#778695">Historical baseline</text><text x="${split + 8}" y="${height - 3}" font-size="10" fill="#778695">Current window</text>
+  </svg>`;
+}
+function header(active = 'Overview') {
+  return `<header class="topbar"><a class="brand" href="#/"><span class="brand-mark">a<span>·</span></span><span>Amenity<span class="brand-light"> Decision Intelligence</span></span></a><div class="top-right"><span class="demo-dot"></span>Simulated township <span class="divider"></span><span class="cp-label">CHECKPOINT 02</span></div></header>
+  <div class="shell"><aside><div class="aside-label">WORKSPACE</div><a class="nav-link ${active === 'Overview' ? 'active' : ''}" href="#/"><span>▦</span> Amenity overview</a><div class="aside-note"><span class="small-label">CURRENT SCOPE</span><strong>Meaningful change</strong><p>Signals and context.<br>Investigation-worthy change.</p><span class="scope-pill">Detection only</span></div><div class="aside-bottom">From signals to safer<br>intervention decisions.</div></aside><main>`;
+}
+function footer() { return `<footer>${escape(simulationNotice)}</footer></main></div>`; }
+function overview() {
+  const counts = ['Stable', 'Monitoring', 'Needs Attention'].map(status => ({ status, count: results.filter(r => r.result.status === status).length }));
+  return `${header()}<div class="eyebrow">AMENITY PERFORMANCE REVIEW <span>27 JUL 2026 · SIMULATED</span></div><div class="page-heading"><div><h1>Amenity overview</h1><p>Spot sustained change. Understand the evidence.</p></div><a class="quiet-button" href="#parameters">View parameters ↗</a></div>
+  <div class="scope-banner"><span class="scope-icon">↗</span><div><strong>A change is a signal, not a diagnosis.</strong><p>Statuses identify changes worth investigating. They do not explain why a change occurred.</p></div></div>
+  <section class="summary-grid" aria-label="Status summary">${counts.map(c => `<div class="summary-card"><span class="small-label">${c.status.toUpperCase()}</span><strong>${c.count.toString().padStart(2, '0')}</strong><span>${c.status === 'Stable' ? 'No sustained change established' : c.status === 'Monitoring' ? 'Partial signals or limited evidence' : 'Sustained, consistent signals'}</span></div>`).join('')}</section>
+  <div class="section-heading"><h2>Observable amenities <span>${results.length}</span></h2><span>8-week baseline · 4-week current window</span></div>
+  <div class="amenity-grid">${results.map(({ input, result: r }) => {
+    const m = r.metrics[0];
+    return `<a href="#case/${input.id}" class="amenity-card"><div class="card-top"><span class="tier">TIER ${input.tier}</span>${badge(r.status)}</div><h3>${escape(input.name)}</h3><div class="metric-line"><strong>${m.percentageChange == null ? '—' : `${signed(m.percentageChange)}%`}</strong><span>${escape(m.label.toLowerCase())}<br>vs historical baseline</span></div>${chart(m, true)}<div class="card-meta"><span>${r.signalConsistency.observed}/${r.metrics.length} sustained aligned signals</span><span>View evidence ↗</span></div>${r.contextualCaveats.some(c => c.type !== 'maintenance-context') ? '<div class="mini-warning">Known context affects interpretation</div>' : ''}${r.missingDataWarnings.length ? '<div class="mini-warning">Missing observations remain unknown</div>' : ''}</a>`;
+  }).join('')}</div>${parameterPanel()}${footer()}`;
+}
+function parameterPanel() {
+  const rows = [
+    ['Period length', `${parameters.periodDays} days`], ['Baseline window', `${parameters.baselinePeriods} prior periods`], ['Current window', `${parameters.currentPeriods} periods`],
+    ['Minimum persistence', `${parameters.minimumPersistence} consecutive periods ending latest`], ['Relative deviation', `${parameters.relativeDeviationThreshold * 100}% plus absolute floor`],
+    ['Consistent signals', `${parameters.minimumConsistentSignals} in the same direction`], ['Minimum baseline / current coverage', `${parameters.minimumBaselineCoverage * 100}% / ${parameters.minimumCurrentCoverage * 100}%`],
+    ...Object.entries(parameters.absoluteDeviationFloors).map(([key, v]) => [`Absolute floor · ${metricDefinitions[key].label}`, metricDefinitions[key].unit === 'rate' ? `${v * 100} percentage points` : `${v} count`]),
+    ['Exceptional context', 'Exclude from behavioral means; break persistence'], ['Missing data', 'Unknown; no imputation; break persistence']
+  ];
+  return `<details class="parameters" id="parameters"><summary><span>Provisional MVP Parameters</span><span>${parameters.version} · expand</span></summary><p>Illustrative configuration, not scientifically universal thresholds. Defined in <code>dist/config.mjs</code>.</p><dl>${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl></details>`;
+}
+function evidence(id) {
+  const entry = results.find(x => x.input.id === id);
+  if (!entry) return `${header('Evidence')}<h1>Case not found</h1><a href="#/">Return to overview</a>${footer()}`;
+  const { input, result: r } = entry;
+  return `${header('Evidence')}<div class="breadcrumb"><a href="#/">Amenity overview</a><span>/</span>Change evidence</div><div class="page-heading"><div><div class="eyebrow">TIER ${input.tier} · ${input.id === 'S' ? 'STABLE REFERENCE' : `CASE ${input.id}`} · SIMULATED OBSERVATIONS</div><h1>${escape(input.name)}</h1><p>${escape(input.description)}</p></div>${badge(r.status)}</div>
+  <section class="status-explanation ${r.status.toLowerCase().replaceAll(' ', '-')}"><span class="small-label">WHY THIS STATUS?</span><p>${escape(r.explanation)}</p></section>
+  <div class="window-bar"><div><span class="small-label">HISTORICAL BASELINE</span><strong>${range(r.baselineWindow)}</strong><span>${parameters.baselinePeriods} expected weekly periods</span></div><span class="window-arrow">→</span><div><span class="small-label">CURRENT OBSERVATIONS</span><strong>${range(r.currentWindow)}</strong><span>${parameters.currentPeriods} expected weekly periods</span></div><div><span class="small-label">ANALYSIS SCOPE</span><strong>Change detection only</strong><span>No explanation of cause</span></div></div>
+  <section class="check-grid"><div><span class="small-label">01 · DEVIATION</span><strong>${r.metrics.filter(m => m.currentDirection).length} material signals</strong><p>Current mean vs own baseline. Relative threshold plus metric-specific absolute floor.</p></div><div><span class="small-label">02 · PERSISTENCE</span><strong>${r.metrics.filter(m => m.persistence.sustained).length} sustained signals</strong><p>At least ${parameters.minimumPersistence} consecutive eligible periods through the latest observation.</p></div><div><span class="small-label">03 · SIGNAL CONSISTENCY</span><strong>${r.signalConsistency.observed} / ${parameters.minimumConsistentSignals} required</strong><p>${r.signalConsistency.meetsRequirement ? 'Shared direction meets requirement.' : 'Shared-direction requirement not met.'} ${r.signalConsistency.direction ? escape(r.signalConsistency.direction.replaceAll('-', ' ')) : ''}</p></div></section>
+  ${r.contextualCaveats.length ? `<section class="notice"><strong>Context affects interpretation</strong><ul>${r.contextualCaveats.map(c => `<li><b>${shortDate(c.periodStart)} · ${escape(c.type)}</b> — ${escape(c.note)} ${escape(c.interpretation)}</li>`).join('')}</ul></section>` : ''}
+  ${r.missingDataWarnings.length ? `<section class="notice"><strong>Missing-data warnings · unknown stays unknown</strong><ul>${r.missingDataWarnings.map(w => `<li>${escape(w)}</li>`).join('')}</ul></section>` : ''}
+  <div class="section-heading"><h2>Change evidence</h2><span>Hollow dots: exceptional context · ?: unknown</span></div>
+  <section class="evidence-grid">${r.metrics.map(m => `<article class="evidence-card"><div class="evidence-title"><h3>${escape(m.label)}</h3><span class="evidence-chip">${!m.assessable ? 'Limited data' : m.persistence.sustained ? 'Sustained change' : m.latestDirection ? 'Current deviation' : 'No sustained change'}</span></div><div class="evidence-values"><div><span>Baseline mean</span><strong>${fmt(m.baselineValue, m.unit)}</strong></div><div><span>Current mean</span><strong>${fmt(m.currentValue, m.unit)}</strong></div><div><span>${m.unit === 'rate' ? 'Magnitude (pp)' : 'Change'}</span><strong>${m.unit === 'rate' ? signed(m.percentagePointChange) : m.percentageChange === null ? 'Not defined' : signed(m.percentageChange) + '%'}</strong></div></div>${chart(m)}<div class="evidence-bottom"><span>Persistence <b>${m.persistence.trailingPeriods}/${parameters.minimumPersistence}</b></span><span>Eligible baseline <b>${m.coverage.validBaseline}/${m.coverage.expectedBaseline}</b></span><span>Eligible current <b>${m.coverage.validCurrent}/${m.coverage.expectedCurrent}</b></span></div>${m.baselineValue === 0 ? '<p class="metric-note">Zero baseline: percentage change undefined; absolute magnitude is used.</p>' : ''}${!m.assessable ? '<p class="metric-note">Displayed available-value means are descriptive only; coverage is insufficient for a change conclusion.</p>' : ''}<div class="metric-note">Absolute change: ${m.magnitude === null ? 'Unknown' : signed(m.magnitude)} ${m.unit === 'rate' ? '(fraction)' : 'count'}</div></article>`).join('')}</section>
+  <details class="observations"><summary>Inspect input observations <span>Raw simulated values · no imputation</span></summary><div class="table-scroll"><table><thead><tr><th>Week starting</th><th>Window</th>${r.metrics.map(m => `<th>${escape(m.label)}</th>`).join('')}<th>Context</th></tr></thead><tbody>${r.metrics[0].points.map((p, i) => `<tr><td>${p.periodStart}</td><td>${p.window}</td>${r.metrics.map(m => `<td>${fmt(m.points[i].value, m.unit)}</td>`).join('')}<td>${escape(p.context)}</td></tr>`).join('')}</tbody></table></div></details>
+  ${parameterPanel()}${footer()}`;
+}
+function render() {
+  const caseId = location.hash.match(/^#case\/([A-Z])$/)?.[1];
+  document.querySelector('#app').innerHTML = caseId ? evidence(caseId) : overview();
+  if (location.hash === '#parameters') { const panel = document.querySelector('#parameters'); panel.open = true; panel.scrollIntoView(); } else window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', render); render();
+</script></body></html>

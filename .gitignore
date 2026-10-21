@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+public-npm-cache/
+
+# SQLite runtime temporary lock files (do not commit WAL/SHM locks)
+data/*.sqlite-wal
+data/*.sqlite-shm
+
+# Log files
+*.log
+npm-debug.log*
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini

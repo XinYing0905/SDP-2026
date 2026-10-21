@@ -1,0 +1,650 @@
+{
+  "label": "Prototype validation on simulated cases",
+  "semanticAvailable": true,
+  "unavailableReason": null,
+  "model": {
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "tokenizerRevision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "transformers": "4.3.1",
+    "pooling": "mean",
+    "normalise": true,
+    "dtype": "q8",
+    "preprocessing": "NFKC; collapse whitespace; trim; approved pre-decision description only; English-first",
+    "artifacts": [
+      {
+        "file": "config.json",
+        "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7",
+        "bytes": 650
+      },
+      {
+        "file": "tokenizer.json",
+        "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+        "bytes": 711661
+      },
+      {
+        "file": "tokenizer_config.json",
+        "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3",
+        "bytes": 366
+      },
+      {
+        "file": "special_tokens_map.json",
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "bytes": 125
+      },
+      {
+        "file": "vocab.txt",
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+        "bytes": 231508
+      },
+      {
+        "file": "onnx/model_quantized.onnx",
+        "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1",
+        "bytes": 22972370
+      },
+      {
+        "file": "README.md",
+        "sha256": "63ea99bf681a2e9eda4f6a537d5ed8fda95d1677111656da37e9cfd080c3af02",
+        "bytes": 1767
+      }
+    ],
+    "runtime": "v24.15.0",
+    "platform": "win32",
+    "arch": "x64",
+    "onnxruntime": "1.30.0",
+    "digest": "c1a7fc3bb72908ae444126abaa2173c3d3a5479550a62a1d8947cf2748f307f9"
+  },
+  "policy": {
+    "version": "predeclared-relevance-1",
+    "k": 3,
+    "meaning": "Topic-specific pre-decision narrative relevance; all nine reference cases still meet the same hard comparability constraints. No suitability denominator is changed.",
+    "metric": "Precision@3 and mean reciprocal rank; prototype validation on simulated cases",
+    "baseline": "Same hard filters, rank by fewest noncritical structured differences, stable episode ID for exact ties; narrative text unused",
+    "holdout": "Query families have no reference episodes; no supervised training or parameter tuning on these judgements"
+  },
+  "judgementDigest": "0ba94553deec9c834f598e0eaa2629aff4cece6f481f22d353338287fe9784ee",
+  "releaseDigest": "b1edae587d80a46c18d7a26fdbf054ec0abfe585f46707e3a46e052cdc17f5d6",
+  "indexDigest": "aedd432df2d633fff43853c67f8b6a75ec54c9eaca75a6fb0ae2094010f4e266",
+  "queries": [
+    {
+      "id": "heldout-food-1",
+      "query": "People would like to learn culinary techniques and prepare meals together in this venue.",
+      "relevance": [
+        "reprogramme-0",
+        "reprogramme-1",
+        "reprogramme-2"
+      ],
+      "baseline": {
+        "precisionAt3": 0,
+        "reciprocalRank": 0.14285714285714285,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.6275864960601012
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.538885572007884
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.5078266103435772
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.36261537864359317
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.36161756529944844
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.32393193084902716
+          },
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.24703596998902322
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.21030994486764432
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.1526050749332025
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    },
+    {
+      "id": "heldout-food-2",
+      "query": "Participants ask for hands-on tuition in making dishes, working with ingredients and preparing dinner.",
+      "relevance": [
+        "reprogramme-0",
+        "reprogramme-1",
+        "reprogramme-2"
+      ],
+      "baseline": {
+        "precisionAt3": 0,
+        "reciprocalRank": 0.14285714285714285,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.4866933359172572
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.48610498032991206
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.42081420482391013
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.2839573731556728
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.28090204988465595
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.19508976481773238
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.1819426655404391
+          },
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.17939552428677633
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.11665061718626164
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    },
+    {
+      "id": "heldout-music-1",
+      "query": "Local performers need ensemble sessions, melodic instruction and a place to practise songs.",
+      "relevance": [
+        "music-0",
+        "music-1",
+        "music-2"
+      ],
+      "baseline": {
+        "precisionAt3": 0,
+        "reciprocalRank": 0.25,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.5864158003502721
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.5265743021230995
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.37008783534855105
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.3248712826692404
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.30414029806335036
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.2907513919195738
+          },
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.2726627337655209
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.2174051318931971
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.1389938045229769
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    },
+    {
+      "id": "heldout-music-2",
+      "query": "People hope to learn to play instruments together and rehearse tunes with a vocal group.",
+      "relevance": [
+        "music-0",
+        "music-1",
+        "music-2"
+      ],
+      "baseline": {
+        "precisionAt3": 0,
+        "reciprocalRank": 0.25,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.5161612888426161
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.4492392114102548
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.32613715643030294
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.21191313516323312
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.1697487755132537
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.14894784185632198
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.12575821620911243
+          },
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.11303140806864549
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.023927572044259004
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    },
+    {
+      "id": "heldout-exercise-1",
+      "query": "Participants seek low-impact workouts, mobility sessions and opportunities to improve physical wellbeing.",
+      "relevance": [
+        "exercise-0",
+        "exercise-1",
+        "exercise-2"
+      ],
+      "baseline": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.40222650676336313
+          },
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.39670641870355877
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.2952398418331993
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.2123391800832437
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.16324378241086218
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.16184670247446908
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.13775255101397432
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.12535312252756958
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.11567729793687215
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    },
+    {
+      "id": "heldout-exercise-2",
+      "query": "The venue could offer guided body conditioning, flexibility sessions and active healthy movement.",
+      "relevance": [
+        "exercise-0",
+        "exercise-1",
+        "exercise-2"
+      ],
+      "baseline": {
+        "precisionAt3": 1,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0
+          }
+        ]
+      },
+      "hybrid": {
+        "precisionAt3": 0.6666666666666666,
+        "reciprocalRank": 1,
+        "order": [
+          {
+            "id": "episode:exercise-0:review-1",
+            "score": 0.5209484093181214
+          },
+          {
+            "id": "episode:exercise-2:review-1",
+            "score": 0.3905689371522552
+          },
+          {
+            "id": "episode:music-2:review-1",
+            "score": 0.3623924136393135
+          },
+          {
+            "id": "episode:exercise-1:review-1",
+            "score": 0.32664870758331593
+          },
+          {
+            "id": "episode:music-0:review-1",
+            "score": 0.3263033806768047
+          },
+          {
+            "id": "episode:reprogramme-2:review-1",
+            "score": 0.28673642335171146
+          },
+          {
+            "id": "episode:reprogramme-1:review-1",
+            "score": 0.27945579217149974
+          },
+          {
+            "id": "episode:music-1:review-1",
+            "score": 0.24472312705889013
+          },
+          {
+            "id": "episode:reprogramme-0:review-1",
+            "score": 0.22441600643453086
+          }
+        ]
+      },
+      "membershipEqual": true,
+      "descriptorEqual": true
+    }
+  ],
+  "baseline": {
+    "precisionAt3": 0.3333333333333333,
+    "mrr": 0.46428571428571425
+  },
+  "hybrid": {
+    "precisionAt3": 0.9444444444444445,
+    "mrr": 1
+  },
+  "improvementDemonstrated": true,
+  "interpretation": "Semantic ranking improved topic relevance in these six held-out English simulated queries. This is not intervention-effectiveness accuracy."
+}

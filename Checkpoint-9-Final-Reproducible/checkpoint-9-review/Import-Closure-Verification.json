@@ -1,0 +1,7 @@
+{
+  "checkedFiles": 237,
+  "relativeImportEdges": 504,
+  "missingCount": 0,
+  "missing": [],
+  "method": "Literal relative static imports/exports and literal dynamic imports. Nonliteral filesystem paths are additionally exercised by clean-room builds, tests and validation."
+}

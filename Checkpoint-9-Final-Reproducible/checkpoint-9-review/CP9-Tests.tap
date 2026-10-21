@@ -1,0 +1,310 @@
+TAP version 13
+# Subtest: A supportive Reprogramme:3 Met /4 total, no probability
+ok 1 - A supportive Reprogramme:3 Met /4 total, no probability
+  ---
+  duration_ms: 1366.0844
+  type: 'test'
+  ...
+# Subtest: B equal goal directions remain mixed
+ok 2 - B equal goal directions remain mixed
+  ---
+  duration_ms: 0.3985
+  type: 'test'
+  ...
+# Subtest: C substantiated protection breach prevents supportive pattern
+ok 3 - C substantiated protection breach prevents supportive pattern
+  ---
+  duration_ms: 0.1947
+  type: 'test'
+  ...
+# Subtest: D CP7-blocked candidate cannot be unblocked
+ok 4 - D CP7-blocked candidate cannot be unblocked
+  ---
+  duration_ms: 0.3967
+  type: 'test'
+  ...
+# Subtest: E fewer than3 episodes/amenities abstains
+ok 5 - E fewer than3 episodes/amenities abstains
+  ---
+  duration_ms: 0.1957
+  type: 'test'
+  ...
+# Subtest: F material dependency/substitute difference excluded
+ok 6 - F material dependency/substitute difference excluded
+  ---
+  duration_ms: 0.1593
+  type: 'test'
+  ...
+# Subtest: G Repair without usage recovery retains restoration criteria
+ok 7 - G Repair without usage recovery retains restoration criteria
+  ---
+  duration_ms: 0.2219
+  type: 'test'
+  ...
+# Subtest: H Preserve with low total utilisation remains purpose-successful
+ok 8 - H Preserve with low total utilisation remains purpose-successful
+  ---
+  duration_ms: 0.1884
+  type: 'test'
+  ...
+# Subtest: I pilot benefit failure and evidence usefulness remain separate
+ok 9 - I pilot benefit failure and evidence usefulness remain separate
+  ---
+  duration_ms: 0.3242
+  type: 'test'
+  ...
+# Subtest: J materially deviated case not in denominator
+ok 10 - J materially deviated case not in denominator
+  ---
+  duration_ms: 0.2565
+  type: 'test'
+  ...
+# Subtest: K insufficient/conflicting/unexecuted cases remain limited
+ok 11 - K insufficient/conflicting/unexecuted cases remain limited
+  ---
+  duration_ms: 0.1645
+  type: 'test'
+  ...
+# Subtest: L post-outcome leakage is rejected
+ok 12 - L post-outcome leakage is rejected
+  ---
+  duration_ms: 0.0879
+  type: 'test'
+  ...
+# Subtest: M duplicate/repeated review/correction one episode once
+ok 13 - M duplicate/repeated review/correction one episode once
+  ---
+  duration_ms: 0.1035
+  type: 'test'
+  ...
+# Subtest: N real CP7 lower-impact preference survives stronger alternative history
+ok 14 - N real CP7 lower-impact preference survives stronger alternative history
+  ---
+  duration_ms: 1.0841
+  type: 'test'
+  ...
+# Subtest: O no comparable history abstains
+ok 15 - O no comparable history abstains
+  ---
+  duration_ms: 0.1093
+  type: 'test'
+  ...
+# Subtest: all seven fixed pathways present with actual CP8 findings
+ok 16 - all seven fixed pathways present with actual CP8 findings
+  ---
+  duration_ms: 0.3739
+  type: 'test'
+  ...
+# Subtest: raw and structured outcomes never reduced to universal success flag
+ok 17 - raw and structured outcomes never reduced to universal success flag
+  ---
+  duration_ms: 0.1241
+  type: 'test'
+  ...
+# Subtest: three amenities required even with three intervention episodes
+ok 18 - three amenities required even with three intervention episodes
+  ---
+  duration_ms: 0.1567
+  type: 'test'
+  ...
+# Subtest: Mixed remains in strict-majority denominator
+ok 19 - Mixed remains in strict-majority denominator
+  ---
+  duration_ms: 1.1018
+  type: 'test'
+  ...
+# Subtest: below floor protection concern still prominently visible
+ok 20 - below floor protection concern still prominently visible
+  ---
+  duration_ms: 0.1444
+  type: 'test'
+  ...
+# Subtest: authoritative correction retains former finding in history
+ok 21 - authoritative correction retains former finding in history
+  ---
+  duration_ms: 0.1141
+  type: 'test'
+  ...
+# Subtest: tampered historical provenance is rejected
+ok 22 - tampered historical provenance is rejected
+  ---
+  duration_ms: 0.5968
+  type: 'test'
+  ...
+# Subtest: post-outcome nested feature rejected even with recomputed digest
+ok 23 - post-outcome nested feature rejected even with recomputed digest
+  ---
+  duration_ms: 23.9817
+  type: 'test'
+  ...
+# Subtest: future feature source rejected
+ok 24 - future feature source rejected
+  ---
+  duration_ms: 28.2184
+  type: 'test'
+  ...
+# Subtest: future corpus release and not-yet-available query snapshot rejected
+ok 25 - future corpus release and not-yet-available query snapshot rejected
+  ---
+  duration_ms: 135.1629
+  type: 'test'
+  ...
+# Subtest: missing critical field remains unknown
+ok 26 - missing critical field remains unknown
+  ---
+  duration_ms: 26.0541
+  type: 'test'
+  ...
+# Subtest: owner status cannot enter comparison representation
+ok 27 - owner status cannot enter comparison representation
+  ---
+  duration_ms: 24.4137
+  type: 'test'
+  ...
+# Subtest: cohort size cannot reduce protection concern
+ok 28 - cohort size cannot reduce protection concern
+  ---
+  duration_ms: 0.4397
+  type: 'test'
+  ...
+# Subtest: model unavailable uses explicit diagnostic and no fake vectors
+ok 29 - model unavailable uses explicit diagnostic and no fake vectors
+  ---
+  duration_ms: 64.6624
+  type: 'test'
+  ...
+# Subtest: wrong model artifact hash reports unavailable
+ok 30 - wrong model artifact hash reports unavailable
+  ---
+  duration_ms: 5.7857
+  type: 'test'
+  ...
+# Subtest: semantic ranking cannot change denominator or descriptor
+ok 31 - semantic ranking cannot change denominator or descriptor
+  ---
+  duration_ms: 168.8309
+  type: 'test'
+  ...
+# Subtest: adverse cases retained independently of top-card pagination
+ok 32 - adverse cases retained independently of top-card pagination
+  ---
+  duration_ms: 0.228
+  type: 'test'
+  ...
+# Subtest: query amenity/intervention lineage excluded
+ok 33 - query amenity/intervention lineage excluded
+  ---
+  duration_ms: 145.2608
+  type: 'test'
+  ...
+# Subtest: synthetic query family excluded from reference
+ok 34 - synthetic query family excluded from reference
+  ---
+  duration_ms: 142.9688
+  type: 'test'
+  ...
+# Subtest: source explanations link exact approved descriptions and outcomes
+ok 35 - source explanations link exact approved descriptions and outcomes
+  ---
+  duration_ms: 0.311
+  type: 'test'
+  ...
+# Subtest: fixed model/index version reproduces vectors and index digest
+ok 36 - fixed model/index version reproduces vectors and index digest
+  ---
+  duration_ms: 20.3305
+  type: 'test'
+  ...
+# Subtest: stale current inputs suppress historical interpretation
+ok 37 - stale current inputs suppress historical interpretation
+  ---
+  duration_ms: 133.4792
+  type: 'test'
+  ...
+# Subtest: Technical QA never upgrades a blocked candidate
+ok 38 - Technical QA never upgrades a blocked candidate
+  ---
+  duration_ms: 566.8088
+  type: 'test'
+  ...
+# Subtest: SQLite historical records persist and cannot be overwritten
+ok 39 - SQLite historical records persist and cannot be overwritten
+  ---
+  duration_ms: 166.2244
+  type: 'test'
+  ...
+# Subtest: current query rechecked after model wait, no stale result persisted
+ok 40 - current query rechecked after model wait, no stale result persisted
+  ---
+  duration_ms: 1220.1274
+  type: 'test'
+  ...
+# Subtest: read-only history provider preserves both upstream database bytes
+ok 41 - read-only history provider preserves both upstream database bytes
+  ---
+  duration_ms: 8864.3699
+  type: 'test'
+  ...
+# Subtest: semantic validation uses predeclared holdout judgements and reports real gain honestly
+ok 42 - semantic validation uses predeclared holdout judgements and reports real gain honestly
+  ---
+  duration_ms: 4.2352
+  type: 'test'
+  ...
+# Subtest: retrieval binds all corpus/model/index/query/feature-policy versions
+ok 43 - retrieval binds all corpus/model/index/query/feature-policy versions
+  ---
+  duration_ms: 0.439
+  type: 'test'
+  ...
+# Subtest: as-of admission excludes an unavailable future review
+ok 44 - as-of admission excludes an unavailable future review
+  ---
+  duration_ms: 2.7219
+  type: 'test'
+  ...
+# Subtest: invalid feature values cannot be fabricated to fill a gap
+ok 45 - invalid feature values cannot be fabricated to fill a gap
+  ---
+  duration_ms: 126.0544
+  type: 'test'
+  ...
+# Subtest: independent conflicting versions of one episode held rather than latest-wins
+ok 46 - independent conflicting versions of one episode held rather than latest-wins
+  ---
+  duration_ms: 5.7837
+  type: 'test'
+  ...
+# Subtest: same inputs can be inspected and audited without upstream mutation
+ok 47 - same inputs can be inspected and audited without upstream mutation
+  ---
+  duration_ms: 1178.5145
+  type: 'test'
+  ...
+# Subtest: unavailable live model creates labelled diagnostic, no generative fallback
+ok 48 - unavailable live model creates labelled diagnostic, no generative fallback
+  ---
+  duration_ms: 1341.8554
+  type: 'test'
+  ...
+# Subtest: saved current CP7 provider remains read-only and reproduces readiness
+ok 49 - saved current CP7 provider remains read-only and reproduces readiness
+  ---
+  duration_ms: 765.5721
+  type: 'test'
+  ...
+# Subtest: HTTP exposes read-only review and forbids execution/AI-approval writes
+ok 50 - HTTP exposes read-only review and forbids execution/AI-approval writes
+  ---
+  duration_ms: 350.6645
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17887.6455

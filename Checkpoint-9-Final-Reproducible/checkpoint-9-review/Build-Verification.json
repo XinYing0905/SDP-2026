@@ -1,0 +1,33 @@
+{
+  "buildCommand": "node cp9/scripts/check-build.mjs",
+  "approvedBuildCommand": "node scripts/build.mjs",
+  "cleanBuilds": 2,
+  "builds": 2,
+  "deterministic": true,
+  "staleDistUsed": false,
+  "generatedFiles": 104,
+  "compatibilityFiles": [
+    {
+      "file": "app.mjs",
+      "sha256": "845ba55036bcda35b8bb8d751c09a97b1402ca226adbaf3b91a77be816655766"
+    },
+    {
+      "file": "config.mjs",
+      "sha256": "74a9fde0e319facb3dcce2a7919a8d90bdb66f57b68c92a46038cedc3e378f52"
+    },
+    {
+      "file": "detector.mjs",
+      "sha256": "daadd2e0b7f5667edacd394a446cc2c2fe9c9cdcf52397383c952ee529c2171f"
+    },
+    {
+      "file": "fixtures.mjs",
+      "sha256": "85445560e9600b67a89d03dd6e6d1b0a11b91adb8de4e774b0aba8dc2ca1d3e2"
+    },
+    {
+      "file": "styles.css",
+      "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+    }
+  ],
+  "missingOrDifferent": [],
+  "notes": "Each build removes the entire dist directory, restores unchanged authored compatibility files and stylesheet from included delivery-source, and runs the unchanged approved build. No stale dist required."
+}

@@ -1,0 +1,2764 @@
+TAP version 13
+# Subtest: A supportive Reprogramme:3 Met /4 total, no probability
+ok 1 - A supportive Reprogramme:3 Met /4 total, no probability
+  ---
+  duration_ms: 1896.7677
+  type: 'test'
+  ...
+# Subtest: B equal goal directions remain mixed
+ok 2 - B equal goal directions remain mixed
+  ---
+  duration_ms: 0.4471
+  type: 'test'
+  ...
+# Subtest: C substantiated protection breach prevents supportive pattern
+ok 3 - C substantiated protection breach prevents supportive pattern
+  ---
+  duration_ms: 0.2128
+  type: 'test'
+  ...
+# Subtest: D CP7-blocked candidate cannot be unblocked
+ok 4 - D CP7-blocked candidate cannot be unblocked
+  ---
+  duration_ms: 0.4207
+  type: 'test'
+  ...
+# Subtest: E fewer than3 episodes/amenities abstains
+ok 5 - E fewer than3 episodes/amenities abstains
+  ---
+  duration_ms: 0.2123
+  type: 'test'
+  ...
+# Subtest: F material dependency/substitute difference excluded
+ok 6 - F material dependency/substitute difference excluded
+  ---
+  duration_ms: 0.1996
+  type: 'test'
+  ...
+# Subtest: G Repair without usage recovery retains restoration criteria
+ok 7 - G Repair without usage recovery retains restoration criteria
+  ---
+  duration_ms: 0.2799
+  type: 'test'
+  ...
+# Subtest: H Preserve with low total utilisation remains purpose-successful
+ok 8 - H Preserve with low total utilisation remains purpose-successful
+  ---
+  duration_ms: 0.2288
+  type: 'test'
+  ...
+# Subtest: I pilot benefit failure and evidence usefulness remain separate
+ok 9 - I pilot benefit failure and evidence usefulness remain separate
+  ---
+  duration_ms: 0.297
+  type: 'test'
+  ...
+# Subtest: J materially deviated case not in denominator
+ok 10 - J materially deviated case not in denominator
+  ---
+  duration_ms: 0.2717
+  type: 'test'
+  ...
+# Subtest: K insufficient/conflicting/unexecuted cases remain limited
+ok 11 - K insufficient/conflicting/unexecuted cases remain limited
+  ---
+  duration_ms: 0.1739
+  type: 'test'
+  ...
+# Subtest: L post-outcome leakage is rejected
+ok 12 - L post-outcome leakage is rejected
+  ---
+  duration_ms: 0.1114
+  type: 'test'
+  ...
+# Subtest: M duplicate/repeated review/correction one episode once
+ok 13 - M duplicate/repeated review/correction one episode once
+  ---
+  duration_ms: 0.1338
+  type: 'test'
+  ...
+# Subtest: N real CP7 lower-impact preference survives stronger alternative history
+ok 14 - N real CP7 lower-impact preference survives stronger alternative history
+  ---
+  duration_ms: 1.2744
+  type: 'test'
+  ...
+# Subtest: O no comparable history abstains
+ok 15 - O no comparable history abstains
+  ---
+  duration_ms: 0.1229
+  type: 'test'
+  ...
+# Subtest: all seven fixed pathways present with actual CP8 findings
+ok 16 - all seven fixed pathways present with actual CP8 findings
+  ---
+  duration_ms: 0.4634
+  type: 'test'
+  ...
+# Subtest: raw and structured outcomes never reduced to universal success flag
+ok 17 - raw and structured outcomes never reduced to universal success flag
+  ---
+  duration_ms: 0.1803
+  type: 'test'
+  ...
+# Subtest: three amenities required even with three intervention episodes
+ok 18 - three amenities required even with three intervention episodes
+  ---
+  duration_ms: 0.2052
+  type: 'test'
+  ...
+# Subtest: Mixed remains in strict-majority denominator
+ok 19 - Mixed remains in strict-majority denominator
+  ---
+  duration_ms: 1.5084
+  type: 'test'
+  ...
+# Subtest: below floor protection concern still prominently visible
+ok 20 - below floor protection concern still prominently visible
+  ---
+  duration_ms: 0.2074
+  type: 'test'
+  ...
+# Subtest: authoritative correction retains former finding in history
+ok 21 - authoritative correction retains former finding in history
+  ---
+  duration_ms: 0.162
+  type: 'test'
+  ...
+# Subtest: tampered historical provenance is rejected
+ok 22 - tampered historical provenance is rejected
+  ---
+  duration_ms: 0.8973
+  type: 'test'
+  ...
+# Subtest: post-outcome nested feature rejected even with recomputed digest
+ok 23 - post-outcome nested feature rejected even with recomputed digest
+  ---
+  duration_ms: 35.4408
+  type: 'test'
+  ...
+# Subtest: future feature source rejected
+ok 24 - future feature source rejected
+  ---
+  duration_ms: 26.7472
+  type: 'test'
+  ...
+# Subtest: future corpus release and not-yet-available query snapshot rejected
+ok 25 - future corpus release and not-yet-available query snapshot rejected
+  ---
+  duration_ms: 192.8905
+  type: 'test'
+  ...
+# Subtest: missing critical field remains unknown
+ok 26 - missing critical field remains unknown
+  ---
+  duration_ms: 28.5835
+  type: 'test'
+  ...
+# Subtest: owner status cannot enter comparison representation
+ok 27 - owner status cannot enter comparison representation
+  ---
+  duration_ms: 38.8939
+  type: 'test'
+  ...
+# Subtest: cohort size cannot reduce protection concern
+ok 28 - cohort size cannot reduce protection concern
+  ---
+  duration_ms: 0.5009
+  type: 'test'
+  ...
+# Subtest: model unavailable uses explicit diagnostic and no fake vectors
+ok 29 - model unavailable uses explicit diagnostic and no fake vectors
+  ---
+  duration_ms: 92.3877
+  type: 'test'
+  ...
+# Subtest: wrong model artifact hash reports unavailable
+ok 30 - wrong model artifact hash reports unavailable
+  ---
+  duration_ms: 1.0207
+  type: 'test'
+  ...
+# Subtest: semantic ranking cannot change denominator or descriptor
+ok 31 - semantic ranking cannot change denominator or descriptor
+  ---
+  duration_ms: 1368.7578
+  type: 'test'
+  ...
+# Subtest: adverse cases retained independently of top-card pagination
+ok 32 - adverse cases retained independently of top-card pagination
+  ---
+  duration_ms: 4.8723
+  type: 'test'
+  ...
+# Subtest: query amenity/intervention lineage excluded
+ok 33 - query amenity/intervention lineage excluded
+  ---
+  duration_ms: 1373.6314
+  type: 'test'
+  ...
+# Subtest: synthetic query family excluded from reference
+ok 34 - synthetic query family excluded from reference
+  ---
+  duration_ms: 1405.2539
+  type: 'test'
+  ...
+# Subtest: source explanations link exact approved descriptions and outcomes
+ok 35 - source explanations link exact approved descriptions and outcomes
+  ---
+  duration_ms: 3.8783
+  type: 'test'
+  ...
+# Subtest: fixed model/index version reproduces vectors and index digest
+ok 36 - fixed model/index version reproduces vectors and index digest
+  ---
+  duration_ms: 123.8003
+  type: 'test'
+  ...
+# Subtest: stale current inputs suppress historical interpretation
+ok 37 - stale current inputs suppress historical interpretation
+  ---
+  duration_ms: 1364.8257
+  type: 'test'
+  ...
+# Subtest: Technical QA never upgrades a blocked candidate
+ok 38 - Technical QA never upgrades a blocked candidate
+  ---
+  duration_ms: 1391.4239
+  type: 'test'
+  ...
+# Subtest: SQLite historical records persist and cannot be overwritten
+ok 39 - SQLite historical records persist and cannot be overwritten
+  ---
+  duration_ms: 186.9903
+  type: 'test'
+  ...
+# Subtest: current query rechecked after model wait, no stale result persisted
+ok 40 - current query rechecked after model wait, no stale result persisted
+  ---
+  duration_ms: 1709.0867
+  type: 'test'
+  ...
+# Subtest: read-only history provider preserves both upstream database bytes
+ok 41 - read-only history provider preserves both upstream database bytes
+  ---
+  duration_ms: 9207.8979
+  type: 'test'
+  ...
+# Subtest: semantic validation uses predeclared holdout judgements and reports real gain honestly
+ok 42 - semantic validation uses predeclared holdout judgements and reports real gain honestly
+  ---
+  duration_ms: 4.3785
+  type: 'test'
+  ...
+# Subtest: retrieval binds all corpus/model/index/query/feature-policy versions
+ok 43 - retrieval binds all corpus/model/index/query/feature-policy versions
+  ---
+  duration_ms: 0.5954
+  type: 'test'
+  ...
+# Subtest: as-of admission excludes an unavailable future review
+ok 44 - as-of admission excludes an unavailable future review
+  ---
+  duration_ms: 2.1925
+  type: 'test'
+  ...
+# Subtest: invalid feature values cannot be fabricated to fill a gap
+ok 45 - invalid feature values cannot be fabricated to fill a gap
+  ---
+  duration_ms: 130.0205
+  type: 'test'
+  ...
+# Subtest: independent conflicting versions of one episode held rather than latest-wins
+ok 46 - independent conflicting versions of one episode held rather than latest-wins
+  ---
+  duration_ms: 6.0848
+  type: 'test'
+  ...
+# Subtest: same inputs can be inspected and audited without upstream mutation
+ok 47 - same inputs can be inspected and audited without upstream mutation
+  ---
+  duration_ms: 1500.2956
+  type: 'test'
+  ...
+# Subtest: unavailable live model creates labelled diagnostic, no generative fallback
+ok 48 - unavailable live model creates labelled diagnostic, no generative fallback
+  ---
+  duration_ms: 1573.4028
+  type: 'test'
+  ...
+# Subtest: saved current CP7 provider remains read-only and reproduces readiness
+ok 49 - saved current CP7 provider remains read-only and reproduces readiness
+  ---
+  duration_ms: 904.3556
+  type: 'test'
+  ...
+# Subtest: HTTP exposes read-only review and forbids execution/AI-approval writes
+ok 50 - HTTP exposes read-only review and forbids execution/AI-approval writes
+  ---
+  duration_ms: 321.3371
+  type: 'test'
+  ...
+# Subtest: Approved detector, thresholds, fixtures, tests, CSS and portable HTML preserve original SHA-256
+ok 51 - Approved detector, thresholds, fixtures, tests, CSS and portable HTML preserve original SHA-256
+  ---
+  duration_ms: 32.5983
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: A
+ok 52 - Exact pre-refactor output parity: A
+  ---
+  duration_ms: 4.696
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: A
+ok 53 - Service/wire contract preserves full evidence and missing data: A
+  ---
+  duration_ms: 2.6423
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: B
+ok 54 - Exact pre-refactor output parity: B
+  ---
+  duration_ms: 1.0316
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: B
+ok 55 - Service/wire contract preserves full evidence and missing data: B
+  ---
+  duration_ms: 1.9381
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: C
+ok 56 - Exact pre-refactor output parity: C
+  ---
+  duration_ms: 0.8604
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: C
+ok 57 - Service/wire contract preserves full evidence and missing data: C
+  ---
+  duration_ms: 3.1578
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: D
+ok 58 - Exact pre-refactor output parity: D
+  ---
+  duration_ms: 1.9092
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: D
+ok 59 - Service/wire contract preserves full evidence and missing data: D
+  ---
+  duration_ms: 2.1449
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: E
+ok 60 - Exact pre-refactor output parity: E
+  ---
+  duration_ms: 1.2512
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: E
+ok 61 - Service/wire contract preserves full evidence and missing data: E
+  ---
+  duration_ms: 1.8658
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: F
+ok 62 - Exact pre-refactor output parity: F
+  ---
+  duration_ms: 1.1329
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: F
+ok 63 - Service/wire contract preserves full evidence and missing data: F
+  ---
+  duration_ms: 2.4487
+  type: 'test'
+  ...
+# Subtest: Exact pre-refactor output parity: S
+ok 64 - Exact pre-refactor output parity: S
+  ---
+  duration_ms: 0.6725
+  type: 'test'
+  ...
+# Subtest: Service/wire contract preserves full evidence and missing data: S
+ok 65 - Service/wire contract preserves full evidence and missing data: S
+  ---
+  duration_ms: 2.3586
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#/
+ok 66 - Presentation template parity: \#/
+  ---
+  duration_ms: 9.1117
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/A
+ok 67 - Presentation template parity: \#case/A
+  ---
+  duration_ms: 59.7078
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/B
+ok 68 - Presentation template parity: \#case/B
+  ---
+  duration_ms: 6.2113
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/C
+ok 69 - Presentation template parity: \#case/C
+  ---
+  duration_ms: 6.4623
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/D
+ok 70 - Presentation template parity: \#case/D
+  ---
+  duration_ms: 6.8067
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/E
+ok 71 - Presentation template parity: \#case/E
+  ---
+  duration_ms: 4.3775
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/F
+ok 72 - Presentation template parity: \#case/F
+  ---
+  duration_ms: 3.2798
+  type: 'test'
+  ...
+# Subtest: Presentation template parity: \#case/S
+ok 73 - Presentation template parity: \#case/S
+  ---
+  duration_ms: 6.1109
+  type: 'test'
+  ...
+# Subtest: Repository and response isolation prevent caller mutation of seed/config/evidence
+ok 74 - Repository and response isolation prevent caller mutation of seed/config/evidence
+  ---
+  duration_ms: 10.0191
+  type: 'test'
+  ...
+# Subtest: HTTP adapter and local adapter expose identical JSON contract (mocked network)
+ok 75 - HTTP adapter and local adapter expose identical JSON contract (mocked network)
+  ---
+  duration_ms: 11.3456
+  type: 'test'
+  ...
+# Subtest: Local boundary returns explicit errors and preserves encoded IDs
+ok 76 - Local boundary returns explicit errors and preserves encoded IDs
+  ---
+  duration_ms: 2.7836
+  type: 'test'
+  ...
+# Subtest: Transport failure / malformed response is never converted to an amenity status
+ok 77 - Transport failure / malformed response is never converted to an amenity status
+  ---
+  duration_ms: 0.9547
+  type: 'test'
+  ...
+# Subtest: Application controller uses injected client and preserves screen markup
+ok 78 - Application controller uses injected client and preserves screen markup
+  ---
+  duration_ms: 10.9939
+  type: 'test'
+  ...
+# Subtest: Application loading failure states no inferred status
+ok 79 - Application loading failure states no inferred status
+  ---
+  duration_ms: 1.8617
+  type: 'test'
+  ...
+# Subtest: Presentation/controller do not import detector, fixture or threshold modules
+ok 80 - Presentation/controller do not import detector, fixture or threshold modules
+  ---
+  duration_ms: 21.406
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario A: actual full pipeline
+ok 81 - CP6 Scenario A: actual full pipeline
+  ---
+  duration_ms: 307.2586
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario B: actual full pipeline
+ok 82 - CP6 Scenario B: actual full pipeline
+  ---
+  duration_ms: 183.8273
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario C: actual full pipeline
+ok 83 - CP6 Scenario C: actual full pipeline
+  ---
+  duration_ms: 163.0241
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario D: actual full pipeline
+ok 84 - CP6 Scenario D: actual full pipeline
+  ---
+  duration_ms: 171.5239
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario E: actual full pipeline
+ok 85 - CP6 Scenario E: actual full pipeline
+  ---
+  duration_ms: 212.8832
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario F: actual full pipeline
+ok 86 - CP6 Scenario F: actual full pipeline
+  ---
+  duration_ms: 173.8996
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario G: actual full pipeline
+ok 87 - CP6 Scenario G: actual full pipeline
+  ---
+  duration_ms: 140.4772
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario H: actual full pipeline
+ok 88 - CP6 Scenario H: actual full pipeline
+  ---
+  duration_ms: 205.602
+  type: 'test'
+  ...
+# Subtest: CP6 Scenario I: actual full pipeline
+ok 89 - CP6 Scenario I: actual full pipeline
+  ---
+  duration_ms: 167.4375
+  type: 'test'
+  ...
+# Subtest: CP6 result is exactly the unchanged engine output, not a hardcoded readiness state
+ok 90 - CP6 result is exactly the unchanged engine output, not a hardcoded readiness state
+  ---
+  duration_ms: 157.2545
+  type: 'test'
+  ...
+# Subtest: CP6 resolving plan is selected by unchanged CP5 with unique CP4 resident winner
+ok 91 - CP6 resolving plan is selected by unchanged CP5 with unique CP4 resident winner
+  ---
+  duration_ms: 17.2267
+  type: 'test'
+  ...
+# Subtest: CP6 smaller frozen intended roster is allowed without inviting the whole eligible cohort
+ok 92 - CP6 smaller frozen intended roster is allowed without inviting the whole eligible cohort
+  ---
+  duration_ms: 26.0531
+  type: 'test'
+  ...
+# Subtest: CP6 one answer cannot create a feedback input or close evidence gaps
+ok 93 - CP6 one answer cannot create a feedback input or close evidence gaps
+  ---
+  duration_ms: 73.7996
+  type: 'test'
+  ...
+# Subtest: CP6 retries return same receipt without a second immutable response or revision
+ok 94 - CP6 retries return same receipt without a second immutable response or revision
+  ---
+  duration_ms: 59.9644
+  type: 'test'
+  ...
+# Subtest: CP6 same key different payload is rejected, raw accepted response is unchanged
+ok 95 - CP6 same key different payload is rejected, raw accepted response is unchanged
+  ---
+  duration_ms: 47.0148
+  type: 'test'
+  ...
+# Subtest: CP6 conflicting final submission is rejected, raw accepted response is unchanged
+ok 96 - CP6 conflicting final submission is rejected, raw accepted response is unchanged
+  ---
+  duration_ms: 64.0797
+  type: 'test'
+  ...
+# Subtest: CP6 rejects unknown option
+ok 97 - CP6 rejects unknown option
+  ---
+  duration_ms: 39.9938
+  type: 'test'
+  ...
+# Subtest: CP6 rejects stale question
+ok 98 - CP6 rejects stale question
+  ---
+  duration_ms: 37.0713
+  type: 'test'
+  ...
+# Subtest: CP6 rejects stale cohort
+ok 99 - CP6 rejects stale cohort
+  ---
+  duration_ms: 45.7124
+  type: 'test'
+  ...
+# Subtest: CP6 rejects wrong plan
+ok 100 - CP6 rejects wrong plan
+  ---
+  duration_ms: 38.8879
+  type: 'test'
+  ...
+# Subtest: CP6 rejects early timestamp
+ok 101 - CP6 rejects early timestamp
+  ---
+  duration_ms: 50.9798
+  type: 'test'
+  ...
+# Subtest: CP6 rejects future timestamp
+ok 102 - CP6 rejects future timestamp
+  ---
+  duration_ms: 47.8187
+  type: 'test'
+  ...
+# Subtest: CP6 unknown resident token cannot submit or view the question
+ok 103 - CP6 unknown resident token cannot submit or view the question
+  ---
+  duration_ms: 31.4341
+  type: 'test'
+  ...
+# Subtest: CP6 expiry and closure reject new responses; no response is derived only on close
+ok 104 - CP6 expiry and closure reject new responses; no response is derived only on close
+  ---
+  duration_ms: 64.9818
+  type: 'test'
+  ...
+# Subtest: CP6 changed membership retains responses and blocks old snapshot admission
+ok 105 - CP6 changed membership retains responses and blocks old snapshot admission
+  ---
+  duration_ms: 56.6832
+  type: 'test'
+  ...
+# Subtest: CP6 stale source winner is not reranked or silently replaced
+ok 106 - CP6 stale source winner is not reranked or silently replaced
+  ---
+  duration_ms: 45.7463
+  type: 'test'
+  ...
+# Subtest: CP6 stale expected version blocks mutations
+ok 107 - CP6 stale expected version blocks mutations
+  ---
+  duration_ms: 39.6992
+  type: 'test'
+  ...
+# Subtest: CP6 open requires explicit approval and valid selected plan
+ok 108 - CP6 open requires explicit approval and valid selected plan
+  ---
+  duration_ms: 7.3507
+  type: 'test'
+  ...
+# Subtest: CP6 protection needs and impact both create only bounded assertions
+ok 109 - CP6 protection needs and impact both create only bounded assertions
+  ---
+  duration_ms: 1735.2665
+  type: 'test'
+  ...
+# Subtest: CP6 immutable SQLite events and evidence survive repository restart
+ok 110 - CP6 immutable SQLite events and evidence survive repository restart
+  ---
+  duration_ms: 565.5862
+  type: 'test'
+  ...
+# Subtest: CP6 failed transaction rolls back state and append-only history together
+ok 111 - CP6 failed transaction rolls back state and append-only history together
+  ---
+  duration_ms: 238.4939
+  type: 'test'
+  ...
+# Subtest: CP6 database final-response constraint rolls back partially written revision and event
+ok 112 - CP6 database final-response constraint rolls back partially written revision and event
+  ---
+  duration_ms: 340.9661
+  type: 'test'
+  ...
+# Subtest: CP6 evidence conflicts across admissible batches remain review states without pooling
+ok 113 - CP6 evidence conflicts across admissible batches remain review states without pooling
+  ---
+  duration_ms: 1711.7676
+  type: 'test'
+  ...
+# Subtest: CP6 coverage admission boundary: five of ten fails, six of ten qualifies
+ok 114 - CP6 coverage admission boundary: five of ten fails, six of ten qualifies
+  ---
+  duration_ms: 1096.6447
+  type: 'test'
+  ...
+# Subtest: CP6 directional boundary distinguishes 80 percent from 70 percent
+ok 115 - CP6 directional boundary distinguishes 80 percent from 70 percent
+  ---
+  duration_ms: 1618.7124
+  type: 'test'
+  ...
+# Subtest: CP6 membership and parameter policy cannot be relaxed by caller
+ok 116 - CP6 membership and parameter policy cannot be relaxed by caller
+  ---
+  duration_ms: 74.8846
+  type: 'test'
+  ...
+# Subtest: CP6 reassessment retries are idempotent and do not mutate prior snapshots
+ok 117 - CP6 reassessment retries are idempotent and do not mutate prior snapshots
+  ---
+  duration_ms: 960.69
+  type: 'test'
+  ...
+# Subtest: CP6 new responses are unavailable to a historical assessment date
+ok 118 - CP6 new responses are unavailable to a historical assessment date
+  ---
+  duration_ms: 839.8046
+  type: 'test'
+  ...
+# Subtest: CP6 default seven-day window is explicit and one cohort can have a smaller intended roster
+ok 119 - CP6 default seven-day window is explicit and one cohort can have a smaller intended roster
+  ---
+  duration_ms: 187.4605
+  type: 'test'
+  ...
+# Subtest: CP6 duplicate/unissued recipients cannot enter the intended roster
+ok 120 - CP6 duplicate/unissued recipients cannot enter the intended roster
+  ---
+  duration_ms: 201.7882
+  type: 'test'
+  ...
+# Subtest: CP6 real HTTP application serves operator UI and accepts an actual resident submit
+ok 121 - CP6 real HTTP application serves operator UI and accepts an actual resident submit
+  ---
+  duration_ms: 1062.8159
+  type: 'test'
+  ...
+# Subtest: CP7 frozen runtime inputs match engine-generated fixtures; no eligibility output is hardcoded
+ok 122 - CP7 frozen runtime inputs match engine-generated fixtures; no eligibility output is hardcoded
+  ---
+  duration_ms: 28.922
+  type: 'test'
+  ...
+# Subtest: CP7 A: locked acceptance scenario
+ok 123 - CP7 A: locked acceptance scenario
+  ---
+  duration_ms: 5.5094
+  type: 'test'
+  ...
+# Subtest: CP7 B: locked acceptance scenario
+ok 124 - CP7 B: locked acceptance scenario
+  ---
+  duration_ms: 3.5209
+  type: 'test'
+  ...
+# Subtest: CP7 C: locked acceptance scenario
+ok 125 - CP7 C: locked acceptance scenario
+  ---
+  duration_ms: 2.6336
+  type: 'test'
+  ...
+# Subtest: CP7 D: locked acceptance scenario
+ok 126 - CP7 D: locked acceptance scenario
+  ---
+  duration_ms: 4.0512
+  type: 'test'
+  ...
+# Subtest: CP7 E: locked acceptance scenario
+ok 127 - CP7 E: locked acceptance scenario
+  ---
+  duration_ms: 2.7432
+  type: 'test'
+  ...
+# Subtest: CP7 F: locked acceptance scenario
+ok 128 - CP7 F: locked acceptance scenario
+  ---
+  duration_ms: 3.7469
+  type: 'test'
+  ...
+# Subtest: CP7 G: locked acceptance scenario
+ok 129 - CP7 G: locked acceptance scenario
+  ---
+  duration_ms: 4.5866
+  type: 'test'
+  ...
+# Subtest: CP7 H: locked acceptance scenario
+ok 130 - CP7 H: locked acceptance scenario
+  ---
+  duration_ms: 3.4303
+  type: 'test'
+  ...
+# Subtest: CP7 I: locked acceptance scenario
+ok 131 - CP7 I: locked acceptance scenario
+  ---
+  duration_ms: 3.7042
+  type: 'test'
+  ...
+# Subtest: CP7 J: locked acceptance scenario
+ok 132 - CP7 J: locked acceptance scenario
+  ---
+  duration_ms: 2.8956
+  type: 'test'
+  ...
+# Subtest: CP7 K: locked acceptance scenario
+ok 133 - CP7 K: locked acceptance scenario
+  ---
+  duration_ms: 3.54
+  type: 'test'
+  ...
+# Subtest: CP7 L: locked acceptance scenario
+ok 134 - CP7 L: locked acceptance scenario
+  ---
+  duration_ms: 2.3635
+  type: 'test'
+  ...
+# Subtest: CP7 M: locked acceptance scenario
+ok 135 - CP7 M: locked acceptance scenario
+  ---
+  duration_ms: 3.4816
+  type: 'test'
+  ...
+# Subtest: CP7 N: locked acceptance scenario
+ok 136 - CP7 N: locked acceptance scenario
+  ---
+  duration_ms: 3.9059
+  type: 'test'
+  ...
+# Subtest: CP7 O: locked acceptance scenario
+ok 137 - CP7 O: locked acceptance scenario
+  ---
+  duration_ms: 2.5533
+  type: 'test'
+  ...
+# Subtest: CP7 P: locked acceptance scenario
+ok 138 - CP7 P: locked acceptance scenario
+  ---
+  duration_ms: 2.8356
+  type: 'test'
+  ...
+# Subtest: CP7 Q: locked acceptance scenario
+ok 139 - CP7 Q: locked acceptance scenario
+  ---
+  duration_ms: 2.9425
+  type: 'test'
+  ...
+# Subtest: CP7 R: locked acceptance scenario
+ok 140 - CP7 R: locked acceptance scenario
+  ---
+  duration_ms: 2.571
+  type: 'test'
+  ...
+# Subtest: CP7 S: locked acceptance scenario
+ok 141 - CP7 S: locked acceptance scenario
+  ---
+  duration_ms: 1.7768
+  type: 'test'
+  ...
+# Subtest: CP7 T: locked acceptance scenario
+ok 142 - CP7 T: locked acceptance scenario
+  ---
+  duration_ms: 1.3412
+  type: 'test'
+  ...
+# Subtest: CP7 exact catalogue, original six ladder positions and parallel unnumbered Preserve
+ok 143 - CP7 exact catalogue, original six ladder positions and parallel unnumbered Preserve
+  ---
+  duration_ms: 0.2285
+  type: 'test'
+  ...
+# Subtest: CP7 proposal does not mutate any CP3/CP4/CP5/CP6 input, evidence or assertion
+ok 144 - CP7 proposal does not mutate any CP3/CP4/CP5/CP6 input, evidence or assertion
+  ---
+  duration_ms: 119.8085
+  type: 'test'
+  ...
+# Subtest: CP7 100 percent Relative Evidence Support does not replace action-specific scope
+ok 145 - CP7 100 percent Relative Evidence Support does not replace action-specific scope
+  ---
+  duration_ms: 2.8593
+  type: 'test'
+  ...
+# Subtest: CP7 narrow repair exception keeps aggregate explanation unresolved and makes no causal claim
+ok 146 - CP7 narrow repair exception keeps aggregate explanation unresolved and makes no causal claim
+  ---
+  duration_ms: 2.5189
+  type: 'test'
+  ...
+# Subtest: CP7 repair exception cannot broaden programme or allocation scope
+ok 147 - CP7 repair exception cannot broaden programme or allocation scope
+  ---
+  duration_ms: 2.508
+  type: 'test'
+  ...
+# Subtest: CP7 repair requires independently evidenced fault scope
+ok 148 - CP7 repair requires independently evidenced fault scope
+  ---
+  duration_ms: 2.5951
+  type: 'test'
+  ...
+# Subtest: CP7 protection hold does not relabel an unknown dependency assessment as Preserve
+ok 149 - CP7 protection hold does not relabel an unknown dependency assessment as Preserve
+  ---
+  duration_ms: 2.418
+  type: 'test'
+  ...
+# Subtest: CP7 bounded CP6 protection assertions cannot establish formal Preserve
+ok 150 - CP7 bounded CP6 protection assertions cannot establish formal Preserve
+  ---
+  duration_ms: 2.4719
+  type: 'test'
+  ...
+# Subtest: CP7 Preserve can be Ready with unresolved explanation and no primary explanation
+ok 151 - CP7 Preserve can be Ready with unresolved explanation and no primary explanation
+  ---
+  duration_ms: 2.0254
+  type: 'test'
+  ...
+# Subtest: CP7 Preserve can coexist with another primary explanation and a narrow repair
+ok 152 - CP7 Preserve can coexist with another primary explanation and a narrow repair
+  ---
+  duration_ms: 1.5729
+  type: 'test'
+  ...
+# Subtest: CP7 Preserve cannot perpetuate a known unsafe condition
+ok 153 - CP7 Preserve cannot perpetuate a known unsafe condition
+  ---
+  duration_ms: 1.5893
+  type: 'test'
+  ...
+# Subtest: CP7 Preserve still needs documented current protected access and feasible maintenance
+ok 154 - CP7 Preserve still needs documented current protected access and feasible maintenance
+  ---
+  duration_ms: 5.9795
+  type: 'test'
+  ...
+# Subtest: CP7 shared use remains blocked while explanation insufficient even with access safeguards
+ok 155 - CP7 shared use remains blocked while explanation insufficient even with access safeguards
+  ---
+  duration_ms: 3.1389
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires additionalUsePurposeSupported
+ok 156 - CP7 sharing independently requires additionalUsePurposeSupported
+  ---
+  duration_ms: 2.3858
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires genuineSpareSlots
+ok 157 - CP7 sharing independently requires genuineSpareSlots
+  ---
+  duration_ms: 1.6312
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires sufficientCapacity
+ok 158 - CP7 sharing independently requires sufficientCapacity
+  ---
+  duration_ms: 1.7329
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires accessibilityMaintained
+ok 159 - CP7 sharing independently requires accessibilityMaintained
+  ---
+  duration_ms: 3.0874
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires protectedAccessContinues
+ok 160 - CP7 sharing independently requires protectedAccessContinues
+  ---
+  duration_ms: 2.4797
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires noUnsupportedDisplacement
+ok 161 - CP7 sharing independently requires noUnsupportedDisplacement
+  ---
+  duration_ms: 2.3632
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires protectionMonitoringDefined
+ok 162 - CP7 sharing independently requires protectionMonitoringDefined
+  ---
+  duration_ms: 2.382
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires protectedFunctionRetained
+ok 163 - CP7 sharing independently requires protectedFunctionRetained
+  ---
+  duration_ms: 2.3448
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires scopeBounded
+ok 164 - CP7 sharing independently requires scopeBounded
+  ---
+  duration_ms: 2.3021
+  type: 'test'
+  ...
+# Subtest: CP7 sharing independently requires rollbackCredible
+ok 165 - CP7 sharing independently requires rollbackCredible
+  ---
+  duration_ms: 2.2629
+  type: 'test'
+  ...
+# Subtest: CP7 aggregate projected utilisation cannot override displaced protected access
+ok 166 - CP7 aggregate projected utilisation cannot override displaced protected access
+  ---
+  duration_ms: 2.3518
+  type: 'test'
+  ...
+# Subtest: CP7 new action-specific impact blocks without changing sufficient Protection Context
+ok 167 - CP7 new action-specific impact blocks without changing sufficient Protection Context
+  ---
+  duration_ms: 2.3873
+  type: 'test'
+  ...
+# Subtest: CP7 pilot selected as CP4 evidence reuses one Intervention ID and evidence request
+ok 168 - CP7 pilot selected as CP4 evidence reuses one Intervention ID and evidence request
+  ---
+  duration_ms: 3.3854
+  type: 'test'
+  ...
+# Subtest: CP7 CP4-selected pilot with missing linkage stays blocked rather than generating a second pilot
+ok 169 - CP7 CP4-selected pilot with missing linkage stays blocked rather than generating a second pilot
+  ---
+  duration_ms: 2.9415
+  type: 'test'
+  ...
+# Subtest: CP7 bounded pilot can be justified despite insufficient evidence for a broader change
+ok 170 - CP7 bounded pilot can be justified despite insufficient evidence for a broader change
+  ---
+  duration_ms: 13.8906
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses operational prerequisite
+ok 171 - CP7 temporary label never bypasses operational prerequisite
+  ---
+  duration_ms: 3.598
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses temporal prerequisite
+ok 172 - CP7 temporary label never bypasses temporal prerequisite
+  ---
+  duration_ms: 2.445
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses resident-mix prerequisite
+ok 173 - CP7 temporary label never bypasses resident-mix prerequisite
+  ---
+  duration_ms: 2.4074
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses protection prerequisite
+ok 174 - CP7 temporary label never bypasses protection prerequisite
+  ---
+  duration_ms: 2.6862
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses rollback
+ok 175 - CP7 temporary label never bypasses rollback
+  ---
+  duration_ms: 2.6574
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses stop triggers
+ok 176 - CP7 temporary label never bypasses stop triggers
+  ---
+  duration_ms: 1.4821
+  type: 'test'
+  ...
+# Subtest: CP7 temporary label never bypasses Outcome Contract
+ok 177 - CP7 temporary label never bypasses Outcome Contract
+  ---
+  duration_ms: 1.4802
+  type: 'test'
+  ...
+# Subtest: CP7 preference requires same purpose, supported less disruption and easier evidenced rollback
+ok 178 - CP7 preference requires same purpose, supported less disruption and easier evidenced rollback
+  ---
+  duration_ms: 2.9547
+  type: 'test'
+  ...
+# Subtest: CP7 qualitative preference requires actual source evidence, not arbitrary labels
+ok 179 - CP7 qualitative preference requires actual source evidence, not arbitrary labels
+  ---
+  duration_ms: 1.9253
+  type: 'test'
+  ...
+# Subtest: CP7 different stated purposes are not ranked against each other
+ok 180 - CP7 different stated purposes are not ranked against each other
+  ---
+  duration_ms: 1.7886
+  type: 'test'
+  ...
+# Subtest: CP7 equal purpose IDs cannot hide different stated objectives
+ok 181 - CP7 equal purpose IDs cannot hide different stated objectives
+  ---
+  duration_ms: 2.4637
+  type: 'test'
+  ...
+# Subtest: CP7 unknown risk, catalogue order, ownership and support do not break a tie
+ok 182 - CP7 unknown risk, catalogue order, ownership and support do not break a tie
+  ---
+  duration_ms: 2.9054
+  type: 'test'
+  ...
+# Subtest: CP7 Monitor needs an affirmative purpose and cannot hide an urgent fault
+ok 183 - CP7 Monitor needs an affirmative purpose and cannot hide an urgent fault
+  ---
+  duration_ms: 3.6134
+  type: 'test'
+  ...
+# Subtest: CP7 Validate needs a real named gap and material decision value
+ok 184 - CP7 Validate needs a real named gap and material decision value
+  ---
+  duration_ms: 5.2945
+  type: 'test'
+  ...
+# Subtest: CP7 action-requirement IDs are separate and link only genuine existing CP4 gaps
+ok 185 - CP7 action-requirement IDs are separate and link only genuine existing CP4 gaps
+  ---
+  duration_ms: 2.6022
+  type: 'test'
+  ...
+# Subtest: CP7 unavailable future scope evidence and conflicting action facts remain unknown
+ok 186 - CP7 unavailable future scope evidence and conflicting action facts remain unknown
+  ---
+  duration_ms: 3.9006
+  type: 'test'
+  ...
+# Subtest: CP7 eligible preferred plan approval is explicit, immutable and not execution
+ok 187 - CP7 eligible preferred plan approval is explicit, immutable and not execution
+  ---
+  duration_ms: 51.5384
+  type: 'test'
+  ...
+# Subtest: CP7 selecting a non-preferred Ready candidate requires explicit rationale
+ok 188 - CP7 selecting a non-preferred Ready candidate requires explicit rationale
+  ---
+  duration_ms: 85.8743
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in G
+ok 189 - CP7 operator cannot approve blocked candidate in G
+  ---
+  duration_ms: 60.2072
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in J
+ok 190 - CP7 operator cannot approve blocked candidate in J
+  ---
+  duration_ms: 61.546
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in L
+ok 191 - CP7 operator cannot approve blocked candidate in L
+  ---
+  duration_ms: 55.4327
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in O
+ok 192 - CP7 operator cannot approve blocked candidate in O
+  ---
+  duration_ms: 56.486
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in R
+ok 193 - CP7 operator cannot approve blocked candidate in R
+  ---
+  duration_ms: 74.0184
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in S
+ok 194 - CP7 operator cannot approve blocked candidate in S
+  ---
+  duration_ms: 59.1293
+  type: 'test'
+  ...
+# Subtest: CP7 operator cannot approve blocked candidate in T
+ok 195 - CP7 operator cannot approve blocked candidate in T
+  ---
+  duration_ms: 47.2285
+  type: 'test'
+  ...
+# Subtest: CP7 decline is valid even when no action is Ready
+ok 196 - CP7 decline is valid even when no action is Ready
+  ---
+  duration_ms: 34.8328
+  type: 'test'
+  ...
+# Subtest: CP7 defer is valid even when no action is Ready
+ok 197 - CP7 defer is valid even when no action is Ready
+  ---
+  duration_ms: 32.5813
+  type: 'test'
+  ...
+# Subtest: CP7 stale current input invalidates new approval and marks older approval as historical
+ok 198 - CP7 stale current input invalidates new approval and marks older approval as historical
+  ---
+  duration_ms: 59.3915
+  type: 'test'
+  ...
+# Subtest: CP7 policy/proposal version mismatch cannot retain current approval authority
+ok 199 - CP7 policy/proposal version mismatch cannot retain current approval authority
+  ---
+  duration_ms: 91.0979
+  type: 'test'
+  ...
+# Subtest: CP7 explicit supersession retains the earlier record but blocks its approval authority
+ok 200 - CP7 explicit supersession retains the earlier record but blocks its approval authority
+  ---
+  duration_ms: 143.2806
+  type: 'test'
+  ...
+# Subtest: CP7 changed evidence, scope, roster-linked input or expected revision blocks new approval
+ok 201 - CP7 changed evidence, scope, roster-linked input or expected revision blocks new approval
+  ---
+  duration_ms: 140.723
+  type: 'test'
+  ...
+# Subtest: CP7 no permanent pathway, action execution, outcome or model fields can be submitted
+ok 202 - CP7 no permanent pathway, action execution, outcome or model fields can be submitted
+  ---
+  duration_ms: 49.4576
+  type: 'test'
+  ...
+# Subtest: CP7 SQLite decisions and exact synthetic source snapshots persist across restart
+ok 203 - CP7 SQLite decisions and exact synthetic source snapshots persist across restart
+  ---
+  duration_ms: 169.3132
+  type: 'test'
+  ...
+# Subtest: CP7 real HTTP serves operator UI, persists approval and exposes no execute/outcome/model API
+ok 204 - CP7 real HTTP serves operator UI, persists approval and exposes no execute/outcome/model API
+  ---
+  duration_ms: 214.2559
+  type: 'test'
+  ...
+# Subtest: CP7 approval rollback preserves unapproved input and audit if persistence fails
+ok 205 - CP7 approval rollback preserves unapproved input and audit if persistence fails
+  ---
+  duration_ms: 36.2876
+  type: 'test'
+  ...
+# Subtest: CP7 inconsistent analysis and CP4 snapshot references are stale, not repaired by support
+ok 206 - CP7 inconsistent analysis and CP4 snapshot references are stale, not repaired by support
+  ---
+  duration_ms: 1.8806
+  type: 'test'
+  ...
+# Subtest: CP7 even supported candidates need concrete scope bounds, rollback details and valid prospective window
+ok 207 - CP7 even supported candidates need concrete scope bounds, rollback details and valid prospective window
+  ---
+  duration_ms: 8.7874
+  type: 'test'
+  ...
+# Subtest: CP8 A — locked scenario actual findings
+ok 208 - CP8 A — locked scenario actual findings
+  ---
+  duration_ms: 871.0275
+  type: 'test'
+  ...
+# Subtest: CP8 B — locked scenario actual findings
+ok 209 - CP8 B — locked scenario actual findings
+  ---
+  duration_ms: 2507.0823
+  type: 'test'
+  ...
+# Subtest: CP8 C — locked scenario actual findings
+ok 210 - CP8 C — locked scenario actual findings
+  ---
+  duration_ms: 2821.19
+  type: 'test'
+  ...
+# Subtest: CP8 D — locked scenario actual findings
+ok 211 - CP8 D — locked scenario actual findings
+  ---
+  duration_ms: 2860.5207
+  type: 'test'
+  ...
+# Subtest: CP8 E — locked scenario actual findings
+ok 212 - CP8 E — locked scenario actual findings
+  ---
+  duration_ms: 3078.9618
+  type: 'test'
+  ...
+# Subtest: CP8 F — locked scenario actual findings
+ok 213 - CP8 F — locked scenario actual findings
+  ---
+  duration_ms: 1364.4559
+  type: 'test'
+  ...
+# Subtest: CP8 G — locked scenario actual findings
+ok 214 - CP8 G — locked scenario actual findings
+  ---
+  duration_ms: 1013.4738
+  type: 'test'
+  ...
+# Subtest: CP8 H — locked scenario actual findings
+ok 215 - CP8 H — locked scenario actual findings
+  ---
+  duration_ms: 1152.887
+  type: 'test'
+  ...
+# Subtest: CP8 I — locked scenario actual findings
+ok 216 - CP8 I — locked scenario actual findings
+  ---
+  duration_ms: 1165.3236
+  type: 'test'
+  ...
+# Subtest: CP8 J — locked scenario actual findings
+ok 217 - CP8 J — locked scenario actual findings
+  ---
+  duration_ms: 612.6583
+  type: 'test'
+  ...
+# Subtest: CP8 K — locked scenario actual findings
+ok 218 - CP8 K — locked scenario actual findings
+  ---
+  duration_ms: 1203.0444
+  type: 'test'
+  ...
+# Subtest: CP8 L — locked scenario actual findings
+ok 219 - CP8 L — locked scenario actual findings
+  ---
+  duration_ms: 1457.7017
+  type: 'test'
+  ...
+# Subtest: CP8 M — locked scenario actual findings
+ok 220 - CP8 M — locked scenario actual findings
+  ---
+  duration_ms: 3484.2288
+  type: 'test'
+  ...
+# Subtest: CP8 N — locked scenario actual findings
+ok 221 - CP8 N — locked scenario actual findings
+  ---
+  duration_ms: 1243.7029
+  type: 'test'
+  ...
+# Subtest: CP8 O — locked scenario actual findings
+ok 222 - CP8 O — locked scenario actual findings
+  ---
+  duration_ms: 1456.617
+  type: 'test'
+  ...
+# Subtest: CP8 all seven pathways originate from real saved approvals, not eligible fixtures
+ok 223 - CP8 all seven pathways originate from real saved approvals, not eligible fixtures
+  ---
+  duration_ms: 1299.5115
+  type: 'test'
+  ...
+# Subtest: CP8 read-only provider does not create missing CP7 files or accept synthetic case keys
+ok 224 - CP8 read-only provider does not create missing CP7 files or accept synthetic case keys
+  ---
+  duration_ms: 4.998
+  type: 'test'
+  ...
+# Subtest: CP8 contract binding is frozen before observations and independent of outcomes
+ok 225 - CP8 contract binding is frozen before observations and independent of outcomes
+  ---
+  duration_ms: 3238.9021
+  type: 'test'
+  ...
+# Subtest: CP8 exact contract digest is mandatory on external records
+ok 226 - CP8 exact contract digest is mandatory on external records
+  ---
+  duration_ms: 369.9827
+  type: 'test'
+  ...
+# Subtest: CP8 interpretation tampering is rejected before evaluation
+ok 227 - CP8 interpretation tampering is rejected before evaluation
+  ---
+  duration_ms: 376.9102
+  type: 'test'
+  ...
+# Subtest: CP8 ambiguous prose remains insufficient, never optimised against results
+ok 228 - CP8 ambiguous prose remains insufficient, never optimised against results
+  ---
+  duration_ms: 214.8142
+  type: 'test'
+  ...
+# Subtest: CP8 explicit Not executed is distinct
+ok 229 - CP8 explicit Not executed is distinct
+  ---
+  duration_ms: 1670.085
+  type: 'test'
+  ...
+# Subtest: CP8 explicit Unable to establish is distinct
+ok 230 - CP8 explicit Unable to establish is distinct
+  ---
+  duration_ms: 1694.2952
+  type: 'test'
+  ...
+# Subtest: CP8 explicit Partial is distinct
+ok 231 - CP8 explicit Partial is distinct
+  ---
+  duration_ms: 1564.4301
+  type: 'test'
+  ...
+# Subtest: CP8 explicit In progress is distinct
+ok 232 - CP8 explicit In progress is distinct
+  ---
+  duration_ms: 1563.3579
+  type: 'test'
+  ...
+# Subtest: CP8 completed flag without corroboration does not establish execution
+ok 233 - CP8 completed flag without corroboration does not establish execution
+  ---
+  duration_ms: 1548.8943
+  type: 'test'
+  ...
+# Subtest: CP8 execution before approval is a material authority deviation
+ok 234 - CP8 execution before approval is a material authority deviation
+  ---
+  duration_ms: 1576.3707
+  type: 'test'
+  ...
+# Subtest: CP8 wrong actual scope cannot claim conforming completion
+ok 235 - CP8 wrong actual scope cannot claim conforming completion
+  ---
+  duration_ms: 1535.8969
+  type: 'test'
+  ...
+# Subtest: CP8 substantiated breach survives goal benefit and conflicting positive source
+ok 236 - CP8 substantiated breach survives goal benefit and conflicting positive source
+  ---
+  duration_ms: 1569.112
+  type: 'test'
+  ...
+# Subtest: CP8 absence of complaints does not prove protected access
+ok 237 - CP8 absence of complaints does not prove protected access
+  ---
+  duration_ms: 1503.9152
+  type: 'test'
+  ...
+# Subtest: CP8 null remains unknown while observed zero can meet a zero criterion
+ok 238 - CP8 null remains unknown while observed zero can meet a zero criterion
+  ---
+  duration_ms: 3155.9248
+  type: 'test'
+  ...
+# Subtest: CP8 wrong units or value type are insufficient rather than false outcome
+ok 239 - CP8 wrong units or value type are insufficient rather than false outcome
+  ---
+  duration_ms: 1644.4871
+  type: 'test'
+  ...
+# Subtest: CP8 incomplete recurrence review window remains insufficient
+ok 240 - CP8 incomplete recurrence review window remains insufficient
+  ---
+  duration_ms: 1577.0625
+  type: 'test'
+  ...
+# Subtest: CP8 source-specific qualification is not replaced with CP6 response thresholds
+ok 241 - CP8 source-specific qualification is not replaced with CP6 response thresholds
+  ---
+  duration_ms: 1608.8802
+  type: 'test'
+  ...
+# Subtest: CP8 future/not-yet-available evidence is excluded at exact timestamp precision
+ok 242 - CP8 future/not-yet-available evidence is excluded at exact timestamp precision
+  ---
+  duration_ms: 1977.7852
+  type: 'test'
+  ...
+# Subtest: CP8 cannot ingest an observation before it occurred or backdate receipt
+ok 243 - CP8 cannot ingest an observation before it occurred or backdate receipt
+  ---
+  duration_ms: 596.6601
+  type: 'test'
+  ...
+# Subtest: CP8 post-treatment record cannot replace original-period operations
+ok 244 - CP8 post-treatment record cannot replace original-period operations
+  ---
+  duration_ms: 1690.1573
+  type: 'test'
+  ...
+# Subtest: CP8 original snapshot and reference windows must both match
+ok 245 - CP8 original snapshot and reference windows must both match
+  ---
+  duration_ms: 2697.9868
+  type: 'test'
+  ...
+# Subtest: CP8 M conversion uses unchanged CP3 and retains original evidence
+ok 246 - CP8 M conversion uses unchanged CP3 and retains original evidence
+  ---
+  duration_ms: 1867.9189
+  type: 'test'
+  ...
+# Subtest: CP8 N conversion uses unchanged CP3 and retains original evidence
+ok 247 - CP8 N conversion uses unchanged CP3 and retains original evidence
+  ---
+  duration_ms: 1725.2375
+  type: 'test'
+  ...
+# Subtest: CP8 authoritative withdrawal reopens insufficiency without inventing false values
+ok 248 - CP8 authoritative withdrawal reopens insufficiency without inventing false values
+  ---
+  duration_ms: 1888.1755
+  type: 'test'
+  ...
+# Subtest: CP8 successful repair and recovered usage do not rewrite historical fault
+ok 249 - CP8 successful repair and recovered usage do not rewrite historical fault
+  ---
+  duration_ms: 1701.3919
+  type: 'test'
+  ...
+# Subtest: CP8 pilot benefit failure may generate useful evidence without forced CP3 projection
+ok 250 - CP8 pilot benefit failure may generate useful evidence without forced CP3 projection
+  ---
+  duration_ms: 2973.6435
+  type: 'test'
+  ...
+# Subtest: CP8 new dependency booleans cannot be projected through an operations record
+ok 251 - CP8 new dependency booleans cannot be projected through an operations record
+  ---
+  duration_ms: 1276.4826
+  type: 'test'
+  ...
+# Subtest: CP8 independent contradictory original records remain conflict-held
+ok 252 - CP8 independent contradictory original records remain conflict-held
+  ---
+  duration_ms: 1668.2443
+  type: 'test'
+  ...
+# Subtest: CP8 operator dispute remains visible and cannot be hidden by reevaluation
+ok 253 - CP8 operator dispute remains visible and cannot be hidden by reevaluation
+  ---
+  duration_ms: 2322.7138
+  type: 'test'
+  ...
+# Subtest: CP8 confirming or disputing requires an explicit reviewer and dispute reason
+ok 254 - CP8 confirming or disputing requires an explicit reviewer and dispute reason
+  ---
+  duration_ms: 1029.2953
+  type: 'test'
+  ...
+# Subtest: CP8 corrections append a source-linked new version; originals remain immutable
+ok 255 - CP8 corrections append a source-linked new version; originals remain immutable
+  ---
+  duration_ms: 1007.63
+  type: 'test'
+  ...
+# Subtest: CP8 independent source cannot impersonate an authoritative correction
+ok 256 - CP8 independent source cannot impersonate an authoritative correction
+  ---
+  duration_ms: 791.5373
+  type: 'test'
+  ...
+# Subtest: CP8 idempotent retries return the original receipt; conflicting payloads rejected
+ok 257 - CP8 idempotent retries return the original receipt; conflicting payloads rejected
+  ---
+  duration_ms: 213.4864
+  type: 'test'
+  ...
+# Subtest: CP8 stale revisions and changed input prevent a confirmation
+ok 258 - CP8 stale revisions and changed input prevent a confirmation
+  ---
+  duration_ms: 742.8345
+  type: 'test'
+  ...
+# Subtest: CP8 stale rule binding cannot be evaluated
+ok 259 - CP8 stale rule binding cannot be evaluated
+  ---
+  duration_ms: 204.4333
+  type: 'test'
+  ...
+# Subtest: CP8 failed reassessment rolls back conversion, snapshot and audit atomically
+ok 260 - CP8 failed reassessment rolls back conversion, snapshot and audit atomically
+  ---
+  duration_ms: 948.1021
+  type: 'test'
+  ...
+# Subtest: CP8 SQLite outcome evidence persists and event/history rows cannot be deleted
+ok 261 - CP8 SQLite outcome evidence persists and event/history rows cannot be deleted
+  ---
+  duration_ms: 871.1675
+  type: 'test'
+  ...
+# Subtest: CP8 can reference but never mutate CP7 approvals or CP4/CP5/CP6 inputs
+ok 262 - CP8 can reference but never mutate CP7 approvals or CP4/CP5/CP6 inputs
+  ---
+  duration_ms: 905.8099
+  type: 'test'
+  ...
+# Subtest: CP8 unknown/forbidden action or direct outcome-score fields rejected
+ok 263 - CP8 unknown/forbidden action or direct outcome-score fields rejected
+  ---
+  duration_ms: 212.7383
+  type: 'test'
+  ...
+# Subtest: CP8 HTTP serves UI and exposes no execution, scheduling, work-order, upstream selection or AI routes
+ok 264 - CP8 HTTP serves UI and exposes no execution, scheduling, work-order, upstream selection or AI routes
+  ---
+  duration_ms: 409.1874
+  type: 'test'
+  ...
+# Subtest: CP8 duplicate external document under another request key is not duplicated
+ok 265 - CP8 duplicate external document under another request key is not duplicated
+  ---
+  duration_ms: 709.5885
+  type: 'test'
+  ...
+# Subtest: CP8 successful feedback retry creates exactly one child snapshot
+ok 266 - CP8 successful feedback retry creates exactly one child snapshot
+  ---
+  duration_ms: 1869.4305
+  type: 'test'
+  ...
+# Subtest: CP8 source evidence may be useful without changing either sufficiency dimension
+ok 267 - CP8 source evidence may be useful without changing either sufficiency dimension
+  ---
+  duration_ms: 1569.7503
+  type: 'test'
+  ...
+# Subtest: CP8 versioned correction resolves a disputed mapping without hiding its history
+ok 268 - CP8 versioned correction resolves a disputed mapping without hiding its history
+  ---
+  duration_ms: 2421.4031
+  type: 'test'
+  ...
+# Subtest: CP8 new observations never rewrite a published historical review
+ok 269 - CP8 new observations never rewrite a published historical review
+  ---
+  duration_ms: 1090.3476
+  type: 'test'
+  ...
+# Subtest: CP8 independent contradictory execution accounts remain conflict-held
+ok 270 - CP8 independent contradictory execution accounts remain conflict-held
+  ---
+  duration_ms: 1992.5125
+  type: 'test'
+  ...
+# Subtest: CP8 unknown deviation materiality blocks scope attribution
+ok 271 - CP8 unknown deviation materiality blocks scope attribution
+  ---
+  duration_ms: 1530.4234
+  type: 'test'
+  ...
+# Subtest: CP8 corroborated non-material deviation is retained separately
+ok 272 - CP8 corroborated non-material deviation is retained separately
+  ---
+  duration_ms: 1517.9311
+  type: 'test'
+  ...
+# Subtest: CP8 externally executed dates outside approved bounds are material
+ok 273 - CP8 externally executed dates outside approved bounds are material
+  ---
+  duration_ms: 1517.9222
+  type: 'test'
+  ...
+# Subtest: CP8 material confounders prevent definitive goal evaluation
+ok 274 - CP8 material confounders prevent definitive goal evaluation
+  ---
+  duration_ms: 1027.6268
+  type: 'test'
+  ...
+# Subtest: CP8 one incomplete goal criterion cannot be hidden by other met criteria
+ok 275 - CP8 one incomplete goal criterion cannot be hidden by other met criteria
+  ---
+  duration_ms: 1332.2838
+  type: 'test'
+  ...
+# Subtest: CP8 wrong cohort or protected-function definition is not accepted as coverage
+ok 276 - CP8 wrong cohort or protected-function definition is not accepted as coverage
+  ---
+  duration_ms: 1168.0082
+  type: 'test'
+  ...
+# Subtest: CP8 future review time cannot make unavailable evidence usable
+ok 277 - CP8 future review time cannot make unavailable evidence usable
+  ---
+  duration_ms: 364.9784
+  type: 'test'
+  ...
+# Subtest: CP8 input contract or scope digest tampering is caught by saved approval provider
+ok 278 - CP8 input contract or scope digest tampering is caught by saved approval provider
+  ---
+  duration_ms: 132.9978
+  type: 'test'
+  ...
+# Subtest: CP8 declined or deferred decisions are never treated as approved execution plans
+ok 279 - CP8 declined or deferred decisions are never treated as approved execution plans
+  ---
+  duration_ms: 91.7657
+  type: 'test'
+  ...
+# Subtest: Case A: expected status and no downstream outputs
+ok 280 - Case A: expected status and no downstream outputs
+  ---
+  duration_ms: 7.2262
+  type: 'test'
+  ...
+# Subtest: Case B: expected status and no downstream outputs
+ok 281 - Case B: expected status and no downstream outputs
+  ---
+  duration_ms: 1.4901
+  type: 'test'
+  ...
+# Subtest: Case C: expected status and no downstream outputs
+ok 282 - Case C: expected status and no downstream outputs
+  ---
+  duration_ms: 0.986
+  type: 'test'
+  ...
+# Subtest: Case D: expected status and no downstream outputs
+ok 283 - Case D: expected status and no downstream outputs
+  ---
+  duration_ms: 3.1361
+  type: 'test'
+  ...
+# Subtest: Case E: expected status and no downstream outputs
+ok 284 - Case E: expected status and no downstream outputs
+  ---
+  duration_ms: 0.9864
+  type: 'test'
+  ...
+# Subtest: Case F: expected status and no downstream outputs
+ok 285 - Case F: expected status and no downstream outputs
+  ---
+  duration_ms: 0.6426
+  type: 'test'
+  ...
+# Subtest: Case S: expected status and no downstream outputs
+ok 286 - Case S: expected status and no downstream outputs
+  ---
+  duration_ms: 0.5686
+  type: 'test'
+  ...
+# Subtest: A: transient sharp dip retains evidence but has no trailing persistence
+ok 287 - A: transient sharp dip retains evidence but has no trailing persistence
+  ---
+  duration_ms: 0.7474
+  type: 'test'
+  ...
+# Subtest: B: three aligned persistent declines qualify, without assigning a cause
+ok 288 - B: three aligned persistent declines qualify, without assigning a cause
+  ---
+  duration_ms: 0.8607
+  type: 'test'
+  ...
+# Subtest: C: one sustained metric is not enough for multi-signal attention
+ok 289 - C: one sustained metric is not enough for multi-signal attention
+  ---
+  duration_ms: 1.2271
+  type: 'test'
+  ...
+# Subtest: D: raw closure observations remain visible but excluded and break streaks
+ok 290 - D: raw closure observations remain visible but excluded and break streaks
+  ---
+  duration_ms: 0.881
+  type: 'test'
+  ...
+# Subtest: E: missing row/signal/maintenance stay unknown, never zero-filled
+ok 291 - E: missing row/signal/maintenance stay unknown, never zero-filled
+  ---
+  duration_ms: 0.7149
+  type: 'test'
+  ...
+# Subtest: F: only accessCount and uniqueUsers analyzed; booking measures absent
+ok 292 - F: only accessCount and uniqueUsers analyzed; booking measures absent
+  ---
+  duration_ms: 2.965
+  type: 'test'
+  ...
+# Subtest: Config change actually changes gate; consistency is not fixture-hardcoded
+ok 293 - Config change actually changes gate; consistency is not fixture-hardcoded
+  ---
+  duration_ms: 1.0062
+  type: 'test'
+  ...
+# Subtest: Complete missing input is Monitoring and null, not Stable or zero
+ok 294 - Complete missing input is Monitoring and null, not Stable or zero
+  ---
+  duration_ms: 0.5626
+  type: 'test'
+  ...
+# Subtest: Missing period breaks persistence rather than joining observations over a gap
+ok 295 - Missing period breaks persistence rather than joining observations over a gap
+  ---
+  duration_ms: 0.6074
+  type: 'test'
+  ...
+# Subtest: Zero baseline returns meaningful absolute magnitude, never infinite percent
+ok 296 - Zero baseline returns meaningful absolute magnitude, never infinite percent
+  ---
+  duration_ms: 0.6386
+  type: 'test'
+  ...
+# Subtest: Rates report percentage points; cancellation direction reverses for consistency
+ok 297 - Rates report percentage points; cancellation direction reverses for consistency
+  ---
+  duration_ms: 0.7419
+  type: 'test'
+  ...
+# Subtest: Opposing persistent directions are not counted as aligned change
+ok 298 - Opposing persistent directions are not counted as aligned change
+  ---
+  duration_ms: 0.5695
+  type: 'test'
+  ...
+# Subtest: Absent context must not infer operational health
+ok 299 - Absent context must not infer operational health
+  ---
+  duration_ms: 0.5572
+  type: 'test'
+  ...
+# Subtest: Historical context excluded from own baseline
+ok 300 - Historical context excluded from own baseline
+  ---
+  duration_ms: 0.5983
+  type: 'test'
+  ...
+# Subtest: Missing context metadata and incomplete maintenance remain explicitly unknown
+ok 301 - Missing context metadata and incomplete maintenance remain explicitly unknown
+  ---
+  duration_ms: 0.6457
+  type: 'test'
+  ...
+# Subtest: Future observations do not leak into analysis
+ok 302 - Future observations do not leak into analysis
+  ---
+  duration_ms: 3.1647
+  type: 'test'
+  ...
+# Subtest: Invalid parameters, duplicate periods, invalid values fail explicitly
+ok 303 - Invalid parameters, duplicate periods, invalid values fail explicitly
+  ---
+  duration_ms: 3.5657
+  type: 'test'
+  ...
+# Subtest: Raw rule weights and all original CP3 input fixtures remain unchanged
+ok 304 - Raw rule weights and all original CP3 input fixtures remain unchanged
+  ---
+  duration_ms: 17.8948
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: A
+ok 305 - Original raw support, contributions, missing evidence and coverage preserved: A
+  ---
+  duration_ms: 10.8036
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: B
+ok 306 - Original raw support, contributions, missing evidence and coverage preserved: B
+  ---
+  duration_ms: 2.0177
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: C
+ok 307 - Original raw support, contributions, missing evidence and coverage preserved: C
+  ---
+  duration_ms: 1.7446
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: D
+ok 308 - Original raw support, contributions, missing evidence and coverage preserved: D
+  ---
+  duration_ms: 2.9432
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: E
+ok 309 - Original raw support, contributions, missing evidence and coverage preserved: E
+  ---
+  duration_ms: 1.2412
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: F
+ok 310 - Original raw support, contributions, missing evidence and coverage preserved: F
+  ---
+  duration_ms: 1.1042
+  type: 'test'
+  ...
+# Subtest: Original raw support, contributions, missing evidence and coverage preserved: G
+ok 311 - Original raw support, contributions, missing evidence and coverage preserved: G
+  ---
+  duration_ms: 1.0341
+  type: 'test'
+  ...
+# Subtest: Own-scale support uses configured positive scales 9/13/14/13, not the four-state sum
+ok 312 - Own-scale support uses configured positive scales 9/13/14/13, not the four-state sum
+  ---
+  duration_ms: 1.6917
+  type: 'test'
+  ...
+# Subtest: Unknown support remains null; signed contradictions remain auditable at zero relative support
+ok 313 - Unknown support remains null; signed contradictions remain auditable at zero relative support
+  ---
+  duration_ms: 2.9604
+  type: 'test'
+  ...
+# Subtest: Missing observations never shrink the configured support denominator
+ok 314 - Missing observations never shrink the configured support denominator
+  ---
+  duration_ms: 0.9622
+  type: 'test'
+  ...
+# Subtest: Uniformly rescaling one state weights changes its raw scale, not its relative support
+ok 315 - Uniformly rescaling one state weights changes its raw scale, not its relative support
+  ---
+  duration_ms: 1.6879
+  type: 'test'
+  ...
+# Subtest: Cross-state sorting uses comparable support even when raw ordering is opposite
+ok 316 - Cross-state sorting uses comparable support even when raw ordering is opposite
+  ---
+  duration_ms: 1.1059
+  type: 'test'
+  ...
+# Subtest: Comparable ambiguity uses unrounded percentage-point margin, not a raw-point margin
+ok 317 - Comparable ambiguity uses unrounded percentage-point margin, not a raw-point margin
+  ---
+  duration_ms: 0.9077
+  type: 'test'
+  ...
+# Subtest: Missing dependency does not invalidate a supported Operational Problem explanation
+ok 318 - Missing dependency does not invalidate a supported Operational Problem explanation
+  ---
+  duration_ms: 0.8976
+  type: 'test'
+  ...
+# Subtest: Missing dependency does not invalidate a supported Programme Mismatch explanation
+ok 319 - Missing dependency does not invalidate a supported Programme Mismatch explanation
+  ---
+  duration_ms: 1.8131
+  type: 'test'
+  ...
+# Subtest: D: sufficient protection never masquerades as a resolved explanation
+ok 320 - D: sufficient protection never masquerades as a resolved explanation
+  ---
+  duration_ms: 1.2254
+  type: 'test'
+  ...
+# Subtest: Protection context does not require diagnosis of the aggregate usage change
+ok 321 - Protection context does not require diagnosis of the aggregate usage change
+  ---
+  duration_ms: 0.7596
+  type: 'test'
+  ...
+# Subtest: E: both contexts insufficient; F: explanation insufficient while protection is understood
+ok 322 - E: both contexts insufficient; F: explanation insufficient while protection is understood
+  ---
+  duration_ms: 1.3587
+  type: 'test'
+  ...
+# Subtest: G: explanation and protection are sufficient simultaneously and independently
+ok 323 - G: explanation and protection are sufficient simultaneously and independently
+  ---
+  duration_ms: 0.8262
+  type: 'test'
+  ...
+# Subtest: Explicitly understood low dependency is sufficient context, not a high-dependency finding
+ok 324 - Explicitly understood low dependency is sufficient context, not a high-dependency finding
+  ---
+  duration_ms: 1.0372
+  type: 'test'
+  ...
+# Subtest: All four duration groups remain representable; 6–24 months stays visible and neutral to current cohort comparisons
+ok 325 - All four duration groups remain representable; 6–24 months stays visible and neutral to current cohort comparisons
+  ---
+  duration_ms: 3.0714
+  type: 'test'
+  ...
+# Subtest: UI and v2 API expose two sufficiency results and both support measures, with no combined boolean
+ok 326 - UI and v2 API expose two sufficiency results and both support measures, with no combined boolean
+  ---
+  duration_ms: 3.2041
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis A: upstream qualification, fixed states and expected support/sufficiency
+ok 327 - Canonical diagnosis A: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 15.3368
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis B: upstream qualification, fixed states and expected support/sufficiency
+ok 328 - Canonical diagnosis B: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.7524
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis C: upstream qualification, fixed states and expected support/sufficiency
+ok 329 - Canonical diagnosis C: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.4525
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis D: upstream qualification, fixed states and expected support/sufficiency
+ok 330 - Canonical diagnosis D: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.4669
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis E: upstream qualification, fixed states and expected support/sufficiency
+ok 331 - Canonical diagnosis E: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.3024
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis F: upstream qualification, fixed states and expected support/sufficiency
+ok 332 - Canonical diagnosis F: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.1815
+  type: 'test'
+  ...
+# Subtest: Canonical diagnosis G: upstream qualification, fixed states and expected support/sufficiency
+ok 333 - Canonical diagnosis G: upstream qualification, fixed states and expected support/sufficiency
+  ---
+  duration_ms: 1.5231
+  type: 'test'
+  ...
+# Subtest: B: aggregate decline alone does not strongly support persistent mismatch
+ok 334 - B: aggregate decline alone does not strongly support persistent mismatch
+  ---
+  duration_ms: 1.1925
+  type: 'test'
+  ...
+# Subtest: D: low usage high dependency is value context, not an invented explanation for decline
+ok 335 - D: low usage high dependency is value context, not an invented explanation for decline
+  ---
+  duration_ms: 1.6957
+  type: 'test'
+  ...
+# Subtest: E: close plausible explanations remain visible with no fabricated winner
+ok 336 - E: close plausible explanations remain visible with no fabricated winner
+  ---
+  duration_ms: 1.0881
+  type: 'test'
+  ...
+# Subtest: F: strong support cannot bypass unknown resident-mix and horizon gates
+ok 337 - F: strong support cannot bypass unknown resident-mix and horizon gates
+  ---
+  duration_ms: 0.9446
+  type: 'test'
+  ...
+# Subtest: G: operational and high dependency support coexist without sum-to-100 normalization
+ok 338 - G: operational and high dependency support coexist without sum-to-100 normalization
+  ---
+  duration_ms: 2.5406
+  type: 'test'
+  ...
+# Subtest: Temporal check does not reuse Needs Attention as persistence proof
+ok 339 - Temporal check does not reuse Needs Attention as persistence proof
+  ---
+  duration_ms: 1.0103
+  type: 'test'
+  ...
+# Subtest: Known temporal context prevents an ordinary persistent diagnosis pattern
+ok 340 - Known temporal context prevents an ordinary persistent diagnosis pattern
+  ---
+  duration_ms: 0.8299
+  type: 'test'
+  ...
+# Subtest: Missing temporal period/context stays insufficiently observed
+ok 341 - Missing temporal period/context stays insufficiently observed
+  ---
+  duration_ms: 1.4309
+  type: 'test'
+  ...
+# Subtest: Ownership status swaps have no scoring/check effect
+ok 342 - Ownership status swaps have no scoring/check effect
+  ---
+  duration_ms: 8.8764
+  type: 'test'
+  ...
+# Subtest: Residence duration alone is not cohort stability; missing denominators remain unknown
+ok 343 - Residence duration alone is not cohort stability; missing denominators remain unknown
+  ---
+  duration_ms: 1.7918
+  type: 'test'
+  ...
+# Subtest: Poor retention prevents treating long-tenure groups as stable cohorts
+ok 344 - Poor retention prevents treating long-tenure groups as stable cohorts
+  ---
+  duration_ms: 2.4142
+  type: 'test'
+  ...
+# Subtest: Missing dependency stays unknown and contributes no dependency-feature contradiction
+ok 345 - Missing dependency stays unknown and contributes no dependency-feature contradiction
+  ---
+  duration_ms: 0.8772
+  type: 'test'
+  ...
+# Subtest: Realistic alternative capacity/accessibility changes dependency finding, not operational evidence
+ok 346 - Realistic alternative capacity/accessibility changes dependency finding, not operational evidence
+  ---
+  duration_ms: 1.1998
+  type: 'test'
+  ...
+# Subtest: Unknown alternatives cannot be represented as no substitutes
+ok 347 - Unknown alternatives cannot be represented as no substitutes
+  ---
+  duration_ms: 0.7193
+  type: 'test'
+  ...
+# Subtest: One known realistic alternative remains evidence even if another alternative is unknown
+ok 348 - One known realistic alternative remains evidence even if another alternative is unknown
+  ---
+  duration_ms: 0.603
+  type: 'test'
+  ...
+# Subtest: Missing operational records never become healthy maintenance
+ok 349 - Missing operational records never become healthy maintenance
+  ---
+  duration_ms: 0.9676
+  type: 'test'
+  ...
+# Subtest: Entirely missing diagnosis evidence yields unknowns, no winner and no fabricated support
+ok 350 - Entirely missing diagnosis evidence yields unknowns, no winner and no fabricated support
+  ---
+  duration_ms: 1.4802
+  type: 'test'
+  ...
+# Subtest: Future evidence cannot leak into current diagnosis
+ok 351 - Future evidence cannot leak into current diagnosis
+  ---
+  duration_ms: 0.8149
+  type: 'test'
+  ...
+# Subtest: Longer decision horizon requires stronger evidence without privileging ownership
+ok 352 - Longer decision horizon requires stronger evidence without privileging ownership
+  ---
+  duration_ms: 1.0905
+  type: 'test'
+  ...
+# Subtest: Provisional weights are live configuration, not per-scenario hardcoded answers
+ok 353 - Provisional weights are live configuration, not per-scenario hardcoded answers
+  ---
+  duration_ms: 1.3382
+  type: 'test'
+  ...
+# Subtest: Increasing temporal usage does not become evidence of persistent decline
+ok 354 - Increasing temporal usage does not become evidence of persistent decline
+  ---
+  duration_ms: 0.6804
+  type: 'test'
+  ...
+# Subtest: Unqualified upstream Stable / Monitoring cases do not execute diagnosis
+ok 355 - Unqualified upstream Stable / Monitoring cases do not execute diagnosis
+  ---
+  duration_ms: 2.4115
+  type: 'test'
+  ...
+# Subtest: Contract/UI: canonical records are separate; original overview remains exactly seven records
+ok 356 - Contract/UI: canonical records are separate; original overview remains exactly seven records
+  ---
+  duration_ms: 15.1296
+  type: 'test'
+  ...
+# Subtest: Controller renders diagnosis only in case evidence and retains change evidence on diagnosis transport failure
+ok 357 - Controller renders diagnosis only in case evidence and retains change evidence on diagnosis transport failure
+  ---
+  duration_ms: 77.85
+  type: 'test'
+  ...
+# Subtest: Diagnosis UI imports no scoring/features/check/service implementations
+ok 358 - Diagnosis UI imports no scoring/features/check/service implementations
+  ---
+  duration_ms: 27.916
+  type: 'test'
+  ...
+# Subtest: All approved CP3 engine/config/fixture and existing test files retain exact bytes
+ok 359 - All approved CP3 engine/config/fixture and existing test files retain exact bytes
+  ---
+  duration_ms: 47.0267
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-A
+ok 360 - Full approved CP3 output is preserved: DX-A
+  ---
+  duration_ms: 45.1936
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-B
+ok 361 - Full approved CP3 output is preserved: DX-B
+  ---
+  duration_ms: 16.714
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-C
+ok 362 - Full approved CP3 output is preserved: DX-C
+  ---
+  duration_ms: 18.1291
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-D
+ok 363 - Full approved CP3 output is preserved: DX-D
+  ---
+  duration_ms: 10.8318
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-E
+ok 364 - Full approved CP3 output is preserved: DX-E
+  ---
+  duration_ms: 7.7901
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-F
+ok 365 - Full approved CP3 output is preserved: DX-F
+  ---
+  duration_ms: 8.7317
+  type: 'test'
+  ...
+# Subtest: Full approved CP3 output is preserved: DX-G
+ok 366 - Full approved CP3 output is preserved: DX-G
+  ---
+  duration_ms: 7.8904
+  type: 'test'
+  ...
+# Subtest: CP4 Case A: expected evidence priority and separated sufficiency
+ok 367 - CP4 Case A: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 2.8086
+  type: 'test'
+  ...
+# Subtest: CP4 Case B: expected evidence priority and separated sufficiency
+ok 368 - CP4 Case B: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 2.5666
+  type: 'test'
+  ...
+# Subtest: CP4 Case C: expected evidence priority and separated sufficiency
+ok 369 - CP4 Case C: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 3.0987
+  type: 'test'
+  ...
+# Subtest: CP4 Case D: expected evidence priority and separated sufficiency
+ok 370 - CP4 Case D: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 2.6926
+  type: 'test'
+  ...
+# Subtest: CP4 Case E: expected evidence priority and separated sufficiency
+ok 371 - CP4 Case E: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 3.7288
+  type: 'test'
+  ...
+# Subtest: CP4 Case F: expected evidence priority and separated sufficiency
+ok 372 - CP4 Case F: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 4.1258
+  type: 'test'
+  ...
+# Subtest: CP4 Case G: expected evidence priority and separated sufficiency
+ok 373 - CP4 Case G: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 3.0027
+  type: 'test'
+  ...
+# Subtest: CP4 Case H: expected evidence priority and separated sufficiency
+ok 374 - CP4 Case H: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 3.5512
+  type: 'test'
+  ...
+# Subtest: CP4 Case I: expected evidence priority and separated sufficiency
+ok 375 - CP4 Case I: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 4.555
+  type: 'test'
+  ...
+# Subtest: CP4 Case J: expected evidence priority and separated sufficiency
+ok 376 - CP4 Case J: expected evidence priority and separated sufficiency
+  ---
+  duration_ms: 3.8829
+  type: 'test'
+  ...
+# Subtest: Low sufficiency does not automatically select resident input
+ok 377 - Low sufficiency does not automatically select resident input
+  ---
+  duration_ms: 15.3549
+  type: 'test'
+  ...
+# Subtest: Every valuable candidate targets an explicit unresolved gap and demonstrates material effect
+ok 378 - Every valuable candidate targets an explicit unresolved gap and demonstrates material effect
+  ---
+  duration_ms: 31.0657
+  type: 'test'
+  ...
+# Subtest: A missing unused programme feature does not request more evidence when explanation and protection suffice
+ok 379 - A missing unused programme feature does not request more evidence when explanation and protection suffice
+  ---
+  duration_ms: 2.8382
+  type: 'test'
+  ...
+# Subtest: Counterfactual planning never mutates actual evidence, source dates, context or approved outputs
+ok 380 - Counterfactual planning never mutates actual evidence, source dates, context or approved outputs
+  ---
+  duration_ms: 29.6459
+  type: 'test'
+  ...
+# Subtest: Resident dependency reports cannot establish alternatives or repeat-use history
+ok 381 - Resident dependency reports cannot establish alternatives or repeat-use history
+  ---
+  duration_ms: 3.2367
+  type: 'test'
+  ...
+# Subtest: Dependency and substitutes each have a valid record/inspection evidence route without replacing explanation
+ok 382 - Dependency and substitutes each have a valid record/inspection evidence route without replacing explanation
+  ---
+  duration_ms: 3.1748
+  type: 'test'
+  ...
+# Subtest: Known high dependency does not resolve the explanation of change
+ok 383 - Known high dependency does not resolve the explanation of change
+  ---
+  duration_ms: 3.0509
+  type: 'test'
+  ...
+# Subtest: All sources unavailable retains unknown gaps and never defaults to a survey
+ok 384 - All sources unavailable retains unknown gaps and never defaults to a survey
+  ---
+  duration_ms: 2.6134
+  type: 'test'
+  ...
+# Subtest: Unspecified feasibility is unknown, not an assumed available evidence source
+ok 385 - Unspecified feasibility is unknown, not an assumed available evidence source
+  ---
+  duration_ms: 2.2474
+  type: 'test'
+  ...
+# Subtest: Missing and future cohort/usage sources are not fabricated into valid records
+ok 386 - Missing and future cohort/usage sources are not fabricated into valid records
+  ---
+  duration_ms: 4.7568
+  type: 'test'
+  ...
+# Subtest: No future-dated actual source is used to design a counterfactual
+ok 387 - No future-dated actual source is used to design a counterfactual
+  ---
+  duration_ms: 3.6297
+  type: 'test'
+  ...
+# Subtest: Temporal missing or malformed grid cannot crash the planner or become zero usage
+ok 388 - Temporal missing or malformed grid cannot crash the planner or become zero usage
+  ---
+  duration_ms: 2.9166
+  type: 'test'
+  ...
+# Subtest: Contrasting and inconclusive findings are shown; no favourable answer is assumed
+ok 389 - Contrasting and inconclusive findings are shown; no favourable answer is assumed
+  ---
+  duration_ms: 2.6341
+  type: 'test'
+  ...
+# Subtest: Maintenance review does not invent a physical inspection or erase downtime
+ok 390 - Maintenance review does not invent a physical inspection or erase downtime
+  ---
+  duration_ms: 1.9536
+  type: 'test'
+  ...
+# Subtest: All four residence-duration groups are preserved by cohort planning, with no ownership weighting
+ok 391 - All four residence-duration groups are preserved by cohort planning, with no ownership weighting
+  ---
+  duration_ms: 6.5809
+  type: 'test'
+  ...
+# Subtest: A temporary pilot is one intervention generating evidence, never a separate fake feedback record
+ok 392 - A temporary pilot is one intervention generating evidence, never a separate fake feedback record
+  ---
+  duration_ms: 3.7397
+  type: 'test'
+  ...
+# Subtest: Pilot cannot bypass an unknown protection assessment or unestablished operational condition
+ok 393 - Pilot cannot bypass an unknown protection assessment or unestablished operational condition
+  ---
+  duration_ms: 10.2159
+  type: 'test'
+  ...
+# Subtest: Pilot needs an explicit relevant decision question and bounded design
+ok 394 - Pilot needs an explicit relevant decision question and bounded design
+  ---
+  duration_ms: 4.6965
+  type: 'test'
+  ...
+# Subtest: Configurable burden can change evidence priority without altering diagnosis or sufficiency
+ok 395 - Configurable burden can change evidence priority without altering diagnosis or sufficiency
+  ---
+  duration_ms: 3.5428
+  type: 'test'
+  ...
+# Subtest: A ranking tie is explicit and cannot trigger resident question/cohort selection
+ok 396 - A ranking tie is explicit and cannot trigger resident question/cohort selection
+  ---
+  duration_ms: 2.1181
+  type: 'test'
+  ...
+# Subtest: Invalid parameter values fail explicitly, not silently become evidence scores
+ok 397 - Invalid parameter values fail explicitly, not silently become evidence scores
+  ---
+  duration_ms: 1.1233
+  type: 'test'
+  ...
+# Subtest: Stable/Monitoring upstream cases do not enter diagnosis or evidence planning
+ok 398 - Stable/Monitoring upstream cases do not enter diagnosis or evidence planning
+  ---
+  duration_ms: 2.4901
+  type: 'test'
+  ...
+# Subtest: Local API provides isolated JSON results and errors without executing collection
+ok 399 - Local API provides isolated JSON results and errors without executing collection
+  ---
+  duration_ms: 8.8639
+  type: 'test'
+  ...
+# Subtest: HTTP-ready client carries the same evidence contract without pretending a backend exists
+ok 400 - HTTP-ready client carries the same evidence contract without pretending a backend exists
+  ---
+  duration_ms: 5.9472
+  type: 'test'
+  ...
+# Subtest: Malformed API cannot replace separate sufficiency with combined confidence or ungrounded recommendation
+ok 401 - Malformed API cannot replace separate sufficiency with combined confidence or ungrounded recommendation
+  ---
+  duration_ms: 6.4516
+  type: 'test'
+  ...
+# Subtest: Operator UI shows gaps, contrasting outcomes and separate sufficiency, with no questionnaire or execution controls
+ok 402 - Operator UI shows gaps, contrasting outcomes and separate sufficiency, with no questionnaire or execution controls
+  ---
+  duration_ms: 12.7024
+  type: 'test'
+  ...
+# Subtest: Evidence-planning failure keeps upstream diagnosis visible instead of inventing a priority
+ok 403 - Evidence-planning failure keeps upstream diagnosis visible instead of inventing a priority
+  ---
+  duration_ms: 25.6029
+  type: 'test'
+  ...
+# Subtest: All approved CP1–CP4 source, contracts, parameters, fixture and prior test files remain byte-identical
+ok 404 - All approved CP1–CP4 source, contracts, parameters, fixture and prior test files remain byte-identical
+  ---
+  duration_ms: 82.72
+  type: 'test'
+  ...
+# Subtest: The additive CP5 client preserves full approved overview, diagnosis and CP4 wire results
+ok 405 - The additive CP5 client preserves full approved overview, diagnosis and CP4 wire results
+  ---
+  duration_ms: 296.6007
+  type: 'test'
+  ...
+# Subtest: Acceptance A: Inspection winner: insufficient evidence does not trigger residents
+ok 406 - Acceptance A: Inspection winner: insufficient evidence does not trigger residents
+  ---
+  duration_ms: 5.0587
+  type: 'test'
+  ...
+# Subtest: Acceptance B: Cohort comparison winner is preserved
+ok 407 - Acceptance B: Cohort comparison winner is preserved
+  ---
+  duration_ms: 4.8668
+  type: 'test'
+  ...
+# Subtest: Acceptance C: Relevant observed 2–5-year programme pair
+ok 408 - Acceptance C: Relevant observed 2–5-year programme pair
+  ---
+  duration_ms: 5.4588
+  type: 'test'
+  ...
+# Subtest: Acceptance D: Equally informative 2–5-year and 5+-year programme cohorts
+ok 409 - Acceptance D: Equally informative 2–5-year and 5+-year programme cohorts
+  ---
+  duration_ms: 4.432
+  type: 'test'
+  ...
+# Subtest: Acceptance E: Protection questions retain sufficient operational explanation
+ok 410 - Acceptance E: Protection questions retain sufficient operational explanation
+  ---
+  duration_ms: 14.1304
+  type: 'test'
+  ...
+# Subtest: Acceptance F: Needs and impact remain separate one-gap alternatives
+ok 411 - Acceptance F: Needs and impact remain separate one-gap alternatives
+  ---
+  duration_ms: 4.2417
+  type: 'test'
+  ...
+# Subtest: Acceptance G: Known high dependency does not explain change or force residents
+ok 412 - Acceptance G: Known high dependency does not explain change or force residents
+  ---
+  duration_ms: 2.5877
+  type: 'test'
+  ...
+# Subtest: Acceptance H: Both dimensions sufficient; no forced question
+ok 413 - Acceptance H: Both dimensions sufficient; no forced question
+  ---
+  duration_ms: 2.6488
+  type: 'test'
+  ...
+# Subtest: Acceptance I: Unavailable cohort membership
+ok 414 - Acceptance I: Unavailable cohort membership
+  ---
+  duration_ms: 2.3451
+  type: 'test'
+  ...
+# Subtest: Acceptance J: Ownership label permutation supplies no selection weight
+ok 415 - Acceptance J: Ownership label permutation supplies no selection weight
+  ---
+  duration_ms: 3.2415
+  type: 'test'
+  ...
+# Subtest: Acceptance K: Intermediate cohort remains visible and eligible for current-use knowledge
+ok 416 - Acceptance K: Intermediate cohort remains visible and eligible for current-use knowledge
+  ---
+  duration_ms: 4.9879
+  type: 'test'
+  ...
+# Subtest: Acceptance L: Recent-only familiarity does not establish long-term programme relevance
+ok 417 - Acceptance L: Recent-only familiarity does not establish long-term programme relevance
+  ---
+  duration_ms: 3.6425
+  type: 'test'
+  ...
+# Subtest: Acceptance M: Dependency answers cannot establish alternatives/repeat-use history
+ok 418 - Acceptance M: Dependency answers cannot establish alternatives/repeat-use history
+  ---
+  duration_ms: 3.6558
+  type: 'test'
+  ...
+# Subtest: Acceptance N: Upstream source tie never resolves to a resident fallback
+ok 419 - Acceptance N: Upstream source tie never resolves to a resident fallback
+  ---
+  duration_ms: 5.4631
+  type: 'test'
+  ...
+# Subtest: Acceptance O: No relevant programme knowledge: generic replacement question forbidden
+ok 420 - Acceptance O: No relevant programme knowledge: generic replacement question forbidden
+  ---
+  duration_ms: 4.2899
+  type: 'test'
+  ...
+# Subtest: Acceptance P: All inconclusive outcomes retain zero credit
+ok 421 - Acceptance P: All inconclusive outcomes retain zero credit
+  ---
+  duration_ms: 5.0572
+  type: 'test'
+  ...
+# Subtest: Acceptance Q: Cohort version changed after plan preparation
+ok 422 - Acceptance Q: Cohort version changed after plan preparation
+  ---
+  duration_ms: 3.9665
+  type: 'test'
+  ...
+# Subtest: Acceptance R: Pilot winner remains an intervention generating evidence
+ok 423 - Acceptance R: Pilot winner remains an intervention generating evidence
+  ---
+  duration_ms: 4.4308
+  type: 'test'
+  ...
+# Subtest: Acceptance S: Unknown dependency: neutral documented-current-use cohort
+ok 424 - Acceptance S: Unknown dependency: neutral documented-current-use cohort
+  ---
+  duration_ms: 6.3675
+  type: 'test'
+  ...
+# Subtest: Acceptance T: Unsupported supplied assertion cannot enter reviewed planning scenarios
+ok 425 - Acceptance T: Unsupported supplied assertion cannot enter reviewed planning scenarios
+  ---
+  duration_ms: 3.6078
+  type: 'test'
+  ...
+# Subtest: Acceptance U: Ceased personal need is not mismatch or dissatisfaction
+ok 426 - Acceptance U: Ceased personal need is not mismatch or dissatisfaction
+  ---
+  duration_ms: 3.446
+  type: 'test'
+  ...
+# Subtest: Acceptance V: Severe anticipated impact lacks comparative corroboration
+ok 427 - Acceptance V: Severe anticipated impact lacks comparative corroboration
+  ---
+  duration_ms: 9.4548
+  type: 'test'
+  ...
+# Subtest: Acceptance W: Unable, voluntary skip and missing are distinct
+ok 428 - Acceptance W: Unable, voluntary skip and missing are distinct
+  ---
+  duration_ms: 4.112
+  type: 'test'
+  ...
+# Subtest: Acceptance X: Extra scenario labels cannot increase pair value
+ok 429 - Acceptance X: Extra scenario labels cannot increase pair value
+  ---
+  duration_ms: 4.2406
+  type: 'test'
+  ...
+# Subtest: Catalogue is reviewed/versioned and contains only the three approved question types
+ok 430 - Catalogue is reviewed/versioned and contains only the three approved question types
+  ---
+  duration_ms: 0.5638
+  type: 'test'
+  ...
+# Subtest: Dependency question and cohort assume documented current use only, never prior reliance
+ok 431 - Dependency question and cohort assume documented current use only, never prior reliance
+  ---
+  duration_ms: 4.3556
+  type: 'test'
+  ...
+# Subtest: Every material pair has a genuine target and complete option-to-assertion trace with limits
+ok 432 - Every material pair has a genuine target and complete option-to-assertion trace with limits
+  ---
+  duration_ms: 46.1216
+  type: 'test'
+  ...
+# Subtest: Unsupported scenario assertions/options are rejected, not awarded inherited source credit
+ok 433 - Unsupported scenario assertions/options are rejected, not awarded inherited source credit
+  ---
+  duration_ms: 15.7591
+  type: 'test'
+  ...
+# Subtest: No-longer-need option supports a distinct personal need assertion, never mismatch conversion
+ok 434 - No-longer-need option supports a distinct personal need assertion, never mismatch conversion
+  ---
+  duration_ms: 6.8827
+  type: 'test'
+  ...
+# Subtest: Essential and important, optional benefit and no reliance remain distinct bounded assertions
+ok 435 - Essential and important, optional benefit and no reliance remain distinct bounded assertions
+  ---
+  duration_ms: 3.6917
+  type: 'test'
+  ...
+# Subtest: Impact without comparative evidence never establishes disproportionality or protection sufficiency
+ok 436 - Impact without comparative evidence never establishes disproportionality or protection sufficiency
+  ---
+  duration_ms: 3.6522
+  type: 'test'
+  ...
+# Subtest: A needs or impact answer cannot claim substitute, repeat-use, operations or temporal evidence
+ok 437 - A needs or impact answer cannot claim substitute, repeat-use, operations or temporal evidence
+  ---
+  duration_ms: 4.3017
+  type: 'test'
+  ...
+# Subtest: Unable, voluntary skip and no received response are semantically distinct and unscored
+ok 438 - Unable, voluntary skip and no received response are semantically distinct and unscored
+  ---
+  duration_ms: 3.3894
+  type: 'test'
+  ...
+# Subtest: Canonical scenario grouping cannot be inflated by added labels or arbitrary supplied groups
+ok 439 - Canonical scenario grouping cannot be inflated by added labels or arbitrary supplied groups
+  ---
+  duration_ms: 6.9954
+  type: 'test'
+  ...
+# Subtest: Valid 5+ and 2–5-year cohorts tie without a tenure, size or ownership preference
+ok 440 - Valid 5+ and 2–5-year cohorts tie without a tenure, size or ownership preference
+  ---
+  duration_ms: 23.9076
+  type: 'test'
+  ...
+# Subtest: All four duration groups remain visible; intermediate current-use knowledge does not become a long-term comparison
+ok 441 - All four duration groups remain visible; intermediate current-use knowledge does not become a long-term comparison
+  ---
+  duration_ms: 6.3463
+  type: 'test'
+  ...
+# Subtest: Unknown exposure/count/coverage and future cohort sources do not become an informative pair
+ok 442 - Unknown exposure/count/coverage and future cohort sources do not become an informative pair
+  ---
+  duration_ms: 19.1791
+  type: 'test'
+  ...
+# Subtest: Existing observation and retention gates reject unsupported long-term pairs without changing approved thresholds
+ok 443 - Existing observation and retention gates reject unsupported long-term pairs without changing approved thresholds
+  ---
+  duration_ms: 9.1913
+  type: 'test'
+  ...
+# Subtest: A small dependent-user inquiry is not subject to a universal five-programme-response quota
+ok 444 - A small dependent-user inquiry is not subject to a universal five-programme-response quota
+  ---
+  duration_ms: 7.4669
+  type: 'test'
+  ...
+# Subtest: Snapshot, parameters, cohort content and function changes invalidate prepared input
+ok 445 - Snapshot, parameters, cohort content and function changes invalidate prepared input
+  ---
+  duration_ms: 10.6705
+  type: 'test'
+  ...
+# Subtest: Rebound future as-of and duplicate cohort identities are not silently accepted
+ok 446 - Rebound future as-of and duplicate cohort identities are not silently accepted
+  ---
+  duration_ms: 6.854
+  type: 'test'
+  ...
+# Subtest: Response objects supplied by a caller are ignored and never converted to evidence
+ok 447 - Response objects supplied by a caller are ignored and never converted to evidence
+  ---
+  duration_ms: 5.743
+  type: 'test'
+  ...
+# Subtest: Pure selection results and repository responses do not expose mutable input references
+ok 448 - Pure selection results and repository responses do not expose mutable input references
+  ---
+  duration_ms: 8.2324
+  type: 'test'
+  ...
+# Subtest: Read-only service/client add no reranking and preserve response isolation and explicit missing context
+ok 449 - Read-only service/client add no reranking and preserve response isolation and explicit missing context
+  ---
+  duration_ms: 92.8641
+  type: 'test'
+  ...
+# Subtest: HTTP-ready plan client consumes identical JSON without claiming a deployed backend
+ok 450 - HTTP-ready plan client consumes identical JSON without claiming a deployed backend
+  ---
+  duration_ms: 112.7539
+  type: 'test'
+  ...
+# Subtest: Transport rejects dispatch/response writes and invalid paths/IDs
+ok 451 - Transport rejects dispatch/response writes and invalid paths/IDs
+  ---
+  duration_ms: 0.5454
+  type: 'test'
+  ...
+# Subtest: Service detects changes made after the planning repository snapshot
+ok 452 - Service detects changes made after the planning repository snapshot
+  ---
+  duration_ms: 24.3564
+  type: 'test'
+  ...
+# Subtest: Runtime contract rejects invented assertions, response writes and combined sufficiency
+ok 453 - Runtime contract rejects invented assertions, response writes and combined sufficiency
+  ---
+  duration_ms: 30.6013
+  type: 'test'
+  ...
+# Subtest: Selected-pair wire payload cannot diverge from the validated catalogue-based comparison
+ok 454 - Selected-pair wire payload cannot diverge from the validated catalogue-based comparison
+  ---
+  duration_ms: 4.1313
+  type: 'test'
+  ...
+# Subtest: Operator preview shows separate sufficiency, exact gaps and option assertions without collecting answers
+ok 455 - Operator preview shows separate sufficiency, exact gaps and option assertions without collecting answers
+  ---
+  duration_ms: 7.4039
+  type: 'test'
+  ...
+# Subtest: Resident preview contains exactly one question, four substantive and two distinct unscored choices
+ok 456 - Resident preview contains exactly one question, four substantive and two distinct unscored choices
+  ---
+  duration_ms: 4.9535
+  type: 'test'
+  ...
+# Subtest: Tied, stale and non-eligible plans cannot expose an arbitrarily selected resident question
+ok 457 - Tied, stale and non-eligible plans cannot expose an arbitrarily selected resident question
+  ---
+  duration_ms: 13.0916
+  type: 'test'
+  ...
+# Subtest: Preview text is escaped and exposes no contact/member identities
+ok 458 - Preview text is escaped and exposes no contact/member identities
+  ---
+  duration_ms: 4.3613
+  type: 'test'
+  ...
+# Subtest: Application routes operator and resident previews, retaining upstream views on plan failure
+ok 459 - Application routes operator and resident previews, retaining upstream views on plan failure
+  ---
+  duration_ms: 156.0148
+  type: 'test'
+  ...
+1..459
+# tests 459
+# suites 0
+# pass 459
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 104221.4046

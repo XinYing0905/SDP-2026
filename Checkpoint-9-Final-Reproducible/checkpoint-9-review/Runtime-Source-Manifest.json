@@ -1,0 +1,1517 @@
+[
+  {
+    "file": ".gitignore",
+    "bytes": 54,
+    "sha256": "0d0dbc659aff50a650f34a93460b56178ab73cf7de391c20d55e20a3f2e84dd7"
+  },
+  {
+    "file": "artifacts/checkpoint-2/Amenity-Change-Evidence.html",
+    "bytes": 38969,
+    "sha256": "3b724c434e369f03a73c251c6c8a42c696af7710ceeea0b6e7aedabcd771c5fe"
+  },
+  {
+    "file": "backend/README.md",
+    "bytes": 1364,
+    "sha256": "adf4081cb6f76e4e99836947bf74dcbcb29093a4063bde1218613468fe39d9bd"
+  },
+  {
+    "file": "cp6-server.mjs",
+    "bytes": 501,
+    "sha256": "5c2a58efa1a870fc88155e2d9e16d2621a7d3d4bb6bb0016f74aac3d59fb8491"
+  },
+  {
+    "file": "cp7-server.mjs",
+    "bytes": 567,
+    "sha256": "c785bc24d0e72c26c122affbae69fcdd04379020e5c0a5ddf5591bd97dac9d61"
+  },
+  {
+    "file": "cp8-server.mjs",
+    "bytes": 1141,
+    "sha256": "7d64a0cc13a0770f1c4af786e252675ae26008838b5a3fcd093e2068498fb53c"
+  },
+  {
+    "file": "cp9/delivery-source/legacy-dist/app.mjs.txt",
+    "bytes": 116,
+    "sha256": "845ba55036bcda35b8bb8d751c09a97b1402ca226adbaf3b91a77be816655766"
+  },
+  {
+    "file": "cp9/delivery-source/legacy-dist/config.mjs.txt",
+    "bytes": 161,
+    "sha256": "74a9fde0e319facb3dcce2a7919a8d90bdb66f57b68c92a46038cedc3e378f52"
+  },
+  {
+    "file": "cp9/delivery-source/legacy-dist/detector.mjs.txt",
+    "bytes": 169,
+    "sha256": "daadd2e0b7f5667edacd394a446cc2c2fe9c9cdcf52397383c952ee529c2171f"
+  },
+  {
+    "file": "cp9/delivery-source/legacy-dist/fixtures.mjs.txt",
+    "bytes": 156,
+    "sha256": "85445560e9600b67a89d03dd6e6d1b0a11b91adb8de4e774b0aba8dc2ca1d3e2"
+  },
+  {
+    "file": "cp9/delivery-source/legacy-dist/styles.css.txt",
+    "bytes": 10149,
+    "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+  },
+  {
+    "file": "cp9/demo-storage-final/source-metadata.json",
+    "bytes": 7115,
+    "sha256": "66da6b98fd546052517bd9cea681db4c7139532655993b22ccc398761b22bc4b"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/config.json",
+    "bytes": 650,
+    "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/onnx/model_quantized.onnx",
+    "bytes": 22972370,
+    "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/README.md",
+    "bytes": 1767,
+    "sha256": "63ea99bf681a2e9eda4f6a537d5ed8fda95d1677111656da37e9cfd080c3af02"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/special_tokens_map.json",
+    "bytes": 125,
+    "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/tokenizer_config.json",
+    "bytes": 366,
+    "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/tokenizer.json",
+    "bytes": 711661,
+    "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+  },
+  {
+    "file": "cp9/models/all-MiniLM-L6-v2/vocab.txt",
+    "bytes": 231508,
+    "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+  },
+  {
+    "file": "cp9/models/model-manifest.json",
+    "bytes": 1443,
+    "sha256": "1d3a727c0b953eec6f3a3de548e071e23e5dfe2d564ce15f5b243948d9b3d623"
+  },
+  {
+    "file": "cp9/operator.html",
+    "bytes": 12035,
+    "sha256": "e2277237a33d75a200c977192b0f9bdf1038bb15667b4f7303fa8ea201f61f82"
+  },
+  {
+    "file": "cp9/package-lock.json",
+    "bytes": 35037,
+    "sha256": "d6133bd58806c6742e89aa75cfa459f9746b166e8941c896d4e5f329887ba0f3"
+  },
+  {
+    "file": "cp9/package.json",
+    "bytes": 264,
+    "sha256": "7b1b10147c188c560ea9ea957d0033cec5fb951b82b37f2f6b05115a15441a4e"
+  },
+  {
+    "file": "cp9/README.md",
+    "bytes": 3688,
+    "sha256": "4dec4ff4413e8130d94d7fc84302c23224b48117ade89fa943f5d0d5dfc6d8e7"
+  },
+  {
+    "file": "cp9/scripts/build-preview.mjs",
+    "bytes": 697,
+    "sha256": "34f2272af8c98cbe4041f203c32a88faf841592df120e4a0bc44c7ebbfb93eac"
+  },
+  {
+    "file": "cp9/scripts/build-report.mjs",
+    "bytes": 26877,
+    "sha256": "5beb3b973035136c45196093be2bfff4b12ca3b36e3e2de60d4c3c4bc7f3ca14"
+  },
+  {
+    "file": "cp9/scripts/build-review-data.mjs",
+    "bytes": 1786,
+    "sha256": "63fef4172b7938d155556bf590e7af44a830c277011973d0300cc2de913b136f"
+  },
+  {
+    "file": "cp9/scripts/capture-baseline.mjs",
+    "bytes": 786,
+    "sha256": "1512a5de6eb1f8b23d5d7e856fb559841ab12b89760d458bae35fa4b1675eb85"
+  },
+  {
+    "file": "cp9/scripts/check-build.mjs",
+    "bytes": 2606,
+    "sha256": "e912f28a89f8154e3785066974d32568bd1a0666c7091e69573f062628e5fd0a"
+  },
+  {
+    "file": "cp9/scripts/check-imports.mjs",
+    "bytes": 1590,
+    "sha256": "c8ab8f9ecb2b97a458f2ac023d42d2bb5e647623172dec16328dc8b1a2935533"
+  },
+  {
+    "file": "cp9/scripts/check-preservation.mjs",
+    "bytes": 757,
+    "sha256": "7a5861259c6c539625a3ccf8c94156f033f5b38886a33860f590d50264eab1e4"
+  },
+  {
+    "file": "cp9/scripts/clean-room-verify.mjs",
+    "bytes": 11834,
+    "sha256": "89a589cc03c314d8161191aae3f8789bb1ee6dce1fb41d7684a117a45ac5225e"
+  },
+  {
+    "file": "cp9/scripts/evaluate-semantic.mjs",
+    "bytes": 3414,
+    "sha256": "fe18bc883a860971416695d2c1b6bab2f8d11d3f099c706aae648d856595e6bf"
+  },
+  {
+    "file": "cp9/scripts/fetch-model.mjs",
+    "bytes": 1587,
+    "sha256": "c5c150ceefdffc278f2ac67786247faec6e923d84dac64ea215655eb0bdc1618"
+  },
+  {
+    "file": "cp9/scripts/package.mjs",
+    "bytes": 3751,
+    "sha256": "d480e4971c4d0db596ddff99552699b80e3b8aa9197ca37af70d712a4bcac664"
+  },
+  {
+    "file": "cp9/scripts/refresh-history.mjs",
+    "bytes": 613,
+    "sha256": "a0c5708503ab367ab881e6fdb3af0c8342d8da1763fba5a7b8801cd8beeb436e"
+  },
+  {
+    "file": "cp9/scripts/verify-cp9.mjs",
+    "bytes": 978,
+    "sha256": "880ad3222817a1e7bda81ad19b20aeddcff648ec305b38be39e1d029318387bd"
+  },
+  {
+    "file": "cp9/scripts/verify-preview.mjs",
+    "bytes": 2610,
+    "sha256": "c70b7f053cdb0bf82c3c429697897527c62b62d012383ea87f3c4f950bcb6e80"
+  },
+  {
+    "file": "cp9/server.mjs",
+    "bytes": 1816,
+    "sha256": "79b13d816eee20b0c01355b676c970bfcbcd4c74c9a0f529e3afe106a25aea04"
+  },
+  {
+    "file": "cp9/src/core.mjs",
+    "bytes": 1269,
+    "sha256": "254e48f5fd79d09b9750d9d611e09bfedcb3d8e86c357de6c075e9321b8dd960"
+  },
+  {
+    "file": "cp9/src/current-provider.mjs",
+    "bytes": 1492,
+    "sha256": "f8293529be86fc6a76b3afe041dcbb32c6257763cb12720ef4015f419fcb3d09"
+  },
+  {
+    "file": "cp9/src/demo-corpus.mjs",
+    "bytes": 9900,
+    "sha256": "0669d7a9cddc058220125694fb92bceb51b5a06042ce0fb7de0a30bf1285995c"
+  },
+  {
+    "file": "cp9/src/features.mjs",
+    "bytes": 6360,
+    "sha256": "156f8e4e5b0fbb167cfcb42f72f710276b3e78d24cfd6b7f465ffae6ccbd16c9"
+  },
+  {
+    "file": "cp9/src/history.mjs",
+    "bytes": 4719,
+    "sha256": "48187857b5547b506c093338b0584f9b01c6bcb6843909708bc650e1b95d97a3"
+  },
+  {
+    "file": "cp9/src/http.mjs",
+    "bytes": 1387,
+    "sha256": "f0417a20df3d04016cb374635d91feeba554fc2efb6d43ee9dd6077b3ec0042d"
+  },
+  {
+    "file": "cp9/src/relevance-fixtures.mjs",
+    "bytes": 2015,
+    "sha256": "2b743bcefe78958c23a7fb76520996ffc825a48ae5b0f21632463eba719ac5f4"
+  },
+  {
+    "file": "cp9/src/repository.mjs",
+    "bytes": 1214,
+    "sha256": "eb27ed51cda2c9df5aabf65bdbd325426450646dcbea0092da292e65fbdf49d0"
+  },
+  {
+    "file": "cp9/src/retrieval.mjs",
+    "bytes": 6022,
+    "sha256": "33c23a995cba80126399831b9de8049865102b8e2e86208872ad2f29523ba80c"
+  },
+  {
+    "file": "cp9/src/scenarios.mjs",
+    "bytes": 3888,
+    "sha256": "8955c99ab2c73bc29a3bb7ff3b22b4a2065b048784b1e7a7187b8da1ccf5a14d"
+  },
+  {
+    "file": "cp9/src/semantic.mjs",
+    "bytes": 2311,
+    "sha256": "ae5aa5d04699723251a8b16fd47b3805c174662ab1515818bda3f91916677a5a"
+  },
+  {
+    "file": "cp9/src/service.mjs",
+    "bytes": 1454,
+    "sha256": "cee20c590b3ddaf3d0ad9c67572bf684ff5d0fe6bedb0215ecda04e25ce6f731"
+  },
+  {
+    "file": "cp9/tests/cp9.test.mjs",
+    "bytes": 18433,
+    "sha256": "e39b6080b514375b1492170cf9acf7b8112be22d1c7acb6c3f8e3f7dc071d6c0"
+  },
+  {
+    "file": "dist/app.mjs",
+    "bytes": 116,
+    "sha256": "845ba55036bcda35b8bb8d751c09a97b1402ca226adbaf3b91a77be816655766"
+  },
+  {
+    "file": "dist/config.mjs",
+    "bytes": 161,
+    "sha256": "74a9fde0e319facb3dcce2a7919a8d90bdb66f57b68c92a46038cedc3e378f52"
+  },
+  {
+    "file": "dist/detector.mjs",
+    "bytes": 169,
+    "sha256": "daadd2e0b7f5667edacd394a446cc2c2fe9c9cdcf52397383c952ee529c2171f"
+  },
+  {
+    "file": "dist/fixtures.mjs",
+    "bytes": 156,
+    "sha256": "85445560e9600b67a89d03dd6e6d1b0a11b91adb8de4e774b0aba8dc2ca1d3e2"
+  },
+  {
+    "file": "dist/frontend/application.mjs",
+    "bytes": 3264,
+    "sha256": "ec5b1d5c648310205a91797ec8e381a8741ba4195692655ca095e49aa487ca94"
+  },
+  {
+    "file": "dist/frontend/cp6-app.mjs",
+    "bytes": 12940,
+    "sha256": "7ee6b6c2548fe55c9c00d93130eaa28726e7c968d37aa38d0178a0d1455cc41d"
+  },
+  {
+    "file": "dist/frontend/cp6.html",
+    "bytes": 5548,
+    "sha256": "0483797c26da7230c254f784a19c5728d68363f798c914ceff07d20d4a349a88"
+  },
+  {
+    "file": "dist/frontend/cp7-app.mjs",
+    "bytes": 14332,
+    "sha256": "caab8340e56721f661c2df088379bfb7059f669b51422a309cd59aec0dc0371e"
+  },
+  {
+    "file": "dist/frontend/cp7.html",
+    "bytes": 6967,
+    "sha256": "a105c11f11e2f2e7dda07477bc12c44b4b425f2e70d87fc48e8e012e854b7083"
+  },
+  {
+    "file": "dist/frontend/cp8-app.mjs",
+    "bytes": 10439,
+    "sha256": "d6d1be793b1eb55aee0f334f8e52bdaff203d67cc9f4f5870248096a9803c4f9"
+  },
+  {
+    "file": "dist/frontend/cp8.html",
+    "bytes": 4071,
+    "sha256": "20ad06c799f32551ae0b6bde6bc27766ff320f0e10c187774a5cc99253acd683"
+  },
+  {
+    "file": "dist/frontend/index.html",
+    "bytes": 626,
+    "sha256": "57a647714318f349d5a993776c6c6e074330e98653d6ce1dcfd6ea0d5ab8251d"
+  },
+  {
+    "file": "dist/frontend/main.mjs",
+    "bytes": 238,
+    "sha256": "c5bafca8fa702eb30bd4f3fb8b84b7c9e2a225f78299c561b7bd6552606a5d4e"
+  },
+  {
+    "file": "dist/frontend/next-evidence.css",
+    "bytes": 498,
+    "sha256": "79305bcea9a323edccfae1014819a0109bdcf2c5796c77a0b1e4037ef25e0e0b"
+  },
+  {
+    "file": "dist/frontend/resident-evidence-plan.css",
+    "bytes": 683,
+    "sha256": "d6120f9410010fb67d57b90e6d469b5320a7ac0c1ce91a981962daa961dfbd9f"
+  },
+  {
+    "file": "dist/frontend/styles.css",
+    "bytes": 10149,
+    "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+  },
+  {
+    "file": "dist/frontend/views/change-views.mjs",
+    "bytes": 13324,
+    "sha256": "9a26f56684d383c0926a9a19aca3b7c3144d977da73c6df1d38301f7c9b9520b"
+  },
+  {
+    "file": "dist/frontend/views/diagnosis-evidence.mjs",
+    "bytes": 6528,
+    "sha256": "63e0660588ebb77ec307d3957c2cbf71c7c217145619a9e741aa40c0738683af"
+  },
+  {
+    "file": "dist/frontend/views/next-evidence.mjs",
+    "bytes": 4412,
+    "sha256": "05625d5fef9c1ac4c3903571a8144b9fe5277aeb7330912c02132cbf25f9141c"
+  },
+  {
+    "file": "dist/frontend/views/resident-evidence-plan.mjs",
+    "bytes": 5954,
+    "sha256": "9bb5454d2caa33df69455172bd94cc7783a3ce18c745b63d354f11bb469db2c5"
+  },
+  {
+    "file": "dist/index.html",
+    "bytes": 626,
+    "sha256": "57a647714318f349d5a993776c6c6e074330e98653d6ce1dcfd6ea0d5ab8251d"
+  },
+  {
+    "file": "dist/src/api/change-client.mjs",
+    "bytes": 1006,
+    "sha256": "9e8219cc5a1a1ee2d46a424f627a40c606334b26faee0c85031d22b874136d53"
+  },
+  {
+    "file": "dist/src/api/http-change-transport.mjs",
+    "bytes": 881,
+    "sha256": "2f2a5ef09ad9518dd0a881837d691b6671241a51f30b7579c1551be05e72b458"
+  },
+  {
+    "file": "dist/src/api/intervention-decision-http.mjs",
+    "bytes": 4330,
+    "sha256": "4ebace39f513967c225157f1da1857d2466103ee5728d3a5ed2ea78c774b1352"
+  },
+  {
+    "file": "dist/src/api/local-change-transport.mjs",
+    "bytes": 1652,
+    "sha256": "ba6f917b02f455d7dc14d64b10a9c20c24ad998b502502f37b508010c86bdf65"
+  },
+  {
+    "file": "dist/src/api/outcome-review-http.mjs",
+    "bytes": 3496,
+    "sha256": "554707d5050091d8823acc0a4d51a150c207e10cc956645860d699e5ddc175e6"
+  },
+  {
+    "file": "dist/src/api/resident-plan-client.mjs",
+    "bytes": 1089,
+    "sha256": "78ac705e953b67ecda270f12e735e17c26a6ceea9090ad1e56752337135b85a4"
+  },
+  {
+    "file": "dist/src/composition/cp5-demo-client.mjs",
+    "bytes": 1114,
+    "sha256": "60631309b5101d0f4959e7d59a69a0ac53c72e5fa859e816e0650d418283752e"
+  },
+  {
+    "file": "dist/src/composition/demo-client.mjs",
+    "bytes": 2310,
+    "sha256": "546fcc5bfcefa084585fa05cd6d496bf8dad5bb7549d5f0d8fbb47502d27cdee"
+  },
+  {
+    "file": "dist/src/config/change-detection.mjs",
+    "bytes": 1096,
+    "sha256": "ccdfbc4c098a167b4db1f83c01d92e34389ecb139ef0c915f47af09fe350bd23"
+  },
+  {
+    "file": "dist/src/config/diagnosis.mjs",
+    "bytes": 2665,
+    "sha256": "b002df4a43db17bd653a5af30f83c3c0e668c23c878437f43f96174964d56c32"
+  },
+  {
+    "file": "dist/src/config/intervention-decision.mjs",
+    "bytes": 574,
+    "sha256": "4bb8d0252137d16dfa308f9706ffc3205cf0efac5bc1d4279688a4413e4da7a4"
+  },
+  {
+    "file": "dist/src/config/next-best-evidence.mjs",
+    "bytes": 763,
+    "sha256": "be9983a8497a0533abed4da2b2d8bd02599531beb4e8e295f86bd59dee2f67e8"
+  },
+  {
+    "file": "dist/src/config/outcome-review.mjs",
+    "bytes": 413,
+    "sha256": "ec9050788b406e37e5ebc27f0b3a98e124a6a4e28ff32dd7bb89d0b9485e7dc4"
+  },
+  {
+    "file": "dist/src/cp6/aggregation.mjs",
+    "bytes": 2405,
+    "sha256": "f3b4dd9d38744a732ee3c5a30cc72425f052fa4aba7449e4cc30d63c4d7756fc"
+  },
+  {
+    "file": "dist/src/cp6/contract.mjs",
+    "bytes": 1152,
+    "sha256": "295d99c95e5b94111746c78f5fceda3fd91c77ce43e626de37d6e78f4a6e94bb"
+  },
+  {
+    "file": "dist/src/cp6/conversion.mjs",
+    "bytes": 2792,
+    "sha256": "2cbb6e64354c42ccc49dcec3dfa3325380f44601c586216563c15033221103ca"
+  },
+  {
+    "file": "dist/src/cp6/fixtures.mjs",
+    "bytes": 3131,
+    "sha256": "e86a2a9fe3dd84fd57c2bd8e5dc125642726e5fb0452ba49c6bf1e64d270c6d0"
+  },
+  {
+    "file": "dist/src/cp6/http-server.mjs",
+    "bytes": 3818,
+    "sha256": "29ae24247251d4a979ab76949d60d0bc3e5dae7b63fd22a7fb17dbd0a2eaf41e"
+  },
+  {
+    "file": "dist/src/cp6/models.d.ts",
+    "bytes": 2358,
+    "sha256": "b99eab0d38fc8589568f10c4c41deb4ca1f822bffdcb3fb12316217137f707de"
+  },
+  {
+    "file": "dist/src/cp6/parameters.mjs",
+    "bytes": 427,
+    "sha256": "dff9df364d5f55001bf86edb341a0ce69ed8f9e7abbde0a34b789d58baaaeb01"
+  },
+  {
+    "file": "dist/src/cp6/repository.mjs",
+    "bytes": 3480,
+    "sha256": "b510fbac7b56b4e478138a4099456b0b7b3d2f523da626e01e528a192ee8f3ae"
+  },
+  {
+    "file": "dist/src/cp6/scenarios.mjs",
+    "bytes": 2101,
+    "sha256": "e3c7adba1344c85efeba6f95432846c2153c5c03b56e67bd915060f3dd69f399"
+  },
+  {
+    "file": "dist/src/cp6/service.mjs",
+    "bytes": 11163,
+    "sha256": "2bae40d6e16655a449a0a44e71254dda5b1a5e5dd381e773bce2e0fb3e7ea9cb"
+  },
+  {
+    "file": "dist/src/data/providers/approved-plan-provider.mjs",
+    "bytes": 2314,
+    "sha256": "f5dfd75fc2298213cc8a7eab21d346b69d817f4edf38e34e9127e8d155ccdcef"
+  },
+  {
+    "file": "dist/src/data/repositories/diagnosis-repository.mjs",
+    "bytes": 595,
+    "sha256": "bcad3598e13417aa59cb428176353eb1b3dc23af6aa35c827d71f0ed19fdbd4f"
+  },
+  {
+    "file": "dist/src/data/repositories/intervention-decision-repository.mjs",
+    "bytes": 1331,
+    "sha256": "2eabd40ce3a8d93726fc881e7d528bc7f9ab45d6e6e3dec299500ec4c71b2ba8"
+  },
+  {
+    "file": "dist/src/data/repositories/outcome-review-repository.mjs",
+    "bytes": 198,
+    "sha256": "110d1bf3ace53f842006ff7d9af11ac5fb3a85e33a9c8197c1fa0469f5c55281"
+  },
+  {
+    "file": "dist/src/data/repositories/resident-plan-repository.mjs",
+    "bytes": 225,
+    "sha256": "1676656dbc7cafb5fa987fc31b9ebc06f538f58e21c212d17fa8016a5c254ab8"
+  },
+  {
+    "file": "dist/src/data/repositories/synthetic-amenity-repository.mjs",
+    "bytes": 412,
+    "sha256": "06580bea05abb7708e595e909342c032ff9b73c9e196a2d03230f15d8af6150c"
+  },
+  {
+    "file": "dist/src/data/synthetic/amenities.mjs",
+    "bytes": 2667,
+    "sha256": "a28115d13c150f720355beae818f11fd6589f37f6b0f2907302d8b72da42aa75"
+  },
+  {
+    "file": "dist/src/data/synthetic/diagnosis-cases.mjs",
+    "bytes": 6318,
+    "sha256": "daeee41aa3b837aed08e9174ca351d12f394f2164a22c4ca7f7fcdcf8d113bb5"
+  },
+  {
+    "file": "dist/src/data/synthetic/intervention-assessment-seeds.mjs",
+    "bytes": 108690,
+    "sha256": "1290a0a1f8934cc524a3e586ae461350755260c5bf7dcf74d952792ebc31128b"
+  },
+  {
+    "file": "dist/src/data/synthetic/intervention-case-snapshots.mjs",
+    "bytes": 1324258,
+    "sha256": "987d33aa44e0762968f82e37308a5d4372c109d05539d2f0892cc74f55429ccf"
+  },
+  {
+    "file": "dist/src/data/synthetic/intervention-decision-cases.mjs",
+    "bytes": 10563,
+    "sha256": "3f4661709e44ccd7685d44903f62565d47592967a46d1a28f26731a6adf3f127"
+  },
+  {
+    "file": "dist/src/data/synthetic/next-evidence-cases.mjs",
+    "bytes": 5404,
+    "sha256": "5fbd48a4b4e86c63f6bcde8d87b44eef168a86bdda45f23be70861a7bb6b028e"
+  },
+  {
+    "file": "dist/src/data/synthetic/outcome-review-cases.mjs",
+    "bytes": 8357,
+    "sha256": "d9f7bcc571bb441c3a89a93ea0335b63d9f44db008f2388e9535b919473309a7"
+  },
+  {
+    "file": "dist/src/data/synthetic/resident-evidence-plan-cases.mjs",
+    "bytes": 6287,
+    "sha256": "0e464a54d973497553b4649f06cd7df79a01eca94e2022cbd6f0d68150cc1202"
+  },
+  {
+    "file": "dist/src/diagnosis/competing-diagnosis.mjs",
+    "bytes": 2088,
+    "sha256": "8af7353c8399c3ecd3bdaae2e70bc1ba550b03ab6d1cb60b9b6e8451194274af"
+  },
+  {
+    "file": "dist/src/diagnosis/dependency-substitutability.mjs",
+    "bytes": 2725,
+    "sha256": "427af37e6df55ec8e8659907d59525b968323b9e2faacf30001507a1f58e6728"
+  },
+  {
+    "file": "dist/src/diagnosis/evidence-features.mjs",
+    "bytes": 4424,
+    "sha256": "2cf6546a69c3a9f0de0f19ec73b8839eee84a7916a1cb04897fc9c8ce7832889"
+  },
+  {
+    "file": "dist/src/diagnosis/evidence-sufficiency.mjs",
+    "bytes": 7258,
+    "sha256": "37a328b2e3b6be4030154a2ad261c3d31bde7e8ceca5982e72440696c71ea454"
+  },
+  {
+    "file": "dist/src/diagnosis/evidence-utils.mjs",
+    "bytes": 1414,
+    "sha256": "6142f5e1ea9d7184616ed9b41796617c2b4999d3387b3b8bea85057165ce95a4"
+  },
+  {
+    "file": "dist/src/diagnosis/resident-mix-stability.mjs",
+    "bytes": 3887,
+    "sha256": "a24569fd28189698c3f5677c99753f3a3373219d9459caa7783b0068568471a9"
+  },
+  {
+    "file": "dist/src/diagnosis/scoring.mjs",
+    "bytes": 2285,
+    "sha256": "d9d119b28ae23e6c074ed2fa0a9337a3feb33121a010111d4165a62c49595c97"
+  },
+  {
+    "file": "dist/src/diagnosis/temporal-stability.mjs",
+    "bytes": 3120,
+    "sha256": "9d9f9deb4c931a03305b5944cef1845fa6f3346cb9b3afd832c54d25e47b9431"
+  },
+  {
+    "file": "dist/src/intervention/catalogue.mjs",
+    "bytes": 1205,
+    "sha256": "659a91e0081f2e27332e7dce5536a9605d479d6e76cbb956eae31cc673f0e568"
+  },
+  {
+    "file": "dist/src/intervention/decision-proposal.mjs",
+    "bytes": 1501,
+    "sha256": "54acf0aee418ed4e57c31bf778370b77cfe72c884f90c9df0f29120c25daea82"
+  },
+  {
+    "file": "dist/src/intervention/evidence-gates.mjs",
+    "bytes": 11010,
+    "sha256": "53d451ec7d7f3a7e208ab8636792817c42c6af72e15db9596f7b5ba74da4ab07"
+  },
+  {
+    "file": "dist/src/intervention/reversibility.mjs",
+    "bytes": 2551,
+    "sha256": "4d1fa7cf18258f5c5b46ec38f2b120867ff4e065300f1ea68868707e54591860"
+  },
+  {
+    "file": "dist/src/next-evidence/candidate-scenarios.mjs",
+    "bytes": 10608,
+    "sha256": "6e00dbe5177b17751c8d48edce2672089f55b8a1ddea7c5bfc07e3a4a5cf6644"
+  },
+  {
+    "file": "dist/src/next-evidence/gaps.mjs",
+    "bytes": 4741,
+    "sha256": "f8327d9102a0a91f25f0e051be5f3792e92c9165fa00a8efcf2028acb139148f"
+  },
+  {
+    "file": "dist/src/next-evidence/next-best-evidence.mjs",
+    "bytes": 8966,
+    "sha256": "16a7da69323cedb253866db2f12b84df4e12a5d5e41d1d69ddb99a8a1eb05fb2"
+  },
+  {
+    "file": "dist/src/outcome/contract-binding.mjs",
+    "bytes": 4465,
+    "sha256": "9ef03875f81355eea5a6dbcc7dbc6d681a9b7060d71b47ff3fe1f715787ebd73"
+  },
+  {
+    "file": "dist/src/outcome/evaluate-contract.mjs",
+    "bytes": 5164,
+    "sha256": "046ac4feece7408c5caac2b5326e4eec8f82d47ab7982f8a4d675f1a6b0083d9"
+  },
+  {
+    "file": "dist/src/outcome/execution-finding.mjs",
+    "bytes": 2375,
+    "sha256": "c751f3859afcf9737172d34db5b2ef595975569874a912118a801f1c4560210a"
+  },
+  {
+    "file": "dist/src/outcome/observation-admission.mjs",
+    "bytes": 3852,
+    "sha256": "ecc2cb8ab944f65649f7ff7ea334ff431c0cb0604a493f1d1200d62f6c649618"
+  },
+  {
+    "file": "dist/src/outcome/outcome-evidence-conversion.mjs",
+    "bytes": 3575,
+    "sha256": "7a55d4bd70a0c0947dc68aba7063e9886a97512cd9e7ae39b79e17975935dd9b"
+  },
+  {
+    "file": "dist/src/outcome/reassessment-orchestrator.mjs",
+    "bytes": 1472,
+    "sha256": "f8665ec245a74975a1659ace1a8b92e1bfb71dd6cbd50eb15ecbd5b5a2291881"
+  },
+  {
+    "file": "dist/src/resident-evidence/cohort-eligibility.mjs",
+    "bytes": 3033,
+    "sha256": "f4374dee443b6aaa5e31dbca768eb17017c198db23d340de9d852b5b35f6e6e9"
+  },
+  {
+    "file": "dist/src/resident-evidence/pair-selection.mjs",
+    "bytes": 11311,
+    "sha256": "ca3b98f050fca04e94155a4010c816c40bd46da45daef951a3c4dc8565ae64f3"
+  },
+  {
+    "file": "dist/src/resident-evidence/question-catalogue.mjs",
+    "bytes": 7449,
+    "sha256": "bd3b09c411c77b54e52e79d8be4f3ed10199e6fb19d9d37ae2659793f96a0ff8"
+  },
+  {
+    "file": "dist/src/resident-evidence/snapshot-binding.mjs",
+    "bytes": 743,
+    "sha256": "6feb208ddadc5f005959ec4c9074d9e46ba7dcc556f3a06197464907733564de"
+  },
+  {
+    "file": "dist/src/services/change-evidence-service.mjs",
+    "bytes": 1194,
+    "sha256": "eae66514c7929d167ae8dd922bd55eb5af718d95b8ceebaf2bfedb1329a85139"
+  },
+  {
+    "file": "dist/src/services/competing-diagnosis-service.mjs",
+    "bytes": 1124,
+    "sha256": "3118d72aadf7ef8c5c2e1fe8d9c16789f01534571107b55bac32009d47d89995"
+  },
+  {
+    "file": "dist/src/services/intervention-decision-service.mjs",
+    "bytes": 4681,
+    "sha256": "2417fad3c74a7d1b749bf5257394eb1205e8740e2c4210ad9314271bae52ffbc"
+  },
+  {
+    "file": "dist/src/services/next-evidence-service.mjs",
+    "bytes": 1081,
+    "sha256": "9757c54485ece8234ca7e45c19b014c3dc2ee08b5c00de9cdbbe4c42da46e79b"
+  },
+  {
+    "file": "dist/src/services/outcome-review-service.mjs",
+    "bytes": 9743,
+    "sha256": "e22acc60a934c7084e43e4d66f182f00f5a8d5fdf80690e52e9ba06976d1645a"
+  },
+  {
+    "file": "dist/src/services/resident-evidence-plan-service.mjs",
+    "bytes": 1310,
+    "sha256": "ff81c029c6ecb5f5c7b0b0cca8d020630ff413940cace54957c811d3bc8421ea"
+  },
+  {
+    "file": "dist/src/shared/change-contract.mjs",
+    "bytes": 1269,
+    "sha256": "ba203eb890ce6ea4f453193427e6458d76451bf9f87410161c6bc08356e942a2"
+  },
+  {
+    "file": "dist/src/shared/change-models.d.ts",
+    "bytes": 4858,
+    "sha256": "baf8ab13235af005e0d14dc688ca9a3d1c2e672a94b81dd4d78a377461dd564f"
+  },
+  {
+    "file": "dist/src/shared/diagnosis-contract.mjs",
+    "bytes": 992,
+    "sha256": "922bd94ecf34bf976126d224a579d20240ed1fedfee047cbfe4e23a0f6881aeb"
+  },
+  {
+    "file": "dist/src/shared/diagnosis-models.d.ts",
+    "bytes": 6676,
+    "sha256": "d6d0275475e7ab4c7c038b8bdf88d2e871d99b2dc185410fd577c15d88bcfc0a"
+  },
+  {
+    "file": "dist/src/shared/intervention-decision-contract.mjs",
+    "bytes": 1103,
+    "sha256": "84b219984bb6dd83841edd31cdac4d432cfbbb744e63b57b31e259a54fc5fd7d"
+  },
+  {
+    "file": "dist/src/shared/intervention-decision-models.d.ts",
+    "bytes": 1718,
+    "sha256": "37dd43d322009f0d42ceaeb01b56b1c08e982d608934397dc7486aa8eedd0b1f"
+  },
+  {
+    "file": "dist/src/shared/next-evidence-contract.mjs",
+    "bytes": 1618,
+    "sha256": "53bdd0f88e5043c08142ce90bca13ad9f49edb3ad5f5ebfd23bb8cd51fb05d03"
+  },
+  {
+    "file": "dist/src/shared/next-evidence-models.d.ts",
+    "bytes": 2746,
+    "sha256": "48ac394f91d59d232f20d5213c9ebae67d10c3e246eaa3393c66ec9079bf5ffd"
+  },
+  {
+    "file": "dist/src/shared/outcome-review-contract.mjs",
+    "bytes": 1038,
+    "sha256": "8eaa889a4134134de6d0c3094cc19ceb409a267e671cc29b89dc52cf7964aaeb"
+  },
+  {
+    "file": "dist/src/shared/outcome-review-models.d.ts",
+    "bytes": 2852,
+    "sha256": "b2156acfb0188a01ecc08a5e9add858b4f44a0cacd4f607ef5bc7f39805b65ac"
+  },
+  {
+    "file": "dist/src/shared/resident-evidence-plan-contract.mjs",
+    "bytes": 3874,
+    "sha256": "4e7d2affd21030a43cf16fdb1ddc1f434eb91d50ae905df463f70962ab30e0e5"
+  },
+  {
+    "file": "dist/src/shared/resident-evidence-plan-models.d.ts",
+    "bytes": 3037,
+    "sha256": "4ec8ef4f28ccedae847b8ebcf8212d22f24a7946838d7c2c6693adee0000b3ec"
+  },
+  {
+    "file": "dist/src/statistics/change-detection/config.mjs",
+    "bytes": 162,
+    "sha256": "1ee51fd58b26b1a1ef2341887235a7d85957491cd979505c41fb0b22a0c9849f"
+  },
+  {
+    "file": "dist/src/statistics/change-detection/detector.mjs",
+    "bytes": 12118,
+    "sha256": "46f3e3386ca82c10ca1ec68f5d9866a369707e0a61a4249db4227555f367aa08"
+  },
+  {
+    "file": "dist/styles.css",
+    "bytes": 10149,
+    "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+  },
+  {
+    "file": "docs/change-api-contract.md",
+    "bytes": 4154,
+    "sha256": "55fa42472b05070a61aff159d2a91e156a7759285e7fb744924c7e8f1e087468"
+  },
+  {
+    "file": "docs/checkpoint-6-runtime.md",
+    "bytes": 5822,
+    "sha256": "f5fb7de9de4bead6573ba0c039bc93918b2a65351abf8e6843d8e2fe0580ddfb"
+  },
+  {
+    "file": "docs/checkpoint-7-runtime.md",
+    "bytes": 6259,
+    "sha256": "95664bebf0cf27f9958194db05e377bc71cf44d31fd4c1062a61fe3abe8e1cc0"
+  },
+  {
+    "file": "docs/checkpoint-8-runtime.md",
+    "bytes": 2823,
+    "sha256": "1ec89c99de1478a9fd200f85e9944098b359d22743d2d659b3099aa3c9228e10"
+  },
+  {
+    "file": "docs/diagnosis-api-contract.md",
+    "bytes": 3820,
+    "sha256": "c467651423ad4e952d2b4707213aa6292e413b110f744a054675311f57c09b7b"
+  },
+  {
+    "file": "docs/next-evidence-api-contract.md",
+    "bytes": 5634,
+    "sha256": "41c47209d7881fea1b0ff548dd0c640b9171155f60f6673160c118d26f67ef18"
+  },
+  {
+    "file": "docs/resident-evidence-plan-api-contract.md",
+    "bytes": 6153,
+    "sha256": "e188a6c36bb6f3ae17d1e6ce609ca74517fef3e754416bd1718933a5c5428c6c"
+  },
+  {
+    "file": "frontend/application.mjs",
+    "bytes": 3264,
+    "sha256": "ec5b1d5c648310205a91797ec8e381a8741ba4195692655ca095e49aa487ca94"
+  },
+  {
+    "file": "frontend/cp6-app.mjs",
+    "bytes": 12940,
+    "sha256": "7ee6b6c2548fe55c9c00d93130eaa28726e7c968d37aa38d0178a0d1455cc41d"
+  },
+  {
+    "file": "frontend/cp6.html",
+    "bytes": 5548,
+    "sha256": "0483797c26da7230c254f784a19c5728d68363f798c914ceff07d20d4a349a88"
+  },
+  {
+    "file": "frontend/cp7-app.mjs",
+    "bytes": 14332,
+    "sha256": "caab8340e56721f661c2df088379bfb7059f669b51422a309cd59aec0dc0371e"
+  },
+  {
+    "file": "frontend/cp7.html",
+    "bytes": 6967,
+    "sha256": "a105c11f11e2f2e7dda07477bc12c44b4b425f2e70d87fc48e8e012e854b7083"
+  },
+  {
+    "file": "frontend/cp8-app.mjs",
+    "bytes": 10439,
+    "sha256": "d6d1be793b1eb55aee0f334f8e52bdaff203d67cc9f4f5870248096a9803c4f9"
+  },
+  {
+    "file": "frontend/cp8.html",
+    "bytes": 4071,
+    "sha256": "20ad06c799f32551ae0b6bde6bc27766ff320f0e10c187774a5cc99253acd683"
+  },
+  {
+    "file": "frontend/index.html",
+    "bytes": 626,
+    "sha256": "57a647714318f349d5a993776c6c6e074330e98653d6ce1dcfd6ea0d5ab8251d"
+  },
+  {
+    "file": "frontend/main.mjs",
+    "bytes": 238,
+    "sha256": "c5bafca8fa702eb30bd4f3fb8b84b7c9e2a225f78299c561b7bd6552606a5d4e"
+  },
+  {
+    "file": "frontend/next-evidence.css",
+    "bytes": 498,
+    "sha256": "79305bcea9a323edccfae1014819a0109bdcf2c5796c77a0b1e4037ef25e0e0b"
+  },
+  {
+    "file": "frontend/resident-evidence-plan.css",
+    "bytes": 683,
+    "sha256": "d6120f9410010fb67d57b90e6d469b5320a7ac0c1ce91a981962daa961dfbd9f"
+  },
+  {
+    "file": "frontend/styles.css",
+    "bytes": 10149,
+    "sha256": "293073ae1c0908b4037dc6954ae7959131a7bf2f5f0c92a5772fc026c8cea398"
+  },
+  {
+    "file": "frontend/views/change-views.mjs",
+    "bytes": 13324,
+    "sha256": "9a26f56684d383c0926a9a19aca3b7c3144d977da73c6df1d38301f7c9b9520b"
+  },
+  {
+    "file": "frontend/views/diagnosis-evidence.mjs",
+    "bytes": 6528,
+    "sha256": "63e0660588ebb77ec307d3957c2cbf71c7c217145619a9e741aa40c0738683af"
+  },
+  {
+    "file": "frontend/views/next-evidence.mjs",
+    "bytes": 4412,
+    "sha256": "05625d5fef9c1ac4c3903571a8144b9fe5277aeb7330912c02132cbf25f9141c"
+  },
+  {
+    "file": "frontend/views/resident-evidence-plan.mjs",
+    "bytes": 5954,
+    "sha256": "9bb5454d2caa33df69455172bd94cc7783a3ce18c745b63d354f11bb469db2c5"
+  },
+  {
+    "file": "package.json",
+    "bytes": 660,
+    "sha256": "1c78f4a8012a7138b64271d09d8cec6c546c3b6fe7e3416de1a980e4960e7cb0"
+  },
+  {
+    "file": "README.md",
+    "bytes": 11529,
+    "sha256": "8ca551ee818091ea80feb0300ecbaaa5f78f15c03e6404de554890ce9f883082"
+  },
+  {
+    "file": "scripts/build-cp8-review.mjs",
+    "bytes": 24232,
+    "sha256": "94605356121eb26a0227df024f08897eda52b50e8d887f6938d5768195a7d68d"
+  },
+  {
+    "file": "scripts/build.mjs",
+    "bytes": 658,
+    "sha256": "06fa3a1f60d83368f8345b73bd7a5f0f12cc327da018d6ad9490078b99e5fe4d"
+  },
+  {
+    "file": "scripts/capture-cp4-baseline.mjs",
+    "bytes": 1317,
+    "sha256": "95270c81220b7c7c9c5339b348edab93461cccf6693c2df9c39b59a4079d617d"
+  },
+  {
+    "file": "scripts/cp5-interactive-preview.mjs",
+    "bytes": 16213,
+    "sha256": "230b55aa3dd9d1d8de8c9a03a5186a7f1a832c08592b24672e1496531b612b30"
+  },
+  {
+    "file": "scripts/cp5-product-presentation.mjs",
+    "bytes": 10843,
+    "sha256": "088650054bd01edfe733c2c06bd6255da4820a72cd7d933136427651eedf526d"
+  },
+  {
+    "file": "scripts/cp5-storytelling.mjs",
+    "bytes": 17696,
+    "sha256": "89774d65f942426b2a7e7d041912ac6258c0a38c0009d2599a5fde18811ccd14"
+  },
+  {
+    "file": "scripts/cp6-browser-runtime.mjs",
+    "bytes": 3134,
+    "sha256": "da071dad81188c1b3ecc3860e1aa165959d58177f188adb57b8e1c2cec010cce"
+  },
+  {
+    "file": "scripts/cp6-portable-preview.mjs",
+    "bytes": 6427,
+    "sha256": "f4038ff1263d67ba369804c535d32bf14720954de64b7c84374b8c85765e8d93"
+  },
+  {
+    "file": "scripts/cp7-portable-preview.mjs",
+    "bytes": 4924,
+    "sha256": "d079164f3cc57809119333fec9a05d1c298214652c461adb8853e3bbfdf07609"
+  },
+  {
+    "file": "scripts/cp8-portable-preview.mjs",
+    "bytes": 8974,
+    "sha256": "5ccb296999b5327db0c04b8c25d9f7b1d203b03d57d46ed8293f7ada8e49ae17"
+  },
+  {
+    "file": "scripts/diagnosis-report.mjs",
+    "bytes": 3290,
+    "sha256": "01b4c727fe7a6fc1bc88d29ea1f6e412bd5aa6f0c4d4a238b868f7511f09c251"
+  },
+  {
+    "file": "scripts/next-evidence-report.mjs",
+    "bytes": 4927,
+    "sha256": "438adc035a4d70ce69df3f34b680f4db297bb492fb272501a81e26af0ced5e38"
+  },
+  {
+    "file": "scripts/report.mjs",
+    "bytes": 1087,
+    "sha256": "dc32334f20b31d32ec07d93dca795a1f6b3a9d1e7f108f5d9443ed2cba6a2e28"
+  },
+  {
+    "file": "scripts/resident-plan-report.mjs",
+    "bytes": 6266,
+    "sha256": "86867ebeb0b3f50dfa8161951413dd8c8ce251bfa65b7ec6e094a657820511ca"
+  },
+  {
+    "file": "scripts/standalone.mjs",
+    "bytes": 678,
+    "sha256": "b48a9e9a5de222c5ea36a9aacb3db9ba4be7a0ec05f9fbd9921716d00cd75333"
+  },
+  {
+    "file": "scripts/verify-cp4.mjs",
+    "bytes": 726,
+    "sha256": "864fe04f6a2fcc7f52b059b98e3c54438a0ac455a72d16a601b3cfc88029c905"
+  },
+  {
+    "file": "scripts/verify-cp5.mjs",
+    "bytes": 720,
+    "sha256": "6fd84cb8f9d25d1d636cb74ea7b35f91347db997348d9425df558c74b0373c72"
+  },
+  {
+    "file": "scripts/verify-cp6-ui.mjs",
+    "bytes": 3307,
+    "sha256": "1987763c54f466968776ffb269382d6596ae51078865adaf8220057c42d189dc"
+  },
+  {
+    "file": "scripts/verify-cp6.mjs",
+    "bytes": 2557,
+    "sha256": "d5dc336aea9e2789a60282537d3e2b9e29d634070b888cb9d16dc63999370dec"
+  },
+  {
+    "file": "scripts/verify-cp7-ui.mjs",
+    "bytes": 4000,
+    "sha256": "ffe1d836a12c0097266f57d546065c802e7b8a15aad4bac58434496123c30d58"
+  },
+  {
+    "file": "scripts/verify-cp7.mjs",
+    "bytes": 2644,
+    "sha256": "a66f9fe0975cb3a1bcf9e53e41aa6229d0a5c2c506a859ef3d708b038fc557e3"
+  },
+  {
+    "file": "scripts/verify-cp8-api.mjs",
+    "bytes": 2308,
+    "sha256": "b94ac2ad2c40f2b657dcdc6fd5e7f64b23c6aac13d43a41112b217545d574dcb"
+  },
+  {
+    "file": "scripts/verify-cp8.mjs",
+    "bytes": 3991,
+    "sha256": "cb19743792f65bde6221bd10c13f86fbb3961237ddfad42d491bc7f8577005ff"
+  },
+  {
+    "file": "scripts/verify.mjs",
+    "bytes": 693,
+    "sha256": "2aca96fe0d727396a87bd65a11a9975088d0e5e02481a92b4be63488f52aac23"
+  },
+  {
+    "file": "server.mjs",
+    "bytes": 1043,
+    "sha256": "afc98586e182e286e2086c4e80172d61ca52134d775bc3137e2da110bcd78882"
+  },
+  {
+    "file": "src/api/change-client.mjs",
+    "bytes": 1006,
+    "sha256": "9e8219cc5a1a1ee2d46a424f627a40c606334b26faee0c85031d22b874136d53"
+  },
+  {
+    "file": "src/api/http-change-transport.mjs",
+    "bytes": 881,
+    "sha256": "2f2a5ef09ad9518dd0a881837d691b6671241a51f30b7579c1551be05e72b458"
+  },
+  {
+    "file": "src/api/intervention-decision-http.mjs",
+    "bytes": 4330,
+    "sha256": "4ebace39f513967c225157f1da1857d2466103ee5728d3a5ed2ea78c774b1352"
+  },
+  {
+    "file": "src/api/local-change-transport.mjs",
+    "bytes": 1652,
+    "sha256": "ba6f917b02f455d7dc14d64b10a9c20c24ad998b502502f37b508010c86bdf65"
+  },
+  {
+    "file": "src/api/outcome-review-http.mjs",
+    "bytes": 3496,
+    "sha256": "554707d5050091d8823acc0a4d51a150c207e10cc956645860d699e5ddc175e6"
+  },
+  {
+    "file": "src/api/resident-plan-client.mjs",
+    "bytes": 1089,
+    "sha256": "78ac705e953b67ecda270f12e735e17c26a6ceea9090ad1e56752337135b85a4"
+  },
+  {
+    "file": "src/composition/cp5-demo-client.mjs",
+    "bytes": 1114,
+    "sha256": "60631309b5101d0f4959e7d59a69a0ac53c72e5fa859e816e0650d418283752e"
+  },
+  {
+    "file": "src/composition/demo-client.mjs",
+    "bytes": 2310,
+    "sha256": "546fcc5bfcefa084585fa05cd6d496bf8dad5bb7549d5f0d8fbb47502d27cdee"
+  },
+  {
+    "file": "src/config/change-detection.mjs",
+    "bytes": 1096,
+    "sha256": "ccdfbc4c098a167b4db1f83c01d92e34389ecb139ef0c915f47af09fe350bd23"
+  },
+  {
+    "file": "src/config/diagnosis.mjs",
+    "bytes": 2665,
+    "sha256": "b002df4a43db17bd653a5af30f83c3c0e668c23c878437f43f96174964d56c32"
+  },
+  {
+    "file": "src/config/intervention-decision.mjs",
+    "bytes": 574,
+    "sha256": "4bb8d0252137d16dfa308f9706ffc3205cf0efac5bc1d4279688a4413e4da7a4"
+  },
+  {
+    "file": "src/config/next-best-evidence.mjs",
+    "bytes": 763,
+    "sha256": "be9983a8497a0533abed4da2b2d8bd02599531beb4e8e295f86bd59dee2f67e8"
+  },
+  {
+    "file": "src/config/outcome-review.mjs",
+    "bytes": 413,
+    "sha256": "ec9050788b406e37e5ebc27f0b3a98e124a6a4e28ff32dd7bb89d0b9485e7dc4"
+  },
+  {
+    "file": "src/cp6/aggregation.mjs",
+    "bytes": 2405,
+    "sha256": "f3b4dd9d38744a732ee3c5a30cc72425f052fa4aba7449e4cc30d63c4d7756fc"
+  },
+  {
+    "file": "src/cp6/contract.mjs",
+    "bytes": 1152,
+    "sha256": "295d99c95e5b94111746c78f5fceda3fd91c77ce43e626de37d6e78f4a6e94bb"
+  },
+  {
+    "file": "src/cp6/conversion.mjs",
+    "bytes": 2792,
+    "sha256": "2cbb6e64354c42ccc49dcec3dfa3325380f44601c586216563c15033221103ca"
+  },
+  {
+    "file": "src/cp6/fixtures.mjs",
+    "bytes": 3131,
+    "sha256": "e86a2a9fe3dd84fd57c2bd8e5dc125642726e5fb0452ba49c6bf1e64d270c6d0"
+  },
+  {
+    "file": "src/cp6/http-server.mjs",
+    "bytes": 3818,
+    "sha256": "29ae24247251d4a979ab76949d60d0bc3e5dae7b63fd22a7fb17dbd0a2eaf41e"
+  },
+  {
+    "file": "src/cp6/models.d.ts",
+    "bytes": 2358,
+    "sha256": "b99eab0d38fc8589568f10c4c41deb4ca1f822bffdcb3fb12316217137f707de"
+  },
+  {
+    "file": "src/cp6/parameters.mjs",
+    "bytes": 427,
+    "sha256": "dff9df364d5f55001bf86edb341a0ce69ed8f9e7abbde0a34b789d58baaaeb01"
+  },
+  {
+    "file": "src/cp6/repository.mjs",
+    "bytes": 3480,
+    "sha256": "b510fbac7b56b4e478138a4099456b0b7b3d2f523da626e01e528a192ee8f3ae"
+  },
+  {
+    "file": "src/cp6/scenarios.mjs",
+    "bytes": 2101,
+    "sha256": "e3c7adba1344c85efeba6f95432846c2153c5c03b56e67bd915060f3dd69f399"
+  },
+  {
+    "file": "src/cp6/service.mjs",
+    "bytes": 11163,
+    "sha256": "2bae40d6e16655a449a0a44e71254dda5b1a5e5dd381e773bce2e0fb3e7ea9cb"
+  },
+  {
+    "file": "src/data/providers/approved-plan-provider.mjs",
+    "bytes": 2314,
+    "sha256": "f5dfd75fc2298213cc8a7eab21d346b69d817f4edf38e34e9127e8d155ccdcef"
+  },
+  {
+    "file": "src/data/repositories/diagnosis-repository.mjs",
+    "bytes": 595,
+    "sha256": "bcad3598e13417aa59cb428176353eb1b3dc23af6aa35c827d71f0ed19fdbd4f"
+  },
+  {
+    "file": "src/data/repositories/intervention-decision-repository.mjs",
+    "bytes": 1331,
+    "sha256": "2eabd40ce3a8d93726fc881e7d528bc7f9ab45d6e6e3dec299500ec4c71b2ba8"
+  },
+  {
+    "file": "src/data/repositories/outcome-review-repository.mjs",
+    "bytes": 198,
+    "sha256": "110d1bf3ace53f842006ff7d9af11ac5fb3a85e33a9c8197c1fa0469f5c55281"
+  },
+  {
+    "file": "src/data/repositories/resident-plan-repository.mjs",
+    "bytes": 225,
+    "sha256": "1676656dbc7cafb5fa987fc31b9ebc06f538f58e21c212d17fa8016a5c254ab8"
+  },
+  {
+    "file": "src/data/repositories/synthetic-amenity-repository.mjs",
+    "bytes": 412,
+    "sha256": "06580bea05abb7708e595e909342c032ff9b73c9e196a2d03230f15d8af6150c"
+  },
+  {
+    "file": "src/data/synthetic/amenities.mjs",
+    "bytes": 2667,
+    "sha256": "a28115d13c150f720355beae818f11fd6589f37f6b0f2907302d8b72da42aa75"
+  },
+  {
+    "file": "src/data/synthetic/diagnosis-cases.mjs",
+    "bytes": 6318,
+    "sha256": "daeee41aa3b837aed08e9174ca351d12f394f2164a22c4ca7f7fcdcf8d113bb5"
+  },
+  {
+    "file": "src/data/synthetic/intervention-assessment-seeds.mjs",
+    "bytes": 108690,
+    "sha256": "1290a0a1f8934cc524a3e586ae461350755260c5bf7dcf74d952792ebc31128b"
+  },
+  {
+    "file": "src/data/synthetic/intervention-case-snapshots.mjs",
+    "bytes": 1324258,
+    "sha256": "987d33aa44e0762968f82e37308a5d4372c109d05539d2f0892cc74f55429ccf"
+  },
+  {
+    "file": "src/data/synthetic/intervention-decision-cases.mjs",
+    "bytes": 10563,
+    "sha256": "3f4661709e44ccd7685d44903f62565d47592967a46d1a28f26731a6adf3f127"
+  },
+  {
+    "file": "src/data/synthetic/next-evidence-cases.mjs",
+    "bytes": 5404,
+    "sha256": "5fbd48a4b4e86c63f6bcde8d87b44eef168a86bdda45f23be70861a7bb6b028e"
+  },
+  {
+    "file": "src/data/synthetic/outcome-review-cases.mjs",
+    "bytes": 8357,
+    "sha256": "d9f7bcc571bb441c3a89a93ea0335b63d9f44db008f2388e9535b919473309a7"
+  },
+  {
+    "file": "src/data/synthetic/resident-evidence-plan-cases.mjs",
+    "bytes": 6287,
+    "sha256": "0e464a54d973497553b4649f06cd7df79a01eca94e2022cbd6f0d68150cc1202"
+  },
+  {
+    "file": "src/diagnosis/competing-diagnosis.mjs",
+    "bytes": 2088,
+    "sha256": "8af7353c8399c3ecd3bdaae2e70bc1ba550b03ab6d1cb60b9b6e8451194274af"
+  },
+  {
+    "file": "src/diagnosis/dependency-substitutability.mjs",
+    "bytes": 2725,
+    "sha256": "427af37e6df55ec8e8659907d59525b968323b9e2faacf30001507a1f58e6728"
+  },
+  {
+    "file": "src/diagnosis/evidence-features.mjs",
+    "bytes": 4424,
+    "sha256": "2cf6546a69c3a9f0de0f19ec73b8839eee84a7916a1cb04897fc9c8ce7832889"
+  },
+  {
+    "file": "src/diagnosis/evidence-sufficiency.mjs",
+    "bytes": 7258,
+    "sha256": "37a328b2e3b6be4030154a2ad261c3d31bde7e8ceca5982e72440696c71ea454"
+  },
+  {
+    "file": "src/diagnosis/evidence-utils.mjs",
+    "bytes": 1414,
+    "sha256": "6142f5e1ea9d7184616ed9b41796617c2b4999d3387b3b8bea85057165ce95a4"
+  },
+  {
+    "file": "src/diagnosis/resident-mix-stability.mjs",
+    "bytes": 3887,
+    "sha256": "a24569fd28189698c3f5677c99753f3a3373219d9459caa7783b0068568471a9"
+  },
+  {
+    "file": "src/diagnosis/scoring.mjs",
+    "bytes": 2285,
+    "sha256": "d9d119b28ae23e6c074ed2fa0a9337a3feb33121a010111d4165a62c49595c97"
+  },
+  {
+    "file": "src/diagnosis/temporal-stability.mjs",
+    "bytes": 3120,
+    "sha256": "9d9f9deb4c931a03305b5944cef1845fa6f3346cb9b3afd832c54d25e47b9431"
+  },
+  {
+    "file": "src/intervention/catalogue.mjs",
+    "bytes": 1205,
+    "sha256": "659a91e0081f2e27332e7dce5536a9605d479d6e76cbb956eae31cc673f0e568"
+  },
+  {
+    "file": "src/intervention/decision-proposal.mjs",
+    "bytes": 1501,
+    "sha256": "54acf0aee418ed4e57c31bf778370b77cfe72c884f90c9df0f29120c25daea82"
+  },
+  {
+    "file": "src/intervention/evidence-gates.mjs",
+    "bytes": 11010,
+    "sha256": "53d451ec7d7f3a7e208ab8636792817c42c6af72e15db9596f7b5ba74da4ab07"
+  },
+  {
+    "file": "src/intervention/reversibility.mjs",
+    "bytes": 2551,
+    "sha256": "4d1fa7cf18258f5c5b46ec38f2b120867ff4e065300f1ea68868707e54591860"
+  },
+  {
+    "file": "src/next-evidence/candidate-scenarios.mjs",
+    "bytes": 10608,
+    "sha256": "6e00dbe5177b17751c8d48edce2672089f55b8a1ddea7c5bfc07e3a4a5cf6644"
+  },
+  {
+    "file": "src/next-evidence/gaps.mjs",
+    "bytes": 4741,
+    "sha256": "f8327d9102a0a91f25f0e051be5f3792e92c9165fa00a8efcf2028acb139148f"
+  },
+  {
+    "file": "src/next-evidence/next-best-evidence.mjs",
+    "bytes": 8966,
+    "sha256": "16a7da69323cedb253866db2f12b84df4e12a5d5e41d1d69ddb99a8a1eb05fb2"
+  },
+  {
+    "file": "src/outcome/contract-binding.mjs",
+    "bytes": 4465,
+    "sha256": "9ef03875f81355eea5a6dbcc7dbc6d681a9b7060d71b47ff3fe1f715787ebd73"
+  },
+  {
+    "file": "src/outcome/evaluate-contract.mjs",
+    "bytes": 5164,
+    "sha256": "046ac4feece7408c5caac2b5326e4eec8f82d47ab7982f8a4d675f1a6b0083d9"
+  },
+  {
+    "file": "src/outcome/execution-finding.mjs",
+    "bytes": 2375,
+    "sha256": "c751f3859afcf9737172d34db5b2ef595975569874a912118a801f1c4560210a"
+  },
+  {
+    "file": "src/outcome/observation-admission.mjs",
+    "bytes": 3852,
+    "sha256": "ecc2cb8ab944f65649f7ff7ea334ff431c0cb0604a493f1d1200d62f6c649618"
+  },
+  {
+    "file": "src/outcome/outcome-evidence-conversion.mjs",
+    "bytes": 3575,
+    "sha256": "7a55d4bd70a0c0947dc68aba7063e9886a97512cd9e7ae39b79e17975935dd9b"
+  },
+  {
+    "file": "src/outcome/reassessment-orchestrator.mjs",
+    "bytes": 1472,
+    "sha256": "f8665ec245a74975a1659ace1a8b92e1bfb71dd6cbd50eb15ecbd5b5a2291881"
+  },
+  {
+    "file": "src/resident-evidence/cohort-eligibility.mjs",
+    "bytes": 3033,
+    "sha256": "f4374dee443b6aaa5e31dbca768eb17017c198db23d340de9d852b5b35f6e6e9"
+  },
+  {
+    "file": "src/resident-evidence/pair-selection.mjs",
+    "bytes": 11311,
+    "sha256": "ca3b98f050fca04e94155a4010c816c40bd46da45daef951a3c4dc8565ae64f3"
+  },
+  {
+    "file": "src/resident-evidence/question-catalogue.mjs",
+    "bytes": 7449,
+    "sha256": "bd3b09c411c77b54e52e79d8be4f3ed10199e6fb19d9d37ae2659793f96a0ff8"
+  },
+  {
+    "file": "src/resident-evidence/snapshot-binding.mjs",
+    "bytes": 743,
+    "sha256": "6feb208ddadc5f005959ec4c9074d9e46ba7dcc556f3a06197464907733564de"
+  },
+  {
+    "file": "src/services/change-evidence-service.mjs",
+    "bytes": 1194,
+    "sha256": "eae66514c7929d167ae8dd922bd55eb5af718d95b8ceebaf2bfedb1329a85139"
+  },
+  {
+    "file": "src/services/competing-diagnosis-service.mjs",
+    "bytes": 1124,
+    "sha256": "3118d72aadf7ef8c5c2e1fe8d9c16789f01534571107b55bac32009d47d89995"
+  },
+  {
+    "file": "src/services/intervention-decision-service.mjs",
+    "bytes": 4681,
+    "sha256": "2417fad3c74a7d1b749bf5257394eb1205e8740e2c4210ad9314271bae52ffbc"
+  },
+  {
+    "file": "src/services/next-evidence-service.mjs",
+    "bytes": 1081,
+    "sha256": "9757c54485ece8234ca7e45c19b014c3dc2ee08b5c00de9cdbbe4c42da46e79b"
+  },
+  {
+    "file": "src/services/outcome-review-service.mjs",
+    "bytes": 9743,
+    "sha256": "e22acc60a934c7084e43e4d66f182f00f5a8d5fdf80690e52e9ba06976d1645a"
+  },
+  {
+    "file": "src/services/resident-evidence-plan-service.mjs",
+    "bytes": 1310,
+    "sha256": "ff81c029c6ecb5f5c7b0b0cca8d020630ff413940cace54957c811d3bc8421ea"
+  },
+  {
+    "file": "src/shared/change-contract.mjs",
+    "bytes": 1269,
+    "sha256": "ba203eb890ce6ea4f453193427e6458d76451bf9f87410161c6bc08356e942a2"
+  },
+  {
+    "file": "src/shared/change-models.d.ts",
+    "bytes": 4858,
+    "sha256": "baf8ab13235af005e0d14dc688ca9a3d1c2e672a94b81dd4d78a377461dd564f"
+  },
+  {
+    "file": "src/shared/diagnosis-contract.mjs",
+    "bytes": 992,
+    "sha256": "922bd94ecf34bf976126d224a579d20240ed1fedfee047cbfe4e23a0f6881aeb"
+  },
+  {
+    "file": "src/shared/diagnosis-models.d.ts",
+    "bytes": 6676,
+    "sha256": "d6d0275475e7ab4c7c038b8bdf88d2e871d99b2dc185410fd577c15d88bcfc0a"
+  },
+  {
+    "file": "src/shared/intervention-decision-contract.mjs",
+    "bytes": 1103,
+    "sha256": "84b219984bb6dd83841edd31cdac4d432cfbbb744e63b57b31e259a54fc5fd7d"
+  },
+  {
+    "file": "src/shared/intervention-decision-models.d.ts",
+    "bytes": 1718,
+    "sha256": "37dd43d322009f0d42ceaeb01b56b1c08e982d608934397dc7486aa8eedd0b1f"
+  },
+  {
+    "file": "src/shared/next-evidence-contract.mjs",
+    "bytes": 1618,
+    "sha256": "53bdd0f88e5043c08142ce90bca13ad9f49edb3ad5f5ebfd23bb8cd51fb05d03"
+  },
+  {
+    "file": "src/shared/next-evidence-models.d.ts",
+    "bytes": 2746,
+    "sha256": "48ac394f91d59d232f20d5213c9ebae67d10c3e246eaa3393c66ec9079bf5ffd"
+  },
+  {
+    "file": "src/shared/outcome-review-contract.mjs",
+    "bytes": 1038,
+    "sha256": "8eaa889a4134134de6d0c3094cc19ceb409a267e671cc29b89dc52cf7964aaeb"
+  },
+  {
+    "file": "src/shared/outcome-review-models.d.ts",
+    "bytes": 2852,
+    "sha256": "b2156acfb0188a01ecc08a5e9add858b4f44a0cacd4f607ef5bc7f39805b65ac"
+  },
+  {
+    "file": "src/shared/resident-evidence-plan-contract.mjs",
+    "bytes": 3874,
+    "sha256": "4e7d2affd21030a43cf16fdb1ddc1f434eb91d50ae905df463f70962ab30e0e5"
+  },
+  {
+    "file": "src/shared/resident-evidence-plan-models.d.ts",
+    "bytes": 3037,
+    "sha256": "4ec8ef4f28ccedae847b8ebcf8212d22f24a7946838d7c2c6693adee0000b3ec"
+  },
+  {
+    "file": "src/statistics/change-detection/config.mjs",
+    "bytes": 162,
+    "sha256": "1ee51fd58b26b1a1ef2341887235a7d85957491cd979505c41fb0b22a0c9849f"
+  },
+  {
+    "file": "src/statistics/change-detection/detector.mjs",
+    "bytes": 12118,
+    "sha256": "46f3e3386ca82c10ca1ec68f5d9866a369707e0a61a4249db4227555f367aa08"
+  },
+  {
+    "file": "tests/architecture.test.mjs",
+    "bytes": 8497,
+    "sha256": "3e629074c0a06e47000914615ef83b4fefcbdb0babd8a4389adcae5e3abd8b38"
+  },
+  {
+    "file": "tests/baseline/approved-cp3-clarification.json",
+    "bytes": 224285,
+    "sha256": "767f90eb70982ac1f3dd1b712d2231bc0482dea41e67424ad75b93bb959112fa"
+  },
+  {
+    "file": "tests/baseline/approved-cp3-raw-evidence.json",
+    "bytes": 77359,
+    "sha256": "3625332d3aa68c34e9fa93a08cc1a29383e41d33e6ddb56085a9f4b073309188"
+  },
+  {
+    "file": "tests/baseline/approved-cp4.json",
+    "bytes": 1515585,
+    "sha256": "9e77c98ead62cfecaba4a614a33d501851168f133385883faff9e571345d908d"
+  },
+  {
+    "file": "tests/baseline/approved-hashes.json",
+    "bytes": 502,
+    "sha256": "c4e1810f5288b0cde117002d339a32f2a593d52853e149fdedb9bfbf2ac2618f"
+  },
+  {
+    "file": "tests/baseline/approved-markup.json",
+    "bytes": 129177,
+    "sha256": "6b42e9f1deaee269280bd08f80241885c4593bf80a65cb08c6a871eac6464e1c"
+  },
+  {
+    "file": "tests/baseline/approved-results.json",
+    "bytes": 96247,
+    "sha256": "841b696364f1afecc76faa2acb880d5577b93eda78a3a423d82a18656db22ee6"
+  },
+  {
+    "file": "tests/cp6-responses.test.mjs",
+    "bytes": 17136,
+    "sha256": "22fc3eed9be8e6a353c3778a2ce8d7b1f1095e15862e45050e7686cc4b0a34e3"
+  },
+  {
+    "file": "tests/cp7-intervention.test.mjs",
+    "bytes": 21325,
+    "sha256": "768d68c7042e198cf4eee0adcd5d338051ebcd082244116bdd2837cfdf9f63e4"
+  },
+  {
+    "file": "tests/cp8-outcome-review.test.mjs",
+    "bytes": 28298,
+    "sha256": "8dab4be7d6267027efc188ba2e1ec27669d04d38933afa4bf8c17d291fa7f0bf"
+  },
+  {
+    "file": "tests/detector.test.mjs",
+    "bytes": 7357,
+    "sha256": "ff4bf4c50c3ad79209dd06a85974578b499e4a263194146192c477b22fff57eb"
+  },
+  {
+    "file": "tests/diagnosis-clarification.test.mjs",
+    "bytes": 10349,
+    "sha256": "995f1874998777033add60681732b065ab5953cce1a794ed05b46f2f035ed265"
+  },
+  {
+    "file": "tests/diagnosis.test.mjs",
+    "bytes": 13376,
+    "sha256": "b653460144b13340c09acf56900c3420971a9726d173b4ca2397504589198f48"
+  },
+  {
+    "file": "tests/next-evidence.test.mjs",
+    "bytes": 14845,
+    "sha256": "599cd68fabf109bf878eebfab6924e9c96fb2d2c55e9bed0e958098974344e66"
+  },
+  {
+    "file": "tests/resident-evidence-plan.test.mjs",
+    "bytes": 20372,
+    "sha256": "5a61040f1917a874b8d2d59bb1c56cd3ac665fcef9a5d80b85d390453b3a6ea0"
+  }
+]
