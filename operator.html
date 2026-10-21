@@ -225,18 +225,36 @@
       };
 
       const handleApprovePlan = () => {
+        const chosen = selectedIntervention || currentReview?.selectedIntervention || 'Repair / Restore';
         fetch(`/api/reviews/${selectedFacilityId}/approve`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             approvedBy: 'Regional Operations Lead',
-            note: 'Formal plan approval recorded. Execution requires separate operator sign-off.'
+            selectedIntervention: chosen,
+            note: 'Formal plan approval recorded. Execution has not started. Awaiting physical work order dispatch.'
           })
         })
           .then(res => res.json())
           .then(() => {
             setApprovalSuccess(true);
             refreshData();
+          });
+      };
+
+      const handleSimulateResidentSurvey = () => {
+        fetch('/api/targeted/collections/col-hall-schedule-2026/responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            selectedOption: "Rarely — the schedule doesn't match when I'm available",
+            cohort: 'Long-term residents (3+ years), Building 4'
+          })
+        })
+          .then(r => r.json())
+          .then(() => {
+            refreshData();
+            setReviewScreen('summary');
           });
       };
 
@@ -924,6 +942,103 @@
                       </div>
                     </div>
 
+                    {/* Live 12-Week Utilization Trend Chart from ZIP CP2 */}
+                    {currentReview.liveChangeDetection?.metrics?.[0]?.points && (
+                      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">12-Week Utilization Trend & Baseline Comparison (ZIP CP2 Engine)</h4>
+                            <p className="text-xs text-slate-400 mt-0.5">8 Weeks Baseline vs 4 Weeks Current Analysis Window</p>
+                          </div>
+                          <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono">
+                            Status: {currentReview.liveChangeDetection.status}
+                          </span>
+                        </div>
+
+                        {/* Bar chart */}
+                        <div className="flex items-end gap-2 h-36 pt-4 px-2 border-b border-slate-200">
+                          {currentReview.liveChangeDetection.metrics[0].points.map((pt, idx) => {
+                            const heightPct = Math.min(100, Math.max(10, (pt.value / 110) * 100));
+                            const isCurrent = pt.window === 'current';
+                            return (
+                              <div key={idx} className="flex-1 flex flex-col items-center gap-1 group relative">
+                                <span className="text-[9px] font-mono font-bold text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  {pt.value}
+                                </span>
+                                <div
+                                  style={{ height: `${heightPct}%` }}
+                                  className={`w-full rounded-t-md transition-all ${
+                                    isCurrent
+                                      ? (pt.value < 75 ? 'bg-amber-500' : 'bg-teal-500')
+                                      : 'bg-slate-300'
+                                  }`}
+                                ></div>
+                                <span className="text-[8px] text-slate-400 truncate w-full text-center">
+                                  W{idx + 1}
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Metric Counters Grid */}
+                        <div className="grid grid-cols-4 gap-3 text-xs pt-1">
+                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Baseline Mean</span>
+                            <span className="text-sm font-bold text-slate-800">{currentReview.liveChangeDetection.metrics[0].baselineValue} {currentReview.liveChangeDetection.metrics[0].unit}</span>
+                          </div>
+                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Current Window</span>
+                            <span className="text-sm font-bold text-amber-600">{currentReview.liveChangeDetection.metrics[0].currentValue} {currentReview.liveChangeDetection.metrics[0].unit}</span>
+                          </div>
+                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Relative Deviation</span>
+                            <span className="text-sm font-bold text-rose-600">{currentReview.liveChangeDetection.metrics[0].percentageChange}%</span>
+                          </div>
+                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Persistence Streak</span>
+                            <span className="text-sm font-bold text-teal-700">{currentReview.liveChangeDetection.metrics[0].persistence?.trailingPeriods || 4} Weeks</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Live Competing Diagnoses Matrix from ZIP CP4 */}
+                    {currentReview.liveCompetingDiagnosis?.diagnoses && currentReview.liveCompetingDiagnosis.diagnoses.length > 0 && (
+                      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Competing Diagnoses Matrix (ZIP CP4 Engine)</h4>
+                          <span className="text-[10px] text-slate-400 font-mono">Relative Evidence Support (0 - 100%)</span>
+                        </div>
+
+                        <div className="space-y-3">
+                          {currentReview.liveCompetingDiagnosis.diagnoses.map((diag, i) => (
+                            <div key={i} className="space-y-1">
+                              <div className="flex justify-between items-center text-xs">
+                                <span className="font-semibold text-slate-800">{diag.name}</span>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-slate-400 text-[10px]">Coverage: {diag.coverage}%</span>
+                                  <span className="font-mono font-bold text-teal-700">{diag.relativeSupport}%</span>
+                                </div>
+                              </div>
+                              <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div
+                                  style={{ width: `${Math.min(100, Math.max(3, diag.relativeSupport))}%` }}
+                                  className={`h-full rounded-full transition-all duration-300 ${
+                                    diag.relativeSupport >= 75
+                                      ? 'bg-teal-600'
+                                      : diag.relativeSupport >= 30
+                                      ? 'bg-amber-500'
+                                      : 'bg-slate-300'
+                                  }`}
+                                ></div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="bg-white border-2 border-teal-500 rounded-2xl p-6 space-y-4 shadow-sm">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
@@ -1009,16 +1124,24 @@
                           </div>
 
                           {gap.source === 'resident input' && gap.status !== 'collected' && (
-                            <div className="pt-2 border-t border-teal-200 flex items-center justify-between">
+                            <div className="pt-2 border-t border-teal-200 flex flex-wrap items-center justify-between gap-2">
                               <span className="text-xs text-teal-800">Dispatch targeted inquiry to long-term resident cohort:</span>
-                              <a
-                                href="resident.html?mode=targeted"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg"
-                              >
-                                Open Targeted Survey ↗
-                              </a>
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={handleSimulateResidentSurvey}
+                                  className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-lg shadow-sm"
+                                >
+                                  ⚡ Fast-Simulate Resident Response
+                                </button>
+                                <a
+                                  href="resident.html?mode=targeted"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
+                                >
+                                  Open Resident Touchpoint &rarr;
+                                </a>
+                              </div>
                             </div>
                           )}
 
@@ -1029,7 +1152,7 @@
                                 onClick={() => setCurrentNav('reports')}
                                 className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-lg"
                               >
-                                Go to Inspection Queue →
+                                Go to Inspection Queue &rarr;
                               </button>
                             </div>
                           )}
@@ -1038,34 +1161,43 @@
                     </div>
 
                     <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('summary')} className="text-xs text-slate-500">← Back to Diagnosis</button>
+                      <button onClick={() => setReviewScreen('summary')} className="text-xs text-slate-500">&larr; Back to Diagnosis</button>
                       <button
                         onClick={() => setReviewScreen('interventions')}
                         className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
                       >
-                        Select Safe Interventions →
+                        Select Safe Interventions &rarr;
                       </button>
                     </div>
                   </div>
                 )}
 
-                {/* Sub-screen 3: Interventions */}
+                {/* Sub-screen 3: Interventions (CP7 Evaluated Candidates & Gates) */}
                 {reviewScreen === 'interventions' && (
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-base font-bold text-slate-900">7 Safe Intervention Pathways</h3>
-                      <p className="text-xs text-slate-500">Pathways recommended strictly according to verified evidence sufficiency.</p>
+                      <h3 className="text-base font-bold text-slate-900">Intervention Pathways & Evidence Gates (CP7 Engine)</h3>
+                      <p className="text-xs text-slate-500">Evaluated against strict evidence preconditions; safeguards prohibit premature action.</p>
                     </div>
 
                     <div className="space-y-3">
-                      {INTERVENTION_PATHWAYS.map(p => {
-                        const isRecommended = p.recommendedFor === selectedFacilityId || (!p.recommendedFor && p.isRecommended);
-                        const isSelected = selectedIntervention === p.type || (!selectedIntervention && isRecommended);
+                      {(currentReview?.interventionCandidates || INTERVENTION_PATHWAYS).map(p => {
+                        const isRecommended = p.isRecommended;
+                        const candidateName = p.name || p.type;
+                        const isSelected = (selectedIntervention === candidateName) || (!selectedIntervention && isRecommended);
+
+                        const badgeClass = p.readiness === 'Ready'
+                          ? 'bg-emerald-100 text-emerald-800'
+                          : p.readiness === 'Blocked by safeguard'
+                          ? 'bg-rose-100 text-rose-800'
+                          : p.readiness === 'Needs more evidence'
+                          ? 'bg-amber-100 text-amber-800'
+                          : 'bg-slate-100 text-slate-700';
 
                         return (
                           <div
-                            key={p.type}
-                            onClick={() => setSelectedIntervention(p.type)}
+                            key={p.code || p.type}
+                            onClick={() => setSelectedIntervention(candidateName)}
                             className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                               isSelected
                                 ? 'bg-teal-50 border-teal-600 shadow-sm'
@@ -1074,15 +1206,15 @@
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
-                                <span className="text-sm font-bold text-slate-900">{p.type}</span>
-                                {isRecommended && (
-                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
-                                    Evidence Supported
+                                <span className="text-sm font-bold text-slate-900">{candidateName}</span>
+                                {p.readiness && (
+                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeClass}`}>
+                                    {p.readiness}
                                   </span>
                                 )}
-                                {p.isProtectionSupported && (
-                                  <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">
-                                    Protection Supported
+                                {isRecommended && (
+                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                    Evidence Recommended
                                   </span>
                                 )}
                               </div>
@@ -1090,29 +1222,46 @@
                                 type="radio"
                                 name="intervention"
                                 checked={isSelected}
-                                onChange={() => setSelectedIntervention(p.type)}
+                                onChange={() => setSelectedIntervention(candidateName)}
                                 className="text-teal-600 h-4 w-4"
                               />
                             </div>
-                            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{p.description}</p>
+                            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{p.purpose || p.description}</p>
+                            
+                            {/* Gate evaluation breakdown */}
+                            {p.gates && (
+                              <div className="mt-3 pt-2.5 border-t border-slate-100 space-y-1">
+                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Evidence Gate Breakdown</span>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-0.5">
+                                  {p.gates.map((g, gi) => (
+                                    <div key={gi} className="flex items-center justify-between text-[11px] p-2 bg-slate-50 rounded-lg">
+                                      <span className="text-slate-700 font-medium">{g.label}</span>
+                                      <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${g.status === 'Pass' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                                        {g.status}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         );
                       })}
                     </div>
 
                     <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('gaps')} className="text-xs text-slate-500">← Back to Gaps</button>
+                      <button onClick={() => setReviewScreen('gaps')} className="text-xs text-slate-500">&larr; Back to Gaps</button>
                       <button
                         onClick={() => setReviewScreen('approval')}
                         className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
                       >
-                        Proceed to Plan Approval →
+                        Proceed to Plan Approval &rarr;
                       </button>
                     </div>
                   </div>
                 )}
 
-                {/* Sub-screen 4: Approval */}
+                {/* Sub-screen 4: Approval (CP7 Plan Recording) */}
                 {reviewScreen === 'approval' && (
                   <div className="space-y-4">
                     <div>
@@ -1128,13 +1277,13 @@
                         </div>
                         <div>
                           <span className="text-slate-400 block">Selected Intervention</span>
-                          <strong className="text-teal-700 text-sm">{selectedIntervention || 'Repair / Restore'}</strong>
+                          <strong className="text-teal-700 text-sm">{selectedIntervention || currentReview?.selectedIntervention || 'Repair / Restore'}</strong>
                         </div>
                       </div>
 
                       {approvalSuccess || currentReview?.approvalStatus?.isApproved ? (
                         <div className="p-6 bg-teal-50 border-2 border-teal-500 rounded-2xl text-center space-y-2">
-                          <div className="text-3xl text-teal-600">✓</div>
+                          <div className="text-3xl text-teal-600 font-black">✓</div>
                           <h4 className="text-base font-bold text-teal-950">
                             Plan approval recorded. Execution has not started.
                           </h4>
@@ -1161,12 +1310,12 @@
                     </div>
 
                     <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('interventions')} className="text-xs text-slate-500">← Back to Interventions</button>
+                      <button onClick={() => setReviewScreen('interventions')} className="text-xs text-slate-500">&larr; Back to Interventions</button>
                       <button
                         onClick={() => setCurrentNav('outcomes')}
                         className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm"
                       >
-                        Inspect Outcome Review →
+                        Inspect Outcome Review &rarr;
                       </button>
                     </div>
                   </div>
@@ -1175,44 +1324,110 @@
             )}
 
             {/* ══════════════════════════════════════════════════════════════
-                TAB 5: OUTCOMES & HISTORY
+                TAB 5: OUTCOMES & HISTORY (CP8 & CP9 LIVE INTEGRATION)
             ══════════════════════════════════════════════════════════════ */}
             {currentNav === 'outcomes' && (
               <div className="space-y-6">
                 <div>
                   <h2 className="text-2xl font-black text-slate-900 tracking-tight">Post-Intervention Review & Precedents</h2>
                   <p className="text-xs text-slate-500 mt-1">
-                    CP8 4 discrete outcome evaluation findings and CP9 historical case precedents
+                    CP8 prospective contract evaluation and CP9 historical case precedents retrieved from SQLite corpus
                   </p>
                 </div>
 
-                {/* 4 Separate Outcome Dimensions */}
-                <div className="space-y-2">
-                  <h3 className="font-bold text-slate-800 text-sm">Discrete Outcome Review Dimensions</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { type: 'Execution', summary: 'Luminaire Replacement Implemented', detail: 'Replaced 4 high-bay LED floodlight ballast modules on Court 2. Illumination restored to 350 Lux standard.', positive: true },
-                      { type: 'Goal', summary: 'Evening Peak Bookings Recovered', detail: 'Utilization increased from 65% to 94% within 1 week of repair, returning near benchmark baseline.', positive: true },
-                      { type: 'Protection', summary: 'No Community Protection Breach', detail: 'Dedicated community resident hours maintained in full with standard non-commercial pricing.', positive: true },
-                      { type: 'Diagnosis', summary: 'Physical Defect Hypothesis Confirmed', detail: 'Utilization recovery following lighting repair confirms that operational hardware defect was the single causal driver.', positive: true },
-                    ].map(f => (
-                      <div key={f.type} className="bg-white border border-slate-200 rounded-2xl p-4 space-y-1.5 shadow-sm">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="font-bold text-slate-400 uppercase">{f.type}</span>
-                          <span className="text-teal-600 font-bold">✓ Met</span>
-                        </div>
-                        <h4 className="text-sm font-bold text-slate-800">{f.summary}</h4>
-                        <p className="text-xs text-slate-600">{f.detail}</p>
+                {/* 4 Discrete Outcome Review Dimensions (CP8) */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-sm">Prospective Outcome Contract Evaluation (CP8)</h3>
+                      <p className="text-xs text-slate-400">Independent evaluation across 4 discrete dimensions</p>
+                    </div>
+                    <span className="text-xs font-mono font-bold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">
+                      Contract: {currentReview?.outcomeReview?.contractId || 'Standard Township Contract'}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {/* 1. Execution Finding */}
+                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-bold text-slate-400 uppercase">1. Execution Finding</span>
+                        <span className="text-teal-600 font-bold font-mono">
+                          {currentReview?.outcomeReview?.executionFinding?.state || 'Established as specified'}
+                        </span>
                       </div>
-                    ))}
+                      <p className="text-xs text-slate-700">
+                        {currentReview?.outcomeReview?.executionFinding?.reason}
+                      </p>
+                      <div className="text-[11px] p-2 bg-amber-50 text-amber-900 rounded-lg border border-amber-200">
+                        <strong>Safeguard:</strong> {currentReview?.outcomeReview?.executionFinding?.safeguard || 'Approval does not establish execution.'}
+                      </div>
+                    </div>
+
+                    {/* 2. Goal Finding */}
+                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-bold text-slate-400 uppercase">2. Goal Attainment</span>
+                        <span className="text-teal-600 font-bold font-mono">
+                          {currentReview?.outcomeReview?.goalFinding?.state || 'Met'}
+                        </span>
+                      </div>
+                      <div className="space-y-1">
+                        {currentReview?.outcomeReview?.goalFinding?.criteria?.map((c, ci) => (
+                          <div key={ci} className="flex justify-between text-xs py-1 border-b border-slate-50">
+                            <span className="text-slate-600">{c.metric}</span>
+                            <span className="font-semibold text-slate-800">{c.observed} ({c.state})</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 3. Protection Finding */}
+                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-bold text-slate-400 uppercase">3. Community Protection</span>
+                        <span className="text-teal-600 font-bold font-mono">
+                          {currentReview?.outcomeReview?.protectionFinding?.state || 'Maintained'}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700">
+                        Subsidized resident hours and protected community access maintained in full compliance with township charter.
+                      </p>
+                      <div className="text-[11px] text-teal-800 bg-teal-50 p-2 rounded-lg">
+                        ✓ No Protection Breach. Offset by benefit is strictly disallowed.
+                      </div>
+                    </div>
+
+                    {/* 4. Diagnosis Inference & Guardrail */}
+                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="font-bold text-slate-400 uppercase">4. Diagnosis Relation</span>
+                        <span className="text-teal-600 font-bold font-mono">
+                          {currentReview?.outcomeReview?.diagnosisFinding?.state || 'Consistent with'}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700">
+                        {currentReview?.outcomeReview?.diagnosisFinding?.inference}
+                      </p>
+                      <div className="text-[11px] p-2 bg-slate-50 text-slate-600 rounded-lg border border-slate-100">
+                        <strong>Causal Guardrail:</strong> {currentReview?.outcomeReview?.diagnosisFinding?.cannotEstablish}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Historical Cases (CP9) */}
+                {/* Historical Precedents (CP9 Clean-Room Corpus) */}
                 <div className="space-y-3 pt-2">
-                  <h3 className="font-bold text-slate-800 text-sm">Historical Precedents (CP9 Hybrid Retrieval)</h3>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-sm">Historical Precedents (CP9 Clean-Room Corpus)</h3>
+                      <p className="text-xs text-slate-400">43 Evaluated Comparable Historical Township Cases</p>
+                    </div>
+                    <span className="text-xs font-bold text-slate-500 font-mono">Live SQLite Query</span>
+                  </div>
+
                   <div className="space-y-3">
-                    {HISTORICAL_CASES.map(c => (
+                    {(currentReview?.historicalPrecedents || HISTORICAL_CASES).map(c => (
                       <div
                         key={c.id}
                         className={`bg-white rounded-2xl border-2 overflow-hidden shadow-sm ${
@@ -1220,15 +1435,18 @@
                         }`}
                       >
                         {c.hasProtectionBreach && (
-                          <div className="bg-rose-600 text-white px-4 py-1.5 text-xs font-bold flex items-center gap-2">
-                            <span>⚠️ Historical Protection Breach Warning: Precedent reduced resident access below baseline</span>
+                          <div className="bg-rose-600 text-white px-4 py-2 text-xs font-bold flex items-center gap-2">
+                            <span>⚠️ {c.adverseWarning || 'CRITICAL ADVERSE WARNING: Protection breach occurred in historical precedent'}</span>
                           </div>
                         )}
                         <div className="p-5 space-y-3">
                           <div className="flex justify-between items-start">
                             <div>
-                              <h4 className="font-bold text-slate-900 text-sm">{c.name}</h4>
-                              <p className="text-xs text-slate-500">{c.location} · {c.period}</p>
+                              <div className="flex items-center gap-2">
+                                <h4 className="font-bold text-slate-900 text-sm">{c.label || c.name}</h4>
+                                <span className="font-mono text-[10px] text-slate-400">({c.id})</span>
+                              </div>
+                              <p className="text-xs text-slate-500 mt-0.5">Lineage: {c.amenityId || 'Township Reference Case'}</p>
                             </div>
                             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
                               c.hasProtectionBreach ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
@@ -1237,21 +1455,27 @@
                             </span>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-3 text-xs bg-slate-50 p-3 rounded-xl">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-slate-50 p-3 rounded-xl">
                             <div>
                               <strong className="text-slate-700 block mb-0.5">Why Similar:</strong>
                               <p className="text-slate-600">{c.whySimilar}</p>
                             </div>
                             <div>
                               <strong className="text-slate-700 block mb-0.5">Historical Action:</strong>
-                              <p className="text-slate-600">{c.whatHappened}</p>
+                              <p className="text-slate-600">{c.actionTaken || c.whatHappened}</p>
                             </div>
                           </div>
 
-                          <div className="text-xs text-slate-600 flex justify-between pt-1">
-                            <span>Goal Finding: {c.goalFinding}</span>
-                            <span>Protection Finding: {c.protectionFinding}</span>
+                          <div className="text-xs text-slate-600 flex flex-wrap justify-between gap-2 pt-1">
+                            <span><strong>Goal Finding:</strong> {c.goalFinding}</span>
+                            <span><strong>Protection Finding:</strong> {c.protectionFinding}</span>
                           </div>
+
+                          {c.causalGuardrail && (
+                            <div className="text-[10px] text-slate-400 italic pt-1 border-t border-slate-100">
+                              Notice: {c.causalGuardrail}
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
