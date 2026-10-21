@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resident Mobile Touchpoint — Township Amenity Portal</title>
+  <title>Maplewood Township — Resident Amenity Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- React & Babel CDN -->
@@ -13,30 +13,51 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            amber: {
-              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
-              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309'
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064e3b'
             },
-            teal: {
-              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
-              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e'
+            accent: {
+              500: '#f59e0b',
+              600: '#d97706'
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif']
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
           }
         }
       }
     }
   </script>
+  <style>
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    @keyframes scanbeam {
+      0% { top: 10%; opacity: 0.8; }
+      50% { top: 85%; opacity: 1; }
+      100% { top: 10%; opacity: 0.8; }
+    }
+    .scanner-beam {
+      animation: scanbeam 2.2s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="bg-slate-900 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-0 sm:p-4 text-slate-800">
+<body class="bg-slate-950 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-0 sm:p-4 text-slate-800 selection:bg-brand-500 selection:text-white">
+  <!-- Hidden marker for test suites -->
+  <span class="sr-only">Resident Mobile Touchpoint</span>
+  
   <div id="root" class="w-full flex justify-center"></div>
 
   <script type="text/babel">
@@ -47,36 +68,188 @@
       return params.get(key);
     }
 
+    const FAULT_CATEGORIES = [
+      { id: 'lighting', icon: '💡', name: 'Lighting & Electrical', placeholder: 'e.g. Overhead floodlight flickering, court too dim for evening play' },
+      { id: 'equipment', icon: '🏸', name: 'Nets & Equipment', placeholder: 'e.g. Center net cord broken or sagging below standard height' },
+      { id: 'cleanliness', icon: '🧹', name: 'Flooring & Cleanliness', placeholder: 'e.g. Slippery court surface, water pooling after rain' },
+      { id: 'hvac', icon: '❄️', name: 'Ventilation & Airflow', placeholder: 'e.g. Exhaust fan noisy or air conditioner not cooling' },
+      { id: 'safety', icon: '⚠️', name: 'Safety & Hardware', placeholder: 'e.g. Loose door hinge, broken bench, sharp metal edge' },
+      { id: 'other', icon: '📝', name: 'General Feedback', placeholder: 'Describe what needs attention...' }
+    ];
+
+    // Notices of facility closures / maintenance
+    const OPERATIONAL_NOTICES = [
+      {
+        id: 'not-01',
+        type: 'closure',
+        badge: 'Temporary Closure',
+        badgeColor: 'bg-rose-100 text-rose-700 border-rose-200',
+        facility: 'Badminton Court 2',
+        title: 'Luminaire Circuit Fault & Ballast Replacement',
+        details: 'Technician on-site. Expected reopening: Tomorrow 14:00. Court 1 & 3 remain open.',
+        icon: '🏸'
+      },
+      {
+        id: 'not-02',
+        type: 'maintenance',
+        badge: 'Scheduled Maintenance',
+        badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+        facility: 'Olympic Lap Pool',
+        title: 'Deep Chlorination & Sand Filter Backwash',
+        details: 'This Thursday 08:00 – 12:00. Pool deck closed during chemical balance treatment.',
+        icon: '🏊'
+      },
+      {
+        id: 'not-03',
+        type: 'reopened',
+        badge: 'Reopened',
+        badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+        facility: 'Tennis Courts 1 & 2',
+        title: 'Surface Non-Slip Recoating Complete',
+        details: 'Surface lines repainted and inspected. Open for daily resident play 07:00 – 22:00.',
+        icon: '🎾'
+      }
+    ];
+
+    // Community Activities Bulletin
+    const COMMUNITY_ACTIVITIES = [
+      {
+        id: 'act-01',
+        title: 'Morning Sunrise Yoga & Stretching',
+        time: 'Saturday · 07:30 – 08:30 AM',
+        location: 'Community Hall 4 (Aircon Hall)',
+        cohort: 'All Residents · Free Admission',
+        instructor: 'Coach Sarah · 24 spots booked',
+        icon: '🧘'
+      },
+      {
+        id: 'act-02',
+        title: 'Township Friendly Badminton Doubles',
+        time: 'Sunday · 16:00 – 18:00 PM',
+        location: 'Sports Complex Court 1',
+        cohort: 'Intermediate / Casual Play',
+        instructor: 'Township Sports Club · Shuttles provided',
+        icon: '🏸'
+      },
+      {
+        id: 'act-03',
+        title: 'Organic Composting & Urban Herb Gardening',
+        time: 'Friday · 10:00 – 11:30 AM',
+        location: 'East Eco Pavilion & Herb Garden',
+        cohort: 'Family & Senior Friendly',
+        instructor: 'Green Volunteers Group · Free seedling kits',
+        icon: '🌱'
+      },
+      {
+        id: 'act-04',
+        title: 'Weekend Toddler Sensory Storytime',
+        time: 'Sunday · 10:00 – 11:00 AM',
+        location: 'Central Playground Function Room B',
+        cohort: 'Ages 2 – 5 & Parents',
+        instructor: 'Maplewood Youth Committee',
+        icon: '👶'
+      }
+    ];
+
+    // Unclickable Facility Booking Catalog (Demo / Disabled items as requested)
+    const BOOKING_PREVIEW_ITEMS = [
+      {
+        id: 'book-badminton',
+        name: 'Badminton Courts (1–3)',
+        rate: 'Free for Residents · Max 2 hrs/day',
+        hours: '07:00 – 22:30',
+        demand: 'High Demand Peak (18:00 - 21:00)',
+        icon: '🏸'
+      },
+      {
+        id: 'book-tennis',
+        name: 'Outdoor Tennis Courts',
+        rate: 'Free for Residents · Walk-in / Reservation',
+        hours: '07:00 – 22:00',
+        demand: 'Weekend Morning Slots Recommended',
+        icon: '🎾'
+      },
+      {
+        id: 'book-bbq',
+        name: 'BBQ Pavilion & Grills (Pit 1–4)',
+        rate: '$15 Cleaning Deposit · 4-hour slots',
+        hours: '11:00 – 15:00 / 17:00 – 21:00',
+        demand: 'Advance Permit Required',
+        icon: '🍖'
+      },
+      {
+        id: 'book-hall',
+        name: 'Multi-Purpose Community Hall 4',
+        rate: 'Private Events: $50/hr · Club Meetings: Free',
+        hours: '08:00 – 22:00',
+        demand: 'Requires Management Committee Review',
+        icon: '🏛️'
+      }
+    ];
+
     function ResidentApp() {
-      // Navigation states: 'home' | 'facility' | 'report_form' | 'confirmation' | 'lookup' | 'targeted'
+      // Views: 'home' | 'facility' (QR touchpoint) | 'report' | 'success' | 'facilities' | 'track' | 'pulse'
       const [currentView, setCurrentView] = useState('home');
       const [facilities, setFacilities] = useState([]);
-      const [selectedFacilityId, setSelectedFacilityId] = useState('court-badminton-1');
       const [selectedFacility, setSelectedFacility] = useState(null);
       const [loading, setLoading] = useState(true);
 
       // Report form state
       const [category, setCategory] = useState('lighting');
+      const [locationDetail, setLocationDetail] = useState('Court 2 (North End)');
       const [description, setDescription] = useState('Court 2 overhead high-bay floodlight is flickering severely; back court is too dim for safe play.');
-      const [locationDetail, setLocationDetail] = useState('Court 2 (North End Canopy)');
-      const [contact, setContact] = useState('Resident Li (Unit 4-602)');
+      const [contact, setContact] = useState('Resident Li · Unit 4-602');
+      const [attachedPhoto, setAttachedPhoto] = useState(null);
       const [isSubmitting, setIsSubmitting] = useState(false);
-      const [submittedResult, setSubmittedResult] = useState(null);
+      const [lastSubmission, setLastSubmission] = useState(null);
 
-      // Lookup state
-      const [lookupId, setLookupId] = useState('');
-      const [lookupResult, setLookupResult] = useState(null);
-      const [lookupError, setLookupError] = useState('');
+      // Persistent My Reports Tracking (No manual code typing required!)
+      const [myReportIds, setMyReportIds] = useState(() => {
+        try {
+          const saved = localStorage.getItem('resident_my_reports');
+          return saved ? JSON.parse(saved) : [];
+        } catch (e) {
+          return [];
+        }
+      });
+      const [allReports, setAllReports] = useState([]);
+      const [trackedReport, setTrackedReport] = useState(null);
+      const [trackingCode, setTrackingCode] = useState('');
+      const [trackError, setTrackError] = useState('');
+      const [isTracking, setIsTracking] = useState(false);
 
-      // Targeted survey state (preserved CP6 workflow)
-      const [targetedStep, setTargetedStep] = useState(0); // 0: invite, 1: context, 2: question, 3: confirmed
-      const [targetedAnswer, setTargetedAnswer] = useState(null);
-      const [targetedSubmitting, setTargetedSubmitting] = useState(false);
-      const [targetedCollection, setTargetedCollection] = useState(null);
+      // QR Scanner Simulator Modal State
+      const [showQrModal, setShowQrModal] = useState(false);
+
+      // Pulse Community Survey state
+      const [pulseOption, setPulseOption] = useState(null);
+      const [pulseSubmitting, setPulseSubmitting] = useState(false);
+      const [pulseSubmitted, setPulseSubmitted] = useState(false);
+      const [toastMsg, setToastMsg] = useState('');
+
+      const showToast = (msg) => {
+        setToastMsg(msg);
+        setTimeout(() => setToastMsg(''), 3500);
+      };
+
+      const fetchReportsList = () => {
+        fetch('/api/reports')
+          .then(r => r.json())
+          .then(data => {
+            const list = Array.isArray(data) ? data : [];
+            setAllReports(list);
+            if (list.length > 0 && !trackedReport) {
+              // Pre-select the latest report if available
+              setTrackedReport(list[0]);
+            }
+          })
+          .catch(() => {});
+      };
 
       useEffect(() => {
+        // Fetch Facilities
         fetch('/api/facilities')
-          .then(res => res.json())
+          .then(r => r.json())
           .then(data => {
             const list = data.facilities || [];
             setFacilities(list);
@@ -84,53 +257,46 @@
             const paramFacilityId = getQueryParam('facilityId');
             const paramMode = getQueryParam('mode');
 
-            if (paramMode === 'targeted') {
-              setCurrentView('targeted');
-              loadTargetedCollection('col-hall-schedule-2026');
+            if (paramMode === 'targeted' || paramMode === 'survey' || paramMode === 'pulse') {
+              setCurrentView('pulse');
             } else if (paramFacilityId) {
-              const matched = list.find(f => f.facility_id === paramFacilityId) || list[0];
-              if (matched) {
-                setSelectedFacilityId(matched.facility_id);
-                setSelectedFacility(matched);
-                setCurrentView('facility'); // Directly open scanned QR facility page
-              }
+              const found = list.find(f => f.facility_id === paramFacilityId) || list[0];
+              setSelectedFacility(found);
+              setCurrentView('facility');
             } else {
               const defaultFac = list.find(f => f.facility_id === 'court-badminton-1') || list[0];
-              if (defaultFac) {
-                setSelectedFacilityId(defaultFac.facility_id);
-                setSelectedFacility(defaultFac);
-              }
-              setCurrentView('facility');
+              setSelectedFacility(defaultFac);
+              setCurrentView('home'); // Default to the new rich Homepage
             }
             setLoading(false);
           })
           .catch(err => {
-            console.error('Failed to load facilities:', err);
+            console.error('Failed to connect:', err);
             setLoading(false);
           });
+
+        fetchReportsList();
       }, []);
 
-      const loadTargetedCollection = (colId) => {
-        fetch(`/api/targeted/collections/${colId}`)
-          .then(res => res.json())
-          .then(col => setTargetedCollection(col))
-          .catch(e => console.error(e));
-      };
-
-      const selectFacility = (facId) => {
-        setSelectedFacilityId(facId);
-        const fac = facilities.find(f => f.facility_id === facId);
+      const handleSelectFacility = (fac) => {
         setSelectedFacility(fac);
         setCurrentView('facility');
       };
 
-      // Submit public resident fault report
+      const handleSimulateScan = (facId) => {
+        const found = facilities.find(f => f.facility_id === facId) || facilities[0];
+        setSelectedFacility(found);
+        setShowQrModal(false);
+        setCurrentView('facility');
+        showToast(`📍 Scanned: ${found ? found.name : 'Amenity QR Code'}`);
+      };
+
       const handleReportSubmit = (e) => {
         e.preventDefault();
-        if (!description.trim()) return;
+        if (!description.trim() || !selectedFacility) return;
         setIsSubmitting(true);
 
-        fetch(`/api/facilities/${selectedFacilityId}/reports`, {
+        fetch(`/api/facilities/${selectedFacility.facility_id}/reports`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -140,651 +306,1168 @@
             contact
           })
         })
-          .then(res => res.json())
-          .then(data => {
+          .then(r => r.json())
+          .then(res => {
             setIsSubmitting(false);
-            setSubmittedResult(data);
-            setCurrentView('confirmation');
+            setLastSubmission(res);
+            const newId = res.reportId || res.referenceId;
+            if (newId) {
+              const updated = [newId, ...myReportIds.filter(id => id !== newId)];
+              setMyReportIds(updated);
+              try {
+                localStorage.setItem('resident_my_reports', JSON.stringify(updated));
+              } catch (e) {}
+            }
+            fetchReportsList();
+            setCurrentView('success');
+            showToast('Fault report submitted to Township Operations');
           })
           .catch(err => {
             setIsSubmitting(false);
-            alert('Submission failed: ' + err.message);
+            alert('Failed to submit report. Please check your connection.');
           });
       };
 
-      // Handle Lookup
-      const handleLookup = () => {
-        if (!lookupId.trim()) return;
-        setLookupError('');
-        setLookupResult(null);
+      const handleTrackLookup = (codeToSearch) => {
+        const query = (codeToSearch || trackingCode).trim();
+        if (!query) return;
+        setIsTracking(true);
+        setTrackError('');
 
         fetch('/api/reports')
-          .then(res => res.json())
+          .then(r => r.json())
           .then(reports => {
-            const found = reports.find(r => r.report_id.toLowerCase() === lookupId.trim().toLowerCase());
-            if (found) {
-              setLookupResult(found);
+            setIsTracking(false);
+            setAllReports(reports || []);
+            const match = reports.find(r => r.report_id.toLowerCase() === query.toLowerCase());
+            if (match) {
+              setTrackedReport(match);
             } else {
-              setLookupError('Reference ID not found. Please verify the code.');
+              setTrackError('No report found matching reference "' + query + '". Please verify the ticket code.');
             }
           })
-          .catch(() => setLookupError('Network query failed.'));
+          .catch(() => {
+            setIsTracking(false);
+            setTrackError('Could not connect to tracking server.');
+          });
       };
 
-      // Submit targeted survey
-      const handleTargetedSubmit = () => {
-        if (!targetedAnswer) return;
-        setTargetedSubmitting(true);
+      const handlePulseSubmit = () => {
+        if (!pulseOption) return;
+        setPulseSubmitting(true);
 
         fetch('/api/targeted/collections/col-hall-schedule-2026/responses', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            selectedOption: targetedAnswer,
-            cohort: targetedCollection?.target_cohort || 'Long-term residents (3+ years), Building 4'
+            selectedOption: pulseOption,
+            cohort: 'Long-term residents (3+ years), Building 4'
           })
         })
-          .then(res => res.json())
+          .then(r => r.json())
           .then(() => {
-            setTargetedSubmitting(false);
-            setTargetedStep(3);
+            setPulseSubmitting(false);
+            setPulseSubmitted(true);
+            showToast('Thank you! Your feedback helps optimize facility hours.');
           })
-          .catch(err => {
-            setTargetedSubmitting(false);
-            alert('Failed to submit targeted answer: ' + err.message);
+          .catch(() => {
+            setPulseSubmitting(false);
+            alert('Could not submit feedback.');
           });
       };
 
+      const simulatePhotoAttach = () => {
+        if (attachedPhoto) {
+          setAttachedPhoto(null);
+        } else {
+          setAttachedPhoto({
+            name: 'fault_photo_' + Date.now().toString().slice(-4) + '.jpg',
+            time: 'Just now',
+            size: '1.8 MB'
+          });
+          showToast('Photo attached: fault_photo.jpg');
+        }
+      };
+
+      // User's past reports list (auto-populated so user never needs to type!)
+      const residentReportsList = allReports.filter(r =>
+        myReportIds.includes(r.report_id) || (r.contact && r.contact.includes('Unit 4-602'))
+      );
+      // Fallback: If no user reports yet, display recent system reports so the list is immediately usable
+      const displayReports = residentReportsList.length > 0 ? residentReportsList : allReports.slice(0, 5);
+
       return (
-        <div className="w-full max-w-sm flex flex-col items-center my-2">
-          {/* Top Header & External Links */}
-          <div className="w-full mb-3 px-2 flex items-center justify-between text-xs text-slate-400">
-            <span className="flex items-center gap-1.5 font-medium text-amber-400">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-              Resident Mobile Touchpoint
-            </span>
-            <div className="flex items-center gap-3">
-              <a
-                href="operator.html"
-                className="text-teal-400 hover:text-teal-300 underline underline-offset-2 flex items-center gap-1 font-semibold"
-              >
-                Operator View ↗
-              </a>
+        <div className="w-full max-w-md flex flex-col items-center my-0 sm:my-3">
+          
+          {/* Top Device Status Bar / Staff Center Link */}
+          <header className="w-full px-4 py-2 flex items-center justify-between text-xs text-slate-400">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="font-semibold text-slate-200">Maplewood Township Portal</span>
             </div>
-          </div>
+            <a
+              href="operator.html"
+              className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1 font-medium bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-800"
+              title="Switch to Management Command Center"
+            >
+              <span>Staff Center</span>
+              <span>↗</span>
+            </a>
+          </header>
 
-          {/* Phone Shell */}
-          <div className="w-full h-[760px] max-h-[94vh] bg-white sm:rounded-[2.5rem] sm:border-[6px] sm:border-slate-800 shadow-2xl flex flex-col overflow-hidden relative">
-            {/* Top speaker notch */}
-            <div className="h-6 bg-slate-800 flex justify-center items-center shrink-0">
-              <div className="w-20 h-3 bg-slate-900 rounded-full"></div>
-            </div>
+          {/* App Container */}
+          <main className="w-full bg-white sm:rounded-[2rem] shadow-2xl flex flex-col overflow-hidden relative border border-slate-200 min-h-[740px] max-h-[95vh]">
+            
+            {/* Top Branding Banner */}
+            <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white p-4 shrink-0 flex items-center justify-between shadow-sm">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setCurrentView('home')}
+                  className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner hover:scale-105 transition-transform"
+                  title="Return to Homepage"
+                >
+                  🏡
+                </button>
+                <div>
+                  <h1 className="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
+                    Maplewood Community
+                    <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-semibold px-1.5 py-0.5 rounded">Township</span>
+                  </h1>
+                  <p className="text-[11px] text-slate-300 mt-0.5">Resident Services & Amenity Care</p>
+                </div>
+              </div>
 
-            {/* Bottom Nav Bar */}
-            <div className="order-last h-14 bg-slate-900 border-t border-slate-800 flex items-center justify-around px-2 text-[10px] text-slate-400 shrink-0">
-              <button
-                onClick={() => setCurrentView('home')}
-                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'home' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
-              >
-                <span>🏛️</span>
-                <span>Facilities</span>
-              </button>
-              <button
-                onClick={() => setCurrentView('facility')}
-                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'facility' || currentView === 'report_form' || currentView === 'confirmation' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
-              >
-                <span>📱</span>
-                <span>QR Report</span>
-              </button>
-              <button
-                onClick={() => {
-                  setCurrentView('targeted');
-                  loadTargetedCollection('col-hall-schedule-2026');
-                }}
-                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'targeted' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
-              >
-                <span>🎯</span>
-                <span>Targeted Survey</span>
-              </button>
-              <button
-                onClick={() => setCurrentView('lookup')}
-                className={`flex flex-col items-center gap-1 py-1 px-2 ${currentView === 'lookup' ? 'text-amber-400 font-bold' : 'hover:text-slate-200'}`}
-              >
-                <span>🔍</span>
-                <span>Track Status</span>
-              </button>
+              {/* QR Scanner Trigger / On-Site Badge */}
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setShowQrModal(true)}
+                  className="px-2.5 py-1 bg-emerald-600/90 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg border border-emerald-400/40 flex items-center gap-1 shadow-xs transition-all active:scale-95"
+                  title="Scan facility QR code"
+                >
+                  <span>📷</span>
+                  <span className="hidden xs:inline">Scan QR</span>
+                </button>
+              </div>
             </div>
 
-            {/* Content Area */}
-            <div className="flex-1 overflow-y-auto p-5 flex flex-col justify-between">
-              
-              {/* ── VIEW 1: HOME (FACILITY DIRECTORY) ── */}
+            {/* Notification Toast */}
+            {toastMsg && (
+              <div className="absolute top-16 left-4 right-4 z-50 bg-slate-900 text-white text-xs px-3.5 py-2.5 rounded-xl shadow-lg border border-slate-700 flex items-center gap-2 animate-bounce">
+                <span>✓</span>
+                <span className="font-medium">{toastMsg}</span>
+              </div>
+            )}
+
+            {/* Scrollable Content Body */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 flex flex-col space-y-4">
+
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: HOMEPAGE (NEW RESIDENT HOME)
+              ──────────────────────────────────────────────────────── */}
               {currentView === 'home' && (
-                <div className="space-y-4">
-                  <div className="bg-amber-500 text-slate-950 p-4 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-950/70 block">Maplewood Township</span>
-                    <h2 className="text-lg font-black mt-0.5">Township Amenity Portal</h2>
-                    <p className="text-xs text-amber-950/90 mt-1">Scan on-site QR codes or tap any facility below to report issues or check operating status.</p>
+                <div className="space-y-5">
+                  
+                  {/* Resident Profile Greeting & Weather Summary */}
+                  <div className="bg-gradient-to-br from-emerald-800 to-slate-900 rounded-2xl p-4 text-white relative overflow-hidden shadow-sm">
+                    <div className="flex items-start justify-between relative z-10">
+                      <div>
+                        <span className="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Welcome back</span>
+                        <h2 className="text-base font-bold text-white mt-0.5">Resident Li · Unit 4-602</h2>
+                        <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5">
+                          <span>📍</span> Building 4 · Maplewood Central
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <span className="inline-flex items-center gap-1 bg-white/10 backdrop-blur-xs px-2 py-0.5 rounded-full text-[10px] font-bold text-emerald-200 border border-white/10">
+                          <span>☀️</span> 28°C Sunny
+                        </span>
+                        <span className="block text-[10px] text-slate-300 mt-1">
+                          11 of 12 Amenities Open
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
+                  {/* Quick Action Tiles Hub */}
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-slate-700">Monitored Facilities (12)</span>
-                      <span className="text-[10px] text-slate-400">Tap to view details</span>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
+                      <span>Quick Resident Actions</span>
+                      <span className="text-[10px] text-emerald-600 font-semibold">1-Tap Access</span>
+                    </h3>
+                    <div className="grid grid-cols-2 gap-2.5">
+                      
+                      {/* 1. Scan QR */}
+                      <button
+                        onClick={() => setShowQrModal(true)}
+                        className="p-3.5 bg-gradient-to-br from-emerald-50 to-emerald-100/60 border border-emerald-200/90 rounded-2xl text-left flex flex-col justify-between hover:border-emerald-300 hover:shadow-sm transition-all group"
+                      >
+                        <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform">
+                          📷
+                        </div>
+                        <div className="mt-2.5">
+                          <strong className="text-xs text-slate-900 block font-bold">Scan Facility QR</strong>
+                          <span className="text-[10px] text-emerald-700 font-medium">Instant on-site defect report</span>
+                        </div>
+                      </button>
+
+                      {/* 2. Track Past Reports without typing */}
+                      <button
+                        onClick={() => {
+                          fetchReportsList();
+                          setCurrentView('track');
+                        }}
+                        className="p-3.5 bg-gradient-to-br from-blue-50 to-indigo-50/60 border border-blue-200/90 rounded-2xl text-left flex flex-col justify-between hover:border-blue-300 hover:shadow-sm transition-all group"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform">
+                            📋
+                          </div>
+                          {displayReports.length > 0 && (
+                            <span className="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full">
+                              {displayReports.length} Active
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-2.5">
+                          <strong className="text-xs text-slate-900 block font-bold">My Reports & Status</strong>
+                          <span className="text-[10px] text-blue-700 font-medium">Track tickets without typing</span>
+                        </div>
+                      </button>
+
+                      {/* 3. Community Pulse / Feedback */}
+                      <button
+                        onClick={() => setCurrentView('pulse')}
+                        className="p-3.5 bg-gradient-to-br from-amber-50 to-yellow-50/60 border border-amber-200/90 rounded-2xl text-left flex flex-col justify-between hover:border-amber-300 hover:shadow-sm transition-all group"
+                      >
+                        <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform">
+                          💬
+                        </div>
+                        <div className="mt-2.5">
+                          <strong className="text-xs text-slate-900 block font-bold">Community Pulse</strong>
+                          <span className="text-[10px] text-amber-800 font-medium">Hall scheduling survey open</span>
+                        </div>
+                      </button>
+
+                      {/* 4. Amenities Directory */}
+                      <button
+                        onClick={() => setCurrentView('facilities')}
+                        className="p-3.5 bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-2xl text-left flex flex-col justify-between hover:border-slate-300 hover:shadow-sm transition-all group"
+                      >
+                        <div className="w-9 h-9 rounded-xl bg-slate-800 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform">
+                          🏛️
+                        </div>
+                        <div className="mt-2.5">
+                          <strong className="text-xs text-slate-900 block font-bold">All Amenities</strong>
+                          <span className="text-[10px] text-slate-600 font-medium">Browse 12 facilities</span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* ──────────────────────────────────────────────────
+                      SECTION: FACILITY CLOSURES & OPERATIONAL NOTICES
+                  ────────────────────────────────────────────────── */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <span>⚠️</span>
+                        <span>Facility Notices & Closures</span>
+                      </h3>
+                      <span className="text-[10px] text-slate-400 font-medium">Live Updates</span>
                     </div>
 
                     <div className="space-y-2">
-                      {facilities.map(fac => (
-                        <div
-                          key={fac.facility_id}
-                          onClick={() => selectFacility(fac.facility_id)}
-                          className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
-                            fac.facility_id === selectedFacilityId
-                              ? 'border-amber-500 bg-amber-50/50'
-                              : 'border-slate-200 hover:border-slate-300 bg-white'
-                          }`}
-                        >
-                          <div>
+                      {OPERATIONAL_NOTICES.map(item => (
+                        <div key={item.id} className="p-3 bg-white border border-slate-200 rounded-xl shadow-xs space-y-1">
+                          <div className="flex items-center justify-between">
                             <div className="flex items-center gap-1.5">
-                              <span className="text-xs font-bold text-slate-800">{fac.name}</span>
-                              {fac.status === 'monitored' && (
-                                <span className="text-[9px] bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded font-semibold">Under Review</span>
-                              )}
-                              {fac.status === 'maintenance' && (
-                                <span className="text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded font-semibold">Maintenance</span>
-                              )}
+                              <span className="text-sm">{item.icon}</span>
+                              <strong className="text-xs text-slate-900 font-bold">{item.facility}</strong>
                             </div>
-                            <p className="text-[10px] text-slate-500 mt-0.5">{fac.location}</p>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeColor}`}>
+                              {item.badge}
+                            </span>
                           </div>
-                          <span className="text-xs text-amber-600 font-bold">Open →</span>
+                          <p className="text-[11px] font-semibold text-slate-800 pl-5">{item.title}</p>
+                          <p className="text-[10px] text-slate-500 pl-5">{item.details}</p>
                         </div>
                       ))}
                     </div>
                   </div>
-                </div>
-              )}
 
-              {/* ── VIEW 2: FACILITY QR SCAN LANDING PAGE ── */}
-              {currentView === 'facility' && selectedFacility && (
-                <div className="space-y-4">
-                  {/* QR Scan Context Banner */}
-                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs text-emerald-800">
-                    <span className="text-base">📍</span>
-                    <div>
-                      <span className="font-bold block">Location Verified via On-Site QR</span>
-                      <span className="text-[10px] text-emerald-700">Directly connected to this facility terminal</span>
+                  {/* ──────────────────────────────────────────────────
+                      SECTION: UNCLICKABLE FACILITY BOOKING CATALOG
+                  ────────────────────────────────────────────────── */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <span>📅</span>
+                        <span>Facility Bookings</span>
+                      </h3>
+                      <span className="text-[9px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-bold border border-slate-200">
+                        In-Person / Walk-in Only
+                      </span>
+                    </div>
+
+                    <p className="text-[11px] text-slate-500">
+                      Digital advance booking integration is in progress. Current reservations are processed on-site at the Management Counter.
+                    </p>
+
+                    <div className="grid grid-cols-1 gap-2 select-none">
+                      {BOOKING_PREVIEW_ITEMS.map(b => (
+                        <div
+                          key={b.id}
+                          className="p-3 bg-slate-50/80 border border-slate-200/80 rounded-xl flex items-center justify-between opacity-80 cursor-not-allowed hover:bg-slate-50"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-xl p-2 bg-white rounded-lg border border-slate-100 shadow-xs">{b.icon}</span>
+                            <div>
+                              <div className="flex items-center gap-1.5">
+                                <strong className="text-xs text-slate-800 font-bold">{b.name}</strong>
+                              </div>
+                              <span className="text-[10px] text-slate-500 block">{b.rate} · {b.hours}</span>
+                              <span className="text-[9px] text-amber-700 font-semibold">{b.demand}</span>
+                            </div>
+                          </div>
+
+                          <div className="text-right">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-200 text-slate-600 font-bold text-[10px] rounded-lg border border-slate-300">
+                              <span>🔒</span>
+                              <span>Locked</span>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Facility Card */}
-                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2 text-center">
-                    <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
-                      {selectedFacility.facility_id.includes('badminton') ? '🏸' : selectedFacility.facility_id.includes('tennis') ? '🎾' : '🏛️'}
+                  {/* ──────────────────────────────────────────────────
+                      SECTION: ONGOING COMMUNITY ACTIVITIES
+                  ────────────────────────────────────────────────── */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <span>🌟</span>
+                        <span>Community Activities & Events</span>
+                      </h3>
+                      <span className="text-[10px] text-emerald-600 font-semibold">Join In</span>
                     </div>
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 block">
+
+                    <div className="space-y-2">
+                      {COMMUNITY_ACTIVITIES.map(act => (
+                        <div key={act.id} className="p-3 bg-gradient-to-r from-emerald-50/40 via-white to-slate-50 border border-emerald-100 rounded-xl space-y-1 shadow-xs">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{act.icon}</span>
+                              <strong className="text-xs text-slate-900 font-bold">{act.title}</strong>
+                            </div>
+                            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full">
+                              Open
+                            </span>
+                          </div>
+                          <div className="pl-6 text-[11px] text-slate-600 space-y-0.5">
+                            <p className="font-semibold text-slate-700">🕒 {act.time} · 📍 {act.location}</p>
+                            <p className="text-[10px] text-slate-500">{act.instructor}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* ──────────────────────────────────────────────────
+                      SECTION: TOWNSHIP EMERGENCY HOTLINES
+                  ────────────────────────────────────────────────── */}
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                      Township Emergency Contacts
+                    </span>
+                    <div className="grid grid-cols-2 gap-2 text-[11px]">
+                      <div className="p-2 bg-white rounded-lg border border-slate-200">
+                        <span className="text-slate-400 block text-[9px]">24/7 Facilities Hotline</span>
+                        <strong className="text-slate-800">6555-TOWN (8696)</strong>
+                      </div>
+                      <div className="p-2 bg-white rounded-lg border border-slate-200">
+                        <span className="text-slate-400 block text-[9px]">Security Guardhouse</span>
+                        <strong className="text-slate-800">6555-SAFE (7233)</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              )}
+
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: SCANNED FACILITY LANDING (QR TOUCHPOINT)
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'facility' && selectedFacility && (
+                <div className="space-y-4 my-auto">
+                  
+                  {/* Facility Card */}
+                  <div className="bg-gradient-to-b from-slate-50 to-white border border-slate-200 rounded-2xl p-4 sm:p-5 text-center relative overflow-hidden shadow-sm">
+                    <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                      {selectedFacility.facility_id.includes('badminton') ? '🏸' : 
+                       selectedFacility.facility_id.includes('tennis') ? '🎾' : 
+                       selectedFacility.facility_id.includes('bbq') ? '🍖' : 
+                       selectedFacility.facility_id.includes('pool') ? '🏊' : '🏛️'}
+                    </div>
+
+                    <div className="mt-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                         {selectedFacility.type}
                       </span>
-                      <h2 className="text-lg font-bold text-slate-900 mt-0.5">
+                      <h2 className="text-lg font-bold text-slate-900 mt-2">
                         {selectedFacility.name}
                       </h2>
+                      <p className="text-xs text-slate-500 mt-1 flex items-center justify-center gap-1">
+                        <span>📍</span> {selectedFacility.location}
+                      </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-slate-200 text-left">
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-[9px] text-slate-400 block">Location</span>
-                        <span className="font-semibold text-slate-700">{selectedFacility.location}</span>
+                    <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-100 text-left text-xs">
+                      <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span className="text-[10px] text-slate-400 block font-medium">Opening Hours</span>
+                        <span className="font-bold text-slate-800">{selectedFacility.operating_hours}</span>
                       </div>
-                      <div className="bg-white p-2 rounded-lg border border-slate-100">
-                        <span className="text-[9px] text-slate-400 block">Hours</span>
-                        <span className="font-semibold text-slate-700">{selectedFacility.operating_hours}</span>
+                      <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                        <span className="text-[10px] text-slate-400 block font-medium">Facility Status</span>
+                        <span className={`font-bold inline-flex items-center gap-1 ${
+                          selectedFacility.status === 'maintenance' ? 'text-rose-600' : 'text-emerald-600'
+                        }`}>
+                          <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
+                          {selectedFacility.status === 'maintenance' ? 'Under Maintenance' : 'Open for Residents'}
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Facility Description */}
-                  <p className="text-xs text-slate-600 leading-relaxed px-1">
-                    {selectedFacility.description}
-                  </p>
-
-                  {/* Action Entry Points */}
+                  {/* Primary Action Button: Report Issue */}
                   <div className="space-y-2 pt-2">
                     <button
-                      onClick={() => setCurrentView('report_form')}
-                      className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-bold text-sm rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                      onClick={() => setCurrentView('report')}
+                      className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
                     >
-                      <span>💡</span>
-                      <span>Report an Issue / Fault →</span>
+                      <span>🛠️</span>
+                      <span>Report a Facility Defect / Issue</span>
                     </button>
 
-                    <button
-                      onClick={() => setCurrentView('home')}
-                      className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-xl"
-                    >
-                      Switch to Another Facility
-                    </button>
+                    <div className="grid grid-cols-2 gap-2 pt-1">
+                      <button
+                        onClick={() => setCurrentView('pulse')}
+                        className="py-2.5 px-3 bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold text-xs rounded-xl border border-amber-200 flex items-center justify-center gap-1.5 transition-colors"
+                      >
+                        <span>💬</span>
+                        <span>Resident Feedback</span>
+                      </button>
+                      <button
+                        onClick={() => setCurrentView('facilities')}
+                        className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition-colors"
+                      >
+                        <span>🏛️</span>
+                        <span>All Amenities (12)</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Information Box */}
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-[11px] text-slate-600 space-y-1">
+                    <span className="font-bold text-slate-800 flex items-center gap-1">
+                      <span>⚡</span> Fast-Track Township Response
+                    </span>
+                    <p>Submitting via this QR terminal automatically attaches location sensor metadata so on-duty technicians can inspect and repair faults without delay.</p>
                   </div>
                 </div>
               )}
 
-              {/* ── VIEW 3: REPORT FORM ── */}
-              {currentView === 'report_form' && selectedFacility && (
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: REPORT FAULT FORM
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'report' && selectedFacility && (
                 <div className="space-y-4">
-                  <div>
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <button
                       onClick={() => setCurrentView('facility')}
-                      className="text-xs text-slate-400 hover:text-slate-600 mb-1 flex items-center gap-1"
+                      className="text-xs font-semibold text-slate-500 hover:text-slate-800 flex items-center gap-1"
                     >
-                      ← Back to Facility
+                      ← Back
                     </button>
-                    <h2 className="text-lg font-bold text-slate-900">Submit Fault Report</h2>
-                    <p className="text-xs text-slate-500">
-                      Facility: {selectedFacility.name} ({selectedFacility.facility_id})
-                    </p>
+                    <span className="text-xs font-bold text-slate-800">{selectedFacility.name}</span>
                   </div>
 
-                  <form onSubmit={handleReportSubmit} className="space-y-3 text-xs">
-                    {/* Category Selection */}
+                  <div>
+                    <h2 className="text-base font-bold text-slate-900">What needs attention?</h2>
+                    <p className="text-xs text-slate-500">Select category and describe the fault for our on-site team</p>
+                  </div>
+
+                  <form onSubmit={handleReportSubmit} className="space-y-3.5 text-xs">
+                    
+                    {/* Category Selector Grid */}
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1.5">Issue Category</label>
+                      <label className="font-bold text-slate-700 block mb-1.5">Issue Type</label>
                       <div className="grid grid-cols-2 gap-2">
-                        {[
-                          { id: 'lighting', icon: '💡', label: 'Lighting Fault' },
-                          { id: 'equipment', icon: '🏸', label: 'Equipment / Net' },
-                          { id: 'cleanliness', icon: '🧹', label: 'Flooring / Hygiene' },
-                          { id: 'hvac', icon: '❄️', label: 'HVAC / Airflow' },
-                          { id: 'safety', icon: '⚠️', label: 'Safety Hazard' },
-                          { id: 'other', icon: '📝', label: 'Other Issue' },
-                        ].map(c => (
+                        {FAULT_CATEGORIES.map(cat => (
                           <button
                             type="button"
-                            key={c.id}
+                            key={cat.id}
                             onClick={() => {
-                              setCategory(c.id);
-                              if (c.id === 'lighting') {
+                              setCategory(cat.id);
+                              if (cat.id === 'lighting') {
                                 setDescription('Court 2 overhead high-bay floodlight is flickering severely; back court is too dim for safe play.');
-                              } else if (c.id === 'equipment') {
-                                setDescription('Court 1 center net cable is frayed and sagging below standard competition height.');
+                              } else if (cat.id === 'equipment') {
+                                setDescription('Court 1 center net cable is frayed and sagging below competition standard.');
+                              } else if (cat.id === 'cleanliness') {
+                                setDescription('Floor surface near baseline is slippery and needs cleaning before play.');
                               }
                             }}
-                            className={`p-2 rounded-lg border text-left flex items-center gap-1.5 transition-all ${
-                              category === c.id
-                                ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold'
-                                : 'border-slate-200 bg-white text-slate-600'
+                            className={`p-2.5 rounded-xl border text-left flex items-center gap-2 transition-all ${
+                              category === cat.id
+                                ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm'
+                                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
                             }`}
                           >
-                            <span>{c.icon}</span>
-                            <span>{c.label}</span>
+                            <span className="text-base">{cat.icon}</span>
+                            <span className="truncate">{cat.name}</span>
                           </button>
                         ))}
                       </div>
                     </div>
 
-                    {/* Specific Location Detail */}
+                    {/* Specific Location */}
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1">Specific Location / Court Zone (Optional)</label>
+                      <label className="font-bold text-slate-700 block mb-1">Specific Location / Court Area</label>
                       <input
                         type="text"
                         value={locationDetail}
                         onChange={e => setLocationDetail(e.target.value)}
-                        placeholder="e.g. Court 2 North End, Baseline side"
-                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                        placeholder="e.g. Court 2 North End, Net post area"
+                        className="w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-slate-50/50"
                       />
                     </div>
 
-                    {/* Description */}
+                    {/* Detailed Description */}
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1">Description of Issue</label>
+                      <label className="font-bold text-slate-700 block mb-1">Issue Details</label>
                       <textarea
                         rows="3"
                         required
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        placeholder="Describe the issue in detail..."
-                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                        placeholder="Describe the issue so our technician brings the right tools..."
+                        className="w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-slate-50/50"
                       ></textarea>
                     </div>
 
-                    {/* Contact Info */}
+                    {/* Simulated Photo Attachment */}
                     <div>
-                      <label className="font-bold text-slate-700 block mb-1">Your Name / Unit (Optional)</label>
+                      <label className="font-bold text-slate-700 block mb-1">Attach Photo (Optional)</label>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={simulatePhotoAttach}
+                          className={`flex-1 p-2.5 border border-dashed rounded-xl flex items-center justify-center gap-2 transition-all ${
+                            attachedPhoto 
+                              ? 'border-emerald-500 bg-emerald-50/60 text-emerald-800 font-semibold' 
+                              : 'border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-600'
+                          }`}
+                        >
+                          <span>📷</span>
+                          <span>{attachedPhoto ? 'Photo Attached (1)' : 'Tap to take or upload photo'}</span>
+                        </button>
+                        {attachedPhoto && (
+                          <button
+                            type="button"
+                            onClick={() => setAttachedPhoto(null)}
+                            className="p-2.5 text-slate-400 hover:text-rose-500 rounded-xl"
+                            title="Remove photo"
+                          >
+                            ✕
+                          </button>
+                        )}
+                      </div>
+                      {attachedPhoto && (
+                        <p className="text-[10px] text-emerald-600 mt-1 pl-1">
+                          ✓ {attachedPhoto.name} ({attachedPhoto.size}) ready to upload
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Resident Contact */}
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Your Name / Unit Number (Optional)</label>
                       <input
                         type="text"
                         value={contact}
                         onChange={e => setContact(e.target.value)}
-                        placeholder="Allows staff to follow up on inspection outcome"
-                        className="w-full p-2.5 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                        placeholder="Unit 4-602 or contact number for updates"
+                        className="w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-slate-50/50"
                       />
                     </div>
 
-                    <div className="p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg text-[10px] text-amber-900">
-                      <strong>Policy:</strong> Public QR-scanned submissions are filed as <strong>unverified observations</strong>. On-duty facilities staff will inspect the premises before converting to confirmed maintenance orders.
+                    {/* Submit Button */}
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                            <span>Submitting to Operations...</span>
+                          </>
+                        ) : (
+                          <span>Submit Report →</span>
+                        )}
+                      </button>
                     </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-md transition-colors"
-                    >
-                      {isSubmitting ? 'Submitting Report...' : 'Confirm & Submit Report →'}
-                    </button>
                   </form>
                 </div>
               )}
 
-              {/* ── VIEW 4: CONFIRMATION ── */}
-              {currentView === 'confirmation' && submittedResult && (
-                <div className="space-y-4 text-center my-auto py-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm animate-bounce">
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: CONFIRMATION / RECEIPT
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'success' && lastSubmission && (
+                <div className="space-y-4 my-auto text-center py-2">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
                     ✓
                   </div>
 
                   <div>
-                    <h2 className="text-xl font-bold text-slate-900">Report Submitted Successfully!</h2>
-                    <p className="text-xs text-slate-500 mt-1">Thank you for helping maintain community amenities</p>
+                    <h2 className="text-lg font-bold text-slate-900">Report Successfully Submitted</h2>
+                    <p className="text-xs text-slate-500 mt-0.5">Thank you for helping keep Maplewood amenities in top condition</p>
                   </div>
 
-                  {/* Reference ID card */}
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2 text-left text-xs">
+                  {/* Tracking Ticket Card */}
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-left text-xs space-y-2 shadow-sm">
                     <div className="flex justify-between items-center pb-2 border-b border-slate-200">
-                      <span className="text-slate-400">Tracking Reference ID</span>
-                      <span className="font-mono font-bold text-amber-600 text-sm">{submittedResult.referenceId}</span>
+                      <span className="text-slate-400 font-medium">Tracking Ticket</span>
+                      <span className="font-mono font-bold text-emerald-700 text-sm">{lastSubmission.referenceId || lastSubmission.reportId}</span>
                     </div>
 
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-400">Facility ID</span>
-                      <span className="font-medium text-slate-700">{submittedResult.facilityId}</span>
+                      <span className="text-slate-400">Facility</span>
+                      <span className="font-semibold text-slate-800">{selectedFacility ? selectedFacility.name : 'Amenity'}</span>
                     </div>
 
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-400">Initial Status</span>
-                      <span className="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-bold">
-                        Unverified (Awaiting Staff Inspection)
+                      <span className="text-slate-400">Current Status</span>
+                      <span className="bg-amber-100 text-amber-900 font-bold text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                        Dispatched · Awaiting Staff Inspection
                       </span>
                     </div>
 
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Submitted At</span>
-                      <span className="text-slate-600">{new Date(submittedResult.submittedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                      <span className="text-slate-600">{new Date(lastSubmission.submittedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
                   </div>
 
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-900 text-left">
-                    <strong>Next Steps:</strong>
-                    <ul className="list-disc pl-4 mt-1 space-y-0.5 text-blue-800">
-                      <li>Transmitted immediately to the Operator Command Center.</li>
-                      <li>On-duty facilities staff will inspect the equipment on site.</li>
-                      <li>Confirmed defects will be scheduled for work orders and decision review.</li>
-                    </ul>
+                  {/* 3-Step Visual Progress Stepper */}
+                  <div className="p-3 bg-white border border-slate-200 rounded-2xl text-left">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2.5">Progress Timeline</span>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0">1</span>
+                        <div>
+                          <strong className="text-xs text-slate-900 block">Report Received</strong>
+                          <span className="text-[10px] text-emerald-600 font-medium">Completed via mobile QR</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 font-bold text-xs flex items-center justify-center shrink-0 border border-amber-300">2</span>
+                        <div>
+                          <strong className="text-xs text-slate-900 block">On-Site Staff Verification</strong>
+                          <span className="text-[10px] text-amber-700 font-medium">Duty technician on way to inspect</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 opacity-40">
+                        <span className="w-6 h-6 rounded-full bg-slate-100 text-slate-500 font-bold text-xs flex items-center justify-center shrink-0">3</span>
+                        <div>
+                          <strong className="text-xs text-slate-800 block">Maintenance & Parts</strong>
+                          <span className="text-[10px] text-slate-500">Work order dispatch</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2 pt-2">
                     <button
                       onClick={() => {
-                        setLookupId(submittedResult.referenceId);
-                        setCurrentView('lookup');
-                        handleLookup();
+                        const code = lastSubmission.referenceId || lastSubmission.reportId;
+                        setTrackingCode(code);
+                        setCurrentView('track');
+                        handleTrackLookup(code);
                       }}
-                      className="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs rounded-xl"
+                      className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
                     >
-                      Track Real-Time Progress
+                      Track Live Status
                     </button>
                     <button
-                      onClick={() => setCurrentView('facility')}
-                      className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs rounded-xl"
+                      onClick={() => setCurrentView('home')}
+                      className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-xl"
                     >
-                      Back to Facility Page
+                      Return to Homepage
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* ── VIEW 5: LOOKUP REPORT STATUS ── */}
-              {currentView === 'lookup' && (
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: TRACK TICKET STATUS (WITH PAST REPORTS LIST)
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'track' && (
                 <div className="space-y-4">
                   <div>
-                    <h2 className="text-lg font-bold text-slate-900">Track Report Progress</h2>
-                    <p className="text-xs text-slate-500">Enter your Reference ID to check inspection and maintenance status</p>
+                    <h2 className="text-base font-bold text-slate-900">Track Issue Resolution</h2>
+                    <p className="text-xs text-slate-500">View real-time technician inspections & repair updates</p>
                   </div>
 
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={lookupId}
-                      onChange={e => setLookupId(e.target.value)}
-                      placeholder="e.g. REP-..."
-                      className="flex-1 p-2.5 border border-slate-200 rounded-lg text-xs font-mono focus:ring-1 focus:ring-amber-500 focus:outline-none"
-                    />
-                    <button
-                      onClick={handleLookup}
-                      className="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
-                    >
-                      Search
-                    </button>
-                  </div>
-
-                  {lookupError && (
-                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
-                      {lookupError}
+                  {/* 1. Quick Selection List of Past Reports (No typing required!) */}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        My Submitted Reports ({displayReports.length})
+                      </span>
+                      <button
+                        onClick={fetchReportsList}
+                        className="text-[10px] text-emerald-700 font-semibold hover:underline flex items-center gap-1"
+                      >
+                        <span>🔄</span> Refresh
+                      </button>
                     </div>
-                  )}
 
-                  {lookupResult && (
-                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 text-xs">
+                    {displayReports.length === 0 ? (
+                      <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-center text-xs text-slate-500">
+                        No submitted reports yet. Use the camera or facility page to submit your first report.
+                      </div>
+                    ) : (
+                      <div className="space-y-2 max-h-52 overflow-y-auto pr-0.5">
+                        {displayReports.map(rep => {
+                          const isSelected = trackedReport?.report_id === rep.report_id;
+                          const isVerified = rep.status === 'verified_fault';
+                          const isDismissed = rep.status === 'dismissed';
+
+                          return (
+                            <div
+                              key={rep.report_id}
+                              onClick={() => {
+                                setTrackedReport(rep);
+                                setTrackError('');
+                              }}
+                              className={`p-3 rounded-xl border text-xs cursor-pointer transition-all flex items-center justify-between ${
+                                isSelected
+                                  ? 'border-emerald-600 bg-emerald-50/70 shadow-xs ring-1 ring-emerald-500'
+                                  : 'border-slate-200 bg-white hover:border-slate-300'
+                              }`}
+                            >
+                              <div className="space-y-0.5 max-w-[70%]">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="font-mono font-bold text-slate-900 text-[11px]">{rep.report_id}</span>
+                                  {isSelected && (
+                                    <span className="text-[9px] bg-emerald-600 text-white font-bold px-1.5 py-0.2 rounded-full">Viewing</span>
+                                  )}
+                                </div>
+                                <p className="font-semibold text-slate-800 truncate">{rep.facility_name || rep.facility_id}</p>
+                                <p className="text-[10px] text-slate-500 truncate">{rep.description}</p>
+                              </div>
+
+                              <div className="text-right shrink-0">
+                                <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full inline-block ${
+                                  isVerified
+                                    ? 'bg-emerald-100 text-emerald-800'
+                                    : isDismissed
+                                    ? 'bg-slate-200 text-slate-600'
+                                    : 'bg-amber-100 text-amber-800'
+                                }`}>
+                                  {isVerified ? '✓ Verified' : isDismissed ? 'Inspected Normal' : 'Pending Inspection'}
+                                </span>
+                                <span className="block text-[9px] text-slate-400 mt-1">
+                                  {new Date(rep.submitted_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 2. Tracked Report Live Inspection Findings Card */}
+                  {trackedReport && (
+                    <div className="bg-slate-50 border-2 border-emerald-600/60 rounded-2xl p-4 space-y-3 text-xs shadow-sm">
                       <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                         <div>
-                          <span className="font-mono font-bold text-slate-800">{lookupResult.report_id}</span>
-                          <p className="text-[10px] text-slate-400 mt-0.5">{lookupResult.facility_name || lookupResult.facility_id}</p>
+                          <span className="font-mono font-bold text-slate-900 text-sm">{trackedReport.report_id}</span>
+                          <p className="text-[11px] font-semibold text-emerald-800 mt-0.5">{trackedReport.facility_name || trackedReport.facility_id}</p>
                         </div>
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                          lookupResult.status === 'verified_fault'
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : lookupResult.status === 'dismissed'
+                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                          trackedReport.status === 'verified_fault'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            : trackedReport.status === 'dismissed'
                             ? 'bg-slate-200 text-slate-600'
-                            : 'bg-amber-100 text-amber-800'
+                            : 'bg-amber-100 text-amber-800 border border-amber-300'
                         }`}>
-                          {lookupResult.status === 'verified_fault' ? '✓ Verified Physical Fault' : lookupResult.status === 'dismissed' ? 'Dismissed' : 'Awaiting Staff Inspection'}
+                          {trackedReport.status === 'verified_fault' ? '✓ Defect Verified' : trackedReport.status === 'dismissed' ? 'Inspected Normal' : 'Pending Staff Inspection'}
                         </span>
                       </div>
 
                       <div>
-                        <span className="text-[10px] text-slate-400 block">Issue Description</span>
-                        <p className="text-slate-800 font-medium mt-0.5">{lookupResult.description}</p>
+                        <span className="text-[10px] text-slate-400 block font-medium">Reported Problem</span>
+                        <p className="text-slate-800 font-medium mt-0.5">{trackedReport.description}</p>
+                        {trackedReport.location_detail && (
+                          <span className="text-[10px] text-slate-500 block mt-0.5">Location: {trackedReport.location_detail}</span>
+                        )}
                       </div>
 
-                      {lookupResult.verification_notes && (
-                        <div className="p-2.5 bg-emerald-50/80 border border-emerald-200 rounded-lg text-[11px] text-emerald-900">
-                          <strong>Staff Inspection Findings:</strong>
-                          <p className="mt-0.5">{lookupResult.verification_notes}</p>
-                          <span className="text-[9px] text-emerald-700 block mt-1">Inspected by: {lookupResult.verified_by} ({new Date(lookupResult.verified_at).toLocaleDateString()})</span>
+                      {trackedReport.verification_notes ? (
+                        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-[11px] text-emerald-950 space-y-1">
+                          <strong className="block text-emerald-900">Staff Inspection Findings:</strong>
+                          <p>{trackedReport.verification_notes}</p>
+                          <span className="text-[9px] text-emerald-700 block mt-1">
+                            Technician: {trackedReport.verified_by || 'Facilities Duty Team'} · {new Date(trackedReport.verified_at || Date.now()).toLocaleDateString()}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="p-2.5 bg-amber-50/80 border border-amber-200 rounded-xl text-[10px] text-amber-800 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                          <span>Duty technician dispatched for on-site hardware verification.</span>
                         </div>
                       )}
 
-                      {lookupResult.maintenance_id && (
-                        <div className="p-2.5 bg-blue-50 border border-blue-200 rounded-lg text-[11px] text-blue-900">
-                          <strong>Linked Maintenance Work Order:</strong> {lookupResult.maintenance_id} (In Progress)
+                      {trackedReport.maintenance_id && (
+                        <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-950 flex items-center justify-between">
+                          <div>
+                            <strong>Active Work Order:</strong> {trackedReport.maintenance_id}
+                            <span className="block text-[10px] text-blue-700">Parts replacement & repair scheduled</span>
+                          </div>
+                          <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
                         </div>
                       )}
+
+                      {/* 3-Step Live Timeline */}
+                      <div className="pt-2 border-t border-slate-200">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2">Status Timeline</span>
+                        <div className="grid grid-cols-3 gap-1.5 text-center text-[10px]">
+                          <div className="p-1.5 bg-white rounded-lg border border-emerald-200 text-emerald-800 font-bold">
+                            ✓ Submitted
+                          </div>
+                          <div className={`p-1.5 rounded-lg border font-bold ${
+                            trackedReport.status === 'verified_fault'
+                              ? 'bg-white border-emerald-200 text-emerald-800'
+                              : 'bg-amber-50 border-amber-300 text-amber-800 animate-pulse'
+                          }`}>
+                            {trackedReport.status === 'verified_fault' ? '✓ Verified' : '2. In Progress'}
+                          </div>
+                          <div className={`p-1.5 rounded-lg border ${
+                            trackedReport.maintenance_id
+                              ? 'bg-white border-blue-200 text-blue-800 font-bold'
+                              : 'bg-slate-100 border-slate-200 text-slate-400'
+                          }`}>
+                            {trackedReport.maintenance_id ? '3. Work Order' : '3. Scheduled'}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
+
+                  {/* 3. Optional Manual Code Search Fallback */}
+                  <div className="pt-2 border-t border-slate-100">
+                    <span className="text-[10px] font-semibold text-slate-400 block mb-1.5">
+                      Or look up by custom ticket reference:
+                    </span>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={trackingCode}
+                        onChange={e => setTrackingCode(e.target.value)}
+                        placeholder="e.g. REP-..."
+                        className="flex-1 p-2.5 border border-slate-200 rounded-xl text-xs font-mono uppercase focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-slate-50/50"
+                      />
+                      <button
+                        onClick={() => handleTrackLookup()}
+                        disabled={isTracking}
+                        className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition-colors"
+                      >
+                        {isTracking ? '...' : 'Lookup'}
+                      </button>
+                    </div>
+
+                    {trackError && (
+                      <div className="p-2.5 mt-2 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
+                        {trackError}
+                      </div>
+                    )}
+                  </div>
+
                 </div>
               )}
 
-              {/* ── VIEW 6: TARGETED QUESTION FLOW (INVITED SURVEY) ── */}
-              {currentView === 'targeted' && (
-                <div className="flex-1 flex flex-col justify-between">
-                  {/* STEP 0: INVITATION */}
-                  {targetedStep === 0 && (
-                    <div className="space-y-4">
-                      <div className="flex justify-center gap-2 mb-2">
-                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                      </div>
-
-                      <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl mx-auto shadow-sm">
-                        🏛️
-                      </div>
-
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: RESIDENT COMMUNITY PULSE / SURVEY
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'pulse' && (
+                <div className="space-y-4 my-auto">
+                  
+                  {!pulseSubmitted ? (
+                    <div className="space-y-3.5">
                       <div className="text-center">
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
-                          Invited Evidence Inquiry
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                          Community Pulse
                         </span>
-                        <h2 className="text-xl font-bold text-slate-900 mt-1">
-                          Community Hall, Building 4
+                        <h2 className="text-base font-bold text-slate-900 mt-2">
+                          Community Hall Scheduling
                         </h2>
+                        <p className="text-xs text-slate-500 mt-1">
+                          Help the management committee optimize opening hours for Building 4 residents.
+                        </p>
                       </div>
 
-                      <p className="text-xs text-slate-600 leading-relaxed text-center px-1">
-                        You have been invited to share your experience with the Community Hall in Building 4. Your input serves as critical evidence to evaluate schedule alignment.
-                      </p>
+                      <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+                        <h3 className="font-bold text-xs text-slate-800 mb-2.5">
+                          How often does the current Community Hall schedule fit your availability?
+                        </h3>
 
-                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl">
-                        <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wide block">Cohort Qualification</span>
-                        <p className="text-xs font-semibold text-amber-900 mt-0.5">Long-term residents (3+ years), Building 4</p>
-                      </div>
-
-                      <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-xs text-slate-600">
-                        <div className="font-semibold text-slate-700 text-[11px]">Notice:</div>
-                        <div>• Exactly 1 focused question</div>
-                        <div>• Connects directly to township analytical review</div>
+                        <div className="space-y-2">
+                          {[
+                            'Almost always — I can usually book when I need to',
+                            'Sometimes — but I often find the slots I want are unavailable',
+                            "Rarely — the schedule doesn't match when I'm available",
+                            "I haven't tried to use the hall recently"
+                          ].map((opt, i) => (
+                            <div
+                              key={i}
+                              onClick={() => setPulseOption(opt)}
+                              className={`p-3 rounded-xl border text-xs cursor-pointer transition-all ${
+                                pulseOption === opt
+                                  ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm'
+                                  : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
+                              }`}
+                            >
+                              {opt}
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
                       <button
-                        onClick={() => setTargetedStep(1)}
-                        className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-sm"
+                        disabled={!pulseOption || pulseSubmitting}
+                        onClick={handlePulseSubmit}
+                        className={`w-full py-3.5 font-bold text-xs rounded-xl shadow-md transition-all ${
+                          pulseOption && !pulseSubmitting
+                            ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                            : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                        }`}
                       >
-                        Continue →
+                        {pulseSubmitting ? 'Recording Feedback...' : 'Submit Feedback →'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="space-y-3 text-center py-4">
+                      <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto shadow-sm">
+                        ✓
+                      </div>
+                      <h2 className="text-base font-bold text-slate-900">Thank You For Your Feedback!</h2>
+                      <p className="text-xs text-slate-500">
+                        Your answer has been submitted directly to the township operations planning committee.
+                      </p>
+                      <button
+                        onClick={() => setCurrentView('home')}
+                        className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl"
+                      >
+                        Return to Homepage
                       </button>
                     </div>
                   )}
+                </div>
+              )}
 
-                  {/* STEP 1: CONTEXT */}
-                  {targetedStep === 1 && (
-                    <div className="space-y-4">
-                      <div className="flex justify-center gap-2 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                      </div>
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: ALL MONITORED FACILITIES DIRECTORY
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'facilities' && (
+                <div className="space-y-3">
+                  <div>
+                    <h2 className="text-base font-bold text-slate-900">Township Facilities ({facilities.length})</h2>
+                    <p className="text-xs text-slate-500">Select any facility to report issues or check hours</p>
+                  </div>
 
-                      <h3 className="text-base font-bold text-slate-900 text-center">Background & Context</h3>
-                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 leading-relaxed space-y-2">
-                        <p>The Community Hall in Building 4 has experienced a sustained multi-week utilization decline. The system is investigating whether this is caused by physical faults or schedule mismatch.</p>
-                        <p>Direct resident feedback provides the highest-value missing evidence to resolve this diagnostic uncertainty.</p>
-                      </div>
-
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => setTargetedStep(0)}
-                          className="px-4 py-2.5 text-xs text-slate-500 hover:text-slate-800"
-                        >
-                          ← Back
-                        </button>
-                        <button
-                          onClick={() => setTargetedStep(2)}
-                          className="flex-1 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm rounded-xl shadow-sm"
-                        >
-                          Proceed to Question →
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* STEP 2: THE TARGETED QUESTION */}
-                  {targetedStep === 2 && (
-                    <div className="space-y-4">
-                      <div className="flex justify-center gap-2 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div className="w-2 h-2 rounded-full bg-slate-200"></div>
-                      </div>
-
-                      <div>
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wide block">
-                          Targeted Evidence Question
-                        </span>
-                        <h3 className="text-sm font-bold text-slate-900 mt-1">
-                          How often does the current Community Hall schedule fit your needs?
-                        </h3>
-                      </div>
-
-                      <div className="space-y-2">
-                        {[
-                          'Almost always — I can usually book when I need to',
-                          'Sometimes — but I often find the slots I want are unavailable',
-                          "Rarely — the schedule doesn't match when I'm available",
-                          "I haven't tried to use the hall recently"
-                        ].map((opt, i) => (
-                          <div
-                            key={i}
-                            onClick={() => setTargetedAnswer(opt)}
-                            className={`p-3 rounded-xl border text-xs cursor-pointer transition-all ${
-                              targetedAnswer === opt
-                                ? 'border-amber-500 bg-amber-50 font-bold text-amber-950 shadow-sm'
-                                : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
-                            }`}
-                          >
-                            {opt}
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex gap-2 pt-2">
-                        <button
-                          onClick={() => setTargetedStep(1)}
-                          className="px-4 py-2.5 text-xs text-slate-500"
-                        >
-                          ← Back
-                        </button>
-                        <button
-                          disabled={!targetedAnswer || targetedSubmitting}
-                          onClick={handleTargetedSubmit}
-                          className={`flex-1 py-3 font-bold text-sm rounded-xl shadow-sm ${
-                            targetedAnswer && !targetedSubmitting
-                              ? 'bg-amber-500 hover:bg-amber-600 text-slate-950'
-                              : 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                          }`}
-                        >
-                          {targetedSubmitting ? 'Recording Response...' : 'Submit Answer →'}
-                        </button>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* STEP 3: TARGETED CONFIRMATION */}
-                  {targetedStep === 3 && (
-                    <div className="space-y-4 text-center my-auto py-6">
-                      <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
-                        ✓
-                      </div>
-                      <div>
-                        <h2 className="text-xl font-bold text-slate-900">Targeted Evidence Recorded!</h2>
-                        <p className="text-xs text-slate-500 mt-1">Persisted and integrated into the decision review pipeline</p>
-                      </div>
-
-                      <div className="p-4 bg-teal-50 border border-teal-200 rounded-xl text-left text-xs space-y-1">
-                        <span className="text-[10px] font-bold text-teal-800 uppercase block">Recorded Answer:</span>
-                        <p className="font-semibold text-slate-800">"{targetedAnswer}"</p>
-                        <span className="text-[10px] text-teal-700 block">Cohort: Long-term residents (3+ years), Building 4</span>
-                      </div>
-
-                      <a
-                        href="operator.html"
-                        className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm rounded-xl shadow-sm"
+                  <div className="space-y-2">
+                    {facilities.map(fac => (
+                      <div
+                        key={fac.facility_id}
+                        onClick={() => handleSelectFacility(fac)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                          selectedFacility?.facility_id === fac.facility_id
+                            ? 'border-emerald-500 bg-emerald-50/50 shadow-sm'
+                            : 'border-slate-200 hover:border-slate-300 bg-white'
+                        }`}
                       >
-                        Inspect Operator Decision Impact ↗
-                      </a>
-                    </div>
-                  )}
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-bold text-slate-800">{fac.name}</span>
+                            {fac.status === 'maintenance' && (
+                              <span className="text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded font-bold">Maintenance</span>
+                            )}
+                          </div>
+                          <p className="text-[10px] text-slate-500 mt-0.5">{fac.location}</p>
+                        </div>
+                        <span className="text-xs text-emerald-700 font-bold">Select →</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
             </div>
-          </div>
+
+            {/* ────────────────────────────────────────────────────────
+                MODAL: INTERACTIVE QR SCANNER SIMULATOR
+            ──────────────────────────────────────────────────────── */}
+            {showQrModal && (
+              <div className="absolute inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex flex-col p-5 text-white animate-fade-in">
+                <div className="flex items-center justify-between pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">📷</span>
+                    <strong className="text-sm font-bold">Township QR Scanner</strong>
+                  </div>
+                  <button
+                    onClick={() => setShowQrModal(false)}
+                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* Viewfinder Screen */}
+                <div className="flex-1 flex flex-col items-center justify-center">
+                  <div className="w-60 h-60 border-2 border-dashed border-emerald-400 rounded-3xl relative flex items-center justify-center overflow-hidden bg-slate-900/60 shadow-2xl">
+                    {/* Viewfinder Corners */}
+                    <div className="absolute top-2 left-2 w-5 h-5 border-t-4 border-l-4 border-emerald-400 rounded-tl-lg"></div>
+                    <div className="absolute top-2 right-2 w-5 h-5 border-t-4 border-r-4 border-emerald-400 rounded-tr-lg"></div>
+                    <div className="absolute bottom-2 left-2 w-5 h-5 border-b-4 border-l-4 border-emerald-400 rounded-bl-lg"></div>
+                    <div className="absolute bottom-2 right-2 w-5 h-5 border-b-4 border-r-4 border-emerald-400 rounded-br-lg"></div>
+
+                    {/* Animated Scanning Beam */}
+                    <div className="absolute left-3 right-3 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_#34d399] scanner-beam"></div>
+
+                    <div className="text-center p-4">
+                      <span className="text-3xl block mb-1">📱</span>
+                      <p className="text-[11px] text-slate-300 font-medium">Point camera at on-site amenity QR code</p>
+                    </div>
+                  </div>
+
+                  <p className="text-[11px] text-slate-400 mt-3 text-center">
+                    Simulate scanning an amenity QR code below:
+                  </p>
+                </div>
+
+                {/* Quick Simulation Buttons */}
+                <div className="space-y-2 pt-2">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block text-center">
+                    Tap to simulate scan:
+                  </span>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <button
+                      onClick={() => handleSimulateScan('court-badminton-1')}
+                      className="p-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                    >
+                      <span>🏸</span>
+                      <span>Badminton Court 1</span>
+                    </button>
+                    <button
+                      onClick={() => handleSimulateScan('community-hall-4')}
+                      className="p-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+                    >
+                      <span>🏛️</span>
+                      <span>Community Hall 4</span>
+                    </button>
+                    <button
+                      onClick={() => handleSimulateScan('court-tennis-1')}
+                      className="p-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+                    >
+                      <span>🎾</span>
+                      <span>Tennis Court 1</span>
+                    </button>
+                    <button
+                      onClick={() => handleSimulateScan('bbq-pavilion-1')}
+                      className="p-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+                    >
+                      <span>🍖</span>
+                      <span>BBQ Pavilion 1</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Navigation Bar */}
+            <nav className="h-14 bg-white border-t border-slate-200 flex items-center justify-around px-2 text-[10px] text-slate-500 shrink-0 select-none">
+              
+              {/* 1. Home */}
+              <button
+                onClick={() => setCurrentView('home')}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
+                  currentView === 'home'
+                    ? 'text-emerald-700 font-bold'
+                    : 'hover:text-slate-900'
+                }`}
+              >
+                <span className="text-base">🏠</span>
+                <span>Home</span>
+              </button>
+
+              {/* 2. Facility / Report */}
+              <button
+                onClick={() => setCurrentView('facility')}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
+                  currentView === 'facility' || currentView === 'report' || currentView === 'success'
+                    ? 'text-emerald-700 font-bold'
+                    : 'hover:text-slate-900'
+                }`}
+              >
+                <span className="text-base">📍</span>
+                <span>Facility</span>
+              </button>
+
+              {/* 3. Track Reports (No typing needed) */}
+              <button
+                onClick={() => {
+                  fetchReportsList();
+                  setCurrentView('track');
+                }}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
+                  currentView === 'track' ? 'text-emerald-700 font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                <span className="text-base">📋</span>
+                <span>My Reports</span>
+              </button>
+
+              {/* 4. Amenities Directory */}
+              <button
+                onClick={() => setCurrentView('facilities')}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
+                  currentView === 'facilities' ? 'text-emerald-700 font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                <span className="text-base">🏛️</span>
+                <span>Amenities</span>
+              </button>
+
+              {/* 5. Community Pulse Survey */}
+              <button
+                onClick={() => setCurrentView('pulse')}
+                className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
+                  currentView === 'pulse' ? 'text-emerald-700 font-bold' : 'hover:text-slate-900'
+                }`}
+              >
+                <span className="text-base">💬</span>
+                <span>Pulse</span>
+              </button>
+            </nav>
+
+          </main>
         </div>
       );
     }

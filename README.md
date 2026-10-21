@@ -28,6 +28,55 @@ npm start
 
 ---
 
+## How to Test the System
+
+### 1. Automated Integration & API Test Suite
+Run the automated end-to-end test suite using Node's native test runner:
+
+```powershell
+npm test
+```
+
+This verifies:
+- Serving of Operator & Resident static portals (`/operator.html`, `/resident.html`).
+- Facility catalog overview and pre-seeded SQLite records (`/api/facilities`).
+- Resident defect report submission in the strictly required `unverified` state.
+- Facilities technician on-site physical inspection and state transition to `verified_fault`.
+- Automatic dispatch of maintenance work orders (`MNT-...`).
+- Decision review update with diagnostic sufficiency and precedent case retrieval.
+- Intervention plan selection and Operator approval recording.
+- Targeted resident survey collection and cohort response processing.
+
+### 2. Manual / Interactive Verification Walkthrough
+
+#### Flow A: Resident Fault Reporting & Staff Verification
+1. Start the server: `npm start` (if not already running).
+2. Open Resident QR View: [http://localhost:3000/resident.html?facilityId=court-badminton-1](http://localhost:3000/resident.html?facilityId=court-badminton-1).
+3. Select **Lighting** fault, type a description (e.g. `Court 2 luminaire flickering`), and click **Submit Report**.
+4. Note the generated reference ID (`REP-...`) and notice the badge indicates **Pending Staff Verification**.
+5. Switch to Operator Command Center: [http://localhost:3000/operator.html](http://localhost:3000/operator.html).
+6. Click the **Reports & Maintenance** tab. You will see the new submission listed as `Unverified`.
+7. Click **Inspect on Site** / **Verify Fault** and confirm.
+8. Observe:
+   - A maintenance work order (`MNT-...`) is automatically generated.
+   - The status updates to `Verified Fault`.
+   - The facility review at [http://localhost:3000/operator.html](http://localhost:3000/operator.html) reflects high sufficiency for hardware defect repair.
+
+#### Flow B: Targeted Evidence Survey
+1. Open Targeted Resident Survey: [http://localhost:3000/resident.html?mode=targeted](http://localhost:3000/resident.html?mode=targeted).
+2. Answer the survey question regarding Community Hall scheduling.
+3. Submit and verify confirmation.
+
+#### Flow C: Underlying Decision Intelligence Engine Tests
+To run the 409 unit tests for the core analytical engine (CP1–CP8):
+
+```powershell
+cd Checkpoint-9-Final-Reproducible/amenity-cp2
+npm test
+```
+
+---
+
 ## How It Works
 
 1. **Local SQLite Database (`data/adi-system.sqlite`):**

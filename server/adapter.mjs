@@ -515,9 +515,9 @@ export function computeLiveFacilityAnalysis(db, facilityId) {
   if (diagnosisResult.executionState === 'Assessed' && diagnosisResult.diagnoses) {
     formattedDiagnoses = diagnosisResult.diagnoses.map(d => ({
       name: d.name,
-      relativeSupport: d.relativeEvidenceSupport ?? 0,
+      relativeSupport: d.relativeEvidenceSupport != null ? Number(d.relativeEvidenceSupport.toFixed(2)) : 0,
       rawSupport: d.rawEvidenceSupport ?? 0,
-      coverage: Math.round((d.coverage ?? 0) * 100)
+      coverage: Number(((d.coverage ?? 0) * 100).toFixed(2))
     }));
 
     const expl = diagnosisResult.evidenceSufficiency?.explanationSufficiency;

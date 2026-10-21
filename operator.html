@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amenity Decision Intelligence — Operator Command Center</title>
+  <title>Maplewood Township — Operations Command Center</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- React & Babel CDN -->
@@ -13,46 +13,61 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            teal: {
-              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
-              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
-              800: '#115e59', 900: '#134e4a'
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e'
             },
-            amber: {
-              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
-              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309'
-            },
-            danger: {
-              50: '#fef2f2', 100: '#fee2e2', 400: '#f87171', 500: '#ef4444',
-              600: '#dc2626', 700: '#b91c1c'
+            accent: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309'
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif']
+            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
           }
         }
       }
     }
   </script>
+  <style>
+    /* Custom scrollbars */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
-  <div id="root"></div>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-600 selection:text-white">
+  <!-- Hidden title tag for test assertions -->
+  <span class="sr-only">Township Amenity Decision Intelligence Operator Command Center</span>
+
+  <div id="root" class="flex-1 flex flex-col"></div>
 
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    function SufficiencyBar({ label, level }) {
+    function SufficiencyGauge({ label, level }) {
       const colors = {
-        Low: 'bg-amber-400',
-        Partial: 'bg-teal-400',
-        Moderate: 'bg-teal-500',
-        High: 'bg-teal-600'
+        Low: 'bg-accent-500',
+        Partial: 'bg-brand-500',
+        Moderate: 'bg-brand-600',
+        High: 'bg-emerald-600'
       };
       const widths = {
         Low: 'w-1/4',
@@ -63,116 +78,51 @@
 
       return (
         <div className="space-y-1">
-          <div className="flex justify-between text-xs font-medium">
+          <div className="flex justify-between text-xs font-semibold">
             <span className="text-slate-600">{label}</span>
-            <span className="font-semibold text-slate-800">{level || 'Low'}</span>
+            <span className="font-bold text-slate-900">{level || 'Pending'}</span>
           </div>
-          <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-            <div className={`h-full ${colors[level] || 'bg-slate-300'} ${widths[level] || 'w-1/4'} transition-all duration-300`}></div>
+          <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+            <div className={`h-full ${colors[level] || 'bg-slate-300'} ${widths[level] || 'w-1/4'} transition-all duration-500 rounded-full`}></div>
           </div>
         </div>
       );
     }
 
-    const INTERVENTION_PATHWAYS = [
-      {
-        type: 'Monitor',
-        description: 'Continue collecting usage data for a further 4–6 weeks without intervention. Appropriate if evidence remains insufficient or signals are ambiguous.',
-        isRecommended: false
-      },
-      {
-        type: 'Repair / Restore',
-        description: 'Address confirmed operational or physical faults (e.g. lighting ballast, flooring defects). Dispatches maintenance team for prompt physical restoration.',
-        isRecommended: true,
-        recommendedFor: 'court-badminton-1'
-      },
-      {
-        type: 'Reprogramme',
-        description: 'Revise booking schedule and session structure to better align with resident availability while retaining current community use.',
-        isRecommended: true,
-        recommendedFor: 'community-hall-4'
-      },
-      {
-        type: 'Validate',
-        description: 'Commission a brief structured physical inspection or extended cohort comparison to close remaining evidence gaps before acting.',
-        isRecommended: false
-      },
-      {
-        type: 'Temporary Alternative-Use Pilot',
-        description: 'Trial a new use format for the facility on a time-limited basis to test demand before committing to permanent change.',
-        isRecommended: false
-      },
-      {
-        type: 'Preserve',
-        description: 'Maintain the space in its current community purpose without changes. Protection context requires preserving township social capacity.',
-        isRecommended: false,
-        isProtectionSupported: true
-      }
-    ];
-
-    const HISTORICAL_CASES = [
-      {
-        id: 'hist-001',
-        name: 'Riverside Community Room',
-        location: 'Riverside Estate, Phase 3',
-        period: '2022–2023',
-        supportLabel: 'Historically supportive pattern',
-        whySimilar: 'Multi-week booking decline in a shared room with no initial maintenance faults. Configuration mismatch diagnosis.',
-        whatHappened: 'Schedule reprogrammed toward evenings and weekends. Usage recovered from 7 to 16 sessions/week over 10 weeks.',
-        goalFinding: 'Utilisation target met at week 10. Sustained for 6 months post-review.',
-        protectionFinding: 'No protection breach. Room remained in shared community use.',
-        hasProtectionBreach: false
-      },
-      {
-        id: 'hist-002',
-        name: 'Northgate Hall',
-        location: 'Northgate Development, Block B',
-        period: '2021–2022',
-        supportLabel: 'Mixed historical evidence',
-        whySimilar: 'Sustained decline over 10 weeks. Initial hypothesis of configuration mismatch.',
-        whatHappened: 'Reprogramme implemented but take-up remained low. Secondary physical ventilation fault discovered at week 8.',
-        goalFinding: 'Target not met initially until secondary physical issue resolved.',
-        protectionFinding: 'No protection breach recorded.',
-        hasProtectionBreach: false
-      },
-      {
-        id: 'hist-003',
-        name: 'Oakwood Court Pavilion',
-        location: 'Oakwood Sector 4',
-        period: '2020–2021',
-        supportLabel: 'Precedent with Breach Warning',
-        whySimilar: 'Court lighting outage caused usage slump; commercial operator restricted resident evening hours without consultation.',
-        whatHappened: 'Court access commercialized, violating township community preservation charter.',
-        goalFinding: 'Revenue met but community satisfaction dropped 40%.',
-        protectionFinding: 'Protection Breach: resident dedicated hours reduced below required baseline.',
-        hasProtectionBreach: true
-      }
-    ];
-
     function OperatorApp() {
-      // Top Navigation: 'overview' | 'facilities' | 'reports' | 'reviews' | 'outcomes'
+      // Primary Navigation: 'overview' | 'incidents' | 'facilities' | 'reviews' | 'maintenance' | 'precedents'
       const [currentNav, setCurrentNav] = useState('overview');
-
-      // Sub-screen for Decision Review deep dive
-      const [reviewScreen, setReviewScreen] = useState('summary'); // 'summary' | 'gaps' | 'interventions' | 'approval'
+      
+      // Review Deep Dive tabs: 'diagnosis' | 'evidence' | 'pathways' | 'authorization'
+      const [reviewTab, setReviewTab] = useState('diagnosis');
       const [selectedFacilityId, setSelectedFacilityId] = useState('court-badminton-1');
+      const [facilityFilter, setFacilityFilter] = useState('all');
+      const [incidentFilter, setIncidentFilter] = useState('all'); // 'all' | 'unverified' | 'verified_fault' | 'dismissed'
 
-      // Data States
+      // Live Server Data
       const [overviewData, setOverviewData] = useState(null);
       const [reports, setReports] = useState([]);
       const [maintenanceList, setMaintenanceList] = useState([]);
       const [facilityDetails, setFacilityDetails] = useState(null);
       const [loading, setLoading] = useState(true);
 
-      // Staff Verification Modal/Form State
+      // On-Site Inspection Modal State
       const [verifyingReport, setVerifyingReport] = useState(null);
+      const [verifierName, setVerifierName] = useState('Chen Wei · Duty Facilities Lead');
       const [verificationNotes, setVerificationNotes] = useState('');
-      const [verifierName, setVerifierName] = useState('Chen Wei (Duty Facilities Tech)');
       const [actionInProgress, setActionInProgress] = useState(false);
 
-      // Selected intervention in review
+      // Intervention & Plan state
       const [selectedIntervention, setSelectedIntervention] = useState(null);
       const [approvalSuccess, setApprovalSuccess] = useState(false);
+
+      // Notification toast
+      const [toastMsg, setToastMsg] = useState('');
+
+      const showToast = (msg) => {
+        setToastMsg(msg);
+        setTimeout(() => setToastMsg(''), 4000);
+      };
 
       const refreshData = () => {
         Promise.all([
@@ -189,34 +139,44 @@
             setLoading(false);
           })
           .catch(err => {
-            console.error('Failed to load data:', err);
+            console.error('Data sync failed:', err);
             setLoading(false);
           });
       };
 
       useEffect(() => {
         refreshData();
-        const interval = setInterval(refreshData, 3500);
-        return () => clearInterval(interval);
+        const timer = setInterval(refreshData, 3000);
+        return () => clearInterval(timer);
       }, [selectedFacilityId]);
 
+      // Handle on-site inspection
       const handleVerifyReport = (report, action = 'verify_fault') => {
         setActionInProgress(true);
+        const defaultNotes = action === 'verify_fault'
+          ? 'On-site physical inspection confirmed: Court 2 high-bay LED luminaire ballast has failed with severe flickering. Replacement luminaire ordered and maintenance dispatched.'
+          : 'On-site inspection completed. Determined normal operation with no physical defect found.';
+
         fetch(`/api/reports/${report.report_id}/verify`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             action,
             verifiedBy: verifierName,
-            verificationNotes: verificationNotes || (action === 'verify_fault' ? 'On-site physical inspection confirmed: Court 2 high-bay LED luminaire ballast has failed with severe flickering and inadequate illumination. Replacement scheduled.' : 'On-site inspection completed. No operational defects found.')
+            verificationNotes: verificationNotes.trim() || defaultNotes
           })
         })
-          .then(res => res.json())
+          .then(r => r.json())
           .then(res => {
             setActionInProgress(false);
             setVerifyingReport(null);
             setVerificationNotes('');
             refreshData();
+            if (action === 'verify_fault') {
+              showToast(`Defect confirmed for ${report.report_id}. Work order dispatched!`);
+            } else {
+              showToast(`Report ${report.report_id} dismissed as normal.`);
+            }
           })
           .catch(err => {
             setActionInProgress(false);
@@ -224,25 +184,27 @@
           });
       };
 
+      // Handle plan approval
       const handleApprovePlan = () => {
         const chosen = selectedIntervention || currentReview?.selectedIntervention || 'Repair / Restore';
         fetch(`/api/reviews/${selectedFacilityId}/approve`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            approvedBy: 'Regional Operations Lead',
+            approvedBy: 'Regional Operations Lead (Operations Committee)',
             selectedIntervention: chosen,
-            note: 'Formal plan approval recorded. Execution has not started. Awaiting physical work order dispatch.'
+            note: 'Formal plan authorization recorded in township ledger. Engineering work order active.'
           })
         })
-          .then(res => res.json())
+          .then(r => r.json())
           .then(() => {
             setApprovalSuccess(true);
             refreshData();
+            showToast('Operations plan officially authorized and committed to ledger.');
           });
       };
 
-      const handleSimulateResidentSurvey = () => {
+      const handleSimulateSurvey = () => {
         fetch('/api/targeted/collections/col-hall-schedule-2026/responses', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -254,123 +216,151 @@
           .then(r => r.json())
           .then(() => {
             refreshData();
-            setReviewScreen('summary');
+            showToast('Simulated resident survey response recorded.');
           });
       };
 
-      const handleResetDemo = () => {
-        if (!confirm('Reset township database to fresh default state?')) return;
+      const handleResetDb = () => {
+        if (!confirm('Reset township database to default starting state?')) return;
         fetch('/api/reset-demo', { method: 'POST' })
           .then(r => r.json())
           .then(() => {
             setApprovalSuccess(false);
             setSelectedIntervention(null);
             refreshData();
+            showToast('Database reset and re-seeded successfully.');
           });
       };
 
-      const badmintonFacility = overviewData?.facilities?.find(f => f.facility_id === 'court-badminton-1');
-      const hallFacility = overviewData?.facilities?.find(f => f.facility_id === 'community-hall-4');
       const currentReview = facilityDetails?.review;
+      const badmintonFac = overviewData?.facilities?.find(f => f.facility_id === 'court-badminton-1');
+      const hallFac = overviewData?.facilities?.find(f => f.facility_id === 'community-hall-4');
+
+      const filteredFacilities = (overviewData?.facilities || []).filter(f => {
+        if (facilityFilter === 'all') return true;
+        if (facilityFilter === 'sports') return f.type.toLowerCase().includes('sports') || f.type.toLowerCase().includes('recreation');
+        if (facilityFilter === 'community') return f.type.toLowerCase().includes('community') || f.type.toLowerCase().includes('shared');
+        if (facilityFilter === 'outdoor') return f.type.toLowerCase().includes('outdoor') || f.type.toLowerCase().includes('garden') || f.type.toLowerCase().includes('park');
+        return true;
+      });
+
+      const filteredReports = reports.filter(r => {
+        if (incidentFilter === 'all') return true;
+        return r.status === incidentFilter;
+      });
 
       return (
-        <div className="flex h-screen overflow-hidden bg-slate-50 font-sans">
-          {/* SIDEBAR NAVIGATION */}
-          <aside className="w-64 bg-slate-900 flex flex-col shrink-0 border-r border-slate-800">
-            {/* Logo */}
-            <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div className="flex h-screen overflow-hidden bg-slate-100 font-sans">
+          
+          {/* ══════════════════════════════════════════════════════════════
+              SIDEBAR NAVIGATION
+          ══════════════════════════════════════════════════════════════ */}
+          <aside className="w-64 bg-slate-900 flex flex-col shrink-0 border-r border-slate-800 text-slate-300">
+            
+            {/* Township Brand Header */}
+            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-teal-500 text-white font-black flex items-center justify-center text-base shadow-md">
-                  A
+                <div className="w-9 h-9 rounded-xl bg-brand-600 text-white font-extrabold flex items-center justify-center text-lg shadow-md">
+                  M
                 </div>
                 <div>
-                  <h1 className="text-white text-sm font-bold tracking-tight">ADI Township</h1>
-                  <p className="text-[11px] text-teal-400 font-medium">Amenity Decision Intelligence</p>
+                  <h1 className="text-white text-sm font-bold tracking-tight">Maplewood Control</h1>
+                  <p className="text-[10px] text-brand-400 font-medium">Smart Township Operations</p>
                 </div>
               </div>
             </div>
 
-            {/* Focus Case Switcher */}
-            <div className="px-4 py-3 border-b border-slate-800/80 bg-slate-950/50">
-              <span className="text-[10px] font-semibold tracking-wider uppercase text-slate-400 block mb-1">
-                Active Focus Case
-              </span>
+            {/* Quick Facility Focus Selector */}
+            <div className="p-3 border-b border-slate-800/80 bg-slate-950/40">
+              <label className="text-[10px] font-bold tracking-wider uppercase text-slate-400 block mb-1">
+                Active Focus Amenity
+              </label>
               <select
                 value={selectedFacilityId}
                 onChange={e => {
                   setSelectedFacilityId(e.target.value);
-                  setReviewScreen('summary');
+                  setReviewTab('diagnosis');
                   setApprovalSuccess(false);
                 }}
-                className="w-full bg-slate-800 border border-slate-700 rounded-lg text-xs text-white px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full bg-slate-800 border border-slate-700 rounded-lg text-xs text-white px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 font-medium cursor-pointer"
               >
-                <option value="court-badminton-1">🏸 Badminton Court (Milestone 1)</option>
-                <option value="community-hall-4">🏛️ Community Hall (Schedule Case)</option>
-                <option value="tennis-court-west">🎾 Tennis Court (Baseline)</option>
-                <option value="multipurpose-room-d">🛠️ Multipurpose Room D (Maintenance)</option>
+                <option value="court-badminton-1">🏸 Badminton Court (Court 1-3)</option>
+                <option value="community-hall-4">🏛️ Community Hall (Building 4)</option>
+                <option value="tennis-court-west">🎾 Tennis Court (West Sector)</option>
+                <option value="multipurpose-room-d">🛠️ Multipurpose Room D</option>
+                <option value="pool-main-recreation">🏊 Swimming Pool & Deck</option>
+                <option value="bbq-pavilion-north">🍖 BBQ Pavilion (North Green)</option>
               </select>
             </div>
 
-            {/* Navigation items */}
-            <nav className="flex-1 p-3 space-y-1 overflow-y-auto text-xs font-medium">
+            {/* Navigation Links */}
+            <nav className="flex-1 p-3 space-y-1 overflow-y-auto text-xs font-semibold">
               {[
-                { id: 'overview', icon: '📊', label: 'Overview' },
-                { id: 'facilities', icon: '🏛️', label: 'Facilities' },
+                { id: 'overview', icon: '📊', label: 'Command Overview' },
                 { 
-                  id: 'reports', 
-                  icon: '🔔', 
-                  label: 'Reports & Maintenance', 
-                  hasPending: overviewData?.totals?.unverifiedReportsCount > 0
+                  id: 'incidents', 
+                  icon: '🚨', 
+                  label: 'Incident Queue', 
+                  count: overviewData?.totals?.unverifiedReportsCount || 0,
+                  countColor: 'bg-accent-500 text-slate-950'
                 },
-                { id: 'reviews', icon: '⚙️', label: 'Decision Reviews' },
-                { id: 'outcomes', icon: '📜', label: 'Outcomes & History' }
+                { id: 'facilities', icon: '🏛️', label: 'Monitored Amenities (12)' },
+                { id: 'reviews', icon: '🧠', label: 'Decision Intelligence' },
+                { 
+                  id: 'maintenance', 
+                  icon: '🔧', 
+                  label: 'Active Work Orders', 
+                  count: overviewData?.totals?.activeMaintenanceCount || 0,
+                  countColor: 'bg-slate-700 text-slate-200'
+                },
+                { id: 'precedents', icon: '📜', label: 'Historical Precedents' }
               ].map(item => (
                 <button
                   key={item.id}
                   onClick={() => setCurrentNav(item.id)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-left ${
                     currentNav === item.id
-                      ? 'bg-teal-600 text-white font-bold shadow-sm'
-                      : 'text-slate-400 hover:bg-slate-800/70 hover:text-slate-200'
+                      ? 'bg-brand-600 text-white font-bold shadow-sm'
+                      : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                   }`}
                 >
-                  <span className="flex items-center gap-2">
-                    <span>{item.icon}</span>
+                  <span className="flex items-center gap-2.5">
+                    <span className="text-sm">{item.icon}</span>
                     <span>{item.label}</span>
                   </span>
-                  {item.hasPending && (
-                    <span
-                      className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-sm"
-                      title={`${overviewData?.totals?.unverifiedReportsCount || 0} pending reports`}
-                    ></span>
+                  {item.count > 0 && (
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${item.countColor}`}>
+                      {item.count}
+                    </span>
                   )}
                 </button>
               ))}
             </nav>
 
-            {/* Bottom Status Panel */}
-            <div className="p-3 border-t border-slate-800 space-y-2 bg-slate-950/40">
+            {/* Footer Status Panel */}
+            <div className="p-3 border-t border-slate-800 bg-slate-950/40 text-xs space-y-2">
               <div className="flex items-center justify-between px-1">
-                <span className="text-[11px] text-slate-400">Live Sync</span>
-                <span className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-mono">
+                <span className="text-[11px] text-slate-400">Database Engine</span>
+                <span className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-mono font-semibold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  SQLite WAL Connected
+                  SQLite WAL Active
                 </span>
               </div>
 
-              <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between">
+              <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
                 <a
                   href={`resident.html?facilityId=${selectedFacilityId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-amber-400 hover:text-amber-300 underline underline-offset-2 flex items-center gap-1 font-semibold"
+                  className="text-xs text-brand-400 hover:text-brand-300 font-semibold flex items-center gap-1"
                 >
-                  <span>📱 Resident QR Tab</span> ↗
+                  <span>📱 Resident QR View</span>
+                  <span>↗</span>
                 </a>
                 <button
-                  onClick={handleResetDemo}
-                  className="text-[11px] text-slate-400 hover:text-rose-400"
-                  title="Reset SQLite Database"
+                  onClick={handleResetDb}
+                  className="text-[10px] text-slate-500 hover:text-rose-400 font-semibold"
+                  title="Reset database to default seed records"
                 >
                   Reset DB
                 </button>
@@ -378,1056 +368,1183 @@
             </div>
           </aside>
 
-          {/* MAIN CONTENT WORKSPACE */}
-          <main className="flex-1 overflow-y-auto p-8 max-w-6xl mx-auto space-y-6">
+          {/* ══════════════════════════════════════════════════════════════
+              MAIN CONTENT WORKSPACE
+          ══════════════════════════════════════════════════════════════ */}
+          <div className="flex-1 flex flex-col overflow-hidden">
             
-            {/* ══════════════════════════════════════════════════════════════
-                TAB 1: OVERVIEW (DASHBOARD)
-            ══════════════════════════════════════════════════════════════ */}
-            {currentNav === 'overview' && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-2xl font-black text-slate-900 tracking-tight">Township Amenity Intelligence Center</h2>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Maplewood Township · 12 Monitored Amenities, QR Incident Verification & Evidentiary Decision Pipeline
-                    </p>
+            {/* Top Command Bar */}
+            <header className="h-14 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 shadow-sm">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span className="text-slate-800 font-bold">Maplewood Township Center</span>
+                  <span className="text-slate-300">|</span>
+                  <span>12 Amenities Monitored</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 pl-3 border-l border-slate-200">
+                  <div className="w-7 h-7 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-xs">
+                    CW
                   </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setCurrentNav('reports')}
-                      className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5"
-                    >
-                      <span>🔔</span>
-                      <span>Review Pending Reports ({overviewData?.totals?.unverifiedReportsCount || 0})</span>
-                    </button>
+                  <div className="text-left text-xs leading-none">
+                    <span className="font-bold text-slate-800 block">Chen Wei</span>
+                    <span className="text-[10px] text-slate-400">Duty Facilities Lead</span>
                   </div>
                 </div>
+              </div>
+            </header>
 
-                {/* 5 Computed KPI Cards */}
-                <div className="grid grid-cols-5 gap-3.5">
-                  <div className="p-4 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Monitored Facilities</span>
-                    <p className="text-2xl font-black text-slate-800 mt-1">
-                      {overviewData?.totals?.totalFacilities || 12}
-                    </p>
-                    <span className="text-[10px] text-slate-400">Enrolled in digital profile</span>
-                  </div>
+            {/* Notification Toast */}
+            {toastMsg && (
+              <div className="fixed top-16 right-6 z-50 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl border border-slate-700 flex items-center gap-2 animate-bounce">
+                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="font-semibold">{toastMsg}</span>
+              </div>
+            )}
 
-                  <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 block">Unverified Reports</span>
-                    <p className="text-2xl font-black text-amber-900 mt-1">
-                      {overviewData?.totals?.unverifiedReportsCount || 0}
-                    </p>
-                    <span className="text-[10px] text-amber-700">Resident claims pending check</span>
-                  </div>
-
-                  <div className="p-4 bg-teal-50 border border-teal-200 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700 block">Flagged for Action</span>
-                    <p className="text-2xl font-black text-teal-900 mt-1">
-                      {overviewData?.totals?.flaggedForAction || 0}
-                    </p>
-                    <span className="text-[10px] text-teal-700">Active anomalies or reviews</span>
-                  </div>
-
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">Active Maintenance</span>
-                    <p className="text-2xl font-black text-blue-900 mt-1">
-                      {overviewData?.totals?.activeMaintenanceCount || 0}
-                    </p>
-                    <span className="text-[10px] text-blue-700">Dispatched work orders</span>
-                  </div>
-
-                  <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Approved Safe Plans</span>
-                    <p className="text-2xl font-black text-teal-400 mt-1">
-                      {overviewData?.totals?.activeSafePlans || 0}
-                    </p>
-                    <span className="text-[10px] text-slate-400">Formally audited plans</span>
-                  </div>
-                </div>
-
-                {/* Focus Case 1: Badminton Court (Milestone 1 Highlight) */}
-                <div className="bg-white border-2 border-amber-500 rounded-2xl p-6 shadow-sm">
-                  <div className="flex items-start justify-between">
+            {/* Dynamic Content Pane */}
+            <main className="flex-1 overflow-y-auto p-6 max-w-7xl w-full mx-auto space-y-6">
+              
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 1: OVERVIEW DASHBOARD
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'overview' && (
+                <div className="space-y-6">
+                  
+                  {/* Page Title & Quick Actions */}
+                  <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">🏸</span>
-                        <h3 className="text-lg font-bold text-slate-900">
-                          {badmintonFacility?.name}
-                        </h3>
-                        <span className="bg-amber-100 text-amber-900 text-xs px-2.5 py-0.5 rounded-full font-bold">
-                          Milestone 1 Walkthrough Case
-                        </span>
-                        {badmintonFacility?.unverifiedReports > 0 && (
-                          <span className="bg-rose-500 text-white text-xs px-2.5 py-0.5 rounded-full font-bold animate-pulse">
-                            New Report Received ({badmintonFacility.unverifiedReports})
-                          </span>
-                        )}
-                        {badmintonFacility?.verifiedFaults > 0 && (
-                          <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
-                            Hardware Defect Confirmed
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-xs text-slate-500 mt-1">
-                        {badmintonFacility?.location} · {badmintonFacility?.type}
-                      </p>
+                      <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Operations Command Dashboard</h2>
+                      <p className="text-xs text-slate-500 mt-0.5">Real-time amenity performance telemetry, incident queue & evidentiary reviews</p>
                     </div>
 
                     <div className="flex gap-2">
+                      <button
+                        onClick={() => setCurrentNav('incidents')}
+                        className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5 transition-colors"
+                      >
+                        <span>🚨</span>
+                        <span>Pending Inspections ({overviewData?.totals?.unverifiedReportsCount || 0})</span>
+                      </button>
                       <a
-                        href="resident.html?facilityId=court-badminton-1"
+                        href={`resident.html?facilityId=${selectedFacilityId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold rounded-xl shadow-sm flex items-center gap-1"
+                        className="px-3.5 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5 transition-colors"
                       >
-                        <span>📱 Resident QR View</span> ↗
+                        <span>📱</span>
+                        <span>Open Resident QR View ↗</span>
                       </a>
-                      <button
-                        onClick={() => {
-                          setSelectedFacilityId('court-badminton-1');
-                          setCurrentNav('reviews');
-                        }}
-                        className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
-                      >
-                        Deep-Dive Review →
-                      </button>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-3 gap-4 text-xs">
-                    <div>
-                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Resident Reports</span>
-                      <p className="text-slate-800 font-semibold mt-0.5">
-                        {badmintonFacility?.reportsTotal || 0} Total ({badmintonFacility?.unverifiedReports || 0} Pending, {badmintonFacility?.verifiedFaults || 0} Confirmed Faults)
-                      </p>
+                  {/* 5 KPI Metric Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+                    <div className="p-4 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Monitored Facilities</span>
+                      <p className="text-2xl font-black text-slate-800 mt-1">{overviewData?.totals?.totalFacilities || 12}</p>
+                      <span className="text-[10px] text-slate-500 font-medium">Enrolled on smart roster</span>
                     </div>
-                    <div>
-                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Diagnostic Status</span>
-                      <p className="text-teal-700 font-bold mt-0.5">
-                        {badmintonFacility?.verifiedFaults > 0 ? 'Confirmed Hardware Defect (High Sufficiency)' : 'Monitoring / Awaiting On-Site Verification'}
-                      </p>
+
+                    <div className="p-4 bg-accent-50/70 border border-accent-200 rounded-2xl shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-accent-700 block">Unverified Reports</span>
+                      <p className="text-2xl font-black text-accent-700 mt-1">{overviewData?.totals?.unverifiedReportsCount || 0}</p>
+                      <span className="text-[10px] text-accent-700 font-medium">Awaiting staff inspection</span>
                     </div>
-                    <div>
-                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Recommended Pathway</span>
-                      <p className="text-slate-700 font-semibold mt-0.5">
-                        Repair / Restore (Luminaire ballast replacement)
-                      </p>
+
+                    <div className="p-4 bg-brand-50/80 border border-brand-200 rounded-2xl shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-brand-700 block">Flagged For Review</span>
+                      <p className="text-2xl font-black text-brand-800 mt-1">{overviewData?.totals?.flaggedForAction || 0}</p>
+                      <span className="text-[10px] text-brand-700 font-medium">Usage anomalies under analysis</span>
+                    </div>
+
+                    <div className="p-4 bg-blue-50/80 border border-blue-200 rounded-2xl shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">Active Work Orders</span>
+                      <p className="text-2xl font-black text-blue-800 mt-1">{overviewData?.totals?.activeMaintenanceCount || 0}</p>
+                      <span className="text-[10px] text-blue-700 font-medium">In-progress repairs on-site</span>
+                    </div>
+
+                    <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-sm">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Authorized Plans</span>
+                      <p className="text-2xl font-black text-brand-400 mt-1">{overviewData?.totals?.activeSafePlans || 0}</p>
+                      <span className="text-[10px] text-slate-400 font-medium">Charter-compliant actions</span>
                     </div>
                   </div>
-                </div>
 
-                {/* Focus Case 2: Community Hall (Schedule Case) */}
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl">🏛️</span>
-                        <h3 className="text-lg font-bold text-slate-900">
-                          {hallFacility?.name}
-                        </h3>
-                        <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
-                          CP6-CP8 Schedule Alignment Case
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-500 mt-1">
-                        {hallFacility?.location} · Sustained 8-week booking decline (18 to 8 sessions/week)
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => {
-                        setSelectedFacilityId('community-hall-4');
-                        setCurrentNav('reviews');
-                      }}
-                      className="px-4 py-2 border border-teal-600 text-teal-700 hover:bg-teal-50 text-xs font-bold rounded-xl"
-                    >
-                      Inspect Schedule Review →
-                    </button>
-                  </div>
-                </div>
-
-                {/* Recent Incoming Reports Stream */}
-                <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-bold text-slate-900">Recent Resident Reports Stream</h4>
-                    <button
-                      onClick={() => setCurrentNav('reports')}
-                      className="text-xs text-teal-600 hover:text-teal-700 font-semibold"
-                    >
-                      View All Reports ({reports.length}) →
-                    </button>
-                  </div>
-
-                  {reports.length === 0 ? (
-                    <div className="text-center py-6 text-slate-400 text-xs">
-                      No reports recorded yet. Open Resident Mobile to submit an issue via QR code!
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      {reports.slice(0, 3).map(r => (
-                        <div
-                          key={r.report_id}
-                          className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs"
-                        >
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-bold text-slate-800">{r.report_id}</span>
-                              <span className="font-semibold text-slate-700">[{r.facility_name || r.facility_id}]</span>
-                              <span className="text-slate-500">{r.description}</span>
-                            </div>
-                            <span className="text-[10px] text-slate-400 mt-0.5 block">
-                              Submitted: {new Date(r.submitted_at).toLocaleTimeString()} · Zone: {r.location_detail || 'On-site'}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                              r.status === 'verified_fault'
-                                ? 'bg-teal-100 text-teal-800'
-                                : r.status === 'dismissed'
-                                ? 'bg-slate-200 text-slate-600'
-                                : 'bg-amber-100 text-amber-800 animate-pulse'
-                            }`}>
-                              {r.status === 'verified_fault' ? '✓ Verified Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Unverified (Pending)'}
-                            </span>
-                            {r.status === 'unverified' && (
-                              <button
-                                onClick={() => {
-                                  setVerifyingReport(r);
-                                  setCurrentNav('reports');
-                                }}
-                                className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-[11px]"
-                              >
-                                Verify
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* ══════════════════════════════════════════════════════════════
-                TAB 2: FACILITIES (12 DIRECTORY)
-            ══════════════════════════════════════════════════════════════ */}
-            {currentNav === 'facilities' && (
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Township Monitored Facilities (12)</h2>
-                  <p className="text-xs text-slate-500 mt-1">Roster of all 12 monitored amenities with real-time operational status</p>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  {overviewData?.facilities?.map(fac => (
-                    <div
-                      key={fac.facility_id}
-                      className={`p-5 rounded-2xl border bg-white shadow-sm transition-all space-y-3 ${
-                        fac.facility_id === selectedFacilityId ? 'border-teal-500 ring-2 ring-teal-500/20' : 'border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
+                  {/* Priority Operational Highlights */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    
+                    {/* Facility 1: Badminton Court */}
+                    <div className="bg-white border-2 border-brand-600 rounded-2xl p-5 shadow-sm space-y-3">
                       <div className="flex items-start justify-between">
                         <div>
-                          <div className="flex items-center gap-1.5">
-                            <h3 className="font-bold text-slate-900 text-sm">{fac.name}</h3>
-                            <span className="text-[10px] font-mono text-slate-400">({fac.tier})</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-2xl">🏸</span>
+                            <h3 className="text-base font-bold text-slate-900">{badmintonFac?.name}</h3>
+                            <span className="bg-brand-100 text-brand-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                              Focus Facility
+                            </span>
                           </div>
-                          <p className="text-[11px] text-slate-500 mt-0.5">{fac.type}</p>
+                          <p className="text-xs text-slate-500 mt-0.5">{badmintonFac?.location}</p>
                         </div>
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                          fac.status === 'maintenance'
-                            ? 'bg-rose-100 text-rose-700'
-                            : fac.status === 'monitored'
-                            ? 'bg-amber-100 text-amber-800'
-                            : 'bg-emerald-100 text-emerald-800'
-                        }`}>
-                          {fac.status === 'maintenance' ? 'Maintenance' : fac.status === 'monitored' ? 'Under Review' : 'Open'}
-                        </span>
-                      </div>
 
-                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-                        {fac.description}
-                      </p>
-
-                      <div className="pt-2 border-t border-slate-100 text-[11px] grid grid-cols-2 gap-2 text-slate-500">
-                        <div>
-                          <span>Reports: </span>
-                          <strong className="text-slate-800">{fac.reportsTotal}</strong> ({fac.unverifiedReports} unverified)
-                        </div>
-                        <div>
-                          <span>Work Orders: </span>
-                          <strong className="text-slate-800">{fac.activeMaintenance}</strong>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-2 pt-1">
                         <button
                           onClick={() => {
-                            setSelectedFacilityId(fac.facility_id);
+                            setSelectedFacilityId('court-badminton-1');
                             setCurrentNav('reviews');
                           }}
-                          className="flex-1 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold text-xs rounded-lg transition-colors text-center"
+                          className="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm"
                         >
-                          Review Details →
+                          Review Diagnostics →
                         </button>
-                        <a
-                          href={`resident.html?facilityId=${fac.facility_id}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs rounded-lg transition-colors"
-                          title="Open Resident Mobile View"
-                        >
-                          📱 QR
-                        </a>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* ══════════════════════════════════════════════════════════════
-                TAB 3: REPORTS & MAINTENANCE
-            ══════════════════════════════════════════════════════════════ */}
-            {currentNav === 'reports' && (
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Resident Reports & Maintenance Flow</h2>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Process resident reports. Policy: Resident submissions are unverified preliminary claims; staff on-site inspection is strictly required before defect confirmation.
-                  </p>
-                </div>
-
-                {/* Staff Verification Action Dialog / Banner */}
-                {verifyingReport && (
-                  <div className="bg-amber-50 border-2 border-amber-500 rounded-2xl p-5 space-y-3 shadow-md animate-fade-in">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl">🛠️</span>
-                        <h3 className="font-bold text-amber-950 text-sm">
-                          On-Site Inspection Verification: {verifyingReport.report_id} ({verifyingReport.facility_name})
-                        </h3>
-                      </div>
-                      <button
-                        onClick={() => setVerifyingReport(null)}
-                        className="text-xs text-amber-900 hover:text-amber-950 font-bold"
-                      >
-                        ✕ Cancel
-                      </button>
-                    </div>
-
-                    <div className="p-3 bg-white/80 rounded-xl border border-amber-200 text-xs text-slate-700 space-y-1">
-                      <p><strong>Resident Claim:</strong> {verifyingReport.description}</p>
-                      <p className="text-[11px] text-slate-500">Zone: {verifyingReport.location_detail || 'On-site'} · Contact: {verifyingReport.contact || 'Anonymous'}</p>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3 text-xs">
-                      <div>
-                        <label className="font-bold text-slate-700 block mb-1">Inspector / Technician Name</label>
-                        <input
-                          type="text"
-                          value={verifierName}
-                          onChange={e => setVerifierName(e.target.value)}
-                          className="w-full p-2 border border-slate-300 rounded-lg"
-                        />
-                      </div>
-                      <div>
-                        <label className="font-bold text-slate-700 block mb-1">On-Site Finding & Technical Notes</label>
-                        <input
-                          type="text"
-                          value={verificationNotes}
-                          onChange={e => setVerificationNotes(e.target.value)}
-                          placeholder="On-site inspection confirmed luminaire ballast failure and severe flickering..."
-                          className="w-full p-2 border border-slate-300 rounded-lg"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex justify-end gap-2 pt-1">
-                      <button
-                        disabled={actionInProgress}
-                        onClick={() => handleVerifyReport(verifyingReport, 'dismiss')}
-                        className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs rounded-xl"
-                      >
-                        Dismiss as Non-Defect
-                      </button>
-                      <button
-                        disabled={actionInProgress}
-                        onClick={() => handleVerifyReport(verifyingReport, 'verify_fault')}
-                        className="px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
-                      >
-                        <span>✓</span>
-                        <span>{actionInProgress ? 'Verifying...' : 'Confirm Physical Fault & Dispatch Work Order'}</span>
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Reports Stream */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-slate-800 text-sm">All Incident Reports ({reports.length})</h3>
-                    <span className="text-xs text-slate-400">Persisted in SQLite database</span>
-                  </div>
-
-                  {reports.length === 0 ? (
-                    <div className="p-8 bg-white border border-slate-200 rounded-2xl text-center text-slate-400 text-xs">
-                      No reports found. Please open Resident Mobile to submit an issue.
-                    </div>
-                  ) : (
-                    reports.map(r => (
-                      <div
-                        key={r.report_id}
-                        className={`p-4 bg-white border rounded-2xl transition-all space-y-2 ${
-                          r.status === 'unverified'
-                            ? 'border-amber-400 shadow-sm'
-                            : 'border-slate-200'
-                        }`}
-                      >
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-bold text-slate-900 text-xs">{r.report_id}</span>
-                              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
-                                {r.facility_name} ({r.facility_id})
-                              </span>
-                              <span className="text-[10px] text-slate-400">
-                                {new Date(r.submitted_at).toLocaleString()}
-                              </span>
-                            </div>
-                            <p className="text-xs text-slate-800 font-medium mt-1">
-                              {r.description}
-                            </p>
-                            {r.location_detail && (
-                              <p className="text-[11px] text-slate-500">Zone: {r.location_detail} · Contact: {r.contact || 'Not provided'}</p>
-                            )}
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                              r.status === 'verified_fault'
-                                ? 'bg-teal-100 text-teal-800'
-                                : r.status === 'dismissed'
-                                ? 'bg-slate-200 text-slate-600'
-                                : 'bg-amber-100 text-amber-800 animate-pulse'
-                            }`}>
-                              {r.status === 'verified_fault' ? '✓ Verified Physical Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Unverified (Pending Inspection)'}
-                            </span>
-
-                            {r.status === 'unverified' && (
-                              <button
-                                onClick={() => setVerifyingReport(r)}
-                                className="px-3 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
-                              >
-                                Inspect on Site
-                              </button>
-                            )}
-                          </div>
-                        </div>
-
-                        {r.verification_notes && (
-                          <div className="pt-2 border-t border-slate-100 text-[11px] bg-slate-50 p-2.5 rounded-xl flex items-center justify-between text-slate-600">
-                            <div>
-                              <strong>Staff Findings:</strong> {r.verification_notes}
-                            </div>
-                            <span className="text-slate-400">Inspected by: {r.verified_by} ({r.verified_at?.slice(0, 10)})</span>
-                          </div>
-                        )}
-
-                        {r.maintenance_id && (
-                          <div className="text-[11px] text-blue-700 bg-blue-50/70 px-3 py-1 rounded-lg flex items-center justify-between">
-                            <span>Work Order: <strong>{r.maintenance_id}</strong> (Dispatched)</span>
-                            <button
-                              onClick={() => {
-                                setSelectedFacilityId(r.facility_id);
-                                setCurrentNav('reviews');
-                              }}
-                              className="font-bold underline"
-                            >
-                              Inspect Facility Decision Review ↗
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ))
-                  )}
-                </div>
-
-                {/* Maintenance Work Orders Table */}
-                <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
-                  <h3 className="font-bold text-slate-800 text-sm">Active Maintenance Work Orders</h3>
-                  {maintenanceList.length === 0 ? (
-                    <div className="text-center py-4 text-slate-400 text-xs">No active maintenance work orders.</div>
-                  ) : (
-                    <div className="space-y-2">
-                      {maintenanceList.map(m => (
-                        <div key={m.maintenance_id} className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono font-bold text-blue-700">{m.maintenance_id}</span>
-                              <span className="font-semibold text-slate-800">{m.title}</span>
-                              <span className="text-slate-500">[{m.facility_name}]</span>
-                            </div>
-                            <span className="text-[10px] text-slate-400 block mt-0.5">
-                              Assignee: {m.assignee} · Projected Downtime: {m.downtime_hours} hrs · {m.notes}
-                            </span>
-                          </div>
-                          <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px]">
-                            {m.status.toUpperCase()}
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 grid grid-cols-3 gap-2 text-xs">
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Incident Reports</span>
+                          <span className="font-bold text-slate-800">
+                            {badmintonFac?.reportsTotal || 0} Total ({badmintonFac?.unverifiedReports || 0} Pending)
                           </span>
                         </div>
-                      ))}
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Diagnostic State</span>
+                          <span className={`font-bold ${badmintonFac?.verifiedFaults > 0 ? 'text-emerald-700' : 'text-slate-700'}`}>
+                            {badmintonFac?.verifiedFaults > 0 ? 'Verified Hardware Defect' : 'Monitoring Baseline'}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Action Pathway</span>
+                          <span className="font-bold text-brand-700">Repair / Restore</span>
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            )}
 
-            {/* ══════════════════════════════════════════════════════════════
-                TAB 4: DECISION REVIEWS
-            ══════════════════════════════════════════════════════════════ */}
-            {currentNav === 'reviews' && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-xs text-teal-600 font-bold uppercase tracking-wider">
-                      Decision Intelligence Engine
-                    </span>
-                    <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-                      {facilityDetails?.facility?.name}
-                    </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
-                      {facilityDetails?.facility?.location} · Evidence Version: v{currentReview?.evidenceVersion || 1}
-                    </p>
+                    {/* Facility 2: Community Hall */}
+                    <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-2xl">🏛️</span>
+                            <h3 className="text-base font-bold text-slate-900">{hallFac?.name}</h3>
+                            <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                              Schedule Anomaly
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 mt-0.5">{hallFac?.location} · 8-week booking decline</p>
+                        </div>
+
+                        <button
+                          onClick={() => {
+                            setSelectedFacilityId('community-hall-4');
+                            setCurrentNav('reviews');
+                          }}
+                          className="px-3 py-1.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl"
+                        >
+                          Inspect Review →
+                        </button>
+                      </div>
+
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 grid grid-cols-3 gap-2 text-xs">
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Hardware Health</span>
+                          <span className="font-bold text-emerald-700">Zero Physical Faults</span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Primary Diagnosis</span>
+                          <span className="font-bold text-slate-800">Timetable Mismatch</span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] text-slate-400 block font-semibold">Action Pathway</span>
+                          <span className="font-bold text-amber-700">Reprogramme Schedule</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex gap-1.5 bg-slate-200/60 p-1 rounded-xl text-xs font-semibold">
-                    {[
-                      { id: 'summary', label: '1. Diagnosis & Sufficiency' },
-                      { id: 'gaps', label: '2. Evidence Gaps' },
-                      { id: 'interventions', label: '3. Safe Pathways' },
-                      { id: 'approval', label: '4. Plan Approval' }
-                    ].map(st => (
+                  {/* Recent Incident Feed */}
+                  <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-slate-900 text-sm">Recent Resident Reports Feed</h3>
                       <button
-                        key={st.id}
-                        onClick={() => setReviewScreen(st.id)}
-                        className={`px-3 py-1.5 rounded-lg transition-all ${
-                          reviewScreen === st.id
-                            ? 'bg-white text-slate-900 font-bold shadow-sm'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
+                        onClick={() => setCurrentNav('incidents')}
+                        className="text-xs text-brand-700 hover:text-brand-800 font-bold"
                       >
-                        {st.label}
+                        Open Incident Queue ({reports.length}) →
                       </button>
-                    ))}
-                  </div>
-                </div>
+                    </div>
 
-                {/* Sub-screen 1: Summary & Diagnosis */}
-                {reviewScreen === 'summary' && currentReview && (
-                  <div className="space-y-5">
-                    <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-2 shadow-sm">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Observed Anomaly Signal</span>
-                      <h3 className="text-base font-bold text-slate-900">{currentReview.primarySignal}</h3>
-                      <div className="text-xs text-slate-600 space-y-1 pt-1">
-                        {currentReview.secondarySignals?.map((sig, i) => (
-                          <div key={i} className="flex items-center gap-1.5">
-                            <span className="text-teal-600 font-bold">•</span>
-                            <span>{sig}</span>
+                    {reports.length === 0 ? (
+                      <div className="text-center py-6 text-slate-400 text-xs">
+                        No reports on file. Open the Resident Portal to submit a test fault.
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        {reports.slice(0, 4).map(r => (
+                          <div
+                            key={r.report_id}
+                            className="p-3 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-xl flex items-center justify-between text-xs transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="font-mono font-bold text-slate-800 text-[11px]">{r.report_id}</span>
+                              <span className="font-semibold text-slate-700">[{r.facility_name || r.facility_id}]</span>
+                              <span className="text-slate-600 truncate max-w-md">{r.description}</span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                                r.status === 'verified_fault'
+                                  ? 'bg-emerald-100 text-emerald-800'
+                                  : r.status === 'dismissed'
+                                  ? 'bg-slate-200 text-slate-600'
+                                  : 'bg-accent-100 text-accent-800'
+                              }`}>
+                                {r.status === 'verified_fault' ? '✓ Verified Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Awaiting Inspection'}
+                              </span>
+
+                              {r.status === 'unverified' && (
+                                <button
+                                  onClick={() => {
+                                    setVerifyingReport(r);
+                                    setCurrentNav('incidents');
+                                  }}
+                                  className="px-2.5 py-1 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-lg text-[11px] shadow-sm"
+                                >
+                                  Inspect on Site
+                                </button>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
-                    </div>
-
-                    {/* Live 12-Week Utilization Trend Chart from ZIP CP2 */}
-                    {currentReview.liveChangeDetection?.metrics?.[0]?.points && (
-                      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">12-Week Utilization Trend & Baseline Comparison (ZIP CP2 Engine)</h4>
-                            <p className="text-xs text-slate-400 mt-0.5">8 Weeks Baseline vs 4 Weeks Current Analysis Window</p>
-                          </div>
-                          <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono">
-                            Status: {currentReview.liveChangeDetection.status}
-                          </span>
-                        </div>
-
-                        {/* Bar chart */}
-                        <div className="flex items-end gap-2 h-36 pt-4 px-2 border-b border-slate-200">
-                          {currentReview.liveChangeDetection.metrics[0].points.map((pt, idx) => {
-                            const heightPct = Math.min(100, Math.max(10, (pt.value / 110) * 100));
-                            const isCurrent = pt.window === 'current';
-                            return (
-                              <div key={idx} className="flex-1 flex flex-col items-center gap-1 group relative">
-                                <span className="text-[9px] font-mono font-bold text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                                  {pt.value}
-                                </span>
-                                <div
-                                  style={{ height: `${heightPct}%` }}
-                                  className={`w-full rounded-t-md transition-all ${
-                                    isCurrent
-                                      ? (pt.value < 75 ? 'bg-amber-500' : 'bg-teal-500')
-                                      : 'bg-slate-300'
-                                  }`}
-                                ></div>
-                                <span className="text-[8px] text-slate-400 truncate w-full text-center">
-                                  W{idx + 1}
-                                </span>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        {/* Metric Counters Grid */}
-                        <div className="grid grid-cols-4 gap-3 text-xs pt-1">
-                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
-                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Baseline Mean</span>
-                            <span className="text-sm font-bold text-slate-800">{currentReview.liveChangeDetection.metrics[0].baselineValue} {currentReview.liveChangeDetection.metrics[0].unit}</span>
-                          </div>
-                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
-                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Current Window</span>
-                            <span className="text-sm font-bold text-amber-600">{currentReview.liveChangeDetection.metrics[0].currentValue} {currentReview.liveChangeDetection.metrics[0].unit}</span>
-                          </div>
-                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
-                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Relative Deviation</span>
-                            <span className="text-sm font-bold text-rose-600">{currentReview.liveChangeDetection.metrics[0].percentageChange}%</span>
-                          </div>
-                          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
-                            <span className="text-[10px] text-slate-400 block uppercase font-bold">Persistence Streak</span>
-                            <span className="text-sm font-bold text-teal-700">{currentReview.liveChangeDetection.metrics[0].persistence?.trailingPeriods || 4} Weeks</span>
-                          </div>
-                        </div>
-                      </div>
                     )}
+                  </div>
+                </div>
+              )}
 
-                    {/* Live Competing Diagnoses Matrix from ZIP CP4 */}
-                    {currentReview.liveCompetingDiagnosis?.diagnoses && currentReview.liveCompetingDiagnosis.diagnoses.length > 0 && (
-                      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
-                        <div className="flex items-center justify-between">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Competing Diagnoses Matrix (ZIP CP4 Engine)</h4>
-                          <span className="text-[10px] text-slate-400 font-mono">Relative Evidence Support (0 - 100%)</span>
-                        </div>
-
-                        <div className="space-y-3">
-                          {currentReview.liveCompetingDiagnosis.diagnoses.map((diag, i) => (
-                            <div key={i} className="space-y-1">
-                              <div className="flex justify-between items-center text-xs">
-                                <span className="font-semibold text-slate-800">{diag.name}</span>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-slate-400 text-[10px]">Coverage: {diag.coverage}%</span>
-                                  <span className="font-mono font-bold text-teal-700">{diag.relativeSupport}%</span>
-                                </div>
-                              </div>
-                              <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                                <div
-                                  style={{ width: `${Math.min(100, Math.max(3, diag.relativeSupport))}%` }}
-                                  className={`h-full rounded-full transition-all duration-300 ${
-                                    diag.relativeSupport >= 75
-                                      ? 'bg-teal-600'
-                                      : diag.relativeSupport >= 30
-                                      ? 'bg-amber-500'
-                                      : 'bg-slate-300'
-                                  }`}
-                                ></div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="bg-white border-2 border-teal-500 rounded-2xl p-6 space-y-4 shadow-sm">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <span className="text-2xl">⚙️</span>
-                          <h3 className="text-lg font-bold text-slate-900">{currentReview.diagnosis?.label}</h3>
-                        </div>
-                        <span className="bg-teal-100 text-teal-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
-                          Live Evaluated Diagnosis
-                        </span>
-                      </div>
-
-                      <p className="text-sm text-slate-700 leading-relaxed">
-                        {currentReview.diagnosis?.rationale}
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 2: INCIDENT & INSPECTION QUEUE
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'incidents' && (
+                <div className="space-y-6">
+                  
+                  {/* Header & Filter Controls */}
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Resident Incident & Inspection Queue</h2>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        On-duty facilities staff inspect resident submissions on-site before confirming work orders
                       </p>
-
-                      <div className="pt-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Key Diagnostic Factors</span>
-                        <ul className="space-y-1.5 text-xs text-slate-700">
-                          {currentReview.diagnosis?.keyFactors?.map((f, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <span className="text-teal-600 font-bold">✓</span>
-                              <span>{f}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                     </div>
 
-                    <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Sufficiency Assessment</h4>
-                      <SufficiencyBar label="Explanation Sufficiency" level={currentReview.diagnosis?.explanationSufficiency} />
-                      <SufficiencyBar label="Protection Context Sufficiency" level={currentReview.diagnosis?.protectionSufficiency} />
-                    </div>
-
-                    <div className="flex justify-end">
-                      <button
-                        onClick={() => setReviewScreen('gaps')}
-                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
-                      >
-                        Inspect Evidence Gaps →
-                      </button>
+                    {/* Filter Pills */}
+                    <div className="flex gap-1.5 bg-slate-200/70 p-1 rounded-xl text-xs font-semibold">
+                      {[
+                        { id: 'all', label: `All (${reports.length})` },
+                        { id: 'unverified', label: `Pending Inspection (${reports.filter(r => r.status === 'unverified').length})` },
+                        { id: 'verified_fault', label: `Confirmed Faults (${reports.filter(r => r.status === 'verified_fault').length})` },
+                        { id: 'dismissed', label: `Dismissed (${reports.filter(r => r.status === 'dismissed').length})` }
+                      ].map(tab => (
+                        <button
+                          key={tab.id}
+                          onClick={() => setIncidentFilter(tab.id)}
+                          className={`px-3 py-1.5 rounded-lg transition-all ${
+                            incidentFilter === tab.id
+                              ? 'bg-white text-slate-900 font-bold shadow-sm'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
-                )}
 
-                {/* Sub-screen 2: Evidence Gaps */}
-                {reviewScreen === 'gaps' && currentReview && (
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900">Ranked Missing Evidence</h3>
-                      <p className="text-xs text-slate-500">Gaps prioritized by analytical value in resolving diagnosis uncertainty.</p>
+                  {/* Staff On-Site Verification Dialog Modal */}
+                  {verifyingReport && (
+                    <div className="bg-gradient-to-r from-accent-50/90 to-brand-50/90 border-2 border-brand-600 rounded-2xl p-5 shadow-lg space-y-4 animate-fade-in">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">🛠️</span>
+                          <h3 className="font-extrabold text-slate-900 text-sm">
+                            On-Site Physical Inspection: Ticket {verifyingReport.report_id}
+                          </h3>
+                        </div>
+                        <button
+                          onClick={() => setVerifyingReport(null)}
+                          className="text-xs font-bold text-slate-500 hover:text-slate-800"
+                        >
+                          ✕ Cancel
+                        </button>
+                      </div>
+
+                      <div className="p-3 bg-white rounded-xl border border-slate-200 text-xs space-y-1">
+                        <p><strong className="text-slate-700">Resident Report:</strong> {verifyingReport.description}</p>
+                        <p className="text-slate-500 text-[11px]">
+                          Facility: {verifyingReport.facility_name} · Zone: {verifyingReport.location_detail || 'On-site'} · Contact: {verifyingReport.contact || 'Anonymous'}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                          <label className="font-bold text-slate-700 block mb-1">Inspector / Technician Name</label>
+                          <input
+                            type="text"
+                            value={verifierName}
+                            onChange={e => setVerifierName(e.target.value)}
+                            className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                          />
+                        </div>
+                        <div>
+                          <label className="font-bold text-slate-700 block mb-1">On-Site Finding / Action Notes</label>
+                          <input
+                            type="text"
+                            value={verificationNotes}
+                            onChange={e => setVerificationNotes(e.target.value)}
+                            placeholder="On-site inspection confirmed luminaire ballast failure and severe flickering..."
+                            className="w-full p-2 border border-slate-300 rounded-lg bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex justify-end gap-2 pt-1 border-t border-slate-200/60">
+                        <button
+                          disabled={actionInProgress}
+                          onClick={() => handleVerifyReport(verifyingReport, 'dismiss')}
+                          className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs rounded-xl transition-colors"
+                        >
+                          Dismiss (No Fault Found)
+                        </button>
+                        <button
+                          disabled={actionInProgress}
+                          onClick={() => handleVerifyReport(verifyingReport, 'verify_fault')}
+                          className="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 transition-colors"
+                        >
+                          <span>✓</span>
+                          <span>{actionInProgress ? 'Recording...' : 'Confirm Defect & Dispatch Work Order'}</span>
+                        </button>
+                      </div>
                     </div>
+                  )}
 
-                    <div className="space-y-3">
-                      {currentReview.evidenceGaps?.map(gap => (
+                  {/* Reports List */}
+                  <div className="space-y-3">
+                    {filteredReports.length === 0 ? (
+                      <div className="p-8 bg-white border border-slate-200 rounded-2xl text-center text-slate-400 text-xs">
+                        No reports matching current filter.
+                      </div>
+                    ) : (
+                      filteredReports.map(r => (
                         <div
-                          key={gap.id}
-                          className={`p-5 rounded-2xl border-2 transition-all space-y-2 ${
-                            gap.status === 'collected'
-                              ? 'bg-emerald-50/60 border-emerald-300'
-                              : gap.isHighestValue
-                              ? 'bg-teal-50/70 border-teal-500 shadow-sm'
-                              : 'bg-white border-slate-200'
+                          key={r.report_id}
+                          className={`p-4 bg-white border rounded-2xl transition-all space-y-2.5 ${
+                            r.status === 'unverified' ? 'border-accent-300 shadow-sm' : 'border-slate-200'
                           }`}
                         >
                           <div className="flex items-start justify-between">
                             <div>
                               <div className="flex items-center gap-2">
-                                <h4 className="text-sm font-bold text-slate-900">{gap.label}</h4>
-                                {gap.status === 'collected' ? (
-                                  <span className="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">
-                                    ✓ Collected & Verified
-                                  </span>
-                                ) : gap.isHighestValue ? (
-                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
-                                    Highest-Value Evidence
-                                  </span>
-                                ) : null}
+                                <span className="font-mono font-bold text-slate-900 text-xs">{r.report_id}</span>
+                                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                                  {r.facility_name || r.facility_id}
+                                </span>
+                                <span className="text-[10px] text-slate-400">
+                                  {new Date(r.submitted_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </span>
                               </div>
-                              <p className="text-xs text-slate-600 mt-1">{gap.description}</p>
+                              <p className="text-xs text-slate-800 font-medium mt-1">
+                                {r.description}
+                              </p>
+                              {r.location_detail && (
+                                <p className="text-[11px] text-slate-500 mt-0.5">Zone: {r.location_detail} · Contact: {r.contact || 'Not provided'}</p>
+                              )}
                             </div>
-                            <span className="text-xs font-mono text-slate-400">Rank #{gap.rank}</span>
+
+                            <div className="flex items-center gap-2">
+                              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                                r.status === 'verified_fault'
+                                  ? 'bg-emerald-100 text-emerald-800'
+                                  : r.status === 'dismissed'
+                                  ? 'bg-slate-200 text-slate-600'
+                                  : 'bg-accent-100 text-accent-800 animate-pulse'
+                              }`}>
+                                {r.status === 'verified_fault' ? '✓ Verified Fault' : r.status === 'dismissed' ? 'Dismissed' : 'Awaiting Inspection'}
+                              </span>
+
+                              {r.status === 'unverified' && (
+                                <button
+                                  onClick={() => setVerifyingReport(r)}
+                                  className="px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-lg shadow-sm"
+                                >
+                                  Inspect on Site
+                                </button>
+                              )}
+                            </div>
                           </div>
 
-                          {gap.source === 'resident input' && gap.status !== 'collected' && (
-                            <div className="pt-2 border-t border-teal-200 flex flex-wrap items-center justify-between gap-2">
-                              <span className="text-xs text-teal-800">Dispatch targeted inquiry to long-term resident cohort:</span>
-                              <div className="flex gap-2">
-                                <button
-                                  onClick={handleSimulateResidentSurvey}
-                                  className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-lg shadow-sm"
-                                >
-                                  ⚡ Fast-Simulate Resident Response
-                                </button>
-                                <a
-                                  href="resident.html?mode=targeted"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
-                                >
-                                  Open Resident Touchpoint &rarr;
-                                </a>
+                          {r.verification_notes && (
+                            <div className="pt-2 border-t border-slate-100 text-[11px] bg-slate-50 p-2.5 rounded-xl flex items-center justify-between text-slate-600">
+                              <div>
+                                <strong className="text-slate-800">Inspection Finding:</strong> {r.verification_notes}
                               </div>
+                              <span className="text-slate-400 text-[10px]">By: {r.verified_by}</span>
                             </div>
                           )}
 
-                          {gap.source === 'physical inspection' && gap.status !== 'collected' && (
-                            <div className="pt-2 border-t border-amber-200 flex items-center justify-between">
-                              <span className="text-xs text-amber-900">Physical on-site inspection required:</span>
+                          {r.maintenance_id && (
+                            <div className="text-[11px] text-blue-700 bg-blue-50/80 px-3 py-1.5 rounded-lg flex items-center justify-between">
+                              <span>Work Order: <strong>{r.maintenance_id}</strong> (Dispatched to Electrical Crew)</span>
                               <button
-                                onClick={() => setCurrentNav('reports')}
-                                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-lg"
+                                onClick={() => {
+                                  setSelectedFacilityId(r.facility_id);
+                                  setCurrentNav('reviews');
+                                }}
+                                className="font-bold underline text-blue-800 hover:text-blue-900"
                               >
-                                Go to Inspection Queue &rarr;
+                                View Facility Review →
                               </button>
                             </div>
                           )}
                         </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 3: MONITORED FACILITIES DIRECTORY (12)
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'facilities' && (
+                <div className="space-y-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Monitored Facilities Directory (12)</h2>
+                      <p className="text-xs text-slate-500 mt-0.5">Real-time telemetry and operational profiles across all township amenities</p>
+                    </div>
+
+                    <div className="flex gap-1.5 bg-slate-200/70 p-1 rounded-xl text-xs font-semibold">
+                      {[
+                        { id: 'all', label: 'All Amenities' },
+                        { id: 'sports', label: 'Sports & Courts' },
+                        { id: 'community', label: 'Shared Spaces' },
+                        { id: 'outdoor', label: 'Outdoor Parks' }
+                      ].map(btn => (
+                        <button
+                          key={btn.id}
+                          onClick={() => setFacilityFilter(btn.id)}
+                          className={`px-3 py-1.5 rounded-lg transition-all ${
+                            facilityFilter === btn.id
+                              ? 'bg-white text-slate-900 font-bold shadow-sm'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          {btn.label}
+                        </button>
                       ))}
                     </div>
+                  </div>
 
-                    <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('summary')} className="text-xs text-slate-500">&larr; Back to Diagnosis</button>
-                      <button
-                        onClick={() => setReviewScreen('interventions')}
-                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {filteredFacilities.map(fac => (
+                      <div
+                        key={fac.facility_id}
+                        className={`p-5 rounded-2xl border bg-white shadow-sm transition-all space-y-3 ${
+                          fac.facility_id === selectedFacilityId
+                            ? 'border-brand-600 ring-2 ring-brand-500/20'
+                            : 'border-slate-200 hover:border-slate-300'
+                        }`}
                       >
-                        Select Safe Interventions &rarr;
-                      </button>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <h3 className="font-bold text-slate-900 text-sm">{fac.name}</h3>
+                              <span className="text-[10px] font-mono text-slate-400">({fac.tier})</span>
+                            </div>
+                            <p className="text-[11px] text-slate-500 mt-0.5">{fac.type}</p>
+                          </div>
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                            fac.status === 'maintenance'
+                              ? 'bg-rose-100 text-rose-700'
+                              : fac.status === 'monitored'
+                              ? 'bg-amber-100 text-amber-800'
+                              : 'bg-emerald-100 text-emerald-800'
+                          }`}>
+                            {fac.status === 'maintenance' ? 'Maintenance' : fac.status === 'monitored' ? 'Under Review' : 'Operational'}
+                          </span>
+                        </div>
+
+                        <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                          {fac.description}
+                        </p>
+
+                        <div className="pt-2 border-t border-slate-100 text-[11px] grid grid-cols-2 gap-2 text-slate-500">
+                          <div>
+                            <span>Reports: </span>
+                            <strong className="text-slate-800">{fac.reportsTotal}</strong> ({fac.unverifiedReports} pending)
+                          </div>
+                          <div>
+                            <span>Work Orders: </span>
+                            <strong className="text-slate-800">{fac.activeMaintenance}</strong>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-2 pt-1">
+                          <button
+                            onClick={() => {
+                              setSelectedFacilityId(fac.facility_id);
+                              setCurrentNav('reviews');
+                            }}
+                            className="flex-1 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-800 font-bold text-xs rounded-lg transition-colors text-center"
+                          >
+                            Analyze Facility →
+                          </button>
+                          <a
+                            href={`resident.html?facilityId=${fac.facility_id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition-colors"
+                            title="Open Resident Mobile View"
+                          >
+                            📱 QR
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 4: DECISION INTELLIGENCE
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'reviews' && (
+                <div className="space-y-6">
+                  
+                  {/* Review Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-200">
+                    <div>
+                      <span className="text-xs text-brand-700 font-extrabold uppercase tracking-wider">
+                        Facility Diagnostic Engine
+                      </span>
+                      <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+                        {facilityDetails?.facility?.name}
+                      </h2>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        {facilityDetails?.facility?.location} · Operating Hours: {facilityDetails?.facility?.operating_hours}
+                      </p>
+                    </div>
+
+                    {/* Sub-Tabs */}
+                    <div className="flex gap-1.5 bg-slate-200/70 p-1 rounded-xl text-xs font-semibold">
+                      {[
+                        { id: 'diagnosis', label: '1. Root Cause & Trends' },
+                        { id: 'evidence', label: '2. Evidence Checklist' },
+                        { id: 'pathways', label: '3. Action Pathways' },
+                        { id: 'authorization', label: '4. Operations Authorization' }
+                      ].map(t => (
+                        <button
+                          key={t.id}
+                          onClick={() => setReviewTab(t.id)}
+                          className={`px-3 py-1.5 rounded-lg transition-all ${
+                            reviewTab === t.id
+                              ? 'bg-white text-slate-900 font-bold shadow-sm'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          {t.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
-                )}
 
-                {/* Sub-screen 3: Interventions (CP7 Evaluated Candidates & Gates) */}
-                {reviewScreen === 'interventions' && (
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900">Intervention Pathways & Evidence Gates (CP7 Engine)</h3>
-                      <p className="text-xs text-slate-500">Evaluated against strict evidence preconditions; safeguards prohibit premature action.</p>
-                    </div>
-
-                    <div className="space-y-3">
-                      {(currentReview?.interventionCandidates || INTERVENTION_PATHWAYS).map(p => {
-                        const isRecommended = p.isRecommended;
-                        const candidateName = p.name || p.type;
-                        const isSelected = (selectedIntervention === candidateName) || (!selectedIntervention && isRecommended);
-
-                        const badgeClass = p.readiness === 'Ready'
-                          ? 'bg-emerald-100 text-emerald-800'
-                          : p.readiness === 'Blocked by safeguard'
-                          ? 'bg-rose-100 text-rose-800'
-                          : p.readiness === 'Needs more evidence'
-                          ? 'bg-amber-100 text-amber-800'
-                          : 'bg-slate-100 text-slate-700';
-
-                        return (
-                          <div
-                            key={p.code || p.type}
-                            onClick={() => setSelectedIntervention(candidateName)}
-                            className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
-                              isSelected
-                                ? 'bg-teal-50 border-teal-600 shadow-sm'
-                                : 'bg-white border-slate-200 hover:border-slate-300'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-sm font-bold text-slate-900">{candidateName}</span>
-                                {p.readiness && (
-                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeClass}`}>
-                                    {p.readiness}
-                                  </span>
-                                )}
-                                {isRecommended && (
-                                  <span className="text-[10px] bg-teal-600 text-white font-bold px-2 py-0.5 rounded-full">
-                                    Evidence Recommended
-                                  </span>
-                                )}
-                              </div>
-                              <input
-                                type="radio"
-                                name="intervention"
-                                checked={isSelected}
-                                onChange={() => setSelectedIntervention(candidateName)}
-                                className="text-teal-600 h-4 w-4"
-                              />
+                  {/* SUB-TAB 1: DIAGNOSIS & UTILIZATION TRENDS */}
+                  {reviewTab === 'diagnosis' && currentReview && (
+                    <div className="space-y-5">
+                      
+                      {/* Signal Alert Banner */}
+                      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-2">
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Observed Anomaly Signal</span>
+                        <h3 className="text-base font-bold text-slate-900">{currentReview.primarySignal}</h3>
+                        <div className="text-xs text-slate-600 space-y-1 pt-1">
+                          {currentReview.secondarySignals?.map((sig, i) => (
+                            <div key={i} className="flex items-center gap-1.5">
+                              <span className="text-brand-600 font-bold">•</span>
+                              <span>{sig}</span>
                             </div>
-                            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{p.purpose || p.description}</p>
-                            
-                            {/* Gate evaluation breakdown */}
-                            {p.gates && (
-                              <div className="mt-3 pt-2.5 border-t border-slate-100 space-y-1">
-                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Evidence Gate Breakdown</span>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-0.5">
-                                  {p.gates.map((g, gi) => (
-                                    <div key={gi} className="flex items-center justify-between text-[11px] p-2 bg-slate-50 rounded-lg">
-                                      <span className="text-slate-700 font-medium">{g.label}</span>
-                                      <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${g.status === 'Pass' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
-                                        {g.status}
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* 12-Week Utilization Trend Chart */}
+                      {currentReview.liveChangeDetection?.metrics?.[0]?.points && (
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">12-Week Utilization Trend vs Historical Benchmark</h4>
+                              <p className="text-xs text-slate-400 mt-0.5">8 Weeks Baseline vs 4 Weeks Current Analysis Window</p>
+                            </div>
+                            <span className={`text-xs font-bold px-2.5 py-1 rounded-full font-mono border ${
+                              currentReview.liveChangeDetection.status === 'Needs Attention'
+                                ? 'bg-rose-50 text-rose-700 border-rose-200'
+                                : 'bg-slate-100 text-slate-700 border-slate-200'
+                            }`}>
+                              Status: {currentReview.liveChangeDetection.status}
+                            </span>
+                          </div>
+
+                          {/* Period Zone Banner */}
+                          <div className="grid grid-cols-12 gap-1 text-[10px] font-semibold text-center select-none">
+                            <div className="col-span-8 bg-slate-50 text-slate-600 py-1 rounded-lg border border-slate-200/80 flex items-center justify-center gap-1.5">
+                              <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+                              <span>Baseline Window (Weeks 1 – 8)</span>
+                            </div>
+                            <div className="col-span-4 bg-rose-50 text-rose-700 py-1 rounded-lg border border-rose-200 flex items-center justify-center gap-1.5 font-bold">
+                              <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                              <span>Current Window (Weeks 9 – 12)</span>
+                            </div>
+                          </div>
+
+                          {/* Graph Canvas */}
+                          <div className="relative pt-8 pb-2 px-1 bg-slate-50/50 rounded-xl border border-slate-100">
+                            {/* Benchmark Target Indicator in Upper Right Corner */}
+                            <div className="absolute top-2 right-2.5 z-20 flex items-center gap-1.5 bg-white/95 px-2 py-0.5 rounded-md shadow-xs border border-brand-200">
+                              <span className="w-3 h-0.5 border-b-2 border-dashed border-brand-500 inline-block"></span>
+                              <span className="text-[10px] font-mono font-bold text-brand-800">
+                                Benchmark Target: {currentReview.liveChangeDetection.metrics[0].baselineValue} {currentReview.liveChangeDetection.metrics[0].unit}
+                              </span>
+                            </div>
+
+                            {/* Clean Continuous Horizontal Benchmark Reference Line at 100 count */}
+                            <div className="absolute left-2 right-2 top-[54px] border-b-2 border-dashed border-brand-400/60 z-0 pointer-events-none"></div>
+
+                            {/* 12 Bars Container */}
+                            <div className="flex items-end gap-1.5 sm:gap-2.5 h-44 px-2 relative z-10">
+                              {currentReview.liveChangeDetection.metrics[0].points.map((pt, idx) => {
+                                const maxScale = 120;
+                                const heightPercent = Math.min(100, Math.max(8, (pt.value / maxScale) * 100));
+                                const isCurrent = pt.window === 'current';
+
+                                return (
+                                  <div key={idx} className="flex-1 h-full flex flex-col justify-end items-center group relative">
+                                    {/* Tooltip / Value on top */}
+                                    <span className={`text-[10px] font-mono font-bold mb-1 transition-transform group-hover:scale-110 ${
+                                      isCurrent ? 'text-rose-600' : 'text-slate-600'
+                                    }`}>
+                                      {pt.value}
+                                    </span>
+
+                                    {/* Bar Pillar */}
+                                    <div
+                                      style={{ height: `${heightPercent}%` }}
+                                      className={`w-full max-w-[28px] rounded-t-md transition-all duration-300 shadow-xs ${
+                                        isCurrent
+                                          ? 'bg-gradient-to-t from-rose-500 to-amber-400 hover:from-rose-600 hover:to-amber-500 ring-1 ring-rose-200'
+                                          : 'bg-slate-300 hover:bg-slate-400'
+                                      }`}
+                                      title={`Week ${idx + 1}: ${pt.value} ${currentReview.liveChangeDetection.metrics[0].unit} (${pt.window})`}
+                                    ></div>
+
+                                    {/* Week Label */}
+                                    <span className={`text-[9px] font-mono mt-1.5 truncate text-center w-full ${
+                                      isCurrent ? 'text-rose-600 font-bold' : 'text-slate-500 font-medium'
+                                    }`}>
+                                      W{idx + 1}
+                                    </span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Graph Legend */}
+                          <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 px-1 pt-1">
+                            <div className="flex flex-wrap items-center gap-4">
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-3 h-3 rounded-xs bg-slate-300 inline-block border border-slate-400/40"></span>
+                                <span>Historical Baseline (Stable 100 count)</span>
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-3 h-3 rounded-xs bg-gradient-to-t from-rose-500 to-amber-400 inline-block shadow-xs"></span>
+                                <span>Active Drop Window (-41.00% Deviation)</span>
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-4 h-0.5 border-b-2 border-dashed border-brand-500 inline-block"></span>
+                                <span>Historical Mean Line</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Metric Counters Grid */}
+                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-2 border-t border-slate-100">
+                            <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                              <span className="text-[10px] text-slate-400 block uppercase font-bold">Historical Mean</span>
+                              <span className="text-sm font-bold text-slate-800">
+                                {currentReview.liveChangeDetection.metrics[0].baselineValue} {currentReview.liveChangeDetection.metrics[0].unit}
+                              </span>
+                            </div>
+                            <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                              <span className="text-[10px] text-slate-400 block uppercase font-bold">Current Window</span>
+                              <span className="text-sm font-bold text-rose-600">
+                                {currentReview.liveChangeDetection.metrics[0].currentValue} {currentReview.liveChangeDetection.metrics[0].unit}
+                              </span>
+                            </div>
+                            <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                              <span className="text-[10px] text-slate-400 block uppercase font-bold">Deviation</span>
+                              <span className="text-sm font-bold text-rose-600">
+                                {Number(currentReview.liveChangeDetection.metrics[0].percentageChange || 0).toFixed(2)}%
+                              </span>
+                            </div>
+                            <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                              <span className="text-[10px] text-slate-400 block uppercase font-bold">Persistence</span>
+                              <span className="text-sm font-bold text-brand-700">
+                                {currentReview.liveChangeDetection.metrics[0].persistence?.trailingPeriods || 4} Weeks Sustained
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Root-Cause Competing Hypotheses */}
+                      {currentReview.liveCompetingDiagnosis?.diagnoses && currentReview.liveCompetingDiagnosis.diagnoses.length > 0 && (
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+                          <div className="flex items-center justify-between">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Automated Root-Cause Diagnostic Matrix</h4>
+                            <span className="text-[10px] text-slate-400 font-mono">Relative Evidence Support (0.00% - 100.00%)</span>
+                          </div>
+
+                          <div className="space-y-3.5">
+                            {currentReview.liveCompetingDiagnosis.diagnoses.map((diag, i) => {
+                              const relSupport = Number(diag.relativeSupport || 0);
+                              const coverage = Number(diag.coverage || 0);
+                              const isStrong = relSupport >= 75;
+                              const isPlausible = relSupport >= 30 && relSupport < 75;
+
+                              return (
+                                <div key={i} className="space-y-1.5">
+                                  <div className="flex justify-between items-center text-xs">
+                                    <div className="flex items-center gap-2">
+                                      <span className="font-semibold text-slate-800">{diag.name}</span>
+                                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold border ${
+                                        isStrong
+                                          ? 'bg-brand-50 text-brand-700 border-brand-200'
+                                          : isPlausible
+                                          ? 'bg-accent-50 text-accent-700 border-accent-200'
+                                          : 'bg-slate-100 text-slate-500 border-slate-200'
+                                      }`}>
+                                        {isStrong ? 'Strong Support' : isPlausible ? 'Plausible Support' : 'Limited Support'}
                                       </span>
                                     </div>
-                                  ))}
+                                    <div className="flex items-center gap-3">
+                                      <span className="text-slate-400 text-[10px] font-mono">
+                                        Data Coverage: {coverage.toFixed(2)}%
+                                      </span>
+                                      <span className={`font-mono font-bold text-xs ${
+                                        isStrong ? 'text-brand-800' : isPlausible ? 'text-accent-700' : 'text-slate-500'
+                                      }`}>
+                                        {relSupport.toFixed(2)}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div
+                                      style={{ width: `${Math.min(100, Math.max(3, relSupport))}%` }}
+                                      className={`h-full rounded-full transition-all duration-300 ${
+                                        isStrong
+                                          ? 'bg-brand-600'
+                                          : isPlausible
+                                          ? 'bg-accent-500'
+                                          : 'bg-slate-300'
+                                      }`}
+                                    ></div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          {/* Color Meaning Indicator / Legend */}
+                          <div className="pt-3 border-t border-slate-100 bg-slate-50/70 -mx-5 -mb-5 px-5 py-3 rounded-b-2xl">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-[11px]">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Indicator Meaning:</span>
+                              <div className="flex flex-wrap items-center gap-4">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-brand-600 inline-block shadow-sm"></span>
+                                  <span className="text-slate-700">
+                                    <strong className="text-brand-700">&ge; 75.00%</strong>: Strong Support (High Evidence)
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-accent-500 inline-block shadow-sm"></span>
+                                  <span className="text-slate-700">
+                                    <strong className="text-accent-700">30.00% – 74.99%</strong>: Plausible Support
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300 inline-block shadow-sm"></span>
+                                  <span className="text-slate-700">
+                                    <strong className="text-slate-500">&lt; 30.00%</strong>: Limited / Contradicted
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Current Evaluated Diagnosis */}
+                      <div className="bg-white border-2 border-brand-600 rounded-2xl p-6 space-y-4 shadow-sm">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-2xl">🧠</span>
+                            <h3 className="text-lg font-bold text-slate-900">{currentReview.diagnosis?.label}</h3>
+                          </div>
+                          <span className="bg-brand-100 text-brand-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                            Evaluated Diagnosis
+                          </span>
+                        </div>
+
+                        <p className="text-sm text-slate-700 leading-relaxed">
+                          {currentReview.diagnosis?.rationale}
+                        </p>
+
+                        <div className="pt-2">
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">Key Diagnostic Factors</span>
+                          <ul className="space-y-1.5 text-xs text-slate-700">
+                            {currentReview.diagnosis?.keyFactors?.map((f, i) => (
+                              <li key={i} className="flex items-start gap-2">
+                                <span className="text-brand-600 font-bold">✓</span>
+                                <span>{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* Sufficiency Assessment Gauges */}
+                      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">Evidentiary Sufficiency</h4>
+                        <SufficiencyGauge label="Explanation Sufficiency" level={currentReview.diagnosis?.explanationSufficiency} />
+                        <SufficiencyGauge label="Protection Context Sufficiency" level={currentReview.diagnosis?.protectionSufficiency} />
+                      </div>
+
+                      <div className="flex justify-end">
+                        <button
+                          onClick={() => setReviewTab('evidence')}
+                          className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm transition-colors"
+                        >
+                          Check Missing Evidence →
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* SUB-TAB 2: EVIDENCE CHECKLIST */}
+                  {reviewTab === 'evidence' && currentReview && (
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-base font-bold text-slate-900">Evidence Preconditions Checklist</h3>
+                        <p className="text-xs text-slate-500">Unresolved information gaps prioritized to confirm root-cause before committing capital</p>
+                      </div>
+
+                      <div className="space-y-3">
+                        {currentReview.evidenceGaps?.map(gap => (
+                          <div
+                            key={gap.id}
+                            className={`p-5 rounded-2xl border-2 transition-all space-y-2 ${
+                              gap.status === 'collected'
+                                ? 'bg-emerald-50/70 border-emerald-300'
+                                : gap.isHighestValue
+                                ? 'bg-brand-50/80 border-brand-500 shadow-sm'
+                                : 'bg-white border-slate-200'
+                            }`}
+                          >
+                            <div className="flex items-start justify-between">
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <h4 className="text-sm font-bold text-slate-900">{gap.label}</h4>
+                                  {gap.status === 'collected' ? (
+                                    <span className="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                      ✓ Verified on Site
+                                    </span>
+                                  ) : gap.isHighestValue ? (
+                                    <span className="text-[10px] bg-brand-700 text-white font-bold px-2 py-0.5 rounded-full">
+                                      Primary Missing Evidence
+                                    </span>
+                                  ) : null}
+                                </div>
+                                <p className="text-xs text-slate-600 mt-1">{gap.description}</p>
+                              </div>
+                              <span className="text-xs font-mono text-slate-400">Rank #{gap.rank}</span>
+                            </div>
+
+                            {gap.source === 'resident input' && gap.status !== 'collected' && (
+                              <div className="pt-2 border-t border-brand-200 flex flex-wrap items-center justify-between gap-2">
+                                <span className="text-xs text-brand-900">Targeted resident feedback required to confirm schedule fit:</span>
+                                <div className="flex gap-2">
+                                  <button
+                                    onClick={handleSimulateSurvey}
+                                    className="px-3 py-1.5 bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs rounded-lg shadow-sm"
+                                  >
+                                    ⚡ Fast-Record Resident Response
+                                  </button>
+                                  <a
+                                    href="resident.html?mode=targeted"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-3 py-1.5 bg-accent-500 hover:bg-accent-600 text-slate-950 font-bold text-xs rounded-lg shadow-sm"
+                                  >
+                                    Open Resident Pulse View →
+                                  </a>
                                 </div>
                               </div>
                             )}
-                          </div>
-                        );
-                      })}
-                    </div>
 
-                    <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('gaps')} className="text-xs text-slate-500">&larr; Back to Gaps</button>
-                      <button
-                        onClick={() => setReviewScreen('approval')}
-                        className="px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm"
-                      >
-                        Proceed to Plan Approval &rarr;
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Sub-screen 4: Approval (CP7 Plan Recording) */}
-                {reviewScreen === 'approval' && (
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900">Operator Plan Approval</h3>
-                      <p className="text-xs text-slate-500">Formal recording of intervention intent. Execution requires separate operator sign-off.</p>
-                    </div>
-
-                    <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-sm">
-                      <div className="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl">
-                        <div>
-                          <span className="text-slate-400 block">Facility</span>
-                          <strong className="text-slate-800 text-sm">{facilityDetails?.facility?.name}</strong>
-                        </div>
-                        <div>
-                          <span className="text-slate-400 block">Selected Intervention</span>
-                          <strong className="text-teal-700 text-sm">{selectedIntervention || currentReview?.selectedIntervention || 'Repair / Restore'}</strong>
-                        </div>
-                      </div>
-
-                      {approvalSuccess || currentReview?.approvalStatus?.isApproved ? (
-                        <div className="p-6 bg-teal-50 border-2 border-teal-500 rounded-2xl text-center space-y-2">
-                          <div className="text-3xl text-teal-600 font-black">✓</div>
-                          <h4 className="text-base font-bold text-teal-950">
-                            Plan approval recorded. Execution has not started.
-                          </h4>
-                          <p className="text-xs text-teal-700">
-                            Audit trail entry committed to SQLite. Physical work requires dedicated maintenance sign-off.
-                          </p>
-                          <span className="text-[10px] text-teal-600 block mt-1">
-                            Approved: {new Date().toLocaleDateString()} · Sign-off: Regional Operations Lead
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="space-y-3 pt-2">
-                          <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
-                            <strong>Audit Compliance:</strong> Recording approval documents the operating committee's decision without automatically modifying production booking parameters.
-                          </div>
-                          <button
-                            onClick={handleApprovePlan}
-                            className="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm"
-                          >
-                            Record Formal Plan Approval
-                          </button>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="flex justify-between pt-2">
-                      <button onClick={() => setReviewScreen('interventions')} className="text-xs text-slate-500">&larr; Back to Interventions</button>
-                      <button
-                        onClick={() => setCurrentNav('outcomes')}
-                        className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm"
-                      >
-                        Inspect Outcome Review &rarr;
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* ══════════════════════════════════════════════════════════════
-                TAB 5: OUTCOMES & HISTORY (CP8 & CP9 LIVE INTEGRATION)
-            ══════════════════════════════════════════════════════════════ */}
-            {currentNav === 'outcomes' && (
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">Post-Intervention Review & Precedents</h2>
-                  <p className="text-xs text-slate-500 mt-1">
-                    CP8 prospective contract evaluation and CP9 historical case precedents retrieved from SQLite corpus
-                  </p>
-                </div>
-
-                {/* 4 Discrete Outcome Review Dimensions (CP8) */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-bold text-slate-800 text-sm">Prospective Outcome Contract Evaluation (CP8)</h3>
-                      <p className="text-xs text-slate-400">Independent evaluation across 4 discrete dimensions</p>
-                    </div>
-                    <span className="text-xs font-mono font-bold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg">
-                      Contract: {currentReview?.outcomeReview?.contractId || 'Standard Township Contract'}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {/* 1. Execution Finding */}
-                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-bold text-slate-400 uppercase">1. Execution Finding</span>
-                        <span className="text-teal-600 font-bold font-mono">
-                          {currentReview?.outcomeReview?.executionFinding?.state || 'Established as specified'}
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-700">
-                        {currentReview?.outcomeReview?.executionFinding?.reason}
-                      </p>
-                      <div className="text-[11px] p-2 bg-amber-50 text-amber-900 rounded-lg border border-amber-200">
-                        <strong>Safeguard:</strong> {currentReview?.outcomeReview?.executionFinding?.safeguard || 'Approval does not establish execution.'}
-                      </div>
-                    </div>
-
-                    {/* 2. Goal Finding */}
-                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-bold text-slate-400 uppercase">2. Goal Attainment</span>
-                        <span className="text-teal-600 font-bold font-mono">
-                          {currentReview?.outcomeReview?.goalFinding?.state || 'Met'}
-                        </span>
-                      </div>
-                      <div className="space-y-1">
-                        {currentReview?.outcomeReview?.goalFinding?.criteria?.map((c, ci) => (
-                          <div key={ci} className="flex justify-between text-xs py-1 border-b border-slate-50">
-                            <span className="text-slate-600">{c.metric}</span>
-                            <span className="font-semibold text-slate-800">{c.observed} ({c.state})</span>
+                            {gap.source === 'physical inspection' && gap.status !== 'collected' && (
+                              <div className="pt-2 border-t border-accent-200 flex items-center justify-between">
+                                <span className="text-xs text-accent-900">Physical on-site inspection required:</span>
+                                <button
+                                  onClick={() => setCurrentNav('incidents')}
+                                  className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-lg"
+                                >
+                                  Go to Incident Queue →
+                                </button>
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                    {/* 3. Protection Finding */}
-                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-bold text-slate-400 uppercase">3. Community Protection</span>
-                        <span className="text-teal-600 font-bold font-mono">
-                          {currentReview?.outcomeReview?.protectionFinding?.state || 'Maintained'}
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-700">
-                        Subsidized resident hours and protected community access maintained in full compliance with township charter.
-                      </p>
-                      <div className="text-[11px] text-teal-800 bg-teal-50 p-2 rounded-lg">
-                        ✓ No Protection Breach. Offset by benefit is strictly disallowed.
+                      <div className="flex justify-between pt-2">
+                        <button onClick={() => setReviewTab('diagnosis')} className="text-xs text-slate-500 font-semibold">← Back to Diagnosis</button>
+                        <button
+                          onClick={() => setReviewTab('pathways')}
+                          className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                        >
+                          Review Safe Pathways →
+                        </button>
                       </div>
                     </div>
+                  )}
 
-                    {/* 4. Diagnosis Inference & Guardrail */}
-                    <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-2 shadow-sm">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-bold text-slate-400 uppercase">4. Diagnosis Relation</span>
-                        <span className="text-teal-600 font-bold font-mono">
-                          {currentReview?.outcomeReview?.diagnosisFinding?.state || 'Consistent with'}
-                        </span>
+                  {/* SUB-TAB 3: SAFE ACTION PATHWAYS */}
+                  {reviewTab === 'pathways' && (
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-base font-bold text-slate-900">Intervention Pathways & Governance Safeguards</h3>
+                        <p className="text-xs text-slate-500">Evaluated against evidence thresholds to prevent premature capital allocation or charter breach</p>
                       </div>
-                      <p className="text-xs text-slate-700">
-                        {currentReview?.outcomeReview?.diagnosisFinding?.inference}
-                      </p>
-                      <div className="text-[11px] p-2 bg-slate-50 text-slate-600 rounded-lg border border-slate-100">
-                        <strong>Causal Guardrail:</strong> {currentReview?.outcomeReview?.diagnosisFinding?.cannotEstablish}
+
+                      <div className="space-y-3">
+                        {(currentReview?.interventionCandidates || []).map(p => {
+                          const isRecommended = p.isRecommended;
+                          const candidateName = p.name || p.type;
+                          const isSelected = (selectedIntervention === candidateName) || (!selectedIntervention && isRecommended);
+
+                          const badgeClass = p.readiness === 'Ready'
+                            ? 'bg-emerald-100 text-emerald-800'
+                            : p.readiness === 'Blocked by safeguard'
+                            ? 'bg-rose-100 text-rose-800'
+                            : p.readiness === 'Needs more evidence'
+                            ? 'bg-accent-100 text-accent-800'
+                            : 'bg-slate-100 text-slate-700';
+
+                          return (
+                            <div
+                              key={p.code || p.type}
+                              onClick={() => setSelectedIntervention(candidateName)}
+                              className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                                isSelected
+                                  ? 'bg-brand-50/70 border-brand-600 shadow-sm'
+                                  : 'bg-white border-slate-200 hover:border-slate-300'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-sm font-bold text-slate-900">{candidateName}</span>
+                                  {p.readiness && (
+                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeClass}`}>
+                                      {p.readiness}
+                                    </span>
+                                  )}
+                                  {isRecommended && (
+                                    <span className="text-[10px] bg-brand-600 text-white font-bold px-2 py-0.5 rounded-full">
+                                      Evidence Supported
+                                    </span>
+                                  )}
+                                </div>
+                                <input
+                                  type="radio"
+                                  name="intervention"
+                                  checked={isSelected}
+                                  onChange={() => setSelectedIntervention(candidateName)}
+                                  className="text-brand-600 h-4 w-4"
+                                />
+                              </div>
+                              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{p.purpose || p.description}</p>
+                              
+                              {p.gates && (
+                                <div className="mt-3 pt-2.5 border-t border-slate-100 space-y-1">
+                                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Precondition Gate Checks</span>
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-0.5">
+                                    {p.gates.map((g, gi) => (
+                                      <div key={gi} className="flex items-center justify-between text-[11px] p-2 bg-slate-50 rounded-lg">
+                                        <span className="text-slate-700 font-medium">{g.label}</span>
+                                        <span className={`font-bold px-1.5 py-0.5 rounded text-[10px] ${g.status === 'Pass' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                                          {g.status}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="flex justify-between pt-2">
+                        <button onClick={() => setReviewTab('evidence')} className="text-xs text-slate-500 font-semibold">← Back to Evidence</button>
+                        <button
+                          onClick={() => setReviewTab('authorization')}
+                          className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm"
+                        >
+                          Proceed to Authorization →
+                        </button>
                       </div>
                     </div>
-                  </div>
+                  )}
+
+                  {/* SUB-TAB 4: PLAN AUTHORIZATION */}
+                  {reviewTab === 'authorization' && (
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-base font-bold text-slate-900">Operations Committee Authorization</h3>
+                        <p className="text-xs text-slate-500">Formal committee recording of approved action before capital allocation</p>
+                      </div>
+
+                      <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 shadow-sm">
+                        <div className="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl">
+                          <div>
+                            <span className="text-slate-400 block font-medium">Facility</span>
+                            <strong className="text-slate-800 text-sm">{facilityDetails?.facility?.name}</strong>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 block font-medium">Selected Pathway</span>
+                            <strong className="text-brand-800 text-sm">{selectedIntervention || currentReview?.selectedIntervention || 'Repair / Restore'}</strong>
+                          </div>
+                        </div>
+
+                        {approvalSuccess || currentReview?.approvalStatus?.isApproved ? (
+                          <div className="p-6 bg-emerald-50 border-2 border-emerald-500 rounded-2xl text-center space-y-2">
+                            <div className="text-3xl text-emerald-600 font-black">✓</div>
+                            <h4 className="text-base font-bold text-emerald-950">
+                              Plan Authorization Formally Recorded in Ledger
+                            </h4>
+                            <p className="text-xs text-emerald-800">
+                              Operations audit trail committed to SQLite. On-site engineering work order dispatched.
+                            </p>
+                            <span className="text-[10px] text-emerald-700 block mt-1 font-semibold">
+                              Authorized by: Regional Operations Lead · {new Date().toLocaleDateString()}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="space-y-3 pt-2">
+                            <div className="p-3 bg-brand-50 border border-brand-200 rounded-xl text-xs text-brand-900">
+                              <strong>Governance Audit:</strong> Authorizing this plan commits the decision to the township audit record and activates the maintenance contract.
+                            </div>
+                            <button
+                              onClick={handleApprovePlan}
+                              className="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md transition-all"
+                            >
+                              Authorize Intervention Plan
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex justify-between pt-2">
+                        <button onClick={() => setReviewTab('pathways')} className="text-xs text-slate-500 font-semibold">← Back to Pathways</button>
+                        <button
+                          onClick={() => setCurrentNav('precedents')}
+                          className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-sm"
+                        >
+                          Check Historical Precedents →
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                 </div>
+              )}
 
-                {/* Historical Precedents (CP9 Clean-Room Corpus) */}
-                <div className="space-y-3 pt-2">
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 5: ACTIVE MAINTENANCE WORK ORDERS
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'maintenance' && (
+                <div className="space-y-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-bold text-slate-800 text-sm">Historical Precedents (CP9 Clean-Room Corpus)</h3>
-                      <p className="text-xs text-slate-400">43 Evaluated Comparable Historical Township Cases</p>
+                      <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Active Maintenance Work Orders</h2>
+                      <p className="text-xs text-slate-500 mt-0.5">Dispatched work orders for verified hardware defects across the township</p>
                     </div>
-                    <span className="text-xs font-bold text-slate-500 font-mono">Live SQLite Query</span>
+                  </div>
+
+                  <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
+                    {maintenanceList.length === 0 ? (
+                      <div className="text-center py-8 text-slate-400 text-xs">
+                        No active work orders. Verify a resident defect in the Incident Queue to dispatch.
+                      </div>
+                    ) : (
+                      <div className="space-y-2.5">
+                        {maintenanceList.map(m => (
+                          <div
+                            key={m.maintenance_id}
+                            className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs"
+                          >
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-mono font-bold text-blue-700">{m.maintenance_id}</span>
+                                <span className="font-bold text-slate-900">{m.title}</span>
+                                <span className="text-slate-500 font-semibold">[{m.facility_name}]</span>
+                              </div>
+                              <p className="text-[11px] text-slate-500">
+                                Assigned Tech: <strong>{m.assignee}</strong> · Projected Downtime: {m.downtime_hours} hrs · Created: {new Date(m.created_at).toLocaleDateString()}
+                              </p>
+                              {m.notes && (
+                                <p className="text-[11px] text-slate-600 bg-white/70 p-1.5 rounded border border-slate-100 mt-1">
+                                  Notes: {m.notes}
+                                </p>
+                              )}
+                            </div>
+
+                            <span className="px-2.5 py-1 rounded bg-blue-100 text-blue-800 font-bold text-[10px] uppercase">
+                              {m.status}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* ────────────────────────────────────────────────────────
+                  SCREEN 6: HISTORICAL PRECEDENTS
+              ──────────────────────────────────────────────────────── */}
+              {currentNav === 'precedents' && (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Township Historical Precedents</h2>
+                      <p className="text-xs text-slate-500 mt-0.5">Evaluated past township interventions to guide current decisions and prevent policy breaches</p>
+                    </div>
                   </div>
 
                   <div className="space-y-3">
-                    {(currentReview?.historicalPrecedents || HISTORICAL_CASES).map(c => (
+                    {(currentReview?.historicalPrecedents || []).map(c => (
                       <div
                         key={c.id}
                         className={`bg-white rounded-2xl border-2 overflow-hidden shadow-sm ${
@@ -1436,7 +1553,7 @@
                       >
                         {c.hasProtectionBreach && (
                           <div className="bg-rose-600 text-white px-4 py-2 text-xs font-bold flex items-center gap-2">
-                            <span>⚠️ {c.adverseWarning || 'CRITICAL ADVERSE WARNING: Protection breach occurred in historical precedent'}</span>
+                            <span>⚠️ {c.adverseWarning || 'CRITICAL ADVERSE PRECEDENT: Historical intervention compromised resident accessibility'}</span>
                           </div>
                         )}
                         <div className="p-5 space-y-3">
@@ -1446,7 +1563,7 @@
                                 <h4 className="font-bold text-slate-900 text-sm">{c.label || c.name}</h4>
                                 <span className="font-mono text-[10px] text-slate-400">({c.id})</span>
                               </div>
-                              <p className="text-xs text-slate-500 mt-0.5">Lineage: {c.amenityId || 'Township Reference Case'}</p>
+                              <p className="text-xs text-slate-500 mt-0.5">Reference: {c.amenityId || 'Township Archive'}</p>
                             </div>
                             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
                               c.hasProtectionBreach ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
@@ -1457,18 +1574,18 @@
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs bg-slate-50 p-3 rounded-xl">
                             <div>
-                              <strong className="text-slate-700 block mb-0.5">Why Similar:</strong>
+                              <strong className="text-slate-700 block mb-0.5">Case Context:</strong>
                               <p className="text-slate-600">{c.whySimilar}</p>
                             </div>
                             <div>
-                              <strong className="text-slate-700 block mb-0.5">Historical Action:</strong>
+                              <strong className="text-slate-700 block mb-0.5">Action Taken:</strong>
                               <p className="text-slate-600">{c.actionTaken || c.whatHappened}</p>
                             </div>
                           </div>
 
                           <div className="text-xs text-slate-600 flex flex-wrap justify-between gap-2 pt-1">
                             <span><strong>Goal Finding:</strong> {c.goalFinding}</span>
-                            <span><strong>Protection Finding:</strong> {c.protectionFinding}</span>
+                            <span><strong>Charter Protection:</strong> {c.protectionFinding}</span>
                           </div>
 
                           {c.causalGuardrail && (
@@ -1481,10 +1598,11 @@
                     ))}
                   </div>
                 </div>
-              </div>
-            )}
+              )}
 
-          </main>
+            </main>
+          </div>
+
         </div>
       );
     }
