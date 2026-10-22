@@ -197,6 +197,160 @@
       }
     ];
 
+    const DEFAULT_FACILITIES = [
+      {
+        facility_id: 'court-badminton-1',
+        name: 'Badminton Court (Courts 1-3)',
+        location: 'Sports Complex, Building 2, Ground Floor',
+        type: 'Sports & Recreation',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '07:00 - 22:30',
+        zip_case_id: 'C',
+        description: 'Indoor 3-court multi-sport badminton facility equipped with high-bay LED floodlights. Focus facility for Milestone 1 fault reporting.'
+      },
+      {
+        facility_id: 'community-hall-4',
+        name: 'Community Hall (Building 4)',
+        location: 'Building 4, Bandar Bukit Raja Central',
+        type: 'Shared Community Space',
+        tier: 'A',
+        status: 'monitored',
+        operating_hours: '08:00 - 21:00',
+        zip_case_id: 'B',
+        description: 'Shared township hall for resident gatherings, workshops, and private bookings. Experiencing sustained 8-week booking decline.'
+      },
+      {
+        facility_id: 'tennis-court-west',
+        name: 'Tennis Court (West Wing)',
+        location: 'Outdoor Sports Park, West Wing',
+        type: 'Outdoor Sports Park',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '06:30 - 21:30',
+        zip_case_id: 'S',
+        description: 'All-weather outdoor tennis courts with automated gate access. Reference benchmark with stable utilisation.'
+      },
+      {
+        facility_id: 'clubhouse-gym-1',
+        name: 'Clubhouse Fitness Centre',
+        location: 'Clubhouse, Level 2',
+        type: 'Fitness & Wellness',
+        tier: 'B',
+        status: 'open',
+        operating_hours: '24 Hours',
+        zip_case_id: 'F',
+        description: 'Electronic access card-controlled gym with cardio and resistance equipment.'
+      },
+      {
+        facility_id: 'function-room-a',
+        name: 'Function Room A',
+        location: 'Civic Pavilion, Block A',
+        type: 'Civic & Events',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '09:00 - 22:00',
+        zip_case_id: 'A',
+        description: 'Civic multipurpose space for committee meetings, exhibitions, and resident assemblies.'
+      },
+      {
+        facility_id: 'multipurpose-room-d',
+        name: 'Multipurpose Activity Room D',
+        location: 'Building 6, East Wing',
+        type: 'Shared Community Space',
+        tier: 'A',
+        status: 'maintenance',
+        operating_hours: 'Temporarily Closed',
+        zip_case_id: 'D',
+        description: 'Scheduled floor resurfacing and acoustic treatment in progress.'
+      },
+      {
+        facility_id: 'meeting-room-e',
+        name: 'Meeting Room E',
+        location: 'Business & Study Hub, 2F',
+        type: 'Business & Study',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '08:00 - 20:00',
+        zip_case_id: 'E',
+        description: 'Meeting room with audiovisual presentation setup and teleconference equipment.'
+      },
+      {
+        facility_id: 'swimming-pool-main',
+        name: 'Community Lap Pool',
+        location: 'Aquatics Centre, Building 3',
+        type: 'Aquatics & Swimming',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '06:00 - 21:00',
+        zip_case_id: 'C',
+        description: '25-meter 6-lane heated indoor lap pool with lifeguard observation station.'
+      },
+      {
+        facility_id: 'squash-court-1',
+        name: 'Squash Court 1',
+        location: 'Sports Complex, Level 1',
+        type: 'Sports & Recreation',
+        tier: 'A',
+        status: 'open',
+        operating_hours: '08:00 - 22:00',
+        zip_case_id: 'C',
+        description: 'Standard glass-back squash court with sprung hardwood flooring.'
+      },
+      {
+        facility_id: 'bbq-pavilion-north',
+        name: 'BBQ Pavilion (North Green)',
+        location: 'Township Central Park, North Area',
+        type: 'Outdoor Social',
+        tier: 'B',
+        status: 'open',
+        operating_hours: '11:00 - 22:00',
+        zip_case_id: 'S',
+        description: 'Covered outdoor barbecue pavilions with picnic bench seating and wash points.'
+      },
+      {
+        facility_id: 'children-playroom',
+        name: 'Children Indoor Playroom',
+        location: 'Building 1, Ground Floor',
+        type: 'Family & Children',
+        tier: 'B',
+        status: 'open',
+        operating_hours: '09:00 - 19:30',
+        zip_case_id: 'A',
+        description: 'Soft-padded indoor play area with modular climbing structures and guardian seating.'
+      },
+      {
+        facility_id: 'rooftop-study-lounge',
+        name: 'Rooftop Study Lounge',
+        location: 'Building 8, Rooftop Garden Level',
+        type: 'Study & Co-working',
+        tier: 'B',
+        status: 'open',
+        operating_hours: '07:00 - 23:00',
+        zip_case_id: 'S',
+        description: 'Quiet study tables with individual reading lighting and township Wi-Fi access.'
+      }
+    ];
+
+    const DEFAULT_REPORTS = [
+      {
+        report_id: 'REP-BBR-7368',
+        facility_id: 'court-badminton-1',
+        category: 'lighting',
+        description: 'Court 2 overhead high-bay floodlight is flickering severely; back court is too dim for safe play.',
+        location_detail: 'Court 2 (North End)',
+        contact: 'Resident Li · Unit 4-602',
+        submitted_at: new Date(Date.now() - 3600000).toISOString(),
+        status: 'verified_fault',
+        verification_notes: 'Technician on-site inspected ballast defect.',
+        verified_by: 'Eng. Farhan (Senior Electrical Tech)',
+        verified_at: new Date(Date.now() - 1800000).toISOString(),
+        maintenance_id: 'WO-BBR-2026-041',
+        facility_name: 'Badminton Court (Courts 1-3)',
+        facility_type: 'Sports & Recreation'
+      }
+    ];
+
     function ResidentApp() {
       // Views: 'home' | 'facility' (QR touchpoint) | 'report' | 'success' | 'facilities' | 'track' | 'pulse' | 'bookings'
       const [currentView, setCurrentView] = useState('home');
@@ -486,44 +640,52 @@
         fetch('/api/reports')
           .then(r => r.json())
           .then(data => {
-            const list = Array.isArray(data) ? data : [];
+            const list = Array.isArray(data) && data.length > 0 ? data : DEFAULT_REPORTS;
             setAllReports(list);
             if (list.length > 0 && !trackedReport) {
-              // Pre-select the latest report if available
               setTrackedReport(list[0]);
             }
           })
-          .catch(() => {});
+          .catch(() => {
+            // Offline/Static fallback (e.g. GitHub Pages)
+            setAllReports(DEFAULT_REPORTS);
+            if (!trackedReport && DEFAULT_REPORTS.length > 0) {
+              setTrackedReport(DEFAULT_REPORTS[0]);
+            }
+          });
       };
 
       useEffect(() => {
-        // Fetch Facilities
+        // Fetch Facilities (with static fallback if running offline/deployed)
         fetch('/api/facilities')
           .then(r => r.json())
           .then(data => {
-            const list = data.facilities || [];
-            setFacilities(list);
-
-            const paramFacilityId = getQueryParam('facilityId');
-            const paramMode = getQueryParam('mode');
-
-            if (paramMode === 'targeted' || paramMode === 'survey' || paramMode === 'pulse') {
-              setCurrentView('pulse');
-            } else if (paramFacilityId) {
-              const found = list.find(f => f.facility_id === paramFacilityId) || list[0];
-              setSelectedFacility(found);
-              setCurrentView('facility');
-            } else {
-              const defaultFac = list.find(f => f.facility_id === 'court-badminton-1') || list[0];
-              setSelectedFacility(defaultFac);
-              setCurrentView('home'); // Default to the new rich Homepage
-            }
-            setLoading(false);
+            const list = (data.facilities && data.facilities.length > 0) ? data.facilities : DEFAULT_FACILITIES;
+            applyLoadedFacilities(list);
           })
           .catch(err => {
-            console.error('Failed to connect:', err);
-            setLoading(false);
+            console.log('Backend not detected, activating offline township fallback dataset');
+            applyLoadedFacilities(DEFAULT_FACILITIES);
           });
+
+        function applyLoadedFacilities(list) {
+          setFacilities(list);
+          const paramFacilityId = getQueryParam('facilityId');
+          const paramMode = getQueryParam('mode');
+
+          if (paramMode === 'targeted' || paramMode === 'survey' || paramMode === 'pulse') {
+            setCurrentView('pulse');
+          } else if (paramFacilityId) {
+            const found = list.find(f => f.facility_id === paramFacilityId) || list[0];
+            setSelectedFacility(found);
+            setCurrentView('facility');
+          } else {
+            const defaultFac = list.find(f => f.facility_id === 'court-badminton-1') || list[0];
+            setSelectedFacility(defaultFac);
+            setCurrentView('home'); // Default to the rich Homepage
+          }
+          setLoading(false);
+        }
 
         fetchReportsList();
       }, []);
@@ -574,7 +736,29 @@
           })
           .catch(err => {
             setIsSubmitting(false);
-            alert('Failed to submit report. Please check your connection.');
+            // Offline fallback simulation for static deploy
+            const mockId = 'REP-BBR-' + Math.floor(1000 + Math.random() * 9000);
+            const mockSubmission = {
+              reportId: mockId,
+              referenceId: mockId,
+              facility_id: selectedFacility.facility_id,
+              facility_name: selectedFacility.name,
+              category,
+              description,
+              location_detail: locationDetail,
+              contact,
+              submitted_at: new Date().toISOString(),
+              status: 'unverified'
+            };
+            setLastSubmission(mockSubmission);
+            const updated = [mockId, ...myReportIds.filter(id => id !== mockId)];
+            setMyReportIds(updated);
+            setAllReports(prev => [mockSubmission, ...prev]);
+            try {
+              localStorage.setItem('resident_my_reports', JSON.stringify(updated));
+            } catch (e) {}
+            setCurrentView('success');
+            showToast('Fault report submitted (Offline Demo Mode)');
           });
       };
 
@@ -588,8 +772,9 @@
           .then(r => r.json())
           .then(reports => {
             setIsTracking(false);
-            setAllReports(reports || []);
-            const match = reports.find(r => r.report_id.toLowerCase() === query.toLowerCase());
+            const list = Array.isArray(reports) ? reports : DEFAULT_REPORTS;
+            setAllReports(list);
+            const match = list.find(r => r.report_id.toLowerCase() === query.toLowerCase());
             if (match) {
               setTrackedReport(match);
             } else {
@@ -598,7 +783,12 @@
           })
           .catch(() => {
             setIsTracking(false);
-            setTrackError('Could not connect to tracking server.');
+            const match = allReports.find(r => r.report_id.toLowerCase() === query.toLowerCase());
+            if (match) {
+              setTrackedReport(match);
+            } else {
+              setTrackError('No report found matching reference "' + query + '".');
+            }
           });
       };
 
@@ -621,8 +811,10 @@
             showToast('Thank you! Your feedback helps optimize facility hours.');
           })
           .catch(() => {
+            // Static deploy fallback
             setPulseSubmitting(false);
-            alert('Could not submit feedback.');
+            setPulseSubmitted(true);
+            showToast('Thank you! Your feedback helps optimize facility hours.');
           });
       };
 
