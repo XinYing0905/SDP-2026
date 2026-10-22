@@ -21,7 +21,9 @@ npm start
 ### 3. Open in Browser
 - **Operator Command Center:**  
   [http://localhost:3000/operator.html](http://localhost:3000/operator.html)
-- **Resident Mobile QR View (Badminton Court):**  
+- **Resident Home:**  
+  [http://localhost:3000/resident.html](http://localhost:3000/resident.html)
+- **Resident QR View (Badminton Court):**  
   [http://localhost:3000/resident.html?facilityId=court-badminton-1](http://localhost:3000/resident.html?facilityId=court-badminton-1)
 - **Targeted Evidence Survey (Community Hall):**  
   [http://localhost:3000/resident.html?mode=targeted](http://localhost:3000/resident.html?mode=targeted)

@@ -321,6 +321,6 @@ server.listen(port, '0.0.0.0', () => {
   console.log(`=======================================================`);
   console.log(`ADI Unified Intelligence System Running on port ${port}`);
   console.log(`- Operator Dashboard: http://localhost:${port}/operator.html`);
-  console.log(`- Resident Mobile:    http://localhost:${port}/resident.html?facilityId=court-badminton-1`);
+  console.log(`- Resident Home:      http://localhost:${port}/resident.html`);
   console.log(`=======================================================`);
 });
