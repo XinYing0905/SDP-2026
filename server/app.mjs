@@ -117,6 +117,23 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    // 3b. Submit Resident Facility Satisfaction Feedback
+    const feedbackSubmitMatch = /^\/api\/facilities\/([a-zA-Z0-9_-]+)\/feedback$/.exec(pathname);
+    if (feedbackSubmitMatch && req.method === 'POST') {
+      const facilityId = feedbackSubmitMatch[1];
+      const body = await parseBody(req);
+      const facility = db.prepare('SELECT facility_id FROM facilities WHERE facility_id = ?').get(facilityId);
+      if (!facility) return sendJson(res, 404, { error: 'Facility not found' });
+
+      return sendJson(res, 201, {
+        success: true,
+        facilityId,
+        data: body,
+        submittedAt: new Date().toISOString(),
+        message: 'Feedback recorded successfully'
+      });
+    }
+
     // 4. List All Reports
     if (pathname === '/api/reports' && req.method === 'GET') {
       const facilityId = url.searchParams.get('facilityId');

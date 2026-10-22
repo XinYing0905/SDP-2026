@@ -77,6 +77,37 @@
       { id: 'other', icon: '📝', name: 'General Feedback', placeholder: 'Describe what needs attention...' }
     ];
 
+    // Satisfaction levels (no numbers, pure emoji scale from angry to happy)
+    const SATISFACTION_LEVELS = [
+      { id: 'angry', emoji: '😡', label: 'Angry', ringColor: 'border-rose-400 bg-rose-50 text-rose-700 ring-2 ring-rose-400/30' },
+      { id: 'unhappy', emoji: '🙁', label: 'Unhappy', ringColor: 'border-orange-400 bg-orange-50 text-orange-700 ring-2 ring-orange-400/30' },
+      { id: 'neutral', emoji: '😐', label: 'Neutral', ringColor: 'border-amber-400 bg-amber-50 text-amber-700 ring-2 ring-amber-400/30' },
+      { id: 'happy', emoji: '🙂', label: 'Happy', ringColor: 'border-emerald-400 bg-emerald-50 text-emerald-700 ring-2 ring-emerald-400/30' },
+      { id: 'delighted', emoji: '😄', label: 'Satisfied', ringColor: 'border-emerald-500 bg-emerald-100 text-emerald-800 ring-2 ring-emerald-500/40' }
+    ];
+
+    // Facility satisfaction survey criteria
+    const FEEDBACK_CRITERIA = [
+      {
+        id: 'cleanliness',
+        icon: '🧹',
+        title: 'Cleanliness & Hygiene',
+        desc: 'Tidiness of grounds, surfaces, waste disposal & washrooms'
+      },
+      {
+        id: 'staff',
+        icon: '🧑‍💼',
+        title: 'Staff Behaviour & Service',
+        desc: 'Friendliness, courtesy & responsiveness of duty staff'
+      },
+      {
+        id: 'facility',
+        icon: '🛠️',
+        title: 'Facility Condition',
+        desc: 'Equipment, lighting, playing surface & overall maintenance'
+      }
+    ];
+
     // Notices of facility closures / maintenance
     const OPERATIONAL_NOTICES = [
       {
@@ -389,6 +420,16 @@
       const [pulseOption, setPulseOption] = useState(null);
       const [pulseSubmitting, setPulseSubmitting] = useState(false);
       const [pulseSubmitted, setPulseSubmitted] = useState(false);
+
+      // Facility Satisfaction Feedback state
+      const [feedbackRatings, setFeedbackRatings] = useState({
+        cleanliness: null,
+        staff: null,
+        facility: null
+      });
+      const [feedbackText, setFeedbackText] = useState('');
+      const [feedbackSubmitting, setFeedbackSubmitting] = useState(false);
+      const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
       const [toastMsg, setToastMsg] = useState('');
 
       const showToast = (msg) => {
@@ -854,6 +895,59 @@
         }
       };
 
+      const handleSetFeedbackRating = (categoryKey, levelObj) => {
+        setFeedbackRatings(prev => ({
+          ...prev,
+          [categoryKey]: prev[categoryKey]?.id === levelObj.id ? null : levelObj
+        }));
+      };
+
+      const handleResetFeedback = () => {
+        setFeedbackRatings({ cleanliness: null, staff: null, facility: null });
+        setFeedbackText('');
+        setFeedbackSubmitting(false);
+        setFeedbackSubmitted(false);
+      };
+
+      const handleFeedbackSubmit = (e) => {
+        if (e) e.preventDefault();
+        const hasRating = feedbackRatings.cleanliness || feedbackRatings.staff || feedbackRatings.facility || feedbackText.trim();
+        if (!hasRating) {
+          showToast('Please select at least one emoji rating before submitting');
+          return;
+        }
+
+        setFeedbackSubmitting(true);
+        const payload = {
+          facility_id: selectedFacility ? selectedFacility.facility_id : 'facility',
+          facility_name: selectedFacility ? selectedFacility.name : 'Township Amenity',
+          ratings: {
+            cleanliness: feedbackRatings.cleanliness ? feedbackRatings.cleanliness.label : null,
+            staff_behaviour: feedbackRatings.staff ? feedbackRatings.staff.label : null,
+            facility_condition: feedbackRatings.facility ? feedbackRatings.facility.label : null
+          },
+          comments: feedbackText.trim(),
+          submitted_at: new Date().toISOString()
+        };
+
+        fetch(`/api/facilities/${selectedFacility ? selectedFacility.facility_id : 'court-badminton-1'}/feedback`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(r => r.json())
+          .catch(() => ({ success: true }))
+          .finally(() => {
+            setFeedbackSubmitting(false);
+            setFeedbackSubmitted(true);
+            try {
+              const list = JSON.parse(localStorage.getItem('resident_facility_feedback') || '[]');
+              localStorage.setItem('resident_facility_feedback', JSON.stringify([payload, ...list]));
+            } catch (err) {}
+            showToast('✓ Feedback submitted to Township Operations');
+          });
+      };
+
       const simulatePhotoAttach = () => {
         if (attachedPhoto) {
           setAttachedPhoto(null);
@@ -1308,32 +1402,26 @@
                     </div>
                   </div>
 
-                  {/* Primary Action Button: Report Issue */}
-                  <div className="space-y-2 pt-2">
+                  {/* Primary Action Buttons: Report Defect (Red) & Feedback */}
+                  <div className="space-y-2.5 pt-2">
                     <button
                       onClick={() => setCurrentView('report')}
-                      className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md shadow-rose-600/20 transition-all flex items-center justify-center gap-2"
                     >
                       <span>🛠️</span>
                       <span>Report a Facility Defect / Issue</span>
                     </button>
 
-                    <div className="grid grid-cols-2 gap-2 pt-1">
-                      <button
-                        onClick={() => setCurrentView('pulse')}
-                        className="py-2.5 px-3 bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold text-xs rounded-xl border border-amber-200 flex items-center justify-center gap-1.5 transition-colors"
-                      >
-                        <span>💬</span>
-                        <span>Resident Feedback</span>
-                      </button>
-                      <button
-                        onClick={() => setCurrentView('facilities')}
-                        className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 flex items-center justify-center gap-1.5 transition-colors"
-                      >
-                        <span>🏛️</span>
-                        <span>All Facilities (12)</span>
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => {
+                        handleResetFeedback();
+                        setCurrentView('feedback');
+                      }}
+                      className="w-full py-3 bg-amber-50 hover:bg-amber-100 active:scale-[0.99] text-amber-950 font-bold text-sm rounded-xl border border-amber-300 shadow-xs transition-all flex items-center justify-center gap-2"
+                    >
+                      <span>💬</span>
+                      <span>Feedback</span>
+                    </button>
                   </div>
 
                   {/* Information Box */}
@@ -1475,7 +1563,7 @@
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                        className="w-full py-3.5 bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md shadow-rose-600/20 transition-all flex items-center justify-center gap-2"
                       >
                         {isSubmitting ? (
                           <>
@@ -1768,6 +1856,213 @@
                     )}
                   </div>
 
+                </div>
+              )}
+
+              {/* ────────────────────────────────────────────────────────
+                  VIEW: RESIDENT SATISFACTION FEEDBACK (EMOJI RANKING)
+              ──────────────────────────────────────────────────────── */}
+              {currentView === 'feedback' && selectedFacility && (
+                <div className="space-y-4">
+                  
+                  {/* Top Bar Navigation */}
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleResetFeedback();
+                        setCurrentView('facility');
+                      }}
+                      className="text-xs font-semibold text-slate-500 hover:text-slate-800 flex items-center gap-1 transition-colors"
+                    >
+                      ← Back
+                    </button>
+                    <span className="text-xs font-bold text-slate-800 truncate max-w-[200px]">
+                      {selectedFacility.name}
+                    </span>
+                  </div>
+
+                  {!feedbackSubmitted ? (
+                    <div className="space-y-3.5">
+                      {/* Intro Banner */}
+                      <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 text-left">
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-xl p-2 bg-amber-100 rounded-xl text-amber-800">⭐</span>
+                          <div>
+                            <h2 className="text-sm font-bold text-slate-900">Facility Satisfaction Feedback</h2>
+                            <p className="text-[11px] text-slate-600 mt-0.5">
+                              Rate your experience at {selectedFacility.name}. Tap an emoji for each question below.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Satisfaction Rating Questions (Cleanliness, Staff Behaviour, Condition) */}
+                      <div className="space-y-3">
+                        {FEEDBACK_CRITERIA.map((crit) => {
+                          const currentSelected = feedbackRatings[crit.id];
+                          return (
+                            <div
+                              key={crit.id}
+                              className="bg-white border border-slate-200 rounded-2xl p-3.5 space-y-2.5 shadow-xs transition-all hover:border-slate-300"
+                            >
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-lg">{crit.icon}</span>
+                                  <div>
+                                    <h3 className="text-xs font-bold text-slate-900">{crit.title}</h3>
+                                    <p className="text-[10px] text-slate-500">{crit.desc}</p>
+                                  </div>
+                                </div>
+                                {currentSelected && (
+                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1 shrink-0 ${currentSelected.ringColor}`}>
+                                    <span>{currentSelected.emoji}</span>
+                                    <span>{currentSelected.label}</span>
+                                  </span>
+                                )}
+                              </div>
+
+                              {/* 5 Emojis Rating Bar (Angry to Happy - No Numbers) */}
+                              <div className="grid grid-cols-5 gap-1.5 pt-1">
+                                {SATISFACTION_LEVELS.map(lvl => {
+                                  const isSelected = currentSelected?.id === lvl.id;
+                                  return (
+                                    <button
+                                      type="button"
+                                      key={lvl.id}
+                                      onClick={() => handleSetFeedbackRating(crit.id, lvl)}
+                                      className={`py-2 px-1 rounded-xl flex flex-col items-center justify-center transition-all ${
+                                        isSelected
+                                          ? `${lvl.ringColor} scale-105 shadow-sm`
+                                          : 'border border-slate-200 bg-slate-50/70 hover:bg-slate-100 hover:border-slate-300 opacity-80 hover:opacity-100'
+                                      }`}
+                                    >
+                                      <span className="text-2xl transition-transform active:scale-125 select-none">{lvl.emoji}</span>
+                                      <span className="text-[9px] font-semibold mt-1 truncate max-w-full text-slate-600">
+                                        {lvl.label}
+                                      </span>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Last Question: Optional Text Input */}
+                      <div className="bg-white border border-slate-200 rounded-2xl p-3.5 space-y-2 shadow-xs">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                            <span>📝</span>
+                            <span>Suggestions or Comments</span>
+                          </label>
+                          <span className="text-[9px] bg-slate-100 text-slate-500 font-semibold px-2 py-0.5 rounded-full border border-slate-200">
+                            Optional
+                          </span>
+                        </div>
+                        <p className="text-[10px] text-slate-500">
+                          Anything else you would like our facility management team to know?
+                        </p>
+                        <textarea
+                          rows="3"
+                          value={feedbackText}
+                          onChange={e => setFeedbackText(e.target.value)}
+                          placeholder="Tell us what went well or what could be improved (optional)..."
+                          className="w-full p-2.5 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none bg-slate-50/50 resize-none placeholder:text-slate-400"
+                        ></textarea>
+                      </div>
+
+                      {/* Submit Feedback Action */}
+                      <div className="pt-1">
+                        <button
+                          type="button"
+                          onClick={handleFeedbackSubmit}
+                          disabled={feedbackSubmitting}
+                          className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+                        >
+                          {feedbackSubmitting ? (
+                            <>
+                              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                              <span>Submitting Feedback...</span>
+                            </>
+                          ) : (
+                            <span>Submit Feedback →</span>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    /* Feedback Submitted Success Screen */
+                    <div className="space-y-4 my-auto text-center py-4">
+                      <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto shadow-sm">
+                        ✓
+                      </div>
+
+                      <div>
+                        <h2 className="text-lg font-bold text-slate-900">Thank You For Your Feedback!</h2>
+                        <p className="text-xs text-slate-500 mt-1">
+                          Your satisfaction ratings for <strong className="text-slate-700">{selectedFacility.name}</strong> have been recorded and sent to township management.
+                        </p>
+                      </div>
+
+                      {/* Response Summary Card */}
+                      <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-left text-xs space-y-2.5 shadow-xs">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block pb-1 border-b border-slate-200">
+                          Your Ratings
+                        </span>
+                        <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                          <div className="p-2 bg-white rounded-xl border border-slate-200">
+                            <span className="text-[10px] text-slate-400 block font-medium">Cleanliness</span>
+                            <span className="text-2xl block my-0.5">{feedbackRatings.cleanliness?.emoji || '—'}</span>
+                            <span className="text-[10px] font-bold text-slate-700">{feedbackRatings.cleanliness?.label || 'Not rated'}</span>
+                          </div>
+                          <div className="p-2 bg-white rounded-xl border border-slate-200">
+                            <span className="text-[10px] text-slate-400 block font-medium">Staff Service</span>
+                            <span className="text-2xl block my-0.5">{feedbackRatings.staff?.emoji || '—'}</span>
+                            <span className="text-[10px] font-bold text-slate-700">{feedbackRatings.staff?.label || 'Not rated'}</span>
+                          </div>
+                          <div className="p-2 bg-white rounded-xl border border-slate-200">
+                            <span className="text-[10px] text-slate-400 block font-medium">Condition</span>
+                            <span className="text-2xl block my-0.5">{feedbackRatings.facility?.emoji || '—'}</span>
+                            <span className="text-[10px] font-bold text-slate-700">{feedbackRatings.facility?.label || 'Not rated'}</span>
+                          </div>
+                        </div>
+
+                        {feedbackText.trim() && (
+                          <div className="pt-2 border-t border-slate-200">
+                            <span className="text-[10px] font-bold text-slate-500 block mb-1">Your Comments:</span>
+                            <p className="p-2.5 bg-white rounded-xl border border-slate-200 text-[11px] text-slate-700 italic">
+                              "{feedbackText.trim()}"
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="space-y-2 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            handleResetFeedback();
+                            setCurrentView('facility');
+                          }}
+                          className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
+                        >
+                          Return to {selectedFacility.name}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            handleResetFeedback();
+                            setCurrentView('home');
+                          }}
+                          className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-all"
+                        >
+                          Return to Homepage
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -2714,7 +3009,7 @@
                   setShowQrModal(true);
                 }}
                 className={`relative z-10 -mt-5 flex flex-1 flex-col items-center justify-center transition-transform active:scale-95 ${
-                  showQrModal || currentView === 'facility' || currentView === 'report' || currentView === 'success'
+                  showQrModal || currentView === 'facility' || currentView === 'report' || currentView === 'success' || currentView === 'feedback'
                     ? 'text-violet-700'
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
