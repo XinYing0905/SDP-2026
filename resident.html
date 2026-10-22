@@ -2602,7 +2602,10 @@
                     <strong className="text-sm font-bold">Township QR Scanner</strong>
                   </div>
                   <button
-                    onClick={() => setShowQrModal(false)}
+                    onClick={() => {
+                      setShowQrModal(false);
+                      setCurrentView('home');
+                    }}
                     className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-bold"
                   >
                     ✕
@@ -2689,9 +2692,12 @@
 
               {/* 2. Facility / Report */}
               <button
-                onClick={() => setCurrentView('facility')}
+                onClick={() => {
+                  setCurrentView('home');
+                  setShowQrModal(true);
+                }}
                 className={`flex flex-col items-center gap-0.5 py-1 px-2.5 transition-colors ${
-                  currentView === 'facility' || currentView === 'report' || currentView === 'success'
+                  showQrModal || currentView === 'facility' || currentView === 'report' || currentView === 'success'
                     ? 'text-emerald-700 font-bold'
                     : 'hover:text-slate-900'
                 }`}
