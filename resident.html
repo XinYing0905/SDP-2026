@@ -988,14 +988,15 @@
                     {!pulseSubmitted ? (
                       <div className="space-y-2 pt-1">
                         <p className="text-[11px] font-semibold text-slate-700 leading-snug">
-                          How often does the current Community Hall schedule fit your availability?
+                          How often do you use Community Hall 4, and what best describes your experience?
                         </p>
                         <div className="space-y-1.5">
                           {[
-                            'Almost always — I can usually book when I need to',
-                            'Sometimes — but slots I want are often unavailable',
-                            "Rarely — the schedule doesn't match my availability",
-                            "I haven't tried to use the hall recently"
+                            'Use frequently — Current opening hours fit my schedule well',
+                            'Rarely use — Peak evening & weekend slots are always fully booked',
+                            "Rarely use — Current hours (08:00–21:00) clash with my work schedule",
+                            'Rarely use — Lack of appealing programmes or youth/family activities',
+                            'Hardly ever use — Too busy or simply no need at this time'
                           ].map((opt, i) => (
                             <div
                               key={i}
@@ -1792,15 +1793,16 @@
 
                       <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
                         <h3 className="font-bold text-xs text-slate-800 mb-2.5">
-                          How often does the current Community Hall schedule fit your availability?
+                          How often do you use Community Hall 4, and what best describes your experience?
                         </h3>
 
                         <div className="space-y-2">
                           {[
-                            'Almost always — I can usually book when I need to',
-                            'Sometimes — but I often find the slots I want are unavailable',
-                            "Rarely — the schedule doesn't match when I'm available",
-                            "I haven't tried to use the hall recently"
+                            'Use frequently — Current opening hours fit my schedule well',
+                            'Rarely use — Peak evening & weekend slots are always fully booked',
+                            "Rarely use — Current hours (08:00–21:00) clash with my work schedule",
+                            'Rarely use — Lack of appealing programmes or youth/family activities',
+                            'Hardly ever use — Too busy or simply no need at this time'
                           ].map((opt, i) => (
                             <div
                               key={i}
