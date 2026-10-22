@@ -396,17 +396,46 @@
         setTimeout(() => setToastMsg(''), 3500);
       };
 
-      // Community Activities joined state
+      // Community Activities joined state & join confirmation modal
       const [joinedActivities, setJoinedActivities] = useState([]);
+      const [joinTargetActivity, setJoinTargetActivity] = useState(null);
 
       const handleToggleJoinActivity = (act) => {
         if (joinedActivities.includes(act.id)) {
-          setJoinedActivities(joinedActivities.filter(id => id !== act.id));
+          // If already joined, cancel/leave it
+          setJoinedActivities(prev => prev.filter(id => id !== act.id));
+          setUpcomingBookings(prev => prev.filter(b => b.id !== act.id));
           showToast(`Left ${act.title}`);
         } else {
-          setJoinedActivities([...joinedActivities, act.id]);
-          showToast(`✓ Joined: ${act.title}`);
+          // Open details confirmation modal first!
+          setJoinTargetActivity(act);
         }
+      };
+
+      const handleConfirmJoinActivity = () => {
+        if (!joinTargetActivity) return;
+        const act = joinTargetActivity;
+        setJoinedActivities(prev => [...prev, act.id]);
+
+        // Add to Upcoming list so it appears in Upcoming Bookings & home reminder!
+        const refId = 'ACT-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+        const newUpcoming = {
+          id: act.id,
+          facilityId: act.id,
+          facilityName: act.title,
+          icon: act.icon,
+          rate: 'Free Admission',
+          date: act.time.split('·')[0].trim(),
+          slot: act.time.split('·')[1]?.trim() || act.time,
+          court: act.location,
+          refId,
+          status: 'upcoming',
+          isCommunityEvent: true
+        };
+
+        setUpcomingBookings(prev => [newUpcoming, ...prev]);
+        setJoinTargetActivity(null);
+        showToast(`✓ Joined: ${act.title}`);
       };
 
       // Facility Bookings state & handlers: Dynamically auto-generate 7-day window from current system date
@@ -804,18 +833,25 @@
             cohort: 'Long-term residents (3+ years), Building 4'
           })
         })
-          .then(r => r.json())
+          .then(r => {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
           .then(() => {
-            setPulseSubmitting(false);
-            setPulseSubmitted(true);
-            showToast('Thank you! Your feedback helps optimize facility hours.');
+            finishPulseSubmit();
           })
           .catch(() => {
-            // Static deploy fallback
-            setPulseSubmitting(false);
-            setPulseSubmitted(true);
-            showToast('Thank you! Your feedback helps optimize facility hours.');
+            // Static deploy fallback (Vercel / GitHub Pages without Node.js backend)
+            finishPulseSubmit();
           });
+
+        function finishPulseSubmit() {
+          setPulseSubmitting(false);
+          setPulseSubmitted(true);
+          try {
+            localStorage.setItem('resident_pulse_answer', pulseOption);
+          } catch (e) {}
+        }
       };
 
       const simulatePhotoAttach = () => {
@@ -1004,14 +1040,14 @@
                     )}
                   </div>
 
-                  {/* Top Reminder: Active Upcoming Bookings */}
+                  {/* Top Reminder: Active Upcoming Bookings & Community Events */}
                   {upcomingBookings.length > 0 && (
                     <div className="p-3 bg-gradient-to-r from-emerald-50 via-teal-50/60 to-emerald-100/60 border border-emerald-300 rounded-2xl shadow-xs space-y-2 animate-fade-in">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           <span className="text-sm">🔔</span>
                           <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800">
-                            Upcoming Booking Reminder
+                            Upcoming Reminder
                           </span>
                         </div>
                         <span className="text-[9px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full shadow-2xs">
@@ -2424,13 +2460,17 @@
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">Cancel Reservation?</h3>
+                    <h3 className="text-sm font-bold text-slate-900">
+                      {cancelTargetBooking.isCommunityEvent ? 'Leave Activity Session?' : 'Cancel Reservation?'}
+                    </h3>
                     <p className="text-[11px] text-slate-500 mt-0.5">
-                      Are you sure you want to cancel this booking? This reserved slot will be released back to other residents.
+                      {cancelTargetBooking.isCommunityEvent
+                        ? 'Are you sure you want to withdraw your registration for this session?'
+                        : 'Are you sure you want to cancel this booking? This reserved slot will be released back to other residents.'}
                     </p>
                   </div>
 
-                  {/* Booking Details Summary */}
+                  {/* Booking / Activity Details Summary */}
                   <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left space-y-1.5 text-xs">
                     <div className="flex items-center gap-2">
                       <span className="text-lg p-1 bg-white rounded-lg border border-slate-200 shadow-2xs shrink-0">
@@ -2447,13 +2487,13 @@
                         <strong className="text-slate-800">{cancelTargetBooking.date}</strong>
                       </div>
                       <div className="flex items-center justify-between text-slate-600">
-                        <span className="text-slate-400">Time Slot:</span>
+                        <span className="text-slate-400">Time:</span>
                         <strong className="text-emerald-800 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
                           🕒 {cancelTargetBooking.slot}
                         </strong>
                       </div>
                       <div className="flex items-center justify-between text-slate-600">
-                        <span className="text-slate-400">Booking Ref:</span>
+                        <span className="text-slate-400">Ref Code:</span>
                         <span className="font-mono text-[10px] text-slate-500">{cancelTargetBooking.refId}</span>
                       </div>
                     </div>
@@ -2475,6 +2515,74 @@
                     >
                       <span>✓</span>
                       <span>Confirm Cancel</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* ────────────────────────────────────────────────────────
+                MODAL: JOIN COMMUNITY ACTIVITY CONFIRMATION
+            ──────────────────────────────────────────────────────── */}
+            {joinTargetActivity && (
+              <div className="absolute inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+                <div className="bg-white rounded-2xl w-full max-w-xs p-4 shadow-2xl border border-slate-200 text-center space-y-3 animate-scale-up">
+                  {/* Warning/Prompt Icon */}
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto shadow-inner">
+                    {joinTargetActivity.icon}
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-bold text-slate-900">Confirm Activity Join?</h3>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Are you sure you want to register for this community session?
+                    </p>
+                  </div>
+
+                  {/* Activity Details Summary */}
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left space-y-1.5 text-xs">
+                    <strong className="text-slate-900 text-xs font-bold leading-tight block">
+                      {joinTargetActivity.title}
+                    </strong>
+
+                    <div className="pt-2 border-t border-slate-200/80 space-y-1 text-[11px]">
+                      <div className="flex items-center justify-between text-slate-600">
+                        <span className="text-slate-400">Time & Date:</span>
+                        <strong className="text-emerald-800 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                          🕒 {joinTargetActivity.time}
+                        </strong>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-600">
+                        <span className="text-slate-400">Location:</span>
+                        <span className="font-semibold text-slate-800 text-right max-w-[65%]">📍 {joinTargetActivity.location}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-600">
+                        <span className="text-slate-400">Organizer:</span>
+                        <span className="text-[10px] text-slate-500 text-right max-w-[65%]">{joinTargetActivity.instructor}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-600">
+                        <span className="text-slate-400">Admission:</span>
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded">Free for Residents</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons: Cancel or Confirm */}
+                  <div className="flex gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setJoinTargetActivity(null)}
+                      className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-bold text-xs rounded-xl transition-all"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleConfirmJoinActivity}
+                      className="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-1"
+                    >
+                      <span>✓</span>
+                      <span>Confirm Join</span>
                     </button>
                   </div>
                 </div>
