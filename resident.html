@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bandar Bukit Raja Township — Resident Amenity Portal</title>
+  <title>Bandar Bukit Raja Township — Resident Facilities Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- React & Babel CDN -->
@@ -454,7 +454,7 @@
         default:
           return {
             location: `${genericFacName} Common Area`,
-            description: 'General amenity maintenance request or facility improvement feedback.'
+            description: 'General facility maintenance request or facility improvement feedback.'
           };
       }
     }
@@ -1312,7 +1312,7 @@
         setLocationDetail(p.location);
         setShowQrModal(false);
         setCurrentView('facility');
-        showToast(`📍 Scanned: ${found ? found.name : 'Amenity QR Code'}`);
+        showToast(`📍 Scanned: ${found ? found.name : 'Facility QR Code'}`);
       };
 
       const handleReportSubmit = (e) => {
@@ -1462,7 +1462,7 @@
         setFeedbackSubmitting(true);
         const payload = {
           facility_id: selectedFacility ? selectedFacility.facility_id : 'facility',
-          facility_name: selectedFacility ? selectedFacility.name : 'Township Amenity',
+          facility_name: selectedFacility ? selectedFacility.name : 'Township Facility',
           ratings: {
             cleanliness: feedbackRatings.cleanliness ? feedbackRatings.cleanliness.label : null,
             staff_behaviour: feedbackRatings.staff ? feedbackRatings.staff.label : null,
@@ -1581,7 +1581,7 @@
                 <div className="relative flex-1 min-h-0 overflow-hidden bg-[#b9dfc2] select-none">
                   {/* Floating Overlay Controls In Front of Map */}
                   <div className="absolute top-3 left-3 right-3 z-30 flex flex-col gap-2 pointer-events-none items-start">
-                    {/* Search Township Amenities Bar */}
+                    {/* Search Township Facilities Bar */}
                     <div className="w-full h-10 rounded-xl bg-white/95 shadow-lg border border-white flex items-center gap-2.5 px-3 backdrop-blur pointer-events-auto">
                       <span className="text-slate-400 text-sm">⌕</span>
                       <input
@@ -1595,8 +1595,8 @@
                         }}
                         list="map-facility-suggestions"
                         className="flex-1 bg-transparent outline-none text-[11px] font-semibold text-slate-700 placeholder:text-slate-400"
-                        placeholder="Search township amenities"
-                        aria-label="Search township amenities"
+                        placeholder="Search township facilities"
+                        aria-label="Search township facilities"
                       />
                       {mapSearch && <button onClick={() => { setMapSearch(''); setFocusedMapAmenityId(null); }} className="text-slate-400 text-xs hover:text-slate-600" aria-label="Clear search">✕</button>}
                       <datalist id="map-facility-suggestions">{mapAmenities.map(item => <option key={item.id} value={item.name} />)}</datalist>
@@ -1781,7 +1781,7 @@
                           <span>☀️</span> 28°C Sunny
                         </span>
                         <span className="block text-[10px] text-slate-300 mt-1">
-                          11 of 12 Amenities Open
+                          11 of 12 Facilities Open
                         </span>
                       </div>
                     </div>
@@ -2319,7 +2319,7 @@
 
                   <div>
                     <h2 className="text-lg font-bold text-slate-900">Report Successfully Submitted</h2>
-                    <p className="text-xs text-slate-500 mt-0.5">Thank you for helping keep Bandar Bukit Raja amenities in top condition</p>
+                    <p className="text-xs text-slate-500 mt-0.5">Thank you for helping keep Bandar Bukit Raja facilities in top condition</p>
                   </div>
 
                   {/* Tracking Ticket Card */}
@@ -2331,7 +2331,7 @@
 
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Facility</span>
-                      <span className="font-semibold text-slate-800">{selectedFacility ? selectedFacility.name : 'Amenity'}</span>
+                      <span className="font-semibold text-slate-800">{selectedFacility ? selectedFacility.name : 'Facility'}</span>
                     </div>
 
                     <div className="flex justify-between items-center">
@@ -3157,7 +3157,7 @@
                   <div className="rounded-2xl bg-gradient-to-br from-emerald-800 to-teal-700 p-4 text-white shadow-sm">
                     <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-emerald-200">Around the township</span>
                     <h2 className="mt-1 text-base font-extrabold">Recommended Activities</h2>
-                    <p className="mt-1 text-[11px] leading-relaxed text-emerald-50/90">Discover classes, sports sessions and community programmes hosted at nearby amenities.</p>
+                    <p className="mt-1 text-[11px] leading-relaxed text-emerald-50/90">Discover classes, sports sessions and community programmes hosted at nearby facilities.</p>
                   </div>
 
                   <div className="flex items-center justify-between">
@@ -3856,12 +3856,12 @@
 
                     <div className="text-center p-4">
                       <span className="text-3xl block mb-1">📱</span>
-                      <p className="text-[11px] text-slate-300 font-medium">Point camera at on-site amenity QR code</p>
+                      <p className="text-[11px] text-slate-300 font-medium">Point camera at on-site facility QR code</p>
                     </div>
                   </div>
 
                   <p className="text-[11px] text-slate-400 mt-3 text-center">
-                    Simulate scanning an amenity QR code below:
+                    Simulate scanning a facility QR code below:
                   </p>
                 </div>
 
