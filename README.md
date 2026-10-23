@@ -1,4 +1,4 @@
-# Township Amenity Decision Intelligence (ADI) System
+# Township Facility Decision Intelligence (ADI) System
 
 A unified platform connecting Resident Mobile QR fault reporting, On-site Facilities Verification, and Operator Command Center Decision Intelligence, backed by local SQLite persistence.
 
