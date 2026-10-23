@@ -52,6 +52,58 @@
     .scanner-beam {
       animation: scanbeam 2.2s ease-in-out infinite;
     }
+    @keyframes pulse-envelope-arrive {
+      0% { opacity: .28; filter: blur(7px) drop-shadow(0 2px 3px rgba(15,23,42,.03)); transform: translate(-118px, -112px) scale(.1) rotate(-7deg); }
+      18% { opacity: .42; filter: blur(5.5px) drop-shadow(0 4px 7px rgba(15,23,42,.06)); transform: translate(62px, -88px) scale(.24) rotate(4deg); }
+      38% { opacity: .62; filter: blur(3.8px) drop-shadow(0 8px 12px rgba(15,23,42,.1)); transform: translate(88px, -46px) scale(.42) rotate(3deg); }
+      57% { opacity: .79; filter: blur(2.4px) drop-shadow(0 11px 17px rgba(15,23,42,.14)); transform: translate(-54px, -24px) scale(.63) rotate(-2.5deg); }
+      73% { opacity: .92; filter: blur(1px) drop-shadow(0 15px 22px rgba(15,23,42,.19)); transform: translate(-26px, 7px) scale(.82) rotate(-1.2deg); }
+      87% { opacity: 1; filter: blur(0) drop-shadow(0 19px 28px rgba(15,23,42,.25)); transform: translate(16px, -3px) scale(.96) rotate(.7deg); }
+      95% { opacity: 1; filter: blur(0) drop-shadow(0 21px 30px rgba(15,23,42,.27)); transform: translate(-2px, 2px) scale(1.025) rotate(-.2deg); }
+      100% { opacity: 1; filter: blur(0) drop-shadow(0 18px 27px rgba(15,23,42,.24)); transform: translate(0, 0) scale(1) rotate(0); }
+    }
+    @keyframes pulse-envelope-wing-left {
+      0%, 100% { transform: rotate(-6deg) scaleY(1); }
+      50% { transform: rotate(8deg) scaleY(.86); }
+    }
+    @keyframes pulse-envelope-wing-right {
+      0%, 100% { transform: rotate(6deg) scaleY(1); }
+      50% { transform: rotate(-8deg) scaleY(.86); }
+    }
+    @keyframes pulse-envelope-heart-arrive {
+      0% { opacity: 0; transform: translate(-86px, -7px) scale(.24); }
+      58% { opacity: .8; transform: translate(-18px, -2px) scale(.68); }
+      82% { opacity: 1; transform: translate(3px, 0) scale(1.12); }
+      100% { opacity: 1; transform: translate(0, 0) scale(1); }
+    }
+    @keyframes pulse-envelope-flap {
+      0%, 58% { transform: rotateX(0deg); }
+      76% { transform: rotateX(-18deg); }
+      100% { transform: rotateX(0deg); }
+    }
+    .pulse-envelope-arrive {
+      animation: pulse-envelope-arrive .78s cubic-bezier(.16,.72,.2,1) both;
+    }
+    .pulse-envelope-flap {
+      transform-origin: top center;
+      animation: pulse-envelope-flap .6s .14s ease-out both;
+    }
+    .pulse-envelope-wing-left {
+      transform-origin: right center;
+      animation: pulse-envelope-wing-left .28s ease-in-out 3;
+    }
+    .pulse-envelope-wing-right {
+      transform-origin: left center;
+      animation: pulse-envelope-wing-right .28s ease-in-out 3;
+    }
+    .pulse-envelope-heart {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pulse-envelope-heart-arrive .5s .18s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pulse-envelope-arrive, .pulse-envelope-flap, .pulse-envelope-wing-left, .pulse-envelope-wing-right, .pulse-envelope-heart { animation: none; }
+    }
   </style>
 </head>
 <body class="bg-slate-950 font-sans antialiased min-h-screen flex flex-col items-center justify-center p-0 sm:p-4 text-slate-800 selection:bg-brand-500 selection:text-white">
@@ -63,12 +115,19 @@
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
 
-    const MAP_AMENITIES = [
-      { id: 'community-hall-4', name: 'Community Hall', type: 'Community space', status: 'Available', tone: 'available', x: 46, y: 38, icon: '⌂', shape: 'hall', communityInput: true, description: 'Shared township hall for resident gatherings, workshops, and private bookings.' },
-      { id: 'court-badminton-1', name: 'Sports Court', type: 'Sports & recreation', status: 'Booking Available', tone: 'booking', x: 72, y: 57, icon: '◇', shape: 'court', description: 'Multi-court sports facility for resident recreation and reservations.' },
-      { id: 'clubhouse-gym-1', name: 'Gym / Clubhouse', type: 'Fitness & wellness', status: 'Available', tone: 'available', x: 73, y: 27, icon: '＋', shape: 'clubhouse', description: 'Resident fitness and wellness space in the central clubhouse.' },
-      { id: 'multipurpose-room-d', name: 'Multipurpose Room', type: 'Shared community space', status: 'Under Maintenance', tone: 'maintenance', x: 28, y: 64, icon: '▦', shape: 'room', description: 'Floor resurfacing and acoustic treatment in progress.' },
-      { id: 'township-park', name: 'Playground / Park', type: 'Outdoor recreation', status: 'Available', tone: 'available', x: 27, y: 28, icon: '♧', shape: 'park', description: 'Landscaped outdoor space with play and rest areas.' }
+    const MAP_LAYOUT = [
+      { id: 'court-badminton-1', x: 78, y: 64, icon: '🏸', shape: 'court', wall: '#167f72', roof: '#43b5a0' },
+      { id: 'community-hall-4', x: 34, y: 36, icon: '⌂', shape: 'hall', wall: '#a75f45', roof: '#dd8b62', communityInput: true },
+      { id: 'tennis-court-west', x: 18, y: 42, icon: '🎾', shape: 'court', wall: '#0f766e', roof: '#36b8a5' },
+      { id: 'clubhouse-gym-1', x: 60, y: 16, icon: '＋', shape: 'clubhouse', wall: '#467b98', roof: '#79b8cf' },
+      { id: 'function-room-a', x: 28, y: 74, icon: 'A', shape: 'room', wall: '#b1875e', roof: '#ddbd8a' },
+      { id: 'multipurpose-room-d', x: 49, y: 79, icon: 'D', shape: 'room', wall: '#b35f4e', roof: '#e78a72' },
+      { id: 'meeting-room-e', x: 85, y: 65, icon: 'E', shape: 'room', wall: '#3d7e83', roof: '#73b8ba' },
+      { id: 'swimming-pool-main', x: 24, y: 18, icon: '≈', shape: 'pool', wall: '#178fa7', roof: '#59d0dc' },
+      { id: 'squash-court-1', x: 88, y: 48, icon: 'S', shape: 'sporthall', wall: '#596f9b', roof: '#8fa9d2' },
+      { id: 'bbq-pavilion-north', x: 40, y: 86, icon: '♨', shape: 'pavilion', wall: '#94713d', roof: '#d7ad62' },
+      { id: 'children-playroom', x: 35, y: 15, icon: '★', shape: 'play', wall: '#b96578', roof: '#e39aab' },
+      { id: 'rooftop-study-lounge', x: 72, y: 90, icon: '▤', shape: 'lounge', wall: '#247665', roof: '#58aa91' }
     ];
 
     function getQueryParam(key) {
@@ -692,7 +751,7 @@
     ];
 
     function ResidentApp() {
-      // Views: 'home' | 'facility' (QR touchpoint) | 'report' | 'success' | 'facilities' | 'track' | 'pulse' | 'bookings'
+      // Views: 'home' | 'facility' (report context) | 'report' | 'success' | 'activities' | 'track' | 'pulse' | 'bookings'
       const [currentView, setCurrentView] = useState('home');
       const [facilities, setFacilities] = useState([]);
       const [selectedFacility, setSelectedFacility] = useState(null);
@@ -725,21 +784,95 @@
       // QR Scanner Simulator Modal State
       const [showQrModal, setShowQrModal] = useState(false);
       const [selectedMapAmenity, setSelectedMapAmenity] = useState(null);
-      const [mapZoom, setMapZoom] = useState(1);
+      const [focusedMapAmenityId, setFocusedMapAmenityId] = useState(null);
+      const [mapSearch, setMapSearch] = useState('');
+      const [mapZoom, setMapZoom] = useState(1.28);
       const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
+      const [isMapDragging, setIsMapDragging] = useState(false);
       const mapDrag = useRef(null);
+      const mapViewportRef = useRef(null);
+      const mapWorldRef = useRef(null);
 
-      const changeMapZoom = delta => setMapZoom(value => Math.min(1.8, Math.max(0.85, value + delta)));
-      const recenterMap = () => { setMapZoom(1); setMapOffset({ x: 0, y: 0 }); };
+      const mapAmenities = (facilities.length ? facilities : DEFAULT_FACILITIES).map((facility, index) => {
+        const layout = MAP_LAYOUT.find(item => item.id === facility.facility_id) || {
+          x: 16 + (index % 4) * 22,
+          y: 18 + Math.floor(index / 4) * 27,
+          icon: '◆',
+          shape: 'hall',
+          wall: '#267a68',
+          roof: '#63b69c'
+        };
+        const isMaintenance = facility.status === 'maintenance';
+        const isBookable = ['court-badminton-1', 'community-hall-4', 'tennis-court-west', 'clubhouse-gym-1', 'function-room-a'].includes(facility.facility_id);
+        return {
+          ...layout,
+          id: facility.facility_id,
+          name: facility.name,
+          type: facility.type,
+          description: facility.description,
+          status: isMaintenance ? 'Under Maintenance' : isBookable ? 'Booking Available' : 'Available',
+          tone: isMaintenance ? 'maintenance' : isBookable ? 'booking' : 'available'
+        };
+      });
+
+      const clampMapOffset = (offset, zoom = mapZoom) => {
+        const viewport = mapViewportRef.current;
+        const world = mapWorldRef.current;
+        if (!viewport || !world) return offset;
+        const maxX = Math.max(0, (world.offsetWidth * zoom - viewport.clientWidth) / 2);
+        const maxY = Math.max(0, (world.offsetHeight * zoom - viewport.clientHeight) / 2);
+        return {
+          x: Math.max(-maxX, Math.min(maxX, offset.x)),
+          y: Math.max(-maxY, Math.min(maxY, offset.y))
+        };
+      };
+      const changeMapZoom = delta => {
+        const nextZoom = Math.min(1.8, Math.max(0.95, mapZoom + delta));
+        setMapZoom(nextZoom);
+        setMapOffset(offset => clampMapOffset(offset, nextZoom));
+      };
+      const recenterMap = () => { setMapZoom(1.28); setMapOffset({ x: 0, y: 0 }); setFocusedMapAmenityId(null); };
+      const focusMapAmenity = amenity => {
+        if (!amenity) return;
+        setFocusedMapAmenityId(amenity.id);
+        setMapZoom(1.55);
+        setMapOffset(clampMapOffset({ x: (50 - amenity.x) * 10.5, y: (50 - amenity.y) * 14 }, 1.55));
+      };
+      const handleMapSearch = value => {
+        setMapSearch(value);
+        const query = value.trim().toLowerCase();
+        if (query.length < 2) return;
+        const exact = mapAmenities.find(item => item.name.toLowerCase() === query);
+        const partial = mapAmenities.find(item => item.name.toLowerCase().includes(query));
+        focusMapAmenity(exact || partial);
+      };
       const beginMapDrag = event => {
-        if (event.target.closest('button') || event.target.closest('[data-map-amenity]')) return;
+        if (event.target.closest('button') || event.target.closest('input') || event.target.closest('[data-map-amenity]')) return;
         mapDrag.current = { x: event.clientX, y: event.clientY, originX: mapOffset.x, originY: mapOffset.y };
+        setIsMapDragging(true);
         event.currentTarget.setPointerCapture(event.pointerId);
       };
       const moveMapDrag = event => {
         if (!mapDrag.current) return;
-        setMapOffset({ x: mapDrag.current.originX + event.clientX - mapDrag.current.x, y: mapDrag.current.originY + event.clientY - mapDrag.current.y });
+        setMapOffset(clampMapOffset({ x: mapDrag.current.originX + event.clientX - mapDrag.current.x, y: mapDrag.current.originY + event.clientY - mapDrag.current.y }));
       };
+      const endMapDrag = () => {
+        mapDrag.current = null;
+        setIsMapDragging(false);
+      };
+
+      useEffect(() => {
+        const keepMapInsideViewport = () => setMapOffset(offset => clampMapOffset(offset, mapZoom));
+        keepMapInsideViewport();
+        const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(keepMapInsideViewport) : null;
+        if (mapViewportRef.current) resizeObserver?.observe(mapViewportRef.current);
+        if (mapWorldRef.current) resizeObserver?.observe(mapWorldRef.current);
+        window.addEventListener('resize', keepMapInsideViewport);
+        return () => {
+          resizeObserver?.disconnect();
+          window.removeEventListener('resize', keepMapInsideViewport);
+        };
+      }, [mapZoom, currentView]);
       const openAmenityReport = amenity => {
         const matched = facilities.find(f => f.facility_id === amenity.id) || {
           facility_id: amenity.id,
@@ -747,11 +880,12 @@
           location: 'Bandar Bukit Raja Township',
           type: amenity.type,
           status: amenity.tone === 'maintenance' ? 'maintenance' : 'open',
+          operating_hours: 'Refer to facility notice',
           description: amenity.description
         };
         if (matched) setSelectedFacility(matched);
         setSelectedMapAmenity(null);
-        setCurrentView('report');
+        setCurrentView('facility');
       };
 
       const openAmenityBooking = amenity => {
@@ -775,7 +909,8 @@
       const openAmenityFeedback = amenity => {
         if (amenity.communityInput) {
           setSelectedMapAmenity(null);
-          setCurrentView('pulse');
+          setShowPulseInvite(false);
+          setShowPulseModal(true);
           return;
         }
         const matched = facilities.find(f => f.facility_id === amenity.id) || {
@@ -787,30 +922,17 @@
           description: amenity.description
         };
         setSelectedFacility(matched);
-        setCategory('other');
+        handleResetFeedback();
         setSelectedMapAmenity(null);
-        setCurrentView('report');
-      };
-
-      const openAmenityInfo = amenity => {
-        const matched = facilities.find(f => f.facility_id === amenity.id) || {
-          facility_id: amenity.id,
-          name: amenity.name,
-          location: 'Bandar Bukit Raja Township',
-          type: amenity.type,
-          status: amenity.tone === 'maintenance' ? 'maintenance' : 'open',
-          operating_hours: 'Refer to facility notice',
-          description: amenity.description
-        };
-        setSelectedFacility(matched);
-        setSelectedMapAmenity(null);
-        setCurrentView('facility');
+        setCurrentView('feedback');
       };
 
       // Pulse Community Survey state
       const [pulseOption, setPulseOption] = useState(null);
       const [pulseSubmitting, setPulseSubmitting] = useState(false);
       const [pulseSubmitted, setPulseSubmitted] = useState(false);
+      const [showPulseModal, setShowPulseModal] = useState(false);
+      const [showPulseInvite, setShowPulseInvite] = useState(true);
 
       // Facility Satisfaction Feedback state
       const [feedbackRatings, setFeedbackRatings] = useState({
@@ -1136,7 +1258,8 @@
           const paramMode = getQueryParam('mode');
 
           if (paramMode === 'targeted' || paramMode === 'survey' || paramMode === 'pulse') {
-            setCurrentView('pulse');
+            setCurrentView('home');
+            setShowPulseInvite(true);
           } else if (paramFacilityId) {
             const found = list.find(f => f.facility_id === paramFacilityId) || list[0];
             setSelectedFacility(found);
@@ -1441,29 +1564,45 @@
                   VIEW: HOMEPAGE (NEW RESIDENT HOME)
               ──────────────────────────────────────────────────────── */}
               {currentView === 'home' && (
-                <div className="relative flex-1 min-h-0 overflow-hidden bg-[#d9e5d8] select-none">
+                <div className="relative flex-1 min-h-0 overflow-hidden bg-[#b9dfc2] select-none">
                   <div className="absolute top-3 left-3 right-3 z-30 flex items-center gap-2">
                     <div className="flex-1 h-10 rounded-xl bg-white/95 shadow-lg border border-white flex items-center gap-2.5 px-3 backdrop-blur">
                       <span className="text-slate-400">⌕</span>
-                      <span className="text-[11px] font-semibold text-slate-600">Search township amenities</span>
+                      <input
+                        value={mapSearch}
+                        onChange={event => handleMapSearch(event.target.value)}
+                        onKeyDown={event => {
+                          if (event.key === 'Enter') {
+                            const query = mapSearch.trim().toLowerCase();
+                            focusMapAmenity(mapAmenities.find(item => item.name.toLowerCase().includes(query)));
+                          }
+                        }}
+                        list="map-facility-suggestions"
+                        className="flex-1 bg-transparent outline-none text-[11px] font-semibold text-slate-700 placeholder:text-slate-400"
+                        placeholder="Search township amenities"
+                        aria-label="Search township amenities"
+                      />
+                      {mapSearch && <button onClick={() => { setMapSearch(''); setFocusedMapAmenityId(null); }} className="text-slate-400 text-xs" aria-label="Clear search">✕</button>}
+                      <datalist id="map-facility-suggestions">{mapAmenities.map(item => <option key={item.id} value={item.name} />)}</datalist>
                     </div>
                   </div>
 
-                  <div className="absolute inset-0 cursor-grab active:cursor-grabbing touch-none overflow-hidden" onPointerDown={beginMapDrag} onPointerMove={moveMapDrag} onPointerUp={() => mapDrag.current = null} onPointerCancel={() => mapDrag.current = null} onWheel={event => changeMapZoom(event.deltaY < 0 ? 0.1 : -0.1)}>
-                    <div className="absolute inset-[-18%] transition-transform duration-100" style={{ transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${mapZoom})` }}>
-                      <svg viewBox="0 0 1000 1200" className="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-label="Bandar Bukit Raja interactive township map">
+                  <div ref={mapViewportRef} className="absolute inset-0 cursor-grab active:cursor-grabbing touch-none overflow-hidden" onPointerDown={beginMapDrag} onPointerMove={moveMapDrag} onPointerUp={endMapDrag} onPointerCancel={endMapDrag} onWheel={event => changeMapZoom(event.deltaY < 0 ? 0.1 : -0.1)}>
+                    <div ref={mapWorldRef} className={`absolute inset-[-55%] ${isMapDragging ? 'transition-none' : 'transition-transform duration-200 ease-out'}`} style={{ transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${mapZoom})`, transformOrigin: 'center center' }}>
+                      <svg viewBox="0 0 1400 1680" className="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-label="Bandar Bukit Raja interactive township map">
                         <defs>
                           <filter id="mapShadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="7" floodColor="#33463e" floodOpacity=".22"/></filter>
                           <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
-                          <pattern id="grassGrain" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r="1.5" fill="#9fb69d" opacity=".35"/><circle cx="25" cy="21" r="1" fill="#8ca58d" opacity=".25"/></pattern>
+                          <pattern id="grassGrain" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r="1.5" fill="#348f59" opacity=".26"/><circle cx="25" cy="21" r="1" fill="#1f7c4b" opacity=".2"/></pattern>
                         </defs>
-                        <rect width="1000" height="1200" fill="#d8e5d6"/>
+                        <g transform="scale(1.4)">
+                        <rect width="1000" height="1200" fill="#b9dfc2"/>
                         <rect width="1000" height="1200" fill="url(#grassGrain)"/>
 
-                        <path d="M-60 210 C165 145 302 185 420 315 C560 470 725 430 1060 300 L1060 -30 L-60 -30Z" fill="#c8dbc6"/>
-                        <path d="M-80 830 C115 760 250 800 365 930 C500 1085 730 1030 1080 850 L1080 1240 L-80 1240Z" fill="#c4d9c2"/>
-                        <path d="M710 40 C835 85 900 155 960 285 C860 310 765 284 690 215 C654 180 662 95 710 40Z" fill="#b9d6d6" stroke="#a9c9ca" strokeWidth="7"/>
-                        <path d="M720 92 C815 124 865 177 906 258" fill="none" stroke="#dcebed" strokeWidth="5" opacity=".8"/>
+                        <path d="M-60 210 C165 145 302 185 420 315 C560 470 725 430 1060 300 L1060 -30 L-60 -30Z" fill="#91d3a5"/>
+                        <path d="M-80 830 C115 760 250 800 365 930 C500 1085 730 1030 1080 850 L1080 1240 L-80 1240Z" fill="#7fc99b"/>
+                        <path d="M846 32 C930 43 995 90 1038 164 C1015 225 957 257 884 244 C824 233 790 190 800 126 C807 83 820 51 846 32Z" fill="#79d4d9" stroke="#4fbac2" strokeWidth="7"/>
+                        <path d="M835 94 C895 73 963 103 1001 159 C972 199 919 213 857 191" fill="none" stroke="#d5f5f4" strokeWidth="5" opacity=".9"/>
 
                         <g fill="none" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M-80 682 C140 650 255 610 380 515 C515 410 655 370 1080 392" stroke="#aab0ad" strokeWidth="102"/>
@@ -1485,37 +1624,62 @@
                           <path d="M73 760 h150 v62 h-150z"/><path d="M88 770 v42M118 770v42M148 770v42M178 770v42" stroke="#eef0ec" strokeWidth="7"/>
                         </g>
 
-                        <g fill="#a9b6aa" stroke="#87968b" strokeWidth="3" filter="url(#mapShadow)">
-                          {[90,180,270].map((x,i) => <path key={`north-${i}`} d={`M${x} 115 l62 10 16 70 -72 12 -26 -54z`}/>)}
-                          {[720,810,900].map((x,i) => <path key={`east-${i}`} d={`M${x} 820 l64 -8 14 74 -68 14 -26 -48z`}/>)}
-                          {[105,205,305,405].map((x,i) => <path key={`south-${i}`} d={`M${x} 1000 l72 6 8 66 -78 8 -18 -39z`}/>)}
-                        </g>
-                        <g fill="none" stroke="#91ad8d" strokeWidth="8" strokeLinecap="round" opacity=".85">
+                        <g fill="none" stroke="#48b879" strokeWidth="8" strokeLinecap="round" opacity=".9">
                           <path d="M80 925 C210 870 315 900 440 978"/><path d="M715 975 C820 925 900 930 1015 1000"/><path d="M55 420 C160 382 258 402 342 458"/>
                         </g>
-                        <g fill="#789b73" opacity=".9">
-                          {[[80,390],[145,430],[215,390],[820,180],[875,235],[940,160],[760,1020],[860,1060],[930,990],[130,900],[220,935]].map(([x,y],i) => <g key={`tree-${i}`}><circle cx={x} cy={y} r="19"/><circle cx={x+12} cy={y-7} r="15" fill="#89a984"/><rect x={x+2} y={y+14} width="6" height="18" rx="3" fill="#6f7865"/></g>)}
+
+                        {/* Landscaped township pockets and secondary walking network */}
+                        <g opacity=".96">
+                          <path d="M22 38 C128 3 252 29 316 91 C262 146 142 165 42 126 C10 103 2 70 22 38Z" fill="#a4dcae"/>
+                          <path d="M681 696 C770 644 925 653 1017 744 C994 815 894 854 779 826 C704 806 658 753 681 696Z" fill="#9bd8b1"/>
+                          <path d="M26 1038 C150 976 294 1001 367 1097 C304 1165 164 1190 48 1142 C15 1118 5 1070 26 1038Z" fill="#a9dfb5"/>
+                          <path d="M704 1080 C800 1018 933 1035 1026 1122 L1026 1210 L694 1210 C674 1162 676 1112 704 1080Z" fill="#8fd1a8"/>
+                        </g>
+                        <g fill="none" strokeLinecap="round">
+                          <path d="M7 165 C126 190 200 237 252 315 C292 375 335 411 415 430" stroke="#d9d7c8" strokeWidth="22"/>
+                          <path d="M7 165 C126 190 200 237 252 315 C292 375 335 411 415 430" stroke="#f4f0df" strokeWidth="13"/>
+                          <path d="M650 95 C706 195 717 292 678 392 C644 481 668 557 754 626" stroke="#d9d7c8" strokeWidth="22"/>
+                          <path d="M650 95 C706 195 717 292 678 392 C644 481 668 557 754 626" stroke="#f4f0df" strokeWidth="13"/>
+                          <path d="M45 1100 C218 1054 360 1067 493 1144" stroke="#d9d7c8" strokeWidth="21"/>
+                          <path d="M45 1100 C218 1054 360 1067 493 1144" stroke="#f4f0df" strokeWidth="12"/>
+                          <path d="M693 880 C795 851 904 875 1025 952" stroke="#d9d7c8" strokeWidth="20"/>
+                          <path d="M693 880 C795 851 904 875 1025 952" stroke="#f4f0df" strokeWidth="11"/>
+                        </g>
+                        <g fill="#79c998" stroke="#58ad7c" strokeWidth="2" opacity=".94">
+                          {[[54,62],[92,85],[134,58],[285,112],[925,775],[972,735],[70,1080],[116,1124],[308,1082],[746,1135],[810,1094],[942,1142],[980,1098],[370,720],[402,755],[340,770]].map(([x,y],i) => <circle key={`shrub-${i}`} cx={x} cy={y} r={i % 3 === 0 ? 11 : 8}/>) }
+                        </g>
+                        <g fill="#b6bdb7" stroke="#8e9992" strokeWidth="3" opacity=".92">
+                          <path d="M18 510 h126 v66 H18z"/><path d="M856 1014 h144 v68 H856z"/>
+                          <path d="M31 520v46M59 520v46M87 520v46M115 520v46M871 1025v46M901 1025v46M931 1025v46M961 1025v46" stroke="#edf0ec" strokeWidth="7"/>
+                        </g>
+                        <g fill="#087a4b" opacity=".96">
+                          {[[80,390],[820,180],[875,235],[940,160],[860,1060],[930,990],[130,900],[46,101],[108,135],[174,92],[690,755],[748,790],[64,1042],[154,1090],[264,1045],[892,1108],[972,1160],[956,638],[48,642],[92,614]].map(([x,y],i) => <g key={`tree-${i}`}><circle cx={x} cy={y} r={i > 10 ? 16 : 19}/><circle cx={x+12} cy={y-7} r={i > 10 ? 12 : 15} fill="#35b86c"/><circle cx={x+2} cy={y-11} r="8" fill="#66ce83" opacity=".75"/><rect x={x+2} y={y+14} width="6" height="18" rx="3" fill="#6f704d"/></g>)}
+                        </g>
                         </g>
 
-                        {MAP_AMENITIES.map(amenity => {
-                          const selected = selectedMapAmenity?.id === amenity.id;
-                          const px = amenity.x * 10;
-                          const py = amenity.y * 12;
+                        {mapAmenities.map(amenity => {
+                          const selected = selectedMapAmenity?.id === amenity.id || focusedMapAmenityId === amenity.id;
+                          const px = amenity.x * 14;
+                          const py = amenity.y * 16.8;
                           return (
-                            <g key={amenity.id} data-map-amenity="true" transform={`translate(${px} ${py})`} onClick={event => { event.stopPropagation(); setSelectedMapAmenity(amenity); }} className="cursor-pointer" role="button" aria-label={`${amenity.name}, ${amenity.status}`}>
-                              {selected && <ellipse cx="0" cy="8" rx="105" ry="80" fill="#55a782" opacity=".24" filter="url(#softGlow)"/>}
-                              {amenity.shape === 'hall' && <g filter="url(#mapShadow)"><path d="M-76 -35 L-18 -62 L72 -31 L60 42 L6 62 L-78 30Z" fill="#8f9f9a" stroke={selected ? '#197253' : '#6f817a'} strokeWidth={selected ? '8' : '4'}/><path d="M-18 -62 L5 -16 L72 -31" fill="#aeb9b5"/><rect x="-8" y="18" width="24" height="35" rx="3" fill="#586d66"/><path d="M-89 38 L-20 68" stroke="#d8d4c9" strokeWidth="13"/></g>}
-                              {amenity.shape === 'court' && <g filter="url(#mapShadow)"><rect x="-92" y="-50" width="184" height="100" rx="8" fill="#78988a" stroke={selected ? '#197253' : '#607e72'} strokeWidth={selected ? '8' : '4'}/><rect x="-80" y="-39" width="160" height="78" fill="none" stroke="#dfe8df" strokeWidth="4"/><path d="M0 -39V39M-80 0H80" stroke="#dfe8df" strokeWidth="3"/><path d="M-112 58 H112" stroke="#d8d4c9" strokeWidth="12"/></g>}
-                              {amenity.shape === 'clubhouse' && <g filter="url(#mapShadow)"><path d="M-78 -44 L10 -62 L78 -26 L66 48 L-20 65 L-82 22Z" fill="#96a59f" stroke={selected ? '#197253' : '#71847c'} strokeWidth={selected ? '8' : '4'}/><path d="M10 -62 L18 -5 L78 -26" fill="#b6bfbc"/><circle cx="28" cy="24" r="19" fill="#71887f" stroke="#d5dfdb" strokeWidth="4"/><path d="M-100 60 Q0 86 101 55" fill="none" stroke="#d8d4c9" strokeWidth="13"/></g>}
-                              {amenity.shape === 'room' && <g filter="url(#mapShadow)"><path d="M-70 -40 H42 L76 -8 V49 H-70Z" fill="#a69d91" stroke={selected ? '#197253' : '#82786e'} strokeWidth={selected ? '8' : '4'}/><path d="M42 -40 V-8 H76" fill="#c1b8ac"/><rect x="-12" y="13" width="22" height="36" fill="#746d66"/><path d="M-94 58 L96 58" stroke="#d8d4c9" strokeWidth="12"/></g>}
-                              {amenity.shape === 'park' && <g><path d="M-100 5 C-82 -70 5 -92 80 -56 C132 -30 120 45 56 78 C-10 112 -90 75 -100 5Z" fill="#9fbe99" stroke={selected ? '#197253' : '#88a882'} strokeWidth={selected ? '8' : '4'}/><path d="M-77 47 C-30 12 15 10 87 -26" fill="none" stroke="#e4dfd2" strokeWidth="15"/><circle cx="-36" cy="-30" r="17" fill="#6f966c"/><circle cx="38" cy="42" r="20" fill="#789c73"/><path d="M4 -26 l20 18 -20 20 -20 -20z" fill="#718e82"/></g>}
+                            <g key={amenity.id} data-map-amenity="true" transform={`translate(${px} ${py})`} onClick={event => { event.stopPropagation(); setFocusedMapAmenityId(amenity.id); setSelectedMapAmenity(amenity); }} className="cursor-pointer" role="button" aria-label={`${amenity.name}, ${amenity.status}`}>
+                              {selected && <ellipse cx="0" cy="8" rx="105" ry="80" fill="#10b981" opacity=".32" filter="url(#softGlow)"/>}
+                              {amenity.shape === 'hall' && <g filter="url(#mapShadow)"><path d="M-74 -18 L2 14 L72 -16 V42 L2 76 L-74 40Z" fill={amenity.wall}/><path d="M-74 -18 L-8 -58 L72 -16 L2 18Z" fill={amenity.roof} stroke={selected ? '#047857' : '#6e786f'} strokeWidth={selected ? '8' : '4'}/><path d="M-8 -58 L2 18" stroke="#ffffff" strokeOpacity=".45" strokeWidth="3"/><rect x="-10" y="30" width="25" height="39" rx="3" fill="#53645d"/><rect x="31" y="17" width="19" height="18" rx="2" fill="#cbe2df"/><path d="M-92 56 L-28 82" stroke="#d8d4c9" strokeWidth="13"/></g>}
+                              {amenity.shape === 'court' && <g filter="url(#mapShadow)"><path d="M-94 -41 L94 -41 L94 55 L82 68 L-94 68Z" fill="#176f62" opacity=".78"/><rect x="-94" y="-55" width="188" height="104" rx="7" fill={amenity.roof} stroke={selected ? '#047857' : amenity.wall} strokeWidth={selected ? '8' : '5'}/><rect x="-81" y="-43" width="162" height="80" fill="none" stroke="#edfff9" strokeWidth="4"/><path d="M0 -43V37M-81 -3H81" stroke="#edfff9" strokeWidth="3"/><path d="M94 -55 L105 -43 V49 L94 55" fill={amenity.wall}/><path d="M-112 67 H112" stroke="#d8d4c9" strokeWidth="12"/></g>}
+                              {amenity.shape === 'clubhouse' && <g filter="url(#mapShadow)"><path d="M-79 -18 L1 17 L78 -19 L67 49 L-12 76 L-79 42Z" fill={amenity.wall}/><path d="M-79 -18 L-9 -58 L78 -19 L1 19Z" fill={amenity.roof} stroke={selected ? '#047857' : '#647581'} strokeWidth={selected ? '8' : '4'}/><path d="M-9 -58 L1 19" stroke="#fff" strokeOpacity=".4" strokeWidth="3"/><circle cx="29" cy="33" r="18" fill="#367990" stroke="#d5f0f1" strokeWidth="4"/><rect x="-45" y="15" width="21" height="31" rx="3" fill="#d2edf0"/><path d="M-101 66 Q0 90 102 59" fill="none" stroke="#d8d4c9" strokeWidth="13"/></g>}
+                              {amenity.shape === 'room' && <g filter="url(#mapShadow)"><path d="M-72 -14 L5 16 L75 -13 V48 L4 76 L-72 44Z" fill={amenity.wall}/><path d="M-72 -14 L-17 -53 L75 -13 L5 18Z" fill={amenity.roof} stroke={selected ? '#047857' : '#756c62'} strokeWidth={selected ? '8' : '4'}/><path d="M-17 -53 L5 18" stroke="#fff" strokeOpacity=".38" strokeWidth="3"/><rect x="-9" y="29" width="23" height="40" fill="#665e58"/><rect x="32" y="18" width="18" height="16" fill="#edf6f0"/><path d="M-94 66 L96 66" stroke="#d8d4c9" strokeWidth="12"/></g>}
+                              {amenity.shape === 'pool' && <g filter="url(#mapShadow)"><path d="M-91 -47 L92 -47 L105 -33 V54 L92 68 H-91Z" fill="#f0eadf" stroke={selected ? '#047857' : '#b8b4aa'} strokeWidth={selected ? '8' : '4'}/><rect x="-74" y="-32" width="150" height="77" rx="23" fill="#46c5d2" stroke="#d7f7f6" strokeWidth="7"/><path d="M-55 -12 C-20 -24 15 -2 52 -14 M-56 15 C-20 3 17 25 54 13" fill="none" stroke="#d9fbfa" strokeWidth="4"/><rect x="83" y="-20" width="8" height="48" rx="4" fill="#78999a"/></g>}
+                              {amenity.shape === 'sporthall' && <g filter="url(#mapShadow)"><path d="M-78 -13 L3 17 L80 -17 V48 L2 75 L-78 43Z" fill={amenity.wall}/><path d="M-78 -13 L-30 -58 L24 -44 L80 -17 L3 19Z" fill={amenity.roof} stroke={selected ? '#047857' : '#686b82'} strokeWidth={selected ? '8' : '4'}/><path d="M-30 -58 L3 19 M24 -44 L30 7" stroke="#fff" strokeOpacity=".35" strokeWidth="3"/><rect x="-13" y="27" width="30" height="42" fill="#4f5d7e"/><path d="M-98 64 H99" stroke="#d8d4c9" strokeWidth="12"/></g>}
+                              {amenity.shape === 'pavilion' && <g filter="url(#mapShadow)"><path d="M-73 -20 L0 -60 L78 -19 L2 18Z" fill={amenity.roof} stroke={selected ? '#047857' : '#796746'} strokeWidth={selected ? '8' : '4'}/><path d="M-56 -10 V49 M58 -9 V49 M-2 16 V62" stroke="#725d3c" strokeWidth="9"/><path d="M-72 55 Q0 74 75 53" fill="none" stroke="#d8d4c9" strokeWidth="13"/><circle cx="20" cy="35" r="16" fill="#9a773e"/></g>}
+                              {amenity.shape === 'play' && <g filter="url(#mapShadow)"><path d="M-74 -15 L1 16 L72 -13 V47 L3 72 L-74 42Z" fill={amenity.wall}/><path d="M-74 -15 L-11 -55 L72 -13 L1 18Z" fill={amenity.roof} stroke={selected ? '#047857' : '#80646c'} strokeWidth={selected ? '8' : '4'}/><path d="M-11 -55 L1 18" stroke="#fff" strokeOpacity=".4" strokeWidth="3"/><circle cx="31" cy="30" r="13" fill="#f2c85d"/><path d="M-103 57 Q0 88 99 56" fill="none" stroke="#d8d4c9" strokeWidth="13"/></g>}
+                              {amenity.shape === 'lounge' && <g filter="url(#mapShadow)"><path d="M-76 -12 L0 18 L76 -12 V50 L0 76 L-76 44Z" fill={amenity.wall}/><path d="M-76 -12 L-15 -51 L76 -12 L0 20Z" fill={amenity.roof} stroke={selected ? '#047857' : '#3d7162'} strokeWidth={selected ? '8' : '4'}/><path d="M-15 -51 L0 20" stroke="#fff" strokeOpacity=".38" strokeWidth="3"/><path d="M-46 -28 Q0 -54 45 -28" fill="none" stroke="#4fbd75" strokeWidth="9"/><rect x="-10" y="31" width="23" height="39" fill="#335f54"/><path d="M-94 66 H96" stroke="#d8d4c9" strokeWidth="12"/></g>}
 
                               <g transform="translate(0 -86)">
-                                <circle r="18" fill="#ffffff" stroke={amenity.tone === 'maintenance' ? '#d89a3b' : amenity.tone === 'booking' ? '#4d91b7' : '#4c9271'} strokeWidth="5" filter="url(#mapShadow)"/>
+                                <circle r="18" fill="#ffffff" stroke={amenity.tone === 'maintenance' ? '#d89a3b' : amenity.tone === 'booking' ? '#18a6a7' : '#059669'} strokeWidth="5" filter="url(#mapShadow)"/>
                                 <text textAnchor="middle" dominantBaseline="middle" y="1" fontSize="17" fontWeight="800" fill="#33443d">{amenity.tone === 'maintenance' ? '⛏' : amenity.tone === 'booking' ? '●' : amenity.icon}</text>
                               </g>
                               {amenity.communityInput && <g transform="translate(42 -104)"><rect x="0" y="0" width="95" height="27" rx="13" fill="#fff8e8" stroke="#d9ba73"/><text x="47" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="#80662c">Input requested</text></g>}
-                              <g transform="translate(0 88)"><rect x="-76" y="-18" width="152" height="34" rx="10" fill={selected ? '#185f48' : '#ffffff'} opacity=".96" filter="url(#mapShadow)"/><text textAnchor="middle" y="4" fontSize="14" fontWeight="750" fill={selected ? '#ffffff' : '#33443d'}>{amenity.name}</text></g>
+                              <g transform="translate(0 92)"><rect x="-105" y="-18" width="210" height="34" rx="10" fill={selected ? '#047857' : '#ffffff'} opacity=".96" filter="url(#mapShadow)"/><text textAnchor="middle" y="4" fontSize="12" fontWeight="750" fill={selected ? '#ffffff' : '#23483c'}>{amenity.name}</text></g>
                             </g>
                           );
                         })}
@@ -1526,22 +1690,9 @@
                   <div className="absolute right-3 top-16 z-30 flex flex-col gap-2">
                     <button onClick={recenterMap} className="w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-white/80 shadow-lg text-slate-700 text-base font-bold" title="Current location">⌖</button>
                     <div className="bg-white/90 backdrop-blur rounded-full shadow-lg overflow-hidden border border-white/80">
-                      <button onClick={() => changeMapZoom(0.15)} className="block w-10 h-10 text-lg font-bold text-slate-700 border-b border-slate-200/80">＋</button>
-                      <button onClick={() => changeMapZoom(-0.15)} className="block w-10 h-10 text-lg font-bold text-slate-700">−</button>
+                      <button onClick={() => changeMapZoom(0.15)} disabled={mapZoom >= 1.8} aria-label="Zoom in" className="block w-10 h-10 text-lg font-bold text-slate-700 border-b border-slate-200/80 disabled:text-slate-300">＋</button>
+                      <button onClick={() => changeMapZoom(-0.15)} disabled={mapZoom <= 0.95} aria-label="Zoom out" className="block w-10 h-10 text-lg font-bold text-slate-700 disabled:text-slate-300">−</button>
                     </div>
-                  </div>
-                  <div className="absolute left-3 top-28 z-30 flex flex-col gap-2.5">
-                    {[
-                      ['▣', 'Scan QR', () => setShowQrModal(true)],
-                      ['□', 'My Bookings', () => setCurrentView('bookings')],
-                      ['!', 'Report', () => openAmenityReport(MAP_AMENITIES[0])],
-                      ['◎', 'Feedback', () => openAmenityFeedback(MAP_AMENITIES[0])]
-                    ].map(([icon, label, action]) => (
-                      <div key={label} className="group flex items-center gap-2">
-                        <button onClick={action} className="w-10 h-10 rounded-full bg-white/82 border border-white/90 shadow-lg backdrop-blur-md flex items-center justify-center text-sm font-bold text-slate-700 active:scale-95 transition-transform" aria-label={label}>{icon}</button>
-                        <span className="px-2 py-1 rounded-lg bg-slate-900/76 text-white text-[9px] font-semibold shadow opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity whitespace-nowrap">{label}</span>
-                      </div>
-                    ))}
                   </div>
                   <div className="absolute right-3 bottom-3 z-20 px-2 py-1 rounded-full bg-white/78 text-[8px] font-semibold text-slate-500 shadow-sm backdrop-blur">Drag to explore · {Math.round(mapZoom * 100)}%</div>
 
@@ -1553,14 +1704,13 @@
                           <div><p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">{selectedMapAmenity.type}</p><h2 className="text-lg font-extrabold text-slate-900 mt-0.5">{selectedMapAmenity.name}</h2></div>
                           <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${selectedMapAmenity.tone === 'maintenance' ? 'bg-amber-50 text-amber-800 border-amber-200' : selectedMapAmenity.tone === 'booking' ? 'bg-sky-50 text-sky-700 border-sky-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200'}`}>{selectedMapAmenity.tone === 'maintenance' && '⛏️ '}{selectedMapAmenity.status}</span>
                         </div>
-                        {selectedMapAmenity.communityInput && <button onClick={() => { setSelectedMapAmenity(null); setCurrentView('pulse'); }} className="mt-3 w-full p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-left flex items-center justify-between"><span className="text-[11px] font-bold text-amber-900">Community Input Requested</span><span className="text-amber-700">→</span></button>}
+                        {selectedMapAmenity.communityInput && <button onClick={() => { setSelectedMapAmenity(null); setShowPulseInvite(false); setShowPulseModal(true); }} className="mt-3 w-full p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-left flex items-center justify-between"><span className="text-[11px] font-bold text-amber-900">Community Input Requested</span><span className="text-amber-700">→</span></button>}
                         <p className="text-[11px] text-slate-500 leading-relaxed mt-2.5">{selectedMapAmenity.description}</p>
-                        <div className="grid grid-cols-4 gap-2 mt-3">
+                        <div className="grid grid-cols-3 gap-2 mt-3">
                           {[
                             ['▣', 'Booking', () => openAmenityBooking(selectedMapAmenity)],
                             ['!', 'Report', () => openAmenityReport(selectedMapAmenity)],
-                            ['◎', 'Feedback', () => openAmenityFeedback(selectedMapAmenity)],
-                            ['i', 'Facility Info', () => openAmenityInfo(selectedMapAmenity)]
+                            ['◎', 'Feedback', () => openAmenityFeedback(selectedMapAmenity)]
                           ].map(([icon, label, action]) => <button key={label} onClick={action} className="min-h-[58px] rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center gap-1 text-[9px] font-bold text-slate-700 active:bg-emerald-50"><span className="text-sm text-emerald-700">{icon}</span><span>{label}</span></button>)}
                         </div>
                       </div>
@@ -1773,15 +1923,15 @@
 
                       {/* 4. Amenities Directory */}
                       <button
-                        onClick={() => setCurrentView('facilities')}
+                        onClick={() => setCurrentView('activities')}
                         className="p-3.5 bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-2xl text-left flex flex-col justify-between hover:border-slate-300 hover:shadow-sm transition-all group"
                       >
                         <div className="w-9 h-9 rounded-xl bg-slate-800 text-white flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform">
                           🏛️
                         </div>
                         <div className="mt-2.5">
-                          <strong className="text-xs text-slate-900 block font-bold">All Facilities</strong>
-                          <span className="text-[10px] text-slate-600 font-medium">Browse 12 facilities</span>
+                          <strong className="text-xs text-slate-900 block font-bold">Recommended Activities</strong>
+                          <span className="text-[10px] text-slate-600 font-medium">Classes, sports & community events</span>
                         </div>
                       </button>
                     </div>
@@ -1891,7 +2041,7 @@
               )}
 
               {/* ────────────────────────────────────────────────────────
-                  VIEW: SCANNED FACILITY LANDING (QR TOUCHPOINT)
+                  VIEW: FACILITY-SPECIFIC REPORT CONTEXT
               ──────────────────────────────────────────────────────── */}
               {currentView === 'facility' && selectedFacility && (
                 <div className="space-y-4 my-auto">
@@ -1907,7 +2057,7 @@
 
                     <div className="mt-3">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                        {selectedFacility.type}
+                        Report · {selectedFacility.type}
                       </span>
                       <h2 className="text-lg font-bold text-slate-900 mt-2">
                         {selectedFacility.name}
@@ -1932,6 +2082,7 @@
                         </span>
                       </div>
                     </div>
+                    {selectedFacility.description && <p className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5 text-left text-[10px] leading-relaxed text-slate-600">{selectedFacility.description}</p>}
                   </div>
 
                   {/* Primary Action Buttons: Report Defect (Red) & Feedback */}
@@ -1946,7 +2097,7 @@
                       className="w-full py-3.5 bg-rose-600 hover:bg-rose-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl shadow-md shadow-rose-600/20 transition-all flex items-center justify-center gap-2"
                     >
                       <span>🛠️</span>
-                      <span>Report a Facility Defect / Issue</span>
+                      <span>Continue to Report an Issue</span>
                     </button>
 
                     <button
@@ -2678,7 +2829,7 @@
               {/* ────────────────────────────────────────────────────────
                   VIEW: RESIDENT COMMUNITY PULSE / SURVEY
               ──────────────────────────────────────────────────────── */}
-              {currentView === 'pulse' && (
+              {false && currentView === 'pulse' && (
                 <div className="space-y-4 my-auto">
                   
                   {!pulseSubmitted ? (
@@ -2761,8 +2912,8 @@
               {currentView === 'bookings' && (
                 <div className="space-y-4">
                   <div>
-                    <h2 className="text-base font-bold text-slate-900">Amenity Bookings</h2>
-                    <p className="text-xs text-slate-500">Manage your court reservations and explore facilities</p>
+                    <h2 className="text-base font-bold text-slate-900">Activities & Facility Bookings</h2>
+                    <p className="text-xs text-slate-500">Manage your joined activities and facility bookings, or make a new reservation.</p>
                   </div>
 
                   {/* Tabs: Upcoming vs Past */}
@@ -2807,9 +2958,9 @@
                       {upcomingBookings.length === 0 ? (
                         <div className="p-4 bg-slate-50 border border-dashed border-slate-200 rounded-2xl text-center space-y-2">
                           <span className="text-2xl block">📅</span>
-                          <p className="text-xs font-semibold text-slate-700">No Upcoming Bookings</p>
+                          <p className="text-xs font-semibold text-slate-700">No Upcoming Activities or Bookings</p>
                           <p className="text-[11px] text-slate-400">
-                            You have no reservations currently scheduled. Browse facilities below to book a slot.
+                            You have no joined activities or facility reservations currently scheduled.
                           </p>
                         </div>
                       ) : (
@@ -2839,7 +2990,7 @@
                                   onClick={() => handleRequestCancel(bkg.id)}
                                   className="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-[10px] rounded-lg border border-rose-200 transition-colors"
                                 >
-                                  Cancel Booking
+                                  {bkg.isCommunityEvent ? 'Leave Activity' : 'Cancel Booking'}
                                 </button>
                               </div>
                             </div>
@@ -2954,43 +3105,173 @@
               )}
 
               {/* ────────────────────────────────────────────────────────
-                  VIEW: ALL MONITORED FACILITIES DIRECTORY
+                  VIEW: RECOMMENDED RESIDENT ACTIVITIES
               ──────────────────────────────────────────────────────── */}
-              {currentView === 'facilities' && (
-                <div className="space-y-3">
-                  <div>
-                    <h2 className="text-base font-bold text-slate-900">Township Facilities ({facilities.length})</h2>
-                    <p className="text-xs text-slate-500">Select any facility to report issues or check hours</p>
+              {currentView === 'activities' && (
+                <div className="space-y-4">
+                  <div className="rounded-2xl bg-gradient-to-br from-emerald-800 to-teal-700 p-4 text-white shadow-sm">
+                    <span className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-emerald-200">Around the township</span>
+                    <h2 className="mt-1 text-base font-extrabold">Recommended Activities</h2>
+                    <p className="mt-1 text-[11px] leading-relaxed text-emerald-50/90">Discover classes, sports sessions and community programmes hosted at nearby amenities.</p>
                   </div>
 
-                  <div className="space-y-2">
-                    {facilities.map(fac => (
-                      <div
-                        key={fac.facility_id}
-                        onClick={() => handleSelectFacility(fac)}
-                        className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
-                          selectedFacility?.facility_id === fac.facility_id
-                            ? 'border-emerald-500 bg-emerald-50/50 shadow-sm'
-                            : 'border-slate-200 hover:border-slate-300 bg-white'
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-800">{fac.name}</span>
-                            {fac.status === 'maintenance' && (
-                              <span className="text-[9px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded font-bold">Maintenance</span>
-                            )}
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Upcoming for residents</h3>
+                    <span className="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-700">{COMMUNITY_ACTIVITIES.length} activities</span>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    {COMMUNITY_ACTIVITIES.map(act => {
+                      const isJoined = joinedActivities.includes(act.id);
+                      return (
+                        <article key={act.id} className="rounded-2xl border border-emerald-100 bg-gradient-to-r from-emerald-50/60 via-white to-cyan-50/40 p-3.5 shadow-xs">
+                          <div className="flex items-start gap-3">
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-100 bg-white text-xl shadow-xs">{act.icon}</span>
+                            <div className="min-w-0 flex-1">
+                              {act.recommended && <span className="mb-1 inline-flex rounded-full bg-amber-50 px-2 py-0.5 text-[8px] font-extrabold uppercase tracking-wider text-amber-700 ring-1 ring-amber-200">Recommended for you</span>}
+                              <h4 className="text-xs font-extrabold leading-snug text-slate-900">{act.title}</h4>
+                              <p className="mt-1.5 text-[10px] font-semibold text-slate-600">🕒 {act.time}</p>
+                              <p className="mt-0.5 text-[10px] text-slate-500">📍 {act.location}</p>
+                              <p className="mt-0.5 text-[10px] text-slate-500">{act.cohort}</p>
+                            </div>
                           </div>
-                          <p className="text-[10px] text-slate-500 mt-0.5">{fac.location}</p>
-                        </div>
-                        <span className="text-xs text-emerald-700 font-bold">Select →</span>
-                      </div>
-                    ))}
+                          <div className="mt-3 flex items-center justify-between border-t border-emerald-100/80 pt-2.5">
+                            <span className="max-w-[66%] text-[9px] text-slate-500">{act.instructor}</span>
+                            <button type="button" onClick={() => handleToggleJoinActivity(act)} className={`rounded-lg px-3 py-1.5 text-[10px] font-bold transition-all active:scale-95 ${isJoined ? 'border border-emerald-300 bg-emerald-100 text-emerald-800' : 'bg-emerald-600 text-white shadow-xs hover:bg-emerald-700'}`}>{isJoined ? '✓ Joined' : 'Join'}</button>
+                          </div>
+                        </article>
+                      );
+                    })}
                   </div>
                 </div>
               )}
 
             </div>
+
+            {/* Animated Community Pulse invitation over Resident Home Map */}
+            {showPulseInvite && !showPulseModal && !pulseSubmitted && currentView === 'home' && mapAmenities.some(item => item.communityInput) && (
+              <div className="absolute inset-0 z-50 bg-slate-950/30 backdrop-blur-[2px] flex items-center justify-center p-5">
+                <button
+                  type="button"
+                  onClick={() => { setShowPulseInvite(false); setShowPulseModal(true); }}
+                  className="pulse-envelope-arrive group w-[86%] max-w-[310px] flex flex-col items-center focus:outline-none"
+                  aria-label="Open Community Pulse Survey invitation"
+                >
+                  <span className="relative block w-[190px] h-[126px] drop-shadow-[0_18px_28px_rgba(15,23,42,0.28)] transition-transform duration-200 group-hover:-translate-y-1 group-active:scale-[0.98]">
+                    <svg viewBox="0 0 74 86" className="pulse-envelope-wing-left absolute -left-[50px] top-[19px] w-[64px] h-[74px]" aria-hidden="true">
+                      <path d="M70 47 C49 12 17 2 6 11 C-4 20 17 37 35 47 C17 43 6 49 8 59 C10 70 34 67 53 58 C39 70 36 79 44 83 C54 88 68 67 70 47Z" fill="#fffdf7" stroke="#d8bd7d" strokeWidth="2.5"/>
+                      <path d="M14 17 C31 27 45 38 62 51 M14 55 C30 55 45 53 61 50" fill="none" stroke="#ead9b4" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                    <svg viewBox="0 0 74 86" className="pulse-envelope-wing-right absolute -right-[50px] top-[19px] w-[64px] h-[74px]" aria-hidden="true">
+                      <path d="M4 47 C25 12 57 2 68 11 C78 20 57 37 39 47 C57 43 68 49 66 59 C64 70 40 67 21 58 C35 70 38 79 30 83 C20 88 6 67 4 47Z" fill="#fffdf7" stroke="#d8bd7d" strokeWidth="2.5"/>
+                      <path d="M60 17 C43 27 29 38 12 51 M60 55 C44 55 29 53 13 50" fill="none" stroke="#ead9b4" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                    <svg viewBox="0 0 220 150" className="absolute inset-0 w-full h-full" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="inviteEnvelopeFace" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stopColor="#fffdf7"/>
+                          <stop offset="1" stopColor="#f5e9cc"/>
+                        </linearGradient>
+                        <linearGradient id="inviteEnvelopeFlap" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stopColor="#fff9e9"/>
+                          <stop offset="1" stopColor="#ead7ad"/>
+                        </linearGradient>
+                      </defs>
+                      <rect x="9" y="25" width="202" height="116" rx="18" fill="url(#inviteEnvelopeFace)" stroke="#d8bd7d" strokeWidth="3"/>
+                      <path d="M13 132 L82 73 Q110 52 138 73 L207 132" fill="#f7edda" stroke="#dec797" strokeWidth="2.5"/>
+                      <path d="M11 31 L91 98 Q110 113 129 98 L209 31" fill="url(#inviteEnvelopeFlap)" stroke="#d6ba79" strokeWidth="3" className="pulse-envelope-flap"/>
+                      <circle cx="110" cy="91" r="20" fill="#d59a35"/>
+                      <path className="pulse-envelope-heart" d="M110 105 C105 100 98 95 98 87 C98 79 106 76 110 82 C114 76 122 79 122 87 C122 95 115 100 110 105Z" fill="#fff"/>
+                    </svg>
+                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-amber-500 border-[3px] border-white shadow-md flex items-center justify-center text-[10px] font-extrabold text-white">1</span>
+                  </span>
+                  <span className="mt-4 px-5 py-3 rounded-2xl bg-white/95 border border-amber-100 shadow-xl text-center">
+                    <span className="block text-[9px] font-extrabold uppercase tracking-[0.16em] text-amber-700">Community Input Request</span>
+                    <span className="block mt-1 text-xs font-bold text-slate-800">Tap to open your pulse survey</span>
+                  </span>
+                </button>
+              </div>
+            )}
+
+            {/* Centered Community Pulse Survey over Resident Home Map */}
+            {showPulseModal && currentView === 'home' && (
+              <div className="absolute inset-0 z-50 bg-slate-950/35 backdrop-blur-[1.5px] flex items-center justify-center p-3.5 animate-fade-in">
+                <section className="w-[90%] max-w-[400px] max-h-[82%] bg-white rounded-[1.4rem] shadow-2xl border border-amber-200/90 overflow-hidden flex flex-col" role="dialog" aria-modal="true" aria-labelledby="pulse-modal-title">
+                  <header className="shrink-0 px-4 pt-4 pb-3 bg-gradient-to-r from-amber-50 via-white to-orange-50 border-b border-amber-100 relative">
+                    <button
+                      onClick={() => setShowPulseModal(false)}
+                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50 flex items-center justify-center text-sm font-bold shadow-xs"
+                      aria-label="Close Community Pulse Survey"
+                    >
+                      ×
+                    </button>
+                    <div className="flex items-center gap-2.5 pr-9">
+                      <span className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center text-base shadow-sm">✉</span>
+                      <div>
+                        <span className="inline-block text-[8px] uppercase tracking-[0.16em] font-extrabold text-amber-700">Community Input</span>
+                        <h2 id="pulse-modal-title" className="text-sm font-extrabold text-slate-900 leading-tight">Community Pulse Survey</h2>
+                        <p className="text-[10px] text-amber-800 font-semibold mt-0.5">Community Hall Scheduling</p>
+                      </div>
+                    </div>
+                  </header>
+
+                  {!pulseSubmitted ? (
+                    <>
+                      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-3.5">
+                        <p className="text-[11px] font-bold text-slate-800 leading-relaxed mb-3">
+                          How often do you use Community Hall 4, and what best describes your experience?
+                        </p>
+                        <div className="space-y-2">
+                          {[
+                            'Use frequently — Current opening hours fit my schedule well',
+                            'Rarely use — Peak evening & weekend slots are always fully booked',
+                            "Rarely use — Current hours (08:00–21:00) clash with my work schedule",
+                            'Rarely use — Lack of appealing programmes or youth/family activities',
+                            'Hardly ever use — Too busy or simply no need at this time'
+                          ].map((opt, i) => (
+                            <button
+                              type="button"
+                              key={i}
+                              onClick={() => setPulseOption(opt)}
+                              className={`w-full p-2.5 rounded-xl border text-[10px] leading-snug text-left cursor-pointer transition-all flex items-start gap-2 ${
+                                pulseOption === opt
+                                  ? 'border-amber-500 bg-amber-50 text-amber-950 font-bold shadow-xs ring-1 ring-amber-300'
+                                  : 'border-slate-200 bg-white hover:border-amber-300 text-slate-700'
+                              }`}
+                            >
+                              <span className={`mt-0.5 w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 text-[8px] ${pulseOption === opt ? 'border-amber-600 bg-amber-500 text-white' : 'border-slate-300 bg-white'}`}>
+                                {pulseOption === opt ? '✓' : ''}
+                              </span>
+                              <span>{opt}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <footer className="shrink-0 p-3.5 pt-3 bg-white border-t border-slate-100">
+                        <button
+                          disabled={!pulseOption || pulseSubmitting}
+                          onClick={handlePulseSubmit}
+                          className={`w-full py-3 font-bold text-xs rounded-xl shadow-sm transition-all ${
+                            pulseOption && !pulseSubmitting
+                              ? 'bg-amber-500 hover:bg-amber-600 text-white'
+                              : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
+                          }`}
+                        >
+                          {pulseSubmitting ? 'Recording Feedback...' : 'Submit Feedback'}
+                        </button>
+                      </footer>
+                    </>
+                  ) : (
+                    <div className="px-5 py-7 text-center">
+                      <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold mx-auto">✓</div>
+                      <h3 className="text-sm font-extrabold text-slate-900 mt-3">Thank you — your response has been recorded.</h3>
+                      <p className="text-[10px] text-slate-500 mt-1.5 leading-relaxed">Your answer has been submitted directly to the township operations planning committee.</p>
+                      <button onClick={() => setShowPulseModal(false)} className="mt-4 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm">Back to Map</button>
+                    </div>
+                  )}
+                </section>
+              </div>
+            )}
 
             {/* ────────────────────────────────────────────────────────
                 MODAL: FACILITY BOOKING SHEET
@@ -3367,7 +3648,7 @@
 
                   <div>
                     <h3 className="text-sm font-bold text-slate-900">
-                      {cancelTargetBooking.isCommunityEvent ? 'Leave Activity Session?' : 'Cancel Reservation?'}
+                      {cancelTargetBooking.isCommunityEvent ? 'Leave Activity?' : 'Cancel Reservation?'}
                     </h3>
                     <p className="text-[11px] text-slate-500 mt-0.5">
                       {cancelTargetBooking.isCommunityEvent
@@ -3420,7 +3701,7 @@
                       className="flex-1 py-2.5 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-md shadow-rose-600/20 transition-all flex items-center justify-center gap-1"
                     >
                       <span>✓</span>
-                      <span>Confirm Cancel</span>
+                      <span>{cancelTargetBooking.isCommunityEvent ? 'Confirm Leave' : 'Confirm Cancel'}</span>
                     </button>
                   </div>
                 </div>
@@ -3631,15 +3912,15 @@
                 </span>
               </button>
 
-              {/* 4. Facilities Directory */}
+              {/* 4. Recommended Activities */}
               <button
-                onClick={() => setCurrentView('facilities')}
+                onClick={() => setCurrentView('activities')}
                 className={`flex flex-1 flex-col items-center gap-0.5 py-1 transition-colors ${
-                  currentView === 'facilities' ? 'text-emerald-700 font-bold' : 'hover:text-slate-900'
+                  currentView === 'activities' ? 'text-emerald-700 font-bold' : 'hover:text-slate-900'
                 }`}
               >
-                <span className="text-base">🏛️</span>
-                <span>Facilities</span>
+                <span className="text-base">🌟</span>
+                <span>Activities</span>
               </button>
 
               {/* 5. Facility Bookings */}
