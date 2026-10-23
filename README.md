@@ -4,8 +4,8 @@ A unified platform connecting Resident Mobile QR fault reporting, On-site Facili
 
 ## Project Demo
 
-- **Live prototype — Resident Home:** [Open the prototype](https://sdp-2026-6v1m.onrender.com/resident.html)
-  From Resident View, click **Staff Center** in the top-right corner to open Operator View.
+- **Live prototype:** [Open the prototype](https://sdp-2026-6v1m.onrender.com/resident.html)
+  From Resident View, click **Staff Center** in the top-right corner to open **Operator View**.
 - **Video walkthrough:** [Watch the demo](https://www.youtube.com/watch?v=Vh_RK_QLq8E)
 
 ---
