@@ -1,14 +1,20 @@
-# Township Facility Decision Intelligence (ADI) System
+# Township Facility Decision Intelligence System
 
 A unified platform connecting Resident Mobile QR fault reporting, On-site Facilities Verification, and Operator Command Center Decision Intelligence, backed by local SQLite persistence.
+
+## Project Demo
+
+- **Live prototype — Resident Home:** [Open the prototype](https://sdp-2026-6v1m.onrender.com/resident.html)
+- **Video walkthrough:** _Coming soon — link will be added here._
 
 ---
 
 ## Quick Start for Teammates
 
 ### 1. Prerequisites
-- **Node.js** v22.0.0 or higher (v24.15.0 recommended).
-- No external databases, tokens, or global packages are needed. Native SQLite (`node:sqlite`) is built directly into Node.js.
+- **Node.js** v22.13.0 or higher. The server uses the built-in `node:sqlite` module without an experimental flag.
+- No external database, API token, or npm package installation is needed.
+- The browser needs an internet connection to load the React, Babel, Tailwind CSS, and font assets used by the pages.
 
 ### 2. Run the Application
 Open PowerShell or your terminal inside this project folder:
@@ -19,6 +25,8 @@ npm start
 ```
 
 ### 3. Open in Browser
+These `localhost` links work only on the computer running the server started above. They are local demo links, not a publicly hosted website. To view the project from another computer, clone the repository there and run `npm start`, or deploy the application to a host.
+
 - **Operator Command Center:**  
   [http://localhost:3000/operator.html](http://localhost:3000/operator.html)
 - **Resident Home:**  
@@ -57,12 +65,13 @@ This verifies:
 3. Select **Lighting** fault, type a description (e.g. `Court 2 luminaire flickering`), and click **Submit Report**.
 4. Note the generated reference ID (`REP-...`) and notice the badge indicates **Pending Staff Verification**.
 5. Switch to Operator Command Center: [http://localhost:3000/operator.html](http://localhost:3000/operator.html).
-6. Click the **Reports & Maintenance** tab. You will see the new submission listed as `Unverified`.
-7. Click **Inspect on Site** / **Verify Fault** and confirm.
+6. Click **Incident Queue**. You will see the new submission listed as `Unverified` / **Awaiting Inspection**.
+7. Click **Inspect on Site**, enter the inspection details, then click **Confirm Defect & Dispatch Work Order**.
 8. Observe:
    - A maintenance work order (`MNT-...`) is automatically generated.
    - The status updates to `Verified Fault`.
-   - The facility review at [http://localhost:3000/operator.html](http://localhost:3000/operator.html) reflects high sufficiency for hardware defect repair.
+   - The report remains in **Incident Queue** with its verified status, and its work order appears under **Active Work Orders**.
+   - The facility review reflects the verified defect evidence.
 
 #### Flow B: Targeted Evidence Survey
 1. Open Targeted Resident Survey: [http://localhost:3000/resident.html?mode=targeted](http://localhost:3000/resident.html?mode=targeted).
@@ -70,7 +79,7 @@ This verifies:
 3. Submit and verify confirmation.
 
 #### Flow C: Underlying Decision Intelligence Engine Tests
-To run the 409 unit tests for the core analytical engine (CP1–CP8):
+To run the core analytical engine test suite (CP1–CP8):
 
 ```powershell
 cd Checkpoint-9-Final-Reproducible/amenity-cp2
@@ -86,7 +95,7 @@ npm test
    - All reports, verification signatures, and maintenance tickets persist locally across restarts and refreshes.
 2. **Minimal Flow (Milestone 1):**
    - Resident scans QR code at `court-badminton-1` and submits a lighting defect report.
-   - Report appears in Operator under **Reports & Maintenance** as `Unverified`.
+   - Report appears in Operator under **Incident Queue** as `Unverified`.
    - On-duty technician clicks **Inspect on Site** and confirms the fault.
    - Work order (`MNT-...`) is dispatched and decision review is updated to a confirmed hardware defect with `High Sufficiency`.
 
@@ -95,16 +104,20 @@ npm test
 ## Project Structure
 
 ```text
-SDP/
+SDP-2026/
+├── README.md
 ├── operator.html              # Operator Command Center (Dashboard & Reviews)
 ├── resident.html              # Resident Mobile Touchpoint (QR & Reporting)
 ├── package.json               # Project manifest and start scripts
+├── tests/                      # System and API integration tests
 ├── DATA_SCHEMA_SPEC.md        # Shared data schema and ID contracts
 ├── .gitignore                 # Excluded dependencies and temporary lock files
 ├── server/
 │   ├── app.mjs                # Unified HTTP server & REST APIs
 │   ├── db.mjs                 # SQLite schema & pre-seeded 12 facilities
 │   └── adapter.mjs            # Domain conversion layer (unverified vs confirmed faults)
+├── Checkpoint-9-Final-Reproducible/
+│   └── amenity-cp2/            # Analytical engine used by the server adapter
 └── data/
     └── adi-system.sqlite      # Local SQLite database file
 ```
