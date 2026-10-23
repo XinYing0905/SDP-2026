@@ -825,7 +825,7 @@
       const [selectedMapAmenity, setSelectedMapAmenity] = useState(null);
       const [focusedMapAmenityId, setFocusedMapAmenityId] = useState(null);
       const [mapSearch, setMapSearch] = useState('');
-      const [mapZoom, setMapZoom] = useState(1.28);
+      const [mapZoom, setMapZoom] = useState(2.2);
       const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
       const [isMapDragging, setIsMapDragging] = useState(false);
       const mapDrag = useRef(null);
@@ -880,24 +880,25 @@
         const viewport = mapViewportRef.current;
         const world = mapWorldRef.current;
         if (!viewport || !world) return offset;
-        const maxX = Math.max(0, (world.offsetWidth * zoom - viewport.clientWidth) / 2);
-        const maxY = Math.max(0, (world.offsetHeight * zoom - viewport.clientHeight) / 2);
+        // Generous margin buffer so all facility labels and edge amenities can be comfortably panned and viewed completely
+        const maxX = Math.max(0, (world.offsetWidth * zoom - viewport.clientWidth) / 2) + 120;
+        const maxY = Math.max(0, (world.offsetHeight * zoom - viewport.clientHeight) / 2) + 140;
         return {
           x: Math.max(-maxX, Math.min(maxX, offset.x)),
           y: Math.max(-maxY, Math.min(maxY, offset.y))
         };
       };
       const changeMapZoom = delta => {
-        const nextZoom = Math.min(1.8, Math.max(0.95, mapZoom + delta));
+        const nextZoom = Math.min(2.8, Math.max(0.9, parseFloat((mapZoom + delta).toFixed(2))));
         setMapZoom(nextZoom);
         setMapOffset(offset => clampMapOffset(offset, nextZoom));
       };
-      const recenterMap = () => { setMapZoom(1.28); setMapOffset({ x: 0, y: 0 }); setFocusedMapAmenityId(null); };
+      const recenterMap = () => { setMapZoom(2.2); setMapOffset({ x: 0, y: 0 }); setFocusedMapAmenityId(null); };
       const focusMapAmenity = amenity => {
         if (!amenity) return;
         setFocusedMapAmenityId(amenity.id);
-        setMapZoom(1.55);
-        setMapOffset(clampMapOffset({ x: (50 - amenity.x) * 10.5, y: (50 - amenity.y) * 14 }, 1.55));
+        setMapZoom(2.4);
+        setMapOffset(clampMapOffset({ x: (50 - amenity.x) * 9, y: (50 - amenity.y) * 11 }, 2.4));
       };
       const handleMapSearch = value => {
         setMapSearch(value);
@@ -1679,27 +1680,27 @@
                     </div>
 
                     {/* Transparent Township Branding Bar (Below Search Bar) */}
-                    <div className="w-fit max-w-full rounded-full py-1.5 px-3 bg-slate-950/20 backdrop-blur-md border border-emerald-400/25 shadow-sm flex items-center relative overflow-hidden pointer-events-auto select-none">
-                      <div className="flex items-center gap-2.5 relative z-10">
+                    <div className="w-fit max-w-full rounded-full py-1 px-2.5 bg-slate-950/25 backdrop-blur-md border border-emerald-400/25 shadow-sm flex items-center relative overflow-hidden pointer-events-auto select-none">
+                      <div className="flex items-center gap-2 relative z-10">
                         <button
                           onClick={() => {
                             setMapSearch('');
                             setFocusedMapAmenityId(null);
                             recenterMap();
                           }}
-                          className="w-7 h-7 rounded-full bg-emerald-500/25 border border-emerald-400/45 flex items-center justify-center text-xs shadow-inner hover:scale-110 active:scale-95 transition-transform shrink-0"
+                          className="w-6 h-6 rounded-full bg-emerald-500/25 border border-emerald-400/45 flex items-center justify-center text-[11px] shadow-inner hover:scale-110 active:scale-95 transition-transform shrink-0"
                           title="Recenter Map View"
                         >
                           🏡
                         </button>
                         <div className="text-left select-none">
-                          <div className="text-xs font-bold text-white tracking-tight leading-tight flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                          <div className="text-[11px] font-bold text-white tracking-tight leading-tight flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                             Bandar Bukit Raja
-                            <span className="text-[9px] bg-emerald-500/25 text-emerald-300 font-semibold px-1.5 py-0.2 rounded-full border border-emerald-400/30">
+                            <span className="text-[8.5px] bg-emerald-500/25 text-emerald-300 font-semibold px-1.5 py-0.2 rounded-full border border-emerald-400/30">
                               Township
                             </span>
                           </div>
-                          <div className="text-[10px] text-emerald-300 font-medium leading-tight mt-0.5 flex items-center gap-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                          <div className="text-[9.5px] text-emerald-300 font-medium leading-tight mt-0.5 flex items-center gap-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399] animate-pulse"></span>
                             <span>Resident Services & Facility Care</span>
                           </div>
@@ -1709,8 +1710,8 @@
                   </div>
 
                   <div ref={mapViewportRef} className="absolute inset-0 cursor-grab active:cursor-grabbing touch-none overflow-hidden" onPointerDown={beginMapDrag} onPointerMove={moveMapDrag} onPointerUp={endMapDrag} onPointerCancel={endMapDrag} onWheel={event => changeMapZoom(event.deltaY < 0 ? 0.1 : -0.1)}>
-                    <div ref={mapWorldRef} className={`absolute inset-[-55%] ${isMapDragging ? 'transition-none' : 'transition-transform duration-200 ease-out'}`} style={{ transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${mapZoom})`, transformOrigin: 'center center' }}>
-                      <svg viewBox="0 0 1400 1680" className="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-label="Bandar Bukit Raja interactive township map">
+                    <div ref={mapWorldRef} className={`absolute inset-0 ${isMapDragging ? 'transition-none' : 'transition-transform duration-200 ease-out'}`} style={{ transform: `translate(${mapOffset.x}px, ${mapOffset.y}px) scale(${mapZoom})`, transformOrigin: 'center center' }}>
+                      <svg viewBox="-120 -300 1640 2340" className="w-full h-full" preserveAspectRatio="xMidYMid slice" aria-label="Bandar Bukit Raja interactive township map">
                         <defs>
                           <filter id="mapShadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="7" floodColor="#33463e" floodOpacity=".22"/></filter>
                           <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
@@ -1779,10 +1780,10 @@
                         </g>
 
                         {/* Cohesive architectural masterplan layer: twelve protected landscaped lots */}
-                        <rect width="1400" height="1680" fill="#edf0df"/>
-                        <rect width="1400" height="1680" fill="url(#grassGrain)" opacity=".42"/>
-                        <path d="M0 0H1400V92C1190 55 1060 105 900 80C690 47 520 112 330 76C185 49 82 73 0 111Z" fill="#f8f4e8" opacity=".92"/>
-                        <path d="M0 1578C190 1532 345 1595 520 1560C710 1522 860 1590 1035 1550C1180 1518 1280 1530 1400 1570V1680H0Z" fill="#f8f4e8" opacity=".92"/>
+                        <rect x="-800" y="-800" width="3400" height="3800" fill="#edf0df"/>
+                        <rect x="-800" y="-800" width="3400" height="3800" fill="url(#grassGrain)" opacity=".42"/>
+                        <path d="M-800 -800H2600V92C1190 55 1060 105 900 80C690 47 520 112 330 76C185 49 82 73 -800 111Z" fill="#f8f4e8" opacity=".92"/>
+                        <path d="M-800 1578C190 1532 345 1595 520 1560C710 1522 860 1590 1035 1550C1180 1518 1280 1530 2600 1570V3000H-800Z" fill="#f8f4e8" opacity=".92"/>
 
                         {/* Irregular landscaped precincts sized around each amenity, never a tiled grid */}
                         <g filter="url(#mapShadow)" strokeLinejoin="round">
@@ -1829,6 +1830,7 @@
                           const selected = selectedMapAmenity?.id === amenity.id || focusedMapAmenityId === amenity.id;
                           const px = amenity.x * 14;
                           const py = amenity.y * 16.8;
+                          const pillWidth = Math.max(160, Math.round(amenity.name.length * 8.4 + 38));
                           return (
                             <g key={amenity.id} data-map-amenity="true" transform={`translate(${px} ${py})`} onClick={event => { event.stopPropagation(); setFocusedMapAmenityId(amenity.id); setSelectedMapAmenity(amenity); }} className="cursor-pointer" role="button" aria-label={`${amenity.name}, ${amenity.status}`}>
                               <rect x="-130" y="-112" width="260" height="235" rx="34" fill="transparent" pointerEvents="all"/>
@@ -1858,8 +1860,11 @@
                               ) : (
                                 <g transform="translate(0 -86)" filter="url(#mapShadow)"><circle r="9" fill="#ffffff"/><circle r="6" fill="#16a34a"/></g>
                               )}
-                              {amenity.communityInput && !pulseSubmitted && <g transform="translate(42 -104)"><rect x="0" y="0" width="95" height="27" rx="13" fill="#fff8e8" stroke="#d9ba73"/><text x="47" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="#80662c">Input requested</text></g>}
-                              <g transform="translate(0 92)"><rect x="-105" y="-18" width="210" height="34" rx="10" fill={selected ? '#047857' : '#ffffff'} opacity=".96" filter="url(#mapShadow)"/><text textAnchor="middle" y="4" fontSize="12" fontWeight="750" fill={selected ? '#ffffff' : '#23483c'}>{amenity.name}</text></g>
+                              {amenity.communityInput && !pulseSubmitted && <g transform="translate(42 -104)"><rect x="0" y="0" width="105" height="27" rx="13" fill="#fff8e8" stroke="#d9ba73"/><text x="52" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="#80662c">Input requested</text></g>}
+                              <g transform="translate(0 92)">
+                                <rect x={-pillWidth / 2} y="-18" width={pillWidth} height="34" rx="12" fill={selected ? '#047857' : '#ffffff'} opacity=".96" filter="url(#mapShadow)"/>
+                                <text textAnchor="middle" y="4" fontSize="12" fontWeight="750" fill={selected ? '#ffffff' : '#23483c'}>{amenity.name}</text>
+                              </g>
                             </g>
                           );
                         })}
@@ -1870,8 +1875,8 @@
                   <div className="absolute right-3 top-28 z-30 flex flex-col gap-2">
                     <button onClick={recenterMap} className="w-10 h-10 rounded-full bg-white/90 backdrop-blur border border-white/80 shadow-lg text-slate-700 text-base font-bold" title="Current location">⌖</button>
                     <div className="bg-white/90 backdrop-blur rounded-full shadow-lg overflow-hidden border border-white/80">
-                      <button onClick={() => changeMapZoom(0.15)} disabled={mapZoom >= 1.8} aria-label="Zoom in" className="block w-10 h-10 text-lg font-bold text-slate-700 border-b border-slate-200/80 disabled:text-slate-300">＋</button>
-                      <button onClick={() => changeMapZoom(-0.15)} disabled={mapZoom <= 0.95} aria-label="Zoom out" className="block w-10 h-10 text-lg font-bold text-slate-700 disabled:text-slate-300">−</button>
+                      <button onClick={() => changeMapZoom(0.15)} disabled={mapZoom >= 2.8} aria-label="Zoom in" className="block w-10 h-10 text-lg font-bold text-slate-700 border-b border-slate-200/80 disabled:text-slate-300">＋</button>
+                      <button onClick={() => changeMapZoom(-0.15)} disabled={mapZoom <= 0.9} aria-label="Zoom out" className="block w-10 h-10 text-lg font-bold text-slate-700 disabled:text-slate-300">−</button>
                     </div>
                   </div>
                   <div className="absolute right-3 bottom-3 z-20 px-2 py-1 rounded-full bg-white/78 text-[8px] font-semibold text-slate-500 shadow-sm backdrop-blur">Drag to explore · {Math.round(mapZoom * 100)}%</div>
