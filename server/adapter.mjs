@@ -660,6 +660,7 @@ export function computeLiveFacilityAnalysis(db, facilityId) {
         currentValue: m.currentValue,
         percentageChange: m.percentageChange,
         points: m.points,
+        excursions: m.excursions,
         persistence: m.persistence
       })),
       persistenceResult: changeResult.persistence.result,
